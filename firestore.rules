@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Keep all budget and personnel data private until role rules are reviewed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
