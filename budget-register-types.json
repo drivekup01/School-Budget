@@ -1,0 +1,333 @@
+{
+  "description": "ชื่อประเภทงบตรวจจากคอลัมน์ D–G หัวข้อก่อนทะเบียน และยอดตั้งต้นของ Sheet สำเนาทั้ง 39 โครงการ เมื่อ 14 ตุลาคม 2569; เรียงตามชุดทะเบียนในแต่ละแท็บ ไม่ใช้เลขแถวเป็นชื่อ",
+  "projects": {
+    "1": [
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": null,
+        "sourceHeaderRow": 14
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "sourceHeaderRow": 22
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": null,
+        "sourceHeaderRow": 32
+      }
+    ],
+    "2": [
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "วงโยธวาทิต",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศของสถานศึกษา",
+        "sourceHeaderRow": 31
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": null,
+        "sourceHeaderRow": 36
+      }
+    ],
+    "3": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 8
+      }
+    ],
+    "4": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 7
+      }
+    ],
+    "5": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "6": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 9
+      }
+    ],
+    "7": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "8": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 10
+      }
+    ],
+    "9": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 13
+      }
+    ],
+    "10": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 8
+      }
+    ],
+    "11": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 11
+      }
+    ],
+    "12": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 9
+      }
+    ],
+    "13": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 8
+      }
+    ],
+    "14": [
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 19
+      }
+    ],
+    "15": [
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมค.บ.เกมส์",
+        "sourceHeaderRow": 12
+      },
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมพัฒนาศักยภาพทางดนตรี (วิทยากรดนตรี)",
+        "sourceHeaderRow": 19
+      },
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมค่ายคุณธรรม จริยธรรม",
+        "sourceHeaderRow": 29
+      },
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมส่งเสริมสุขภาพนักเรียน",
+        "sourceHeaderRow": 39
+      }
+    ],
+    "16": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "17": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 7
+      }
+    ],
+    "18": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 9
+      }
+    ],
+    "19": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "20": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "21": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 10
+      }
+    ],
+    "22": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 7
+      }
+    ],
+    "23": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 12
+      }
+    ],
+    "24": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 10
+      }
+    ],
+    "25": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 9
+      }
+    ],
+    "26": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 8
+      }
+    ],
+    "27": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 8
+      }
+    ],
+    "28": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "29": [
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "sourceHeaderRow": 9
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 14
+      }
+    ],
+    "30": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 9
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "sourceHeaderRow": 16
+      }
+    ],
+    "31": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "sourceHeaderRow": 32
+      }
+    ],
+    "32": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "33": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "34": [
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "35": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "36": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "37": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "38": [
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ],
+    "39": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": null,
+        "sourceHeaderRow": 6
+      }
+    ]
+  }
+}
