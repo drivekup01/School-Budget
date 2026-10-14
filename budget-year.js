@@ -1,6 +1,8 @@
 (() => {
  const select=document.getElementById('budgetYear');
- const year=new URL(location.href).searchParams.get('year')==='2570'?2570:2569;
+ const requested=new URL(location.href).searchParams.get('year');let saved;try{saved=sessionStorage.getItem('school-budget-year')}catch{}
+ const year=(requested===null?saved:requested)==='2570'?2570:2569;
+ try{sessionStorage.setItem('school-budget-year',String(year))}catch{}
  window.budgetYear=year;window.budgetYearDataUrl=year===2570?'budget-data-2570.json':'budget-data.json';
  const empty=document.getElementById('yearEmpty');if(empty)empty.hidden=true;
  document.querySelectorAll('a[href^="budget-projects.html"]').forEach(a=>{const url=new URL(a.href);url.searchParams.set('year',year);a.href=url.href});
@@ -13,4 +15,14 @@
  menu.addEventListener('click',e=>{const option=e.target.closest('[data-year]');if(!option)return;select.value=option.dataset.year;select.dispatchEvent(new Event('change'))});
  document.addEventListener('click',e=>{if(!menu.contains(e.target))menu.open=false});
  menu.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.open=false;menu.querySelector('summary').focus();e.preventDefault()}if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();menu.open=true;const buttons=[...menu.querySelectorAll('button')],index=buttons.indexOf(document.activeElement);buttons[(index+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus()}});
+ const department=document.getElementById('department');if(!department)return;
+ const departmentMenu=document.createElement('details');departmentMenu.className='year-menu department-menu';
+ departmentMenu.innerHTML='<summary aria-label="เลือกฝ่ายงาน"><span class="year-calendar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3M3 9a3 3 0 0 0 0 6M21 9a3 3 0 0 1 0 6"/></svg></span><span class="year-button-label"><small>ฝ่ายงาน</small><strong></strong></span><span class="year-chevron" aria-hidden="true">⌄</span></summary><div class="year-options" aria-label="ฝ่ายงานที่เลือกได้"></div>';
+ department.hidden=true;department.parentElement.append(departmentMenu);
+ function refreshDepartment(){const selected=department.selectedOptions[0];const title=selected?.textContent||'ทุกฝ่ายที่มีข้อมูล';departmentMenu.querySelector('strong').textContent=department.value?title.replace('ฝ่ายบริหารงาน','ฝ่าย'):'ทุกฝ่าย';departmentMenu.querySelector('summary').title=title;departmentMenu.querySelector('summary').setAttribute('aria-label','เลือกฝ่ายงาน ปัจจุบัน '+title);
+ departmentMenu.querySelector('.year-options').replaceChildren(...[...department.options].map(option=>{const button=document.createElement('button');button.type='button';button.className='year-option';button.dataset.department=option.value;button.setAttribute('aria-pressed',String(option.value===department.value));const text=document.createElement('span');text.textContent=option.textContent;const check=document.createElement('i');check.className='year-check';check.setAttribute('aria-hidden','true');check.textContent=option.value===department.value?'✓':'';button.append(text,check);return button}));}
+ refreshDepartment();new MutationObserver(refreshDepartment).observe(department,{childList:true,subtree:true});department.addEventListener('change',refreshDepartment);
+ departmentMenu.addEventListener('click',e=>{const option=e.target.closest('[data-department]');if(!option)return;department.value=option.dataset.department;department.dispatchEvent(new Event('change'));departmentMenu.open=false;departmentMenu.querySelector('summary').focus()});
+ document.addEventListener('click',e=>{if(!departmentMenu.contains(e.target))departmentMenu.open=false});
+ departmentMenu.addEventListener('keydown',e=>{if(e.key==='Escape'){departmentMenu.open=false;departmentMenu.querySelector('summary').focus();e.preventDefault()}if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();departmentMenu.open=true;const buttons=[...departmentMenu.querySelectorAll('button')],index=buttons.indexOf(document.activeElement);buttons[(index+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus()}});
 })();
