@@ -4,3 +4,5 @@ body{background:radial-gradient(ellipse at 55% 0,#eee4fa 0,transparent 60%),#faf
 .source-register{border:1px solid #e5d8ef;border-radius:18px;padding:18px;margin-top:22px;background:white}.source-register table{min-width:760px}.source-register h3{font-size:15px;color:#76459e}.source-register h4{font-size:12px;color:#9a85ad;margin-top:24px}
 
 .balance-detail h3{font-size:14px;color:#704595}.balance-detail .table-wrap table{min-width:720px}.balance-detail{margin:18px 0}.detail-warning{line-height:1.8}.balance-detail p{font-size:12px;line-height:1.8}
+
+.activity-summary{min-width:600px}.activity-summary th:nth-child(n+2){text-align:right}.activity-summary td:first-child{min-width:280px}
