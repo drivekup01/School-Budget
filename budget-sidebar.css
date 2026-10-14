@@ -1,8 +1,8 @@
 /* One sidebar stylesheet shared by dashboard, editor, and document history. */
 #budgetSidebar{box-sizing:border-box;width:240px;position:fixed;inset:0 auto 0 0;z-index:20;display:flex;flex-direction:column;padding:28px 18px;background:linear-gradient(160deg,#291743,#472468);color:white;font:14px Tahoma,system-ui,sans-serif;overflow:auto}
 #budgetSidebar a{text-decoration:none;color:inherit}
-#budgetSidebar .budget-sidebar-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:bold;line-height:1.6}
-#budgetSidebar .budget-sidebar-brand img{width:46px;height:58px;object-fit:contain}
+#budgetSidebar .budget-sidebar-brand{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;font-size:15px;font-weight:bold;line-height:1.6}
+#budgetSidebar .budget-sidebar-brand img{width:100px;height:100px;object-fit:contain}
 #budgetSidebar small{display:block;font-size:11px;font-weight:normal;color:#c8b9df;margin-top:8px}
 #budgetSidebar nav{display:grid;gap:10px;margin:46px 0 0;padding:0;background:none;border:0}
 #budgetSidebar nav a{padding:15px 12px;border-radius:12px;font-size:13px;color:#ded3ed;line-height:1.5}
@@ -15,4 +15,4 @@ body.has-budget-sidebar[data-document-view] #systemNav{display:none!important}
 body.has-budget-sidebar[data-document-view] #documentManager{margin:26px 32px 40px!important;max-width:none}
 body.has-budget-sidebar[data-document-view] header.school-top{max-width:none}
 @media(max-width:1100px) and (min-width:651px){#budgetSidebar{width:200px}body.has-budget-sidebar:not([data-document-view])>main{margin-left:200px}body.has-budget-sidebar[data-document-view]{padding-left:200px}body.has-budget-sidebar[data-document-view] main{grid-template-columns:1fr}body.has-budget-sidebar[data-document-view] .fields{max-height:none}}
-@media(max-width:650px){#budgetSidebar{position:static;width:auto;padding:16px;overflow:visible}#budgetSidebar .budget-sidebar-brand img{width:34px;height:40px}#budgetSidebar nav{display:flex;margin-top:18px;gap:5px;overflow:auto}#budgetSidebar nav a{white-space:nowrap;padding:10px;font-size:11px}#budgetSidebar .budget-sidebar-note{display:none}body.has-budget-sidebar:not([data-document-view])>main{margin-left:0}body.has-budget-sidebar[data-document-view]{padding-left:0}body.has-budget-sidebar[data-document-view] #documentManager{margin:22px 18px 32px!important}}
+@media(max-width:650px){#budgetSidebar{position:static;width:auto;padding:16px;overflow:visible}#budgetSidebar .budget-sidebar-brand img{width:76px;height:76px}#budgetSidebar nav{display:flex;margin-top:18px;gap:5px;overflow:auto}#budgetSidebar nav a{white-space:nowrap;padding:10px;font-size:11px}#budgetSidebar .budget-sidebar-note{display:none}body.has-budget-sidebar:not([data-document-view])>main{margin-left:0}body.has-budget-sidebar[data-document-view]{padding-left:0}body.has-budget-sidebar[data-document-view] #documentManager{margin:22px 18px 32px!important}}
