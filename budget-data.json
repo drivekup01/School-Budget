@@ -1,0 +1,2600 @@
+{
+  "year": 2569,
+  "status": "unverified",
+  "source": "ทะเบียนคุมเงินบริหารวิชาการ 2569",
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1LsIILtzaU-izM2A9JfwalQchO6iCRZVYbX-U0TXyW8M/edit",
+  "sourceSheet": "โครงการทั้งหมด",
+  "scope": "ฝ่ายบริหารงานวิชาการ",
+  "snapshotDate": "2026-10-14",
+  "sheetCount": 18,
+  "transactionRows": 124,
+  "projects": [
+    {
+      "id": 1,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมและพัฒนากิจกรรมพัฒนาผู้เรียน",
+      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
+      "amounts": [
+        0,
+        206000.0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมเข้าค่ายพักแรมลูกเสือ - เนตรนารีต้านยาเสพติด",
+          "owner": "นายศรัณย์ โชคลาภ",
+          "amounts": [
+            0,
+            60000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมและพัฒนาเทคโนโลยีสำหรับนักเรียน",
+          "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
+          "amounts": [
+            0,
+            5000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมสร้างเสริมคุณธรรม จริยธรรม ค่านิยม ที่พึงประสงค์สำนึกในความเป็นไทย",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            0,
+            5000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมวันสำคัญ",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            0,
+            80000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมหลักปรัชญของเศรษฐกิจพอเพียง",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            0,
+            3000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมกีฬาภายในเพื่อสุขภาพ",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            0,
+            40000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมบ้านหลังเรียน",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            0,
+            13000.0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 5,
+      "income": [
+        null,
+        206000,
+        null,
+        null
+      ],
+      "remaining": [
+        null,
+        114626,
+        null,
+        null
+      ],
+      "balanceSourceRow": 5
+    },
+    {
+      "id": 2,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมความเป็นเลิศทางการศึกษา",
+      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
+      "amounts": [
+        0,
+        62000.0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศทางวิชาการ",
+          "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
+          "amounts": [
+            0,
+            62000.0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศของสถานศึกษา",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
+          "amounts": [
+            0,
+            0,
+            26500.0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศด้านดนตรีและวงโยธวาทิต",
+          "owner": "นายปิยะพนธ์ เทียบชัย",
+          "amounts": [
+            0,
+            0,
+            60311.0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 13,
+      "income": [
+        null,
+        62000,
+        26500,
+        60311
+      ],
+      "remaining": [
+        null,
+        21650,
+        21500,
+        49511
+      ],
+      "balanceSourceRow": 7
+    },
+    {
+      "id": 3,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาปรับปรุงหลักสูตรสถานศึกษา",
+      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
+      "amounts": [
+        2000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรสถานศึกษา",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 17,
+      "income": [
+        2000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        2000,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 9
+    },
+    {
+      "id": 4,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการจัดซื้อสื่อและวัสดุอุปกรณ์การเรียนการสอน เพื่อยกระดับผลสัมฤทธิ์ทางการเรียน",
+      "owner": "นางสาวสุนิสา อิ่มรัง",
+      "amounts": [
+        108395.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [],
+      "sourceRow": 20,
+      "income": [
+        108395,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        16967,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 11
+    },
+    {
+      "id": 5,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาและส่งเสริมการวิจัยในชั้นเรียน",
+      "owner": "นางสาวปภาวิไล ชลอวงษ์",
+      "amounts": [
+        4000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [],
+      "sourceRow": 21,
+      "income": [
+        4000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        4000,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 13
+    },
+    {
+      "id": 6,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการ ส่งเสริมพัฒนา งานทะเบียน งานวัดและประเมินผล",
+      "owner": "นางสาวปภาวิไล ชลอวงษ์",
+      "amounts": [
+        68000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมส่งเสริมพัฒนางานทะเบียน",
+          "owner": "",
+          "amounts": [
+            3500.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการวัดและประเมินผล",
+          "owner": "",
+          "amounts": [
+            64000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมการวัดและประเมินผลทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            500.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 22,
+      "income": [
+        68000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        5999,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 15
+    },
+    {
+      "id": 7,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาระบบนิเทศการเรียนการสอนและ PLC",
+      "owner": "นางปิรัญทนา ชาชำนาญ",
+      "amounts": [
+        1000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [],
+      "sourceRow": 26,
+      "income": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 17
+    },
+    {
+      "id": 8,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมการอ่านเพื่อพัฒนาทักษะของนักเรียน",
+      "owner": "นางจรรยา ทองดี",
+      "amounts": [
+        5000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมรักการอ่าน",
+          "owner": "",
+          "amounts": [
+            3000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมตอบปัญหาน่ารู้",
+          "owner": "",
+          "amounts": [
+            2000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมนิทรรศการสัปดาห์ห้องสมุด",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมยุวบรรณารักษ์",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 27,
+      "income": [
+        5000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        700,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 19
+    },
+    {
+      "id": 9,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมงานแนะแนวเพื่อสร้างโอกาสทางการเรียนรู้",
+      "owner": "นางสาวณัฏฐ์นรี สิงห์ตุ้ย",
+      "amounts": [
+        7300.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมการดำเนินงานกองทุนกู้ยืมเงินเพื่อการศึกษา (กยศ.) (บริการจัดวางตัวบุคคล)",
+          "owner": "",
+          "amounts": [
+            500.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมศึกษาดูงานแหล่งเรียนรู้เพื่อเป็นแนวทางการศึกษาต่อ",
+          "owner": "",
+          "amounts": [
+            1500.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมอาชีพ",
+          "owner": "",
+          "amounts": [
+            500.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมแนะแนวสัญจร",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมปัจฉิมนิเทศ/วันแห่งความภาคภูมิใจ",
+          "owner": "",
+          "amounts": [
+            3000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมเตรียมความพร้อมนักเรียนใหม่",
+          "owner": "",
+          "amounts": [
+            300.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมทุนการศึกษา",
+          "owner": "",
+          "amounts": [
+            500.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 32,
+      "income": [
+        7300,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        5434,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 21
+    },
+    {
+      "id": 10,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาระบบการประกันคุณภาพการศึกษา",
+      "owner": "นางสาววิลาวัลย์ ช่วยบุญ",
+      "amounts": [
+        1000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมการจัดทำข้อมูลสารสนเทศ",
+          "owner": "",
+          "amounts": [
+            200.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "การประชุมเชิงปฏิบัติการประเมินคุณภาพภายในสถานศึกษา",
+          "owner": "",
+          "amounts": [
+            800.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 40,
+      "income": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        840,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 23
+    },
+    {
+      "id": 11,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการขับเคลื่อนนโยบายสพฐ. สพม.สิงห์บุรี อ่างทอง",
+      "owner": "นางสาวปิรัญทนา ชาชำนาญ",
+      "amounts": [
+        4000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมลดเวลาเรียนเพิ่มเวลารู้ พัฒนาศักยภาพผู้เรียนสู่ TEAM",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการพัฒนาสถานศึกษาตามนโยบายสำนักงานเขตพื้นที่การศึกษา",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรม 1 ห้องเรียน 1 นวัตกรรม",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการขับเคลื่อนสถานศึกษาตามนโยบาย 1 อำเภอ 1 โรงเรียนคุณภาพ",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 43,
+      "income": [
+        4000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        4000,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 25
+    },
+    {
+      "id": 12,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการเรียนฟรี 15 ปี",
+      "owner": "นางนุสรา เฉยแสง",
+      "amounts": [
+        690654.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "ค่าอุปกรณ์การเรียน",
+          "owner": "",
+          "amounts": [
+            170560.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ค่าเครื่องแบบนักเรียน",
+          "owner": "",
+          "amounts": [
+            170850.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ค่าหนังสือ",
+          "owner": "",
+          "amounts": [
+            349244.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 48,
+      "income": [
+        690654,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        0,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 27
+    },
+    {
+      "id": 13,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการจ้างครูผู้สอนและบุคลากรทางการศึกษา\n เพื่อส่งเสริมผลสัมฤทธิ์ทางการเรียน",
+      "owner": "นางสาวสมมนัส ยวนเขียว",
+      "amounts": [
+        277725.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา",
+          "owner": "",
+          "amounts": [
+            138000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ",
+          "owner": "",
+          "amounts": [
+            138000.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 52,
+      "income": [
+        277725,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        -220,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 29
+    },
+    {
+      "id": 14,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21 ของนักเรียน",
+      "owner": "นางปิรัญทนา ชาชำนาญ",
+      "amounts": [
+        20000.0,
+        0,
+        4000.0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมฐานการเรียนรู้เพื่อฝึกประสบการณ์ทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมฝึกอบรมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมกิจกรรมตลาดส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาและส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "",
+          "amounts": [
+            1000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพวงหรีดรักษ์โลก",
+          "owner": "",
+          "amounts": [
+            0,
+            0,
+            2000.0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมคาร์แคร์",
+          "owner": "",
+          "amounts": [
+            0,
+            0,
+            1000.0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมฐานการเรียนรู้ปุ๋ยหมักสูตรพระราชทาน",
+          "owner": "",
+          "amounts": [
+            0,
+            0,
+            1000.0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาทักษะงานคหกรรมของนักเรียน",
+          "owner": "",
+          "amounts": [
+            8000.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาทักษะงานอุตสาหกรรมของนักเรียน",
+          "owner": "",
+          "amounts": [
+            8000.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceRow": 55,
+      "income": [
+        20000,
+        null,
+        4000,
+        null
+      ],
+      "remaining": [
+        17815,
+        null,
+        3700,
+        null
+      ],
+      "balanceSourceRow": 31
+    },
+    {
+      "id": 15,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมและพัฒนาการเรียนรู้สู่ผู้เรียนโดยเครือข่ายร่วมพัฒนา",
+      "owner": "นายมนัสชัย สีสด",
+      "amounts": [
+        0,
+        0,
+        0,
+        155000.0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมค.บ.เกมส์",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            0,
+            0,
+            0,
+            30000.0
+          ],
+          "income": [
+            null,
+            null,
+            null,
+            30000
+          ],
+          "remaining": [
+            null,
+            null,
+            null,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาศักยภาพทางดนตรี (วิทยากรดนตรี)",
+          "owner": "นายปิยพนธ์ เทียบชัย",
+          "amounts": [
+            0,
+            0,
+            0,
+            60000.0
+          ],
+          "income": [
+            null,
+            null,
+            null,
+            60000
+          ],
+          "remaining": [
+            null,
+            null,
+            null,
+            9800
+          ]
+        },
+        {
+          "name": "กิจกรรมค่ายคุณธรรม จริยธรรม",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            0,
+            0,
+            0,
+            30000.0
+          ],
+          "income": [
+            null,
+            null,
+            null,
+            30000
+          ],
+          "remaining": [
+            null,
+            null,
+            null,
+            836
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมสุขภาพนักเรียน",
+          "owner": "นางสาวปภาวิไล ชลอวงษ์",
+          "amounts": [
+            0,
+            0,
+            0,
+            35000.0
+          ],
+          "income": [
+            null,
+            null,
+            null,
+            35000
+          ],
+          "remaining": [
+            null,
+            null,
+            null,
+            7886
+          ]
+        }
+      ],
+      "sourceRow": 65,
+      "income": [
+        null,
+        null,
+        null,
+        155000
+      ],
+      "remaining": [
+        null,
+        null,
+        null,
+        18522
+      ],
+      "balanceSourceRow": 33
+    },
+    {
+      "id": 16,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการสานสัมพันธ์ชุมชนและเครือข่ายส่งเสริมด้านการจัดการศึกษา",
+      "owner": "นางสาวณัฏฐ์นรี สิงห์ตุ้ย",
+      "amounts": [
+        1000.0,
+        0,
+        0,
+        0
+      ],
+      "activities": [],
+      "sourceRow": 70,
+      "income": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "balanceSourceRow": 42
+    }
+  ],
+  "registers": [
+    {
+      "projectId": 1,
+      "sheet": "1.ส่งเสริมและพัฒนากิจกรรมพัฒนาผ",
+      "blocks": [
+        {
+          "headerRow": 14,
+          "rows": [
+            {
+              "row": 15,
+              "number": "9/69",
+              "dateRaw": "1968-11-21 00:00:00",
+              "description": "สอบธรรมศึกษา",
+              "allocated": 38994,
+              "spent": 2000.0,
+              "remaining": 36994,
+              "note": "",
+              "remainingFormula": "=D15-E15"
+            },
+            {
+              "row": 16,
+              "number": "9/69",
+              "dateRaw": "1968-11-21 00:00:00",
+              "description": "สอบธรรมศึกษา จัดเตรียมอาหาร",
+              "allocated": null,
+              "spent": 3900.0,
+              "remaining": 33094,
+              "note": "",
+              "remainingFormula": "=F15-E16"
+            },
+            {
+              "row": 17,
+              "number": "9/69",
+              "dateRaw": "1968-11-21 00:00:00",
+              "description": "สอบธรรมศึกษา กระดาษ",
+              "allocated": null,
+              "spent": 1450.0,
+              "remaining": 31644,
+              "note": "",
+              "remainingFormula": "=F16-E17"
+            },
+            {
+              "row": 18,
+              "number": "9/69",
+              "dateRaw": "1968-11-21 00:00:00",
+              "description": "สอบธรรมศึกษา",
+              "allocated": null,
+              "spent": 1190.0,
+              "remaining": 30454,
+              "note": "",
+              "remainingFormula": "=F17-E18"
+            }
+          ]
+        },
+        {
+          "headerRow": 22,
+          "rows": [
+            {
+              "row": 23,
+              "number": "31/69",
+              "dateRaw": "1969-01-29 00:00:00",
+              "description": "ค่าน้ำมันเข้าค่ายรด.",
+              "allocated": 10000.0,
+              "spent": 1008.0,
+              "remaining": 8992,
+              "note": "",
+              "remainingFormula": "=D23-E23"
+            },
+            {
+              "row": 24,
+              "number": "36/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "ค่าน้ำมันเข้าค่ายรด.",
+              "allocated": null,
+              "spent": 1008.0,
+              "remaining": 7984,
+              "note": "",
+              "remainingFormula": "=F23-E24"
+            },
+            {
+              "row": 25,
+              "number": "37/69",
+              "dateRaw": "1969-02-09 00:00:00",
+              "description": "ค่าน้ำมันเข้าค่ายรด.",
+              "allocated": null,
+              "spent": 1008.0,
+              "remaining": 6976,
+              "note": "",
+              "remainingFormula": "=F24-E25"
+            },
+            {
+              "row": 26,
+              "number": "34/69",
+              "dateRaw": "1969-01-29 00:00:00",
+              "description": "แข่งดนตรี",
+              "allocated": null,
+              "spent": 816.0,
+              "remaining": 6160,
+              "note": "",
+              "remainingFormula": "=F25-E26"
+            },
+            {
+              "row": 27,
+              "number": "35/69",
+              "dateRaw": "1969-01-09 00:00:00",
+              "description": "ศิลปหัตกรรม (รถครู)",
+              "allocated": null,
+              "spent": 2360.0,
+              "remaining": 3800,
+              "note": "",
+              "remainingFormula": "=F26-E27"
+            },
+            {
+              "row": 28,
+              "number": "47/69",
+              "dateRaw": "1969-03-02 00:00:00",
+              "description": "นำนร.อบรม ม.รังสิต",
+              "allocated": null,
+              "spent": 968.0,
+              "remaining": 2832,
+              "note": "",
+              "remainingFormula": "=F27-E28"
+            }
+          ]
+        },
+        {
+          "headerRow": 32,
+          "rows": [
+            {
+              "row": 33,
+              "number": "5/69",
+              "dateRaw": "1968-11-06 00:00:00",
+              "description": "กีฬาสี (ยืมเงิน)",
+              "allocated": 206000.0,
+              "spent": 25535.5,
+              "remaining": 180464.5,
+              "note": "1.6",
+              "remainingFormula": "=D33-E33"
+            },
+            {
+              "row": 34,
+              "number": "10/69",
+              "dateRaw": "1968-11-24 00:00:00",
+              "description": "วันสำคัญ (ผ้าไฮเกรด, ค่าดอกไม้)",
+              "allocated": null,
+              "spent": 2020,
+              "remaining": 178444.5,
+              "note": "1.4",
+              "remainingFormula": "=F33-E34"
+            },
+            {
+              "row": 35,
+              "number": "17/69",
+              "dateRaw": "1968-12-12 00:00:00",
+              "description": "คริสต์มาส",
+              "allocated": null,
+              "spent": 3719,
+              "remaining": 174725.5,
+              "note": "1.4",
+              "remainingFormula": "=F34-E35"
+            },
+            {
+              "row": 36,
+              "number": "29/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จิตสำนึก บ้านระจัน (คลังวิทยา)",
+              "allocated": null,
+              "spent": 620,
+              "remaining": 174105.5,
+              "note": "1.4",
+              "remainingFormula": "=F35-E36"
+            },
+            {
+              "row": 37,
+              "number": "29/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จิตสำนึก บ้านระจัน (สมุด สหกรณ์โรงเรียน)",
+              "allocated": null,
+              "spent": 150.0,
+              "remaining": 173955.5,
+              "note": "1.4",
+              "remainingFormula": "=F36-E37"
+            },
+            {
+              "row": 38,
+              "number": "29/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จิตสำนึก บ้านระจัน (ขนม)",
+              "allocated": null,
+              "spent": 690.0,
+              "remaining": 173265.5,
+              "note": "1.4",
+              "remainingFormula": "=F37-E38"
+            },
+            {
+              "row": 39,
+              "number": "38/69",
+              "dateRaw": "1969-02-23 00:00:00",
+              "description": "จัดทำเกียรติบัตร คุณธรรม จริยธรรม",
+              "allocated": null,
+              "spent": 220.0,
+              "remaining": 173045.5,
+              "note": "1.4",
+              "remainingFormula": "=F38-E39"
+            },
+            {
+              "row": 40,
+              "number": "50/69",
+              "dateRaw": "1969-01-07 00:00:00",
+              "description": "ซื้อธงชาติ",
+              "allocated": null,
+              "spent": 350.0,
+              "remaining": 172695.5,
+              "note": "1.4",
+              "remainingFormula": "=F39-E40"
+            },
+            {
+              "row": 41,
+              "number": "52/69",
+              "dateRaw": "1969-01-08 00:00:00",
+              "description": "ค่ายลูกเสือ เนตรนารี",
+              "allocated": null,
+              "spent": 50196.75,
+              "remaining": 122498.75,
+              "note": "1.1",
+              "remainingFormula": "=F40-E41"
+            },
+            {
+              "row": 42,
+              "number": "78/69",
+              "dateRaw": "1969-08-13 00:00:00",
+              "description": "วันภาษาไทย",
+              "allocated": null,
+              "spent": 1809.5,
+              "remaining": 120689.25,
+              "note": "1.4",
+              "remainingFormula": "=F41-E42"
+            },
+            {
+              "row": 43,
+              "number": "79/69",
+              "dateRaw": "1969-08-13 00:00:00",
+              "description": "วันวิทยาศาสตร์",
+              "allocated": null,
+              "spent": 0.0,
+              "remaining": 120689.25,
+              "note": "1.4",
+              "remainingFormula": "=F42-E43"
+            },
+            {
+              "row": 44,
+              "number": "79/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "วันวิทยาศาสตร์ วัสดุแข่ง ของรางวัล",
+              "allocated": null,
+              "spent": 2366.25,
+              "remaining": 118323,
+              "note": "1.4",
+              "remainingFormula": "=F43-E44"
+            },
+            {
+              "row": 45,
+              "number": "79/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "วันวิทยาศาสตร์ป้ายไวนิล",
+              "allocated": null,
+              "spent": 500.0,
+              "remaining": 117823,
+              "note": "1.4",
+              "remainingFormula": "=F44-E45"
+            },
+            {
+              "row": 46,
+              "number": "79/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "วันวิทยาศาสตร์ป้ายไวนิล",
+              "allocated": null,
+              "spent": 500.0,
+              "remaining": 117323,
+              "note": "1.4",
+              "remainingFormula": "=F45-E46"
+            },
+            {
+              "row": 47,
+              "number": "79/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "วันวิทยาศาสตร์ ฐานยิงจนวดขวดน้ำ",
+              "allocated": null,
+              "spent": 2300.0,
+              "remaining": 115023,
+              "note": "1.4",
+              "remainingFormula": "=F46-E47"
+            },
+            {
+              "row": 48,
+              "number": "79/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "วันวิทยาศาสตร์ วัสดุแข่ง",
+              "allocated": null,
+              "spent": 397.0,
+              "remaining": 114626,
+              "note": "1.4",
+              "remainingFormula": "=F47-E48"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 2,
+      "sheet": "2.ส่งเสริมความเป็นเลิศ",
+      "blocks": [
+        {
+          "headerRow": 11,
+          "rows": [
+            {
+              "row": 12,
+              "number": "3/69",
+              "dateRaw": "1968-11-04 00:00:00",
+              "description": "ซื้ออุปกรณ์ดนตรี  ซื้อตะกั่วถ่วงเสียง",
+              "allocated": 60311.0,
+              "spent": 1050.0,
+              "remaining": 59261,
+              "note": "เงินรายได้วงโย",
+              "remainingFormula": "=D12-E12"
+            },
+            {
+              "row": 13,
+              "number": "6/69",
+              "dateRaw": "1968-11-10 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 10450.0,
+              "remaining": 48811,
+              "note": "",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "7/69",
+              "dateRaw": "1968-11-17 00:00:00",
+              "description": "ค่าซักชุดวงโย",
+              "allocated": null,
+              "spent": 800.0,
+              "remaining": 48011,
+              "note": "",
+              "remainingFormula": "=F13-E14"
+            },
+            {
+              "row": 15,
+              "number": "12/69",
+              "dateRaw": "1968-11-25 00:00:00",
+              "description": "ซ่อมเครื่องดนตรีวงโยธวาทิต",
+              "allocated": null,
+              "spent": 3600.0,
+              "remaining": 44411,
+              "note": "",
+              "remainingFormula": "=F14-E15"
+            },
+            {
+              "row": 16,
+              "number": "15/69",
+              "dateRaw": "1968-12-19 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 1400.0,
+              "remaining": 43011,
+              "note": "",
+              "remainingFormula": "=F15-E16"
+            },
+            {
+              "row": 17,
+              "number": "43/69",
+              "dateRaw": "1969-03-03 00:00:00",
+              "description": "ซักชุดวงโยธวาทิต",
+              "allocated": null,
+              "spent": 600.0,
+              "remaining": 42411,
+              "note": "",
+              "remainingFormula": "=F16-E17"
+            },
+            {
+              "row": 18,
+              "number": "44/69",
+              "dateRaw": "1969-03-09 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 2800.0,
+              "remaining": 39611,
+              "note": "",
+              "remainingFormula": "=F17-E18"
+            },
+            {
+              "row": 19,
+              "number": "46/69",
+              "dateRaw": "1969-03-12 00:00:00",
+              "description": "ซ่อมเครื่ื่องดนตรี",
+              "allocated": null,
+              "spent": 3600.0,
+              "remaining": 36011,
+              "note": "",
+              "remainingFormula": "=F18-E19"
+            },
+            {
+              "row": 20,
+              "number": "45/69",
+              "dateRaw": "1969-03-10 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 750.0,
+              "remaining": 35261,
+              "note": "",
+              "remainingFormula": "=F19-E20"
+            },
+            {
+              "row": 21,
+              "number": "",
+              "dateRaw": " ",
+              "description": "รายได้วงโยธวาทิต เทอม 2 2568",
+              "allocated": 23250.0,
+              "spent": 0.0,
+              "remaining": 58511,
+              "note": "",
+              "remainingFormula": "=F20+D21"
+            },
+            {
+              "row": 22,
+              "number": "63/69",
+              "dateRaw": "1969-05-19 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 1900.0,
+              "remaining": 56611,
+              "note": "",
+              "remainingFormula": "=F21-E22"
+            },
+            {
+              "row": 23,
+              "number": "69/69",
+              "dateRaw": "1969-07-06 00:00:00",
+              "description": "ซื้้อหนังกลองใหญ่",
+              "allocated": null,
+              "spent": 2000.0,
+              "remaining": 54611,
+              "note": "",
+              "remainingFormula": "=F22-E23"
+            },
+            {
+              "row": 24,
+              "number": "71/69",
+              "dateRaw": "1969-07-21 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 3000.0,
+              "remaining": 51611,
+              "note": "",
+              "remainingFormula": "=F23-E24"
+            },
+            {
+              "row": 25,
+              "number": "73/69",
+              "dateRaw": "1969-08-03 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 1500.0,
+              "remaining": 50111,
+              "note": "",
+              "remainingFormula": "=F24-E25"
+            },
+            {
+              "row": 26,
+              "number": "74/69",
+              "dateRaw": "1969-08-04 00:00:00",
+              "description": "ซักชุดวงโยธวาทิต",
+              "allocated": null,
+              "spent": 600.0,
+              "remaining": 49511,
+              "note": "",
+              "remainingFormula": "=F25-E26"
+            },
+            {
+              "row": 27,
+              "number": "97/69",
+              "dateRaw": "1969-09-22 00:00:00",
+              "description": "เงินสนับสนุนนักเรียนวงโย ฯ",
+              "allocated": null,
+              "spent": 2400.0,
+              "remaining": 47111,
+              "note": "",
+              "remainingFormula": "=F26-E27"
+            }
+          ]
+        },
+        {
+          "headerRow": 31,
+          "rows": [
+            {
+              "row": 32,
+              "number": "",
+              "dateRaw": "1969-08-21 00:00:00",
+              "description": "วิทยากร ห้องสายวิทย์",
+              "allocated": 26500,
+              "spent": 5000.0,
+              "remaining": 21500,
+              "note": "2.2",
+              "remainingFormula": "=D32-E32"
+            }
+          ]
+        },
+        {
+          "headerRow": 36,
+          "rows": [
+            {
+              "row": 37,
+              "number": "4/69",
+              "dateRaw": "1968-11-03 00:00:00",
+              "description": "นำนักเรียนแข่งขันรังสิตวิชาการ",
+              "allocated": 62000.0,
+              "spent": 8400.0,
+              "remaining": 53600,
+              "note": "2.1",
+              "remainingFormula": "=D37-E37"
+            },
+            {
+              "row": 38,
+              "number": "19/69",
+              "dateRaw": "1968-12-15 00:00:00",
+              "description": "ซื้ออุปกรณ์ แข่งขันศิลปหัตถกรรม (เครื่องบิน 3D)",
+              "allocated": null,
+              "spent": 1926.0,
+              "remaining": 51674,
+              "note": "2.1",
+              "remainingFormula": "=F37-E38"
+            },
+            {
+              "row": 39,
+              "number": "20/69",
+              "dateRaw": "1968-12-30 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (ปะติมากรรม)",
+              "allocated": null,
+              "spent": 2410.0,
+              "remaining": 49264,
+              "note": "2.1",
+              "remainingFormula": "=F38-E39"
+            },
+            {
+              "row": 40,
+              "number": "22/69",
+              "dateRaw": "1968-12-26 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (ปฐมาภรณ์)",
+              "allocated": null,
+              "spent": 846.0,
+              "remaining": 48418,
+              "note": "2.1",
+              "remainingFormula": "=F39-E40"
+            },
+            {
+              "row": 41,
+              "number": "24/69",
+              "dateRaw": "1968-12-26 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (ปะติมากรรม)",
+              "allocated": null,
+              "spent": 2395.0,
+              "remaining": 46023,
+              "note": "2.1",
+              "remainingFormula": "=F40-E41"
+            },
+            {
+              "row": 42,
+              "number": "23/69",
+              "dateRaw": "1968-12-30 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (วิทย์)",
+              "allocated": null,
+              "spent": 1828.0,
+              "remaining": 44195,
+              "note": "2.1",
+              "remainingFormula": "=F41-E42"
+            },
+            {
+              "row": 43,
+              "number": "24/69",
+              "dateRaw": "1969-01-12 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (เบี้ยเลี้ยง)",
+              "allocated": null,
+              "spent": 4640.0,
+              "remaining": 39555,
+              "note": "2.1",
+              "remainingFormula": "=F42-E43"
+            },
+            {
+              "row": 44,
+              "number": "25/69",
+              "dateRaw": "1969-01-06 00:00:00",
+              "description": "ซื้อป้ายแสดงวิทยาศาสตร์",
+              "allocated": null,
+              "spent": 750.0,
+              "remaining": 38805,
+              "note": "2.1",
+              "remainingFormula": "=F43-E44"
+            },
+            {
+              "row": 45,
+              "number": "26/69",
+              "dateRaw": "1969-01-06 00:00:00",
+              "description": "ซื้ออุปกรณ์ศิลปหัตกรรม (science show)",
+              "allocated": null,
+              "spent": 786.0,
+              "remaining": 38019,
+              "note": "2.1",
+              "remainingFormula": "=F44-E45"
+            },
+            {
+              "row": 46,
+              "number": "28/69",
+              "dateRaw": "1969-01-12 00:00:00",
+              "description": "ศิลปหัตกรรม (รถรับส่ง)",
+              "allocated": null,
+              "spent": 3300.0,
+              "remaining": 34719,
+              "note": "2.1",
+              "remainingFormula": "=F45-E46"
+            },
+            {
+              "row": 47,
+              "number": "30/69",
+              "dateRaw": "1969-01-23 00:00:00",
+              "description": "ศิลปหัตกรรม (เกียรติบัตร)",
+              "allocated": null,
+              "spent": 165.0,
+              "remaining": 34554,
+              "note": "2.1",
+              "remainingFormula": "=F46-E47"
+            },
+            {
+              "row": 48,
+              "number": "56/69",
+              "dateRaw": "1969-05-25 00:00:00",
+              "description": "จ้างเหมารถตู้ 28/5/69",
+              "allocated": null,
+              "spent": 3500.0,
+              "remaining": 31054,
+              "note": "2.1",
+              "remainingFormula": "=F47-E48"
+            },
+            {
+              "row": 49,
+              "number": "56/69",
+              "dateRaw": "1969-05-25 00:00:00",
+              "description": "จ้างเหมารถตู้ 29/5/69",
+              "allocated": null,
+              "spent": 3500.0,
+              "remaining": 27554,
+              "note": "2.1",
+              "remainingFormula": "=F48-E49"
+            },
+            {
+              "row": 50,
+              "number": "64/69",
+              "dateRaw": "1969-06-25 00:00:00",
+              "description": "เบี้ยเลี้ยงนักเรียน",
+              "allocated": null,
+              "spent": 720.0,
+              "remaining": 26834,
+              "note": "2.1",
+              "remainingFormula": "=F49-E50"
+            },
+            {
+              "row": 51,
+              "number": "77/69",
+              "dateRaw": "1969-08-25 00:00:00",
+              "description": "ค่าอาหารนักเรียนแข่งกีฬาสองวัน",
+              "allocated": null,
+              "spent": 3360.0,
+              "remaining": 23474,
+              "note": "2.1",
+              "remainingFormula": "=F50-E51"
+            },
+            {
+              "row": 52,
+              "number": "80/69",
+              "dateRaw": "1969-08-17 00:00:00",
+              "description": "พานักเรียนแข่งขันวันวิทย์ อยุธยา",
+              "allocated": null,
+              "spent": 1824.0,
+              "remaining": 21650,
+              "note": "2.1",
+              "remainingFormula": "=F51-E52"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 3,
+      "sheet": "3.พัฒนาปรับปรุงหลักสูตร",
+      "blocks": [
+        {
+          "headerRow": 8,
+          "rows": []
+        }
+      ]
+    },
+    {
+      "projectId": 4,
+      "sheet": "4.จัดซื้อสื่อและวัสดุ",
+      "blocks": [
+        {
+          "headerRow": 7,
+          "rows": [
+            {
+              "row": 8,
+              "number": "2/69",
+              "dateRaw": "1968-10-31 00:00:00",
+              "description": "ถ่ายเอกสารวิชาคณิตศาสตร์",
+              "allocated": 108395.0,
+              "spent": 1539.0,
+              "remaining": 106856,
+              "note": "1539",
+              "remainingFormula": "=D8-E8"
+            },
+            {
+              "row": 9,
+              "number": "14/69",
+              "dateRaw": "1968-12-09 00:00:00",
+              "description": "ซื้อทีวีและขาแขวน",
+              "allocated": null,
+              "spent": 40780.0,
+              "remaining": 66076,
+              "note": "42319",
+              "remainingFormula": "=F8-E9"
+            },
+            {
+              "row": 10,
+              "number": "27/69",
+              "dateRaw": "1969-01-06 00:00:00",
+              "description": "จัดทำบอร์ดประชาสัมพันธ์",
+              "allocated": null,
+              "spent": 2287,
+              "remaining": 63789,
+              "note": "44606",
+              "remainingFormula": "=F9-E10"
+            },
+            {
+              "row": 11,
+              "number": "39/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จิตสำนึก บ้านระจัน (สบง)",
+              "allocated": null,
+              "spent": 900.0,
+              "remaining": 62889,
+              "note": "45506",
+              "remainingFormula": "=F10-E11"
+            },
+            {
+              "row": 12,
+              "number": "58/69",
+              "dateRaw": "1969-06-09 00:00:00",
+              "description": "ซื้้อสื่อของ 8 กลุ่มสาระฯ",
+              "allocated": null,
+              "spent": 34515.0,
+              "remaining": 28374,
+              "note": "80021",
+              "remainingFormula": "=F11-E12"
+            },
+            {
+              "row": 13,
+              "number": "59/69",
+              "dateRaw": "1969-05-27 00:00:00",
+              "description": "ซื้อถ่านอัลคาไลน์",
+              "allocated": null,
+              "spent": 1260.0,
+              "remaining": 27114,
+              "note": "81281",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "65/69",
+              "dateRaw": "1969-06-12 00:00:00",
+              "description": "หนังสือภาษาจีน",
+              "allocated": null,
+              "spent": 3680.0,
+              "remaining": 23434,
+              "note": "84961",
+              "remainingFormula": "=F13-E14"
+            },
+            {
+              "row": 15,
+              "number": "81/69",
+              "dateRaw": "1969-08-17 00:00:00",
+              "description": "ซื้อกระดาษและอุปกรณ์กีฬา",
+              "allocated": null,
+              "spent": 6467,
+              "remaining": 16967,
+              "note": "91428",
+              "remainingFormula": "=F14-E15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 5,
+      "sheet": "5.วิจัยในชั้นเรียน",
+      "blocks": [
+        {
+          "headerRow": 6,
+          "rows": []
+        }
+      ]
+    },
+    {
+      "projectId": 6,
+      "sheet": "6.งานทะเบียนวัดผล",
+      "blocks": [
+        {
+          "headerRow": 9,
+          "rows": [
+            {
+              "row": 10,
+              "number": "11/69",
+              "dateRaw": "1968-11-26 00:00:00",
+              "description": "ซ่อมแซมเครื่องปริ้น 2 เครื่อง",
+              "allocated": 68000.0,
+              "spent": 2540.0,
+              "remaining": 65460,
+              "note": "",
+              "remainingFormula": "=D10-E10"
+            },
+            {
+              "row": 11,
+              "number": "18/69",
+              "dateRaw": "1968-12-15 00:00:00",
+              "description": "ถ่ายเอกสารข้อสอบกลางภาค",
+              "allocated": null,
+              "spent": 11154,
+              "remaining": 54306,
+              "note": "",
+              "remainingFormula": "=F10-E11"
+            },
+            {
+              "row": 12,
+              "number": "41/69",
+              "dateRaw": "1969-02-27 00:00:00",
+              "description": "ถ่ายเอกสารข้อสอบปลายภาค",
+              "allocated": null,
+              "spent": 10799.0,
+              "remaining": 43507,
+              "note": "",
+              "remainingFormula": "=F11-E12"
+            },
+            {
+              "row": 13,
+              "number": "42/69",
+              "dateRaw": "1969-03-04 00:00:00",
+              "description": "จัดซื้อ ปพ.1 และ ปพ.2",
+              "allocated": null,
+              "spent": 3500.0,
+              "remaining": 40007,
+              "note": "",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "61/69",
+              "dateRaw": "1969-06-22 00:00:00",
+              "description": "จััดซื้อหมึกและกระดาษ",
+              "allocated": null,
+              "spent": 11430.0,
+              "remaining": 28577,
+              "note": "",
+              "remainingFormula": "=F13-E14"
+            },
+            {
+              "row": 15,
+              "number": "68/69",
+              "dateRaw": "1969-07-06 00:00:00",
+              "description": "ถ่ายเอกสารข้อสอบกลางภาค",
+              "allocated": null,
+              "spent": 10029.0,
+              "remaining": 18548,
+              "note": "",
+              "remainingFormula": "=F14-E15"
+            },
+            {
+              "row": 16,
+              "number": "68/69",
+              "dateRaw": "1969-07-15 00:00:00",
+              "description": "ซ่อมเครื่ื่องปริ้นท์",
+              "allocated": null,
+              "spent": 1000.0,
+              "remaining": 17548,
+              "note": "",
+              "remainingFormula": "=F15-E16"
+            },
+            {
+              "row": 17,
+              "number": "9269.0",
+              "dateRaw": "1969-09-07 00:00:00",
+              "description": "ถ่ายเอกสารข้อสอบปลายภาค",
+              "allocated": null,
+              "spent": 11329.0,
+              "remaining": 6219,
+              "note": "",
+              "remainingFormula": "=F16-E17"
+            },
+            {
+              "row": 18,
+              "number": "",
+              "dateRaw": "1969-09-24 00:00:00",
+              "description": "ยืมเงิน 94/69 จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 220.0,
+              "remaining": 5999,
+              "note": "",
+              "remainingFormula": "=F17-E18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 7,
+      "sheet": "7.นิเทศและ PLC",
+      "blocks": [
+        {
+          "headerRow": 6,
+          "rows": []
+        }
+      ]
+    },
+    {
+      "projectId": 8,
+      "sheet": "8.ส่งเสริมการอ่าน",
+      "blocks": [
+        {
+          "headerRow": 10,
+          "rows": [
+            {
+              "row": 11,
+              "number": "84/69",
+              "dateRaw": "1969-08-21 00:00:00",
+              "description": "รักการอ่าน",
+              "allocated": 5000,
+              "spent": 2250.0,
+              "remaining": 2750,
+              "note": "8.1",
+              "remainingFormula": "=D11-E11"
+            },
+            {
+              "row": 12,
+              "number": "85/69",
+              "dateRaw": "1969-08-21 00:00:00",
+              "description": "ตอบคำถามสารนุกรม",
+              "allocated": null,
+              "spent": 1555.0,
+              "remaining": 1195,
+              "note": "8.2",
+              "remainingFormula": "=F11-E12"
+            },
+            {
+              "row": 13,
+              "number": "86/69",
+              "dateRaw": "1969-08-21 00:00:00",
+              "description": "นิทรรศการวันสำคัญ",
+              "allocated": null,
+              "spent": 495.0,
+              "remaining": 700,
+              "note": "8.3",
+              "remainingFormula": "=F12-E13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 9,
+      "sheet": "9.งานแนะแนว",
+      "blocks": [
+        {
+          "headerRow": 13,
+          "rows": [
+            {
+              "row": 14,
+              "number": "48/69",
+              "dateRaw": "1969-03-25 00:00:00",
+              "description": "ซื้ออุปกรณ์งานปัจฉิมนิเทศ",
+              "allocated": 7300,
+              "spent": 620,
+              "remaining": 6680,
+              "note": "620",
+              "remainingFormula": "=D14-E14"
+            },
+            {
+              "row": 15,
+              "number": "48/69",
+              "dateRaw": "1969-03-25 00:00:00",
+              "description": "ซื้ออุปกรณ์งานปัจฉิมนิเทศ",
+              "allocated": null,
+              "spent": 1246,
+              "remaining": 5434,
+              "note": "1246",
+              "remainingFormula": "=F14-E15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 10,
+      "sheet": "10.ประกัน",
+      "blocks": [
+        {
+          "headerRow": 8,
+          "rows": [
+            {
+              "row": 9,
+              "number": "67/69",
+              "dateRaw": "1969-07-02 00:00:00",
+              "description": "เข้าเล่ม SAR",
+              "allocated": 1000,
+              "spent": 160.0,
+              "remaining": 840,
+              "note": "",
+              "remainingFormula": "=D9-E9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 11,
+      "sheet": "11.ขับเคลื่อนนโยบาย",
+      "blocks": [
+        {
+          "headerRow": 11,
+          "rows": [
+            {
+              "row": 12,
+              "number": "87/69",
+              "dateRaw": "1969-08-17 00:00:00",
+              "description": "ค่าอุปกรณ์ กิจกรรม ห้องเรียนสายวิทย์",
+              "allocated": 4000,
+              "spent": 0.0,
+              "remaining": 4000,
+              "note": "",
+              "remainingFormula": "=D12-E12"
+            },
+            {
+              "row": 13,
+              "number": "87/69",
+              "dateRaw": "1969-08-18 00:00:00",
+              "description": "ค่าอุปกรณ์ กิจกรรม ห้องเรียนสายวิทย์",
+              "allocated": null,
+              "spent": 770.5,
+              "remaining": 3229.5,
+              "note": "11.1",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "87/69",
+              "dateRaw": "1969-08-19 00:00:00",
+              "description": "ค่าอุปกรณ์ กิจกรรม ห้องเรียนสายวิทย์",
+              "allocated": null,
+              "spent": 1641.0,
+              "remaining": 1588.5,
+              "note": "11.1",
+              "remainingFormula": "=F13-E14"
+            },
+            {
+              "row": 15,
+              "number": "95/69",
+              "dateRaw": "1969-09-21 00:00:00",
+              "description": "ค่าอุปกรณ์",
+              "allocated": null,
+              "spent": 718.75,
+              "remaining": 869.75,
+              "note": "11.1",
+              "remainingFormula": "=F14-E15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 12,
+      "sheet": "12.เรียนฟรี 15 ปี",
+      "blocks": [
+        {
+          "headerRow": 9,
+          "rows": [
+            {
+              "row": 10,
+              "number": "13/69",
+              "dateRaw": "1968-11-07 00:00:00",
+              "description": "ค่าอุปกรณ์การเรียน",
+              "allocated": 690654,
+              "spent": 85020.0,
+              "remaining": 605634,
+              "note": "",
+              "remainingFormula": "=D10-E10"
+            },
+            {
+              "row": 11,
+              "number": "55/69",
+              "dateRaw": "1969-05-20 00:00:00",
+              "description": "ค่าอุปกรณ์การเรียนและเครื่องแบบ",
+              "allocated": null,
+              "spent": 259520.0,
+              "remaining": 346114,
+              "note": "344540",
+              "remainingFormula": "=F10-E11"
+            },
+            {
+              "row": 12,
+              "number": "50/69",
+              "dateRaw": "1969-06-16 00:00:00",
+              "description": "ค่าหนังสือ",
+              "allocated": null,
+              "spent": 333050.0,
+              "remaining": 13064,
+              "note": "592570",
+              "remainingFormula": "=F11-E12"
+            },
+            {
+              "row": 13,
+              "number": "66/69",
+              "dateRaw": "1969-06-26 00:00:00",
+              "description": "ค่าหนังสือ",
+              "allocated": null,
+              "spent": 20632.0,
+              "remaining": -7568,
+              "note": "353682",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "96/69",
+              "dateRaw": "1969-06-23 00:00:00",
+              "description": "ค่าหนังสือ",
+              "allocated": null,
+              "spent": 810.0,
+              "remaining": -8378,
+              "note": "354492",
+              "remainingFormula": "=F13-E14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 13,
+      "sheet": "13.จ้างครูผู้สอน",
+      "blocks": [
+        {
+          "headerRow": 8,
+          "rows": [
+            {
+              "row": 9,
+              "number": "1/69",
+              "dateRaw": "1968-10-31 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีน",
+              "allocated": 277725.0,
+              "spent": 12075.0,
+              "remaining": 265650,
+              "note": "",
+              "remainingFormula": "=D9-E9"
+            },
+            {
+              "row": 10,
+              "number": "13/69",
+              "dateRaw": "1968-12-01 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 241500,
+              "note": "",
+              "remainingFormula": "=F9-E10"
+            },
+            {
+              "row": 11,
+              "number": "21/69",
+              "dateRaw": "1968-12-30 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 217350,
+              "note": "",
+              "remainingFormula": "=F10-E11"
+            },
+            {
+              "row": 12,
+              "number": "32/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 193200,
+              "note": "",
+              "remainingFormula": "=F11-E12"
+            },
+            {
+              "row": 13,
+              "number": "33/69",
+              "dateRaw": "1969-01-30 00:00:00",
+              "description": "จ่ายเงินสมบทกองทุนทดแทนประจำปี",
+              "allocated": null,
+              "spent": 220.0,
+              "remaining": 192980,
+              "note": "",
+              "remainingFormula": "=F12-E13"
+            },
+            {
+              "row": 14,
+              "number": "40/69",
+              "dateRaw": "1969-02-26 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 168830,
+              "note": "",
+              "remainingFormula": "=F13-E14"
+            },
+            {
+              "row": 15,
+              "number": "49/69",
+              "dateRaw": "1969-03-26 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 144680,
+              "note": "",
+              "remainingFormula": "=F14-E15"
+            },
+            {
+              "row": 16,
+              "number": "51/69",
+              "dateRaw": "1969-04-30 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 120530,
+              "note": "",
+              "remainingFormula": "=F15-E16"
+            },
+            {
+              "row": 17,
+              "number": "54/69",
+              "dateRaw": "1969-05-29 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 96380,
+              "note": "",
+              "remainingFormula": "=F16-E17"
+            },
+            {
+              "row": 18,
+              "number": "60/69",
+              "dateRaw": "1969-06-24 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 72230,
+              "note": "",
+              "remainingFormula": "=F17-E18"
+            },
+            {
+              "row": 19,
+              "number": "72/69",
+              "dateRaw": "1969-07-24 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 48080,
+              "note": "",
+              "remainingFormula": "=F18-E19"
+            },
+            {
+              "row": 20,
+              "number": "89/69",
+              "dateRaw": "1969-08-28 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": 23930,
+              "note": "",
+              "remainingFormula": "=F19-E20"
+            },
+            {
+              "row": 21,
+              "number": "94/69",
+              "dateRaw": "1969-09-24 00:00:00",
+              "description": "จ้างครูผู้สอน วิชา ภาษาจีนและครูพละ",
+              "allocated": null,
+              "spent": 24150.0,
+              "remaining": -220,
+              "note": "",
+              "remainingFormula": "=F20-E21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 14,
+      "sheet": "14.ทักษะผู้ประกอบการ",
+      "blocks": [
+        {
+          "headerRow": 15,
+          "rows": [
+            {
+              "row": 16,
+              "number": "8/69",
+              "dateRaw": "1968-11-19 00:00:00",
+              "description": "ป้ายอะคลิลิค (ครูรัญ)",
+              "allocated": 4000.0,
+              "spent": 300.0,
+              "remaining": 3700,
+              "note": "รายได้",
+              "remainingFormula": "=D16-E16"
+            }
+          ]
+        },
+        {
+          "headerRow": 19,
+          "rows": [
+            {
+              "row": 20,
+              "number": "16/69",
+              "dateRaw": "1968-12-12 00:00:00",
+              "description": "เขียง มีดแกะสลัก",
+              "allocated": 20000,
+              "spent": 815.0,
+              "remaining": 19185,
+              "note": "14.7",
+              "remainingFormula": "=D20-E20"
+            },
+            {
+              "row": 21,
+              "number": "51/69",
+              "dateRaw": "1968-03-26 00:00:00",
+              "description": "เขียง มีดแกะสลัก",
+              "allocated": null,
+              "spent": 450.0,
+              "remaining": 18735,
+              "note": "14.7",
+              "remainingFormula": "=F20-E21"
+            },
+            {
+              "row": 22,
+              "number": "62/69",
+              "dateRaw": "1968-06-12 00:00:00",
+              "description": "งานคหกรรม",
+              "allocated": null,
+              "spent": 209.0,
+              "remaining": 18526,
+              "note": "14.7",
+              "remainingFormula": "=F21-E22"
+            },
+            {
+              "row": 23,
+              "number": "75/69",
+              "dateRaw": "1968-07-27 00:00:00",
+              "description": "งานคหกรรม",
+              "allocated": null,
+              "spent": 458.0,
+              "remaining": 18068,
+              "note": "14.7",
+              "remainingFormula": "=F22-E23"
+            },
+            {
+              "row": 24,
+              "number": "93/69",
+              "dateRaw": "1968-09-01 00:00:00",
+              "description": "งานคหกรรม",
+              "allocated": null,
+              "spent": 253.0,
+              "remaining": 17815,
+              "note": "14.7",
+              "remainingFormula": "=F23-E24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 15,
+      "sheet": "15.อบต.",
+      "blocks": [
+        {
+          "headerRow": 12,
+          "rows": [
+            {
+              "row": 13,
+              "number": "82/69",
+              "dateRaw": "1969-08-13 00:00:00",
+              "description": "ค.บ.เกมส์",
+              "allocated": 30000,
+              "spent": 30000.0,
+              "remaining": 0,
+              "note": "",
+              "remainingFormula": "=D13-E13"
+            }
+          ]
+        },
+        {
+          "headerRow": 19,
+          "rows": [
+            {
+              "row": 20,
+              "number": "57/69",
+              "dateRaw": "1969-05-29 00:00:00",
+              "description": "วิทยากรดนตรี",
+              "allocated": 60000,
+              "spent": 10000.0,
+              "remaining": 50000,
+              "note": "",
+              "remainingFormula": "=D20-E20"
+            },
+            {
+              "row": 21,
+              "number": "68/69",
+              "dateRaw": "1969-06-29 00:00:00",
+              "description": "วิทยากรดนตรี",
+              "allocated": null,
+              "spent": 10600.0,
+              "remaining": 39400,
+              "note": "",
+              "remainingFormula": "=F20-E21"
+            },
+            {
+              "row": 22,
+              "number": "91/69",
+              "dateRaw": "1969-06-30 00:00:00",
+              "description": "วิทยากรดนตรี เดือนสิงหาคม",
+              "allocated": null,
+              "spent": 11200.0,
+              "remaining": 28200,
+              "note": "",
+              "remainingFormula": "=F21-E22"
+            },
+            {
+              "row": 23,
+              "number": "90/69",
+              "dateRaw": "1969-07-20 00:00:00",
+              "description": "วิทยากรดนตรี เดือนกรกฏาคม",
+              "allocated": null,
+              "spent": 11200.0,
+              "remaining": 17000,
+              "note": "",
+              "remainingFormula": "=F22-E23"
+            },
+            {
+              "row": 24,
+              "number": "98/69",
+              "dateRaw": "1969-09-21 00:00:00",
+              "description": "วิทยากรดนตรี เดือนกันยายน",
+              "allocated": null,
+              "spent": 7200.0,
+              "remaining": 9800,
+              "note": "",
+              "remainingFormula": "=F23-E24"
+            }
+          ]
+        },
+        {
+          "headerRow": 29,
+          "rows": [
+            {
+              "row": 30,
+              "number": "77/69",
+              "dateRaw": "1969-08-08 00:00:00",
+              "description": "อบรมคุณธรรม จริยธรรม",
+              "allocated": 30000,
+              "spent": 30000.0,
+              "remaining": 0,
+              "note": "",
+              "remainingFormula": "=D30-E30"
+            },
+            {
+              "row": 31,
+              "number": "1.0",
+              "dateRaw": "1969-08-10 00:00:00",
+              "description": "ซื้อวัสดุ อุปกรณ์",
+              "allocated": null,
+              "spent": 1168.0,
+              "remaining": 28832,
+              "note": "",
+              "remainingFormula": "=E30-E31"
+            },
+            {
+              "row": 32,
+              "number": "2.0",
+              "dateRaw": "1969-08-10 00:00:00",
+              "description": "ป้ายไวนิล",
+              "allocated": null,
+              "spent": 500.0,
+              "remaining": 28332,
+              "note": "",
+              "remainingFormula": "=F31-E32"
+            },
+            {
+              "row": 33,
+              "number": "3.0",
+              "dateRaw": "1969-08-11 00:00:00",
+              "description": "ค่าวิทยากร",
+              "allocated": null,
+              "spent": 1200.0,
+              "remaining": 27132,
+              "note": "",
+              "remainingFormula": "=F32-E33"
+            },
+            {
+              "row": 34,
+              "number": "4.0",
+              "dateRaw": "1969-08-11 00:00:00",
+              "description": "ค่าอาหารกลางวันและอาหารว่าง",
+              "allocated": null,
+              "spent": 26296.0,
+              "remaining": 836,
+              "note": "",
+              "remainingFormula": "=F33-E34"
+            }
+          ]
+        },
+        {
+          "headerRow": 39,
+          "rows": [
+            {
+              "row": 40,
+              "number": "67/69",
+              "dateRaw": "1969-06-29 00:00:00",
+              "description": "ซื้ออุปกรณ์ฝึกซ้อมกีฬา",
+              "allocated": 35000,
+              "spent": 20000.0,
+              "remaining": 15000,
+              "note": "",
+              "remainingFormula": "=D40-E40"
+            },
+            {
+              "row": 41,
+              "number": "70/69",
+              "dateRaw": "1969-07-07 00:00:00",
+              "description": "ซื้อยารักษาโรค",
+              "allocated": null,
+              "spent": 5539.0,
+              "remaining": 9461,
+              "note": "",
+              "remainingFormula": "=F40-E41"
+            },
+            {
+              "row": 42,
+              "number": "83/69",
+              "dateRaw": "1969-07-07 00:00:00",
+              "description": "อบรมเด็กอ้วน",
+              "allocated": null,
+              "spent": 1575.0,
+              "remaining": 7886,
+              "note": "",
+              "remainingFormula": "=F41-E42"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 16,
+      "sheet": "16.สัมพันธ์ชุมชน",
+      "blocks": [
+        {
+          "headerRow": 6,
+          "rows": []
+        }
+      ]
+    }
+  ],
+  "balanceSummary": {
+    "remaining": [
+      59535,
+      136276,
+      3700,
+      68033
+    ],
+    "sourceRow": 44
+  },
+  "incomeTotals": [
+    1190074,
+    268000,
+    30500,
+    215311
+  ],
+  "amountBasis": "ยอดคงเหลือ: ช่องสีเป็นรายรับ ช่องขาวเป็นยอดคงเหลือ; แถวรวมใช้เป็นยอดสรุป",
+  "balanceSourceSheet": "ยอดคงเหลือ"
+}
