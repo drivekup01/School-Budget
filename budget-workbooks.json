@@ -1,0 +1,271 @@
+{
+  "folderUrl": "https://drive.google.com/drive/folders/1fdJWGmfkvlHl6cgSah3UsZirhSH7EbAE",
+  "departments": [
+    {
+      "name": "วิชาการ",
+      "originalId": "1LsIILtzaU-izM2A9JfwalQchO6iCRZVYbX-U0TXyW8M",
+      "spreadsheetId": "1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc",
+      "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit?usp=drivesdk",
+      "projectSheets": [
+        {
+          "projectId": 1,
+          "sheetId": 925125206,
+          "title": "1.ส่งเสริมและพัฒนากิจกรรมพัฒนาผู้เรียน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=925125206"
+        },
+        {
+          "projectId": 2,
+          "sheetId": 564763882,
+          "title": "2.ส่งเสริมความเป็นเลิศ",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=564763882"
+        },
+        {
+          "projectId": 3,
+          "sheetId": 1237940178,
+          "title": "3.พัฒนาปรับปรุงหลักสูตร",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=1237940178"
+        },
+        {
+          "projectId": 4,
+          "sheetId": 61087219,
+          "title": "4.จัดซื้อสื่อและวัสดุ",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=61087219"
+        },
+        {
+          "projectId": 5,
+          "sheetId": 430507111,
+          "title": "5.วิจัยในชั้นเรียน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=430507111"
+        },
+        {
+          "projectId": 6,
+          "sheetId": 176147443,
+          "title": "6.งานทะเบียนวัดผล",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=176147443"
+        },
+        {
+          "projectId": 7,
+          "sheetId": 759747506,
+          "title": "7.นิเทศและ PLC",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=759747506"
+        },
+        {
+          "projectId": 8,
+          "sheetId": 2068584474,
+          "title": "8.ส่งเสริมการอ่าน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=2068584474"
+        },
+        {
+          "projectId": 9,
+          "sheetId": 1823183257,
+          "title": "9.งานแนะแนว",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=1823183257"
+        },
+        {
+          "projectId": 10,
+          "sheetId": 875713203,
+          "title": "10.ประกัน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=875713203"
+        },
+        {
+          "projectId": 11,
+          "sheetId": 872561845,
+          "title": "11.ขับเคลื่อนนโยบาย",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=872561845"
+        },
+        {
+          "projectId": 12,
+          "sheetId": 273900201,
+          "title": "12.เรียนฟรี 15 ปี",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=273900201"
+        },
+        {
+          "projectId": 13,
+          "sheetId": 1436242169,
+          "title": "13.จ้างครูผู้สอน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=1436242169"
+        },
+        {
+          "projectId": 14,
+          "sheetId": 302207772,
+          "title": "14.ทักษะผู้ประกอบการ",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=302207772"
+        },
+        {
+          "projectId": 15,
+          "sheetId": 1734979190,
+          "title": "15.อบต.",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=1734979190"
+        },
+        {
+          "projectId": 16,
+          "sheetId": 125694853,
+          "title": "16.สัมพันธ์ชุมชน",
+          "url": "https://docs.google.com/spreadsheets/d/1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc/edit#gid=125694853"
+        }
+      ]
+    },
+    {
+      "name": "บริหารทั่วไป",
+      "originalId": "1Vkl8OXpBjN-42ekomguxQIczpnw9iuYD_fwu03OdOoA",
+      "spreadsheetId": "109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE",
+      "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit?usp=drivesdk",
+      "projectSheets": [
+        {
+          "projectId": 23,
+          "sheetId": 910543290,
+          "title": "23.พัฒนาแหล่งเรียนรู้",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=910543290"
+        },
+        {
+          "projectId": 24,
+          "sheetId": 345303458,
+          "title": "24.พัฒนาสุขภาพ",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=345303458"
+        },
+        {
+          "projectId": 25,
+          "sheetId": 1552513507,
+          "title": "25.ระบบดูแล",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1552513507"
+        },
+        {
+          "projectId": 26,
+          "sheetId": 1983235628,
+          "title": "26.สถานศึกษาสีขาว",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1983235628"
+        },
+        {
+          "projectId": 27,
+          "sheetId": 1793584777,
+          "title": "27.สถานศึกษาปลอดภัย",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1793584777"
+        },
+        {
+          "projectId": 28,
+          "sheetId": 1492015887,
+          "title": "28.ส่งเสริมประชาธิปไตย",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1492015887"
+        },
+        {
+          "projectId": 29,
+          "sheetId": 722660499,
+          "title": "29.ยานยนต์",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=722660499"
+        },
+        {
+          "projectId": 30,
+          "sheetId": 969282086,
+          "title": "30.สานสัมพันธ์ระดมทรัพยากร",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=969282086"
+        },
+        {
+          "projectId": 31,
+          "sheetId": 2077203565,
+          "title": "31.ลูกจ้างชั่วคราว",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=2077203565"
+        },
+        {
+          "projectId": 32,
+          "sheetId": 306503728,
+          "title": "32.ธุรการ",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=306503728"
+        },
+        {
+          "projectId": 33,
+          "sheetId": 367877652,
+          "title": "33.สาธารณูปโภค",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=367877652"
+        },
+        {
+          "projectId": 34,
+          "sheetId": 1182269680,
+          "title": "34.รถรับ-ส่ง",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1182269680"
+        },
+        {
+          "projectId": 35,
+          "sheetId": 331112076,
+          "title": "35.ประชาสัมพันธ์",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=331112076"
+        },
+        {
+          "projectId": 36,
+          "sheetId": 253321113,
+          "title": "36.ธรรมาภิบาล",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=253321113"
+        },
+        {
+          "projectId": 37,
+          "sheetId": 1759736938,
+          "title": "37.รับนักเรียน",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1759736938"
+        },
+        {
+          "projectId": 38,
+          "sheetId": 124841086,
+          "title": "38.ทัศนศึกษา",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=124841086"
+        },
+        {
+          "projectId": 39,
+          "sheetId": 1541435352,
+          "title": "39.ควบคุมภายใน",
+          "url": "https://docs.google.com/spreadsheets/d/109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE/edit#gid=1541435352"
+        }
+      ]
+    },
+    {
+      "name": "งบประมาณ",
+      "originalId": "1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY",
+      "spreadsheetId": "1WzF7YrMk1LPBD_VVoqJ5IIhfFdNA9_6amyN9-qlJHrE",
+      "url": "https://docs.google.com/spreadsheets/d/1WzF7YrMk1LPBD_VVoqJ5IIhfFdNA9_6amyN9-qlJHrE/edit?usp=drivesdk",
+      "projectSheets": [
+        {
+          "projectId": 17,
+          "sheetId": 2137837407,
+          "title": "17.บริหารงบประมาณ",
+          "url": "https://docs.google.com/spreadsheets/d/1WzF7YrMk1LPBD_VVoqJ5IIhfFdNA9_6amyN9-qlJHrE/edit#gid=2137837407"
+        },
+        {
+          "projectId": 18,
+          "sheetId": 937937504,
+          "title": "18.ทำแผนประจำปี",
+          "url": "https://docs.google.com/spreadsheets/d/1WzF7YrMk1LPBD_VVoqJ5IIhfFdNA9_6amyN9-qlJHrE/edit#gid=937937504"
+        }
+      ]
+    },
+    {
+      "name": "บุคคล",
+      "originalId": "1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY",
+      "spreadsheetId": "1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw",
+      "url": "https://docs.google.com/spreadsheets/d/1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw/edit?usp=drivesdk",
+      "projectSheets": [
+        {
+          "projectId": 19,
+          "sheetId": 1495688742,
+          "title": "19.PLC",
+          "url": "https://docs.google.com/spreadsheets/d/1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw/edit#gid=1495688742"
+        },
+        {
+          "projectId": 20,
+          "sheetId": 521574075,
+          "title": "20.ขวัญกำลังใจ",
+          "url": "https://docs.google.com/spreadsheets/d/1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw/edit#gid=521574075"
+        },
+        {
+          "projectId": 21,
+          "sheetId": 2111744682,
+          "title": "21.พัฒนา",
+          "url": "https://docs.google.com/spreadsheets/d/1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw/edit#gid=2111744682"
+        },
+        {
+          "projectId": 22,
+          "sheetId": 1987952020,
+          "title": "22.ขอเลื่อน",
+          "url": "https://docs.google.com/spreadsheets/d/1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw/edit#gid=1987952020"
+        }
+      ]
+    }
+  ]
+}
