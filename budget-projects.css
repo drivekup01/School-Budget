@@ -7,6 +7,8 @@ body{background:radial-gradient(ellipse at 55% 0,#eee4fa 0,transparent 60%),#faf
 
 .activity-summary{min-width:600px}.activity-summary th:nth-child(n+2){text-align:right}.activity-summary td:first-child{min-width:280px}
 
-.working-copy-link{display:block;margin-top:10px;font-size:12px;color:#8552af;text-decoration:none}.working-copy-link:hover{text-decoration:underline}
+
 
 .working-entry-link{display:inline-block;margin-top:10px;margin-right:10px;padding:8px 12px;border-radius:10px;background:#76459e;color:#fff;font-size:12px;text-decoration:none}
+
+.project-actions{display:flex;align-items:center;gap:8px;margin-top:10px}.project-actions .working-entry-link{margin:0}.working-view-button{padding:8px 14px;border:1px solid #e2d6ef;border-radius:10px;background:#f6f0fc;color:#927aa9;font:inherit;font-size:12px;cursor:not-allowed}.workbook-menu{position:relative;flex-shrink:0}.workbook-menu summary{cursor:pointer;list-style:none}.workbook-menu summary::-webkit-details-marker{display:none}.workbook-menu summary:focus-visible{outline:2px solid var(--purple);outline-offset:3px}.workbook-files{position:absolute;right:0;top:calc(100% + 8px);z-index:5;min-width:220px;background:white;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 12px 30px #37234f20}.workbook-files a{display:block;padding:12px;border-radius:8px;color:var(--purple)}.workbook-files a:hover{background:#f6f0fc}
