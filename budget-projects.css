@@ -8,3 +8,5 @@ body{background:radial-gradient(ellipse at 55% 0,#eee4fa 0,transparent 60%),#faf
 .activity-summary{min-width:600px}.activity-summary th:nth-child(n+2){text-align:right}.activity-summary td:first-child{min-width:280px}
 
 .working-copy-link{display:block;margin-top:10px;font-size:12px;color:#8552af;text-decoration:none}.working-copy-link:hover{text-decoration:underline}
+
+.working-entry-link{display:inline-block;margin-top:10px;margin-right:10px;padding:8px 12px;border-radius:10px;background:#76459e;color:#fff;font-size:12px;text-decoration:none}
