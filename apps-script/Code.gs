@@ -9,9 +9,9 @@ function readRegister_(id){const target=projectSheet_(id),sheet=target.sheet,val
   for(let i=header+1;i<end;i++){const row=values[i];if(typeof row[3]==='number'&&received===null)received=row[3];if(typeof row[5]==='number'&&(typeof row[4]==='number'||typeof row[3]==='number')){last=i;current=row[5];if(typeof row[7]==='number')used=row[7];}if(typeof row[4]==='number'&&String(row[2]||'').trim()){entries.push({row:i+1,number:display[i][0],date:display[i][1],description:display[i][2],spent:row[4],remaining:typeof row[5]==='number'?row[5]:null,note:display[i][6]||''});}}
   if(current===null&&received===null){const parent=values.slice(0,header).find(r=>Number(r[1])===Number(id));const amounts=parent?parent.slice(3,7).filter(v=>typeof v==='number'):[];if(amounts.length===1)received=amounts[0];}if(current===null&&received!==null)current=received;if(used===null)used=entries.reduce((n,e)=>n+e.spent,0);return {headerRow:header+1,lastRow:last+1,received:received,current:current,used:used,entries:entries};
  });const revision=Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256,JSON.stringify(values)));return {projectId:Number(id),sheetName:sheet.getName(),sheetUrl:target.book.getUrl()+'#gid='+sheet.getSheetId(),blocks:blocks,revision:revision};}
-function getBudgetRegister(id){return readRegister_(id);}
+function getBudgetRegister(id,token){getBudgetUser(token);return readRegister_(id);}
 function safeText_(value,max){const text=String(value||'').trim();if(text.length>max)throw Error('ข้อความยาวเกินกำหนด');return /^[=+@-]/.test(text)?"'"+text:text;}
-function saveBudgetEntry(input){const lock=LockService.getScriptLock();lock.waitLock(20000);try{
+function saveBudgetEntry(input,token){requireBudgetAdmin_(token);const lock=LockService.getScriptLock();lock.waitLock(20000);try{
  const target=projectSheet_(input.projectId),sheet=target.sheet;if(!/^[a-zA-Z0-9-]{16,80}$/.test(input.requestId||''))throw Error('รหัสรายการไม่ถูกต้อง');const replay=sheet.getDeveloperMetadata().find(m=>m.getKey()==='budget-entry-'+input.requestId);if(replay)return JSON.parse(replay.getValue());
  const state=readRegister_(input.projectId);if(state.revision!==input.revision)throw Error('ยอดใน Sheet เปลี่ยนแล้ว กรุณาโหลดใหม่ก่อนบันทึก');const block=state.blocks.find(b=>b.headerRow===Number(input.headerRow));if(!block||block.current===null)throw Error('ชุดทะเบียนยังไม่มียอดตั้งต้น กรุณากำหนดยอดใน Sheet สำเนาก่อน');
  const spent=Number(input.spent);if(!Number.isFinite(spent)||spent<=0||Math.abs(spent*100-Math.round(spent*100))>0.00001)throw Error('จำนวนเงินต้องมากกว่า 0 และมีทศนิยมไม่เกิน 2 ตำแหน่ง');if(spent>block.current)throw Error('ยอดคงเหลือไม่เพียงพอ ยังไม่รองรับการยืมเงินในรอบนี้');
@@ -22,7 +22,7 @@ function saveBudgetEntry(input){const lock=LockService.getScriptLock();lock.wait
 function budgetBridge_(){
  const html=`<!doctype html><html><body><script>
  const appOrigin='https://drivekup01.github.io';
- window.addEventListener('message',e=>{const m=e.data;if(e.origin!==appOrigin||e.source!==window.top||m?.channel!=='school-budget'||!['getBudgetRegister','saveBudgetEntry'].includes(m.method)||!Array.isArray(m.args)||typeof m.requestId!=='string')return;
+ window.addEventListener('message',e=>{const m=e.data;if(e.origin!==appOrigin||e.source!==window.top||m?.channel!=='school-budget'||!['getBudgetRegister','saveBudgetEntry','createLoginChallenge','completeLogin','getBudgetUser','logoutBudgetUser'].includes(m.method)||!Array.isArray(m.args)||typeof m.requestId!=='string')return;
  const reply=payload=>e.source.postMessage(Object.assign({channel:'school-budget',requestId:m.requestId},payload),e.origin);
  google.script.run.withSuccessHandler(result=>reply({result})).withFailureHandler(error=>reply({error:error.message||String(error)}))[m.method](...m.args);
  });window.top.postMessage({channel:'school-budget',type:'ready'},appOrigin);
