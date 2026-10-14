@@ -4,7 +4,7 @@
   "source": "ทะเบียนคุมเงินบริหารวิชาการ 2569",
   "sourceUrl": "https://docs.google.com/spreadsheets/d/1LsIILtzaU-izM2A9JfwalQchO6iCRZVYbX-U0TXyW8M/edit",
   "sourceSheet": "โครงการทั้งหมด",
-  "scope": "4 ฝ่าย: วิชาการและทั่วไปมีรายละเอียด งบประมาณและบุคคลมีเฉพาะสรุป",
+  "scope": "4 ฝ่าย มีรายละเอียดโครงการและกิจกรรมครบตามแหล่งข้อมูล",
   "snapshotDate": "2026-10-14",
   "sheetCount": 18,
   "transactionRows": 124,
@@ -1000,6 +1000,268 @@
         null
       ],
       "balanceSourceRow": 42
+    },
+    {
+      "id": 17,
+      "department": "ฝ่ายบริหารงานงบประมาณ",
+      "name": "โครงการพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
+      "owner": "นางนุสรา เฉยแสง",
+      "amounts": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        2000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        -393.25,
+        null,
+        null,
+        null
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
+          "owner": "",
+          "amounts": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 5,
+      "balanceSourceRow": 5
+    },
+    {
+      "id": 18,
+      "department": "ฝ่ายบริหารงานงบประมาณ",
+      "name": "โครงการจัดทำแผนปฏิบัติการประจำปี",
+      "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
+      "amounts": [
+        5000,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        5000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        -10,
+        null,
+        null,
+        null
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมการจัดทำแผนปฏิบัติการประจำปี",
+          "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
+          "amounts": [
+            2000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมติดตามการใช้งบประมาณตามแผนปฏิบัติการประจำปี",
+          "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
+          "amounts": [
+            500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมวางแผนและควบคุมการใช้พัสดุ",
+          "owner": "นางสาวสุนิสา อิ่มรัง",
+          "amounts": [
+            2500,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 7,
+      "balanceSourceRow": 7
+    },
+    {
+      "id": 19,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการอบรมขับเคลื่อนกระบวนการ PLC เพื่อพัฒนาบุคลากรทางการศึกษา",
+      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
+      "amounts": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        606.75,
+        null,
+        null,
+        null
+      ],
+      "activities": [],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 14,
+      "balanceSourceRow": 13
+    },
+    {
+      "id": 20,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการสร้างขวัญและกำลังใจครู",
+      "owner": "นางสาวณัฐมน กลิ่นผล",
+      "amounts": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "activities": [],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 15,
+      "balanceSourceRow": 15
+    },
+    {
+      "id": 21,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการพัฒนาศักยภาพของครูและบุคลากรทางการศึกษา",
+      "owner": "นางจรรยา ทองดี",
+      "amounts": [
+        60275,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        60275,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        39585.95,
+        null,
+        null,
+        null
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมศึกษาดูงานเพื่อพัฒนาศักยภาพของครู",
+          "owner": "",
+          "amounts": [
+            33275,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมอบรมพัฒนาศักยภาพของครูและบุคลากรทางการศึกษาตามความสนใจและความถนัด",
+          "owner": "",
+          "amounts": [
+            20000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมอบรมเพื่อพัฒนาและส่งเสริมทักษะการเป็นผู้ประกอบการ\n ในศตวรรษที่ 21 สู่ผู้เรียน",
+          "owner": "",
+          "amounts": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมอบรมผู้บังคับบัญชาลูกเสือ",
+          "owner": "",
+          "amounts": [
+            6000,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 16,
+      "balanceSourceRow": 17
+    },
+    {
+      "id": 22,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการส่งเสริมการขอมีขอเลื่อนวิทยฐานะของข้าราชการครู",
+      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
+      "amounts": [
+        5000,
+        0,
+        0,
+        0
+      ],
+      "income": [
+        5000,
+        null,
+        null,
+        null
+      ],
+      "remaining": [
+        5000,
+        null,
+        null,
+        null
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมอบรมเพิ่มความรู้สู่การขอมีและขอเลื่อนวิทยฐานะ",
+          "owner": "",
+          "amounts": [
+            5000,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
+      "sourceRow": 21,
+      "balanceSourceRow": 19
     },
     {
       "id": 23,
@@ -5380,11 +5642,205 @@
           "rows": []
         }
       ]
+    },
+    {
+      "projectId": 17,
+      "sheet": "17.บริหารงบประมาณ",
+      "blocks": [
+        {
+          "headerRow": 7,
+          "rows": [
+            {
+              "row": 8,
+              "number": "3/69",
+              "dateRaw": "1969-08-04 00:00:00",
+              "description": "ซื้อหมึกเครื่องปริ้น+อุปกรณ์สำนักงาน",
+              "allocated": 2000,
+              "spent": 2393.25,
+              "remaining": -393.25,
+              "note": " "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 18,
+      "sheet": "18.ทำแผนประจำปี",
+      "blocks": [
+        {
+          "headerRow": 9,
+          "rows": [
+            {
+              "row": 10,
+              "number": "1/69",
+              "dateRaw": "1968-11-24 00:00:00",
+              "description": "ซื้อหมึกเครื่องปริ้น+กระดาษ",
+              "allocated": 5000.0,
+              "spent": 2460,
+              "remaining": 2540,
+              "note": "18.3"
+            },
+            {
+              "row": 11,
+              "number": "2/69",
+              "dateRaw": "1969-05-21 00:00:00",
+              "description": "จัดทำเล่มปฏิบัติการประจำปี 2569 ซื้อ a4",
+              "allocated": null,
+              "spent": 2400.0,
+              "remaining": 140,
+              "note": "18.1"
+            },
+            {
+              "row": 12,
+              "number": "2/69",
+              "dateRaw": "1969-05-21 00:00:00",
+              "description": "จัดทำเล่มปฏิบัติการประจำปี 2569 ",
+              "allocated": null,
+              "spent": 150.0,
+              "remaining": -10,
+              "note": "18.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 19,
+      "sheet": "19.PLC",
+      "blocks": [
+        {
+          "headerRow": 6,
+          "rows": [
+            {
+              "row": 7,
+              "number": "3/69",
+              "dateRaw": "1969-08-04 00:00:00",
+              "description": "ยืมเงินในงบประมาณ ซื้อหมึกเครื่องปริ้น+อุปกรณ์สำนักงาน",
+              "allocated": 1000,
+              "spent": 393.25,
+              "remaining": 606.75,
+              "note": ""
+            },
+            {
+              "row": 8,
+              "number": "2/69",
+              "dateRaw": "1969-08-25 00:00:00",
+              "description": "ยืมเงินในงบประมาณ จัดทำรูปเล่ม ส่วนเกิน",
+              "allocated": null,
+              "spent": 10.0,
+              "remaining": 596.75,
+              "note": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 20,
+      "sheet": "20.ขวัญกำลังใจ",
+      "blocks": [
+        {
+          "headerRow": 6,
+          "rows": []
+        }
+      ]
+    },
+    {
+      "projectId": 21,
+      "sheet": "21.พัฒนา",
+      "blocks": [
+        {
+          "headerRow": 10,
+          "rows": [
+            {
+              "row": 11,
+              "number": "1/69",
+              "dateRaw": "1968-11-10 00:00:00",
+              "description": "ค่าเดินทางการอบรมโครงการวิทยาศาสตร์พลังสิบ",
+              "allocated": 60275.0,
+              "spent": 744.0,
+              "remaining": 59531,
+              "note": "21.2"
+            },
+            {
+              "row": 12,
+              "number": "2/69",
+              "dateRaw": "1968-12-08 00:00:00",
+              "description": "อบรมผู้บังคับบัญชาลูกเสือ",
+              "allocated": null,
+              "spent": 4500.0,
+              "remaining": 55031,
+              "note": "21.4"
+            },
+            {
+              "row": 13,
+              "number": "3/69",
+              "dateRaw": "1969-04-21 00:00:00",
+              "description": "อบรม (ค่าเชื้อเพลิง)",
+              "allocated": null,
+              "spent": 688.0,
+              "remaining": 54343,
+              "note": "21.2"
+            },
+            {
+              "row": 14,
+              "number": "5/69",
+              "dateRaw": "1969-04-20 00:00:00",
+              "description": "อบรม (ค่าเชื้อเพลิง)",
+              "allocated": null,
+              "spent": 1104.0,
+              "remaining": 53239,
+              "note": "21.2"
+            },
+            {
+              "row": 15,
+              "number": "4/69",
+              "dateRaw": "1969-04-28 00:00:00",
+              "description": "อบรม (ค่าเชื้อเพลิง)",
+              "allocated": null,
+              "spent": 880.0,
+              "remaining": 52359,
+              "note": "21.2"
+            },
+            {
+              "row": 16,
+              "number": "6/69",
+              "dateRaw": "1969-05-26 00:00:00",
+              "description": "ค่าที่พักและค่าลงทะเบียน",
+              "allocated": null,
+              "spent": 3773.05,
+              "remaining": 48585.95,
+              "note": "21.2"
+            },
+            {
+              "row": 17,
+              "number": "7/69",
+              "dateRaw": "1969-08-20 00:00:00",
+              "description": "อบรมผู้บังคับบัญชาลูกเสือ",
+              "allocated": null,
+              "spent": 9000.0,
+              "remaining": 39585.95,
+              "note": "21.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": 22,
+      "sheet": "22.ขอเลื่อน",
+      "blocks": [
+        {
+          "headerRow": 7,
+          "rows": []
+        }
+      ]
     }
   ],
   "balanceSummary": {
     "remaining": [
-      79009.22,
+      105867.7,
       138870,
       177508,
       68033
@@ -5392,7 +5848,7 @@
     "sourceRow": "แถวรวมฝ่ายของแต่ละแหล่งข้อมูล"
   },
   "incomeTotals": [
-    2053694,
+    2127969,
     398000,
     660519,
     215311
@@ -5444,41 +5900,86 @@
     },
     {
       "name": "ฝ่ายบริหารงานงบประมาณ",
-      "complete": false,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1Vkl8OXpBjN-42ekomguxQIczpnw9iuYD_fwu03OdOoA/edit",
+      "complete": true,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
       "remaining": [
-        0,
+        140,
         null,
         null,
         null
       ],
       "income": [
-        null,
+        7000,
         null,
         null,
         null
       ],
-      "sourceSummaryRow": 57,
-      "note": "ไฟล์นี้มีเฉพาะยอดคงเหลือรวม ไม่มีรายละเอียดโครงการ กิจกรรม และรายรับของฝ่ายงบประมาณ"
+      "sourceSummaryRow": 9,
+      "note": "Sheet แถว 9 สรุปคงเหลือ 140 บาท แต่รายโครงการรวม -403.25 บาท แสดงตามต้นฉบับโดยไม่แก้สูตร"
     },
     {
       "name": "ฝ่ายบริหารงานบุคคล",
-      "complete": false,
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1Vkl8OXpBjN-42ekomguxQIczpnw9iuYD_fwu03OdOoA/edit",
+      "complete": true,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit",
       "remaining": [
-        19474.22,
+        46192.7,
         null,
         null,
         null
       ],
       "income": [
-        null,
+        67275,
         null,
         null,
         null
       ],
-      "sourceSummaryRow": 58,
-      "note": "ไฟล์นี้มีเฉพาะยอดคงเหลือรวม ไม่มีรายละเอียดโครงการ กิจกรรม และรายรับของฝ่ายบุคคล"
+      "sourceSummaryRow": 21,
+      "note": "คงเหลือสรุปก่อนรายการยืม 46,192.70 บาท (แถว 21) · หลังรายการยืมล่าสุดเหลือ 36.22 บาท (แถว 28) · แท็บโครงการมีสองยอดสรุป 67,275 และ 69,000 บาท จึงใช้ผลรวมรายรับรายโครงการ",
+      "loans": [
+        {
+          "sourceRow": 22,
+          "description": "ยืมเงิน -19,083.48 ส่วนเกินทำหอประชุม",
+          "amount": 19083.48,
+          "remaining": 27109.219999999998
+        },
+        {
+          "sourceRow": 23,
+          "description": "ยืมเงิน งานทาสี ห้องเรียนสีเขียว",
+          "amount": 16663,
+          "remaining": 10446.219999999998
+        },
+        {
+          "sourceRow": 24,
+          "description": "ยืมเงิน 1,770 น้ำมันเครื่องตัดหญ้า",
+          "amount": 1770,
+          "remaining": 8676.219999999998
+        },
+        {
+          "sourceRow": 25,
+          "description": "ยืมเงิน 1,120 ที่ 132/69 ระบบดูแล",
+          "amount": 1120,
+          "remaining": 7556.2199999999975
+        },
+        {
+          "sourceRow": 26,
+          "description": "ยืมเงิน ที่ 160/69 ซื้อน้ำมันเครื่องตัดหญ้า กันยายน",
+          "amount": 1470,
+          "remaining": 6086.2199999999975
+        },
+        {
+          "sourceRow": 27,
+          "description": "ยืมเงิน ที่ 161/69 จัดซื้อน้ำมันเชื้อเพลิงรถโรงเรียนเดือนกันยายน",
+          "amount": 2000,
+          "remaining": 4086.2199999999975
+        },
+        {
+          "sourceRow": 28,
+          "description": "ยืมเงิน ที่ 162/69 จัดซื้อสายลำโพง",
+          "amount": 4050,
+          "remaining": 36.219999999997526
+        }
+      ],
+      "afterLoans": 36.22
     }
   ],
   "sources": [
@@ -5489,7 +5990,11 @@
     {
       "title": "ทะเบียนคุมเงินบริหารทั่วไป 2569",
       "url": "https://docs.google.com/spreadsheets/d/1Vkl8OXpBjN-42ekomguxQIczpnw9iuYD_fwu03OdOoA/edit"
+    },
+    {
+      "title": "ทะเบียนคุมงบประมาณ+บุคคล 2569",
+      "url": "https://docs.google.com/spreadsheets/d/1FLg9r6CO07Oo6kQ2w5wnNjO3PY2iZIVQWlLnF2gYqaY/edit"
     }
   ],
-  "sourceSheetCount": 37
+  "sourceSheetCount": 45
 }
