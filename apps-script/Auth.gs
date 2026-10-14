@@ -1,4 +1,4 @@
-/* Account verifiers live in Script Properties, never in the public repository. */
+/* Account verifiers live in a private Google spreadsheet, never in the public repository. */
 function authUsers_(){const rows=SpreadsheetApp.openById('1gDQDWTbkTSRz2iYPz2TXbuXYxqt6-nxeJdmAbJkptcY').getSheetByName('Accounts').getDataRange().getValues().slice(1);const users={};for(const row of rows)if(row[0])users[String(row[0])]={name:String(row[1]),role:String(row[2]),salt:String(row[3]),verifier:String(row[4])};return users;}
 function authHex_(bytes){return bytes.map(b=>('0'+((b+256)%256).toString(16)).slice(-2)).join('');}
 function authBytes_(hex){if(!/^[0-9a-f]{64}$/.test(hex))throw Error('ข้อมูลยืนยันไม่ถูกต้อง');return hex.match(/../g).map(v=>{const n=parseInt(v,16);return n>127?n-256:n});}
