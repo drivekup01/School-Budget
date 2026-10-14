@@ -1,6 +1,6 @@
 const BUDGET_APP='https://drivekup01.github.io/School-Budget/';
 const WORKBOOKS=['1Yl7KC4BfOcMdYbWZRK81SNAD6JNnOiDuP-hjH4czYsc','1WzF7YrMk1LPBD_VVoqJ5IIhfFdNA9_6amyN9-qlJHrE','1YGhDcdDpMOu3hCgptOcRBRoRZ042g-ljqj--L3wbGvw','109HpTcLF9aKaYpcuFNxVK8Ia4TSfWcvfC5EFERANylE'];
-function doGet(e){const id=Number(e&&e.parameter&&e.parameter.project)||1;const html=UrlFetchApp.fetch(BUDGET_APP+'budget-entry.html').getContentText().replace('<head>','<head><base href="'+BUDGET_APP+'" target="_top"><script>window.budgetProjectId='+JSON.stringify(id)+';</script>');return HtmlService.createHtmlOutput(html).setTitle('บันทึกรายการงบประมาณ');}
+function doGet(e){if(e&&e.parameter&&e.parameter.bridge==='1')return budgetBridge_();const id=Number(e&&e.parameter&&e.parameter.project)||1;const html=UrlFetchApp.fetch(BUDGET_APP+'budget-entry.html').getContentText().replace('<head>','<head><base href="'+BUDGET_APP+'" target="_top"><script>window.budgetProjectId='+JSON.stringify(id)+';</script>');return HtmlService.createHtmlOutput(html).setTitle('บันทึกรายการงบประมาณ');}
 function projectSheet_(id){id=Number(id);if(!Number.isInteger(id)||id<1||id>39)throw Error('โครงการไม่ถูกต้อง');const index=id<=16?0:id<=18?1:id<=22?2:3;const book=SpreadsheetApp.openById(WORKBOOKS[index]);const sheet=book.getSheets().find(s=>new RegExp('^'+id+'\\.').test(s.getName()));if(!sheet)throw Error('ไม่พบแท็บโครงการ');return {book:book,sheet:sheet};}
 function normalize_(value){return String(value||'').replace(/\s+/g,'').trim();}
 function readRegister_(id){const target=projectSheet_(id),sheet=target.sheet,values=sheet.getDataRange().getValues(),display=sheet.getDataRange().getDisplayValues();const headers=[];
@@ -19,3 +19,13 @@ function saveBudgetEntry(input){const lock=LockService.getScriptLock();lock.wait
  const row=block.lastRow+1;if(sheet.getRange(row,1,1,8).getValues()[0].some(v=>v!==''))sheet.insertRowsBefore(row,1);sheet.getRange(block.lastRow,1,1,8).copyFormatToRange(sheet,1,8,row,row);sheet.getRange(row,1,1,8).setValues([[number,date,description,block.lastRow===block.headerRow?block.current:'',spent,block.lastRow===block.headerRow?'=D'+row+'-E'+row:'=F'+block.lastRow+'-E'+row,note,'='+block.used+'+E'+row]]);sheet.getRange(row,2).setNumberFormat('dd mmm yyyy');sheet.getRange(row,5,1,2).setNumberFormat('#,##0.00');sheet.getRange(row,8).setNumberFormat('#,##0.00');if(!sheet.getRange(block.headerRow,8).getValue())sheet.getRange(block.headerRow,8).setValue('ใช้ไปทั้งหมด');SpreadsheetApp.flush();
  const result={row:row,remaining:Math.round((block.current-spent)*100)/100,used:Math.round((block.used+spent)*100)/100};sheet.addDeveloperMetadata('budget-entry-'+input.requestId,JSON.stringify(result));return result;
  }finally{lock.releaseLock();}}
+function budgetBridge_(){
+ const html=`<!doctype html><html><body><script>
+ const appOrigin='https://drivekup01.github.io';
+ window.addEventListener('message',e=>{const m=e.data;if(e.origin!==appOrigin||e.source!==window.top||m?.channel!=='school-budget'||!['getBudgetRegister','saveBudgetEntry'].includes(m.method)||!Array.isArray(m.args)||typeof m.requestId!=='string')return;
+ const reply=payload=>e.source.postMessage(Object.assign({channel:'school-budget',requestId:m.requestId},payload),e.origin);
+ google.script.run.withSuccessHandler(result=>reply({result})).withFailureHandler(error=>reply({error:error.message||String(error)}))[m.method](...m.args);
+ });window.top.postMessage({channel:'school-budget',type:'ready'},appOrigin);
+ </script></body></html>`;
+ return HtmlService.createHtmlOutput(html).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
