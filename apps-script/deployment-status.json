@@ -1,11 +1,10 @@
 {
-  "liveVersion": 7,
+  "liveVersion": 8,
   "verifiedOn": "2026-10-15",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
-  "pendingDeployment": "Borrowing.gs: current fund balances in getBudgetAdjustmentSummary",
-  "blocker": "The old native confirmation dialog on the test browser tab blocks Apps Script editor input. Close that dialog before deploying the current Code.gs + Borrowing.gs + Auth.gs combination.",
   "testRecordRemoved": "f1f305bb-352d-49aa-a17a-351c3da26d76",
   "testJournalEmptyVerified": true,
-  "year2570CopyTimeZone": "Asia/Bangkok"
+  "year2570CopyTimeZone": "Asia/Bangkok",
+  "latestAffectedRegisterBalancesPublished": true
 }
