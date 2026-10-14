@@ -1,6 +1,7 @@
 /* Shared login gate for School-Budget and School-Procurement. */
 document.documentElement.classList.add('school-auth-loading');
 window.schoolAuthReady=(async()=>{
+ if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
  if(!window.budgetRpcReady)await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://drivekup01.github.io/School-Budget/budget-api.js?v=auth1';script.onload=resolve;script.onerror=()=>reject(Error('เชื่อมต่อระบบเข้าสู่ระบบไม่ได้'));document.head.append(script)});
  const token=sessionStorage.getItem('school-auth-token');
  if(!token){const login=new URL('https://drivekup01.github.io/School-Budget/login.html');login.searchParams.set('return',location.href);location.replace(login);throw Error('กรุณาเข้าสู่ระบบ')}
