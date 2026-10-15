@@ -1,10 +1,11 @@
 {
-  "liveVersion": 8,
+  "liveVersion": 9,
   "verifiedOn": "2026-10-15",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
   "testRecordRemoved": "f1f305bb-352d-49aa-a17a-351c3da26d76",
   "testJournalEmptyVerified": true,
   "year2570CopyTimeZone": "Asia/Bangkok",
-  "latestAffectedRegisterBalancesPublished": true
+  "latestAffectedRegisterBalancesPublished": true,
+  "guestDocumentFinanceTotalsOnly": true
 }

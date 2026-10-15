@@ -2,7 +2,7 @@
 document.documentElement.classList.add('school-auth-loading');
 window.schoolAuthReady=(async()=>{
  if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
- const publicPage=!!document.getElementById('overview')||!!document.getElementById('rows')&&!!document.getElementById('projects');
+ const publicPage=!!document.getElementById('formsHistory')||!!document.getElementById('budgetDocumentForm')||!!document.getElementById('overview')||!!document.getElementById('rows')&&!!document.getElementById('projects');
  const apply=user=>{window.schoolUser=user;document.body.dataset.schoolRole=user.role;document.documentElement.classList.remove('school-auth-loading');document.dispatchEvent(new Event('school-auth-ready'));return user};
  const guest=()=>apply({id:'guest',name:'Guest',role:'guest'});
  const redirect=()=>{const login=new URL('https://drivekup01.github.io/School-Budget/login.html');login.searchParams.set('return',location.href);location.replace(login)};

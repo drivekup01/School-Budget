@@ -24,10 +24,13 @@ function saveBudgetEntry(input,token){requireBudgetAdmin_(token);const lock=Lock
 function budgetBridge_(){
  const html=`<!doctype html><html><body><script>
  const appOrigin='https://drivekup01.github.io';
- window.addEventListener('message',e=>{const m=e.data;if(e.origin!==appOrigin||e.source!==window.top||m?.channel!=='school-budget'||!['getBudgetRegister','saveBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing','getBudgetAdjustmentSummary','createLoginChallenge','completeLogin','getBudgetUser','logoutBudgetUser'].includes(m.method)||!Array.isArray(m.args)||typeof m.requestId!=='string')return;
+ window.addEventListener('message',e=>{const m=e.data;if(e.origin!==appOrigin||e.source!==window.top||m?.channel!=='school-budget'||!['getBudgetRegister','getBudgetDocumentFinance','saveBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing','getBudgetAdjustmentSummary','createLoginChallenge','completeLogin','getBudgetUser','logoutBudgetUser'].includes(m.method)||!Array.isArray(m.args)||typeof m.requestId!=='string')return;
  const reply=payload=>e.source.postMessage(Object.assign({channel:'school-budget',requestId:m.requestId},payload),e.origin);
  google.script.run.withSuccessHandler(result=>reply({result})).withFailureHandler(error=>reply({error:error.message||String(error)}))[m.method](...m.args);
  });window.top.postMessage({channel:'school-budget',type:'ready'},appOrigin);
  </script></body></html>`;
  return HtmlService.createHtmlOutput(html).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
+
+// Public form totals only. Never return ledger rows, notes, document numbers or workbook URLs.
+function getBudgetDocumentFinance(id,year){const state=readRegister_(id,budgetYear_(year));return {year:state.year,projectId:state.projectId,revision:state.revision,blocks:state.blocks.map(b=>({budgetType:b.budgetType,received:b.received,used:b.used,current:b.current}))};}
