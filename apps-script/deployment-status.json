@@ -1,5 +1,5 @@
 {
-  "liveVersion": 9,
+  "liveVersion": 10,
   "verifiedOn": "2026-10-15",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
@@ -7,5 +7,6 @@
   "testJournalEmptyVerified": true,
   "year2570CopyTimeZone": "Asia/Bangkok",
   "latestAffectedRegisterBalancesPublished": true,
-  "guestDocumentFinanceTotalsOnly": true
+  "guestDocumentFinanceTotalsOnly": true,
+  "legacyNotesAndAccumulatedSpendingSeparated": true
 }
