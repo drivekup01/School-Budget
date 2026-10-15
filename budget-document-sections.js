@@ -12,6 +12,7 @@ window.setupBudgetDocumentSections=function(onSelect){
  const page1=document.createElement('div'),page2=document.createElement('div');page1.dataset.budgetEditorPage='one';page2.dataset.budgetEditorPage='two';page1.append(head1.box,body1.box);page2.append(head2.box,body2.box);root.append(page1,page2,sign.box);
  function move(keys,parent){for(const key of keys){const label=document.getElementById('doc-'+key)?.closest('label');if(label)parent.append(label)}}
  move(['number1','date1'],head1.body);move(['number2','date2'],head2.body);move(['kind','purpose','expense','orderNumber','inspectionDate','advancePayer'],body2.body);
+ body2.body.append(document.getElementById('budgetDocumentFunding'));
  const note=document.createElement('p');note.className='forms-note';note.textContent='ฝ่าย โครงการ กิจกรรม ยอดเงิน และยอดเบิกครั้งนี้ ใช้ข้อมูลจากส่วนที่ใช้ร่วมกันด้านบน';body1.body.append(note);itemNodes.forEach(n=>body1.body.append(n));
  move(['activityOwner','projectOwner','departmentHead','deputy','planning','procurement','budget','director'],sign.body);
  const opinions=section('ความเห็นของผู้ลงนาม (เว้นว่างเพื่อลงนามบนกระดาษได้)','opinions',false);Array.from(fields.querySelectorAll(':scope > label')).forEach(n=>opinions.body.append(n));sign.body.append(opinions.box);
