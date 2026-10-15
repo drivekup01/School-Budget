@@ -3,7 +3,7 @@ window.budgetDocumentTemplates=(()=>{
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const money=n=>Number.isFinite(n)?n.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
  const text=v=>esc(v||'................................');
- function date(value){if(!value)return 'วันที่ ........ เดือน ........................ พ.ศ. ........';const d=new Date(value+'T12:00:00+07:00');return Number.isNaN(d.getTime())?text(value):d.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})}
+ function date(value){if(!value)return '........ เดือน ........................ พ.ศ. ........';const d=new Date(value+'T12:00:00+07:00');return Number.isNaN(d.getTime())?text(value):d.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})}
  function number(n){const digits=['ศูนย์','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'];if(n===0)return digits[0];if(n>=1e6)return number(Math.floor(n/1e6))+'ล้าน'+(n%1e6?number(n%1e6):'');const s=String(n),u=['','สิบ','ร้อย','พัน','หมื่น','แสน'];return [...s].map((x,i)=>{const p=s.length-i-1,v=+x;return !v?'':p===1?(v===1?'สิบ':v===2?'ยี่สิบ':digits[v]+'สิบ'):p===0&&v===1&&s.length>1?'เอ็ด':digits[v]+u[p]}).join('')}
  const baht=n=>{if(!Number.isFinite(n)||n<0)return '................................';const c=Math.round(n*100);return number(Math.floor(c/100))+'บาท'+(c%100?number(c%100)+'สตางค์':'ถ้วน')};
  function blocks(d,n){const f=d.fields||{},v=d.finance||{},request=Number(d.requestAmount)||0,after=v.current==null?null:Math.round((v.current-request)*100)/100;
