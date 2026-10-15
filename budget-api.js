@@ -2,7 +2,7 @@ if(!window.budgetRpcReady){
 /* Use a narrowly scoped Apps Script iframe bridge from the GitHub-hosted form. */
 window.budgetRpcReady=(async()=>{
  if(window.google?.script?.run)return(method,...args)=>new Promise((resolve,reject)=>google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](...args));
- const response=await fetch('https://drivekup01.github.io/School-Budget/budget-workbooks.json',{cache:'no-store'});if(!response.ok)throw Error('โหลดตัวเชื่อมข้อมูลไม่สำเร็จ');const config=await response.json();
+ const response=await fetch('https://drivekup01.github.io/School-Budget/budget-workbooks.json',{cache:'default'});if(!response.ok)throw Error('โหลดตัวเชื่อมข้อมูลไม่สำเร็จ');const config=await response.json();
  return new Promise((resolve,reject)=>{
   const frame=document.createElement('iframe');frame.hidden=true;frame.id='schoolBudgetBridge';frame.title='ตัวเชื่อมทะเบียนงบประมาณ';let peer,origin;const pending=new Map();let timer=setTimeout(()=>{reject(Error('เชื่อมต่อ Sheet ไม่สำเร็จ กรุณาโหลดใหม่'));frame.remove()},45000);
   window.addEventListener('message',e=>{if(!/^https:\/\/[a-zA-Z0-9-]+\.googleusercontent\.com$/.test(e.origin)||e.data?.channel!=='school-budget')return;

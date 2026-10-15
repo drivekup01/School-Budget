@@ -3,7 +3,7 @@
  let pending;
  const add=(base,delta)=>base==null?null:Math.round((base+delta)*100)/100;
  window.loadBudgetData=()=>pending||(pending=(async()=>{
-  const response=await fetch(window.budgetYearDataUrl||'budget-data.json',{cache:'no-store'});if(!response.ok)throw Error('โหลดข้อมูลงบประมาณไม่สำเร็จ');const data=await response.json();
+  const response=await fetch(window.budgetYearDataUrl||'budget-data.json',{cache:'default'});if(!response.ok)throw Error('โหลดข้อมูลงบประมาณไม่สำเร็จ');const data=await response.json();
   const rpc=await window.budgetRpcReady;const summary=await rpc('getBudgetAdjustmentSummary',data.year);if(summary.year!==data.year)throw Error('ปีของข้อมูลการยืมไม่ตรงกัน');
   const names=['เงินอุดหนุนรายหัว','เงินกิจกรรมพัฒนาผู้เรียน','เงินรายได้สถานศึกษา','อื่น ๆ'];
   for(const department of data.departments){department.adjustedIncome=department.income.slice();}
