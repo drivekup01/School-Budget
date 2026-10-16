@@ -3,10 +3,11 @@
  const requested=new URL(location.href).searchParams.get('year');let saved;try{saved=sessionStorage.getItem('school-budget-year')}catch{}
  const year=(requested===null?saved:requested)==='2570'?2570:2569;
  try{sessionStorage.setItem('school-budget-year',String(year))}catch{}
- window.budgetYear=year;window.budgetYearDataUrl=year===2570?'budget-data-2570.json':'budget-data.json';
+ window.budgetYear=year;window.budgetYearDataUrl=year===2570?'budget-plan-2570.json?v=20261016-plan1':'budget-data.json';window.budgetIsAllocationPlan=year===2570;
  const empty=document.getElementById('yearEmpty');if(empty)empty.hidden=true;
  document.querySelectorAll('a[href^="budget-projects.html"]').forEach(a=>{const url=new URL(a.href);url.searchParams.set('year',year);a.href=url.href});
- if(year===2570){const footer=document.querySelector('main footer');if(footer)footer.textContent='ข้อมูลจากสำเนาสำหรับทดสอบปีงบประมาณ 2570 · ตัวเลขบนเว็บเป็นข้อมูลที่นำเข้า ไม่ซิงก์การแก้ไข Sheet อัตโนมัติ';}
+ if(year===2570){const footer=document.querySelector('main footer');if(footer)footer.textContent='แผนงบประมาณปี 2570 จาก Excel เฉพาะ 2 ชีตแรก · ยังไม่มีข้อมูลรายจ่ายและยอดคงเหลือ · ไม่รวมเงินทุนการศึกษาที่ยังไม่ทราบยอด';}
+ if(year===2570){document.querySelectorAll('.panel-title span,.donut small').forEach(el=>{if(el.textContent.includes('รายรับ'))el.textContent=el.textContent.replace('รายรับตามยอดคงเหลือ','แผนจัดสรรจาก Excel').replace('รายรับ','แผนงบประมาณ')});document.querySelectorAll('th').forEach(el=>{if(el.textContent==='งบหลังปรับ (บาท)')el.textContent='แผนงบประมาณ (บาท)'});const help=document.querySelector('.projects>.table-help');if(help)help.textContent='กดชื่อโครงการเพื่อดูกิจกรรม · แผนปี 2570 ยังไม่เชื่อมทะเบียนใช้เงินเดิม';}
  if(!select)return;select.value=String(year);
  select.addEventListener('change',()=>{const url=new URL(location.href);url.searchParams.set('year',select.value);location.assign(url.href)});
  const menu=document.createElement('details');menu.className='year-menu';
