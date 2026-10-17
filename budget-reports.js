@@ -21,6 +21,7 @@
    sheets=[['สรุปรายฝ่าย',['ฝ่าย',...headers.slice(3)],deptRows],['สรุปโครงการ',headers,model.summaries],['สรุปกิจกรรม',headers,activityRows],['รายละเอียดรายการ',['ฝ่าย','โครงการ','กิจกรรม','ประเภทเงิน','แถวหัวทะเบียน','แถวรายการ','เลขที่','วันที่ตาม Sheet','รายการ','ใช้ไป','คงเหลือ','หมายเหตุ'],model.details],['ทะเบียนยืมงบ',['เลขที่','วันที่','โครงการต้นทาง','กิจกรรมต้นทาง','โครงการปลายทาง','กิจกรรมปลายทาง','ประเภทเงิน','จำนวนเงิน','เหตุผล','สถานะ'],model.loans]];
    const reportHeading=`สรุปงบประมาณ ${(filter.department||'ทุกฝ่าย').replace('ฝ่ายบริหารงานทั่วไป','ฝ่ายบริหารทั่วไป')} โรงเรียนค่ายบางระจันวิทยาคม ปีงบประมาณ ${data.year}`;
    $('reportTitle').textContent=reportHeading;document.title=reportHeading;$('reportFooter').textContent=reportHeading;
+   let printStyle=document.getElementById('reportPrintStyle');if(!printStyle){printStyle=document.createElement('style');printStyle.id='reportPrintStyle';document.head.append(printStyle);}printStyle.textContent='@page{@bottom-center{content:'+JSON.stringify(reportHeading)+';font:9pt ReportThai,sans-serif;color:#333;}}';
    $('tables').innerHTML=sheets.map(s=>table(...s)).join('');$('report').hidden=false;
    $('status').textContent='รายงานพร้อมใช้งาน · ช่องไม่ระบุหมายถึงไม่มีข้อมูลครบพอสำหรับคำนวณ';$('pdf').disabled=false;$('excel').disabled=!window.XLSX;
    if(!window.XLSX)$('status').textContent+='\nโหลดตัวส่งออก Excel ไม่สำเร็จ กรุณาโหลดหน้าใหม่';
