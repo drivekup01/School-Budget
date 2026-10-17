@@ -1,6 +1,6 @@
 /* Collapsed borrowing form, real source balances and linked journal history. */
 (() => {
- const $=id=>document.getElementById(id),year=new URL(location.href).searchParams.get('year')==='2570'||window.budgetYear===2570?2570:2569;
+ const $=id=>document.getElementById(id),year=Number(window.budgetYear||new URL(location.href).searchParams.get('year'))||2569;
  const projectId=Number(window.budgetProjectId||new URL(location.href).searchParams.get('project'))||1;
  let destination,source,projects=[],busy=false,requestId=crypto.randomUUID(),sourceGeneration=0;
  const money=n=>n==null?'ไม่ระบุ':Number(n).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';

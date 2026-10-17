@@ -1,0 +1,33 @@
+/* One UTF-8 CSV can hold plans, activities, registers, entries and review notes. */
+(function(root){
+ const headers=['รุ่นCSV','ชนิดแถว','ปีการศึกษา','รหัสโครงการ','ฝ่ายงาน','โครงการ','ผู้รับผิดชอบ','กิจกรรม','ประเภทเงิน','รหัสทะเบียน','จัดสรร','รายรับ','คงเหลือ','วันที่','เลขเอกสาร','รายการ','ใช้เงิน','หมายเหตุ','ที่มา','รายการเดิม','ข้อความเตือน','ข้อมูลตรวจสอบ'];
+ const signature='school-budget-v2',textKeys=new Set(headers.filter(h=>!['ปีการศึกษา','รหัสโครงการ','จัดสรร','รายรับ','คงเหลือ','ใช้เงิน'].includes(h)));
+ function decode(bytes){let text,encoding='UTF-8';try{text=new TextDecoder('utf-8',{fatal:true}).decode(bytes);}catch{text=new TextDecoder('windows-874',{fatal:true}).decode(bytes);encoding='Windows-874';}if(text.includes('\u0000'))throw Error('ไฟล์ CSV มีอักขระศูนย์หรือเป็น UTF-16 กรุณาบันทึกเป็น CSV UTF-8');return {text:text.replace(/^\uFEFF/,''),encoding};}
+ function parseFile(file,year,X){const sheet=file.book.Sheets[file.book.SheetNames[0]],rows=X.utils.sheet_to_json(sheet,{header:1,defval:'',raw:true,blankrows:true}),at=rows.findIndex(r=>r.includes('ชนิดแถว')&&r.includes('รุ่นCSV'));if(at<0)return null;
+  const head=rows[at],col=h=>head.indexOf(h),issues=[],units=[],plans=[],warnings=[],audit=[],pending=[],map=new Map(),planKeys=new Set();
+  for(const h of headers)if(!head.includes(h))issues.push({level:'error',location:file.name,message:'CSV ขาดคอลัมน์ '+h});if(issues.length)return {units,plans,warnings,issues,audit,mappings:[]};
+  const unescape=s=>/^'[=+@-]/.test(s)?s.slice(1):s;
+  for(let r=at+1;r<rows.length;r++){const row=rows[r];if(!row.some(v=>v!==''))continue;const get=h=>{const v=String(row[col(h)]??'');return textKeys.has(h)?unescape(v):v;},location=file.name+'!'+(r+1),type=get('ชนิดแถว');
+   if(get('รุ่นCSV')!==signature||Number(get('ปีการศึกษา'))!==Number(year)){issues.push({level:'error',location,message:'รุ่น CSV หรือปีการศึกษาไม่ตรง'});continue;}
+   const n=(h,optional=false)=>{const v=get(h);if(v===''&&optional)return null;const value=/^-?\d[\d,]*(\.\d+)?$/.test(v)?Number(v.replace(/,/g,'')):NaN;if(!Number.isFinite(value))issues.push({level:'error',location,message:'จำนวนเงิน '+h+' ไม่ถูกต้อง'});return value;};
+   const id=Number(get('รหัสโครงการ')),fund=get('ประเภทเงิน'),f=root.BudgetImportModel.funds.indexOf(fund),where=get('ที่มา')||location;
+   const base={projectId:id,department:get('ฝ่ายงาน'),projectName:get('โครงการ'),owner:get('ผู้รับผิดชอบ'),activity:get('กิจกรรม'),fund,registerId:get('รหัสทะเบียน'),location:where};
+   if(type==='ทะเบียน'){const u={...base,allocated:n('จัดสรร'),received:n('รายรับ'),declaredRemaining:n('คงเหลือ'),entries:[]};units.push(u);const key=id+'|'+u.registerId;if(map.has(key))issues.push({level:'error',location,message:'รหัสทะเบียนซ้ำ'});map.set(key,u);}
+   else if(type==='รายการ')pending.push({id,registerId:base.registerId,entry:{date:get('วันที่'),number:get('เลขเอกสาร'),description:get('รายการ'),spent:n('ใช้เงิน'),received:n('รายรับ'),declaredRemaining:n('คงเหลือ',true),note:get('หมายเหตุ'),legacy:get('รายการเดิม')==='1',location:where}});
+   else if(type==='โครงการ'||type==='กิจกรรม'){const planKey=type+'|'+id+'|'+base.activity+'|'+fund;if(planKeys.has(planKey))issues.push({level:'error',location,message:'แผนโครงการ/กิจกรรมประเภทเงินซ้ำ'});planKeys.add(planKey);if(f<0){issues.push({level:'error',location,message:'ไม่พบประเภทเงินของแผน'});continue;}let p=plans.find(p=>p.id===id);if(!p){p={id,department:base.department,name:base.projectName,owner:base.owner,amounts:[null,null,null,null],activities:[],location:where};plans.push(p);}let target=p;if(type==='กิจกรรม'){target=p.activities.find(a=>a.name===base.activity);if(!target){target={name:base.activity,owner:base.owner,amounts:[null,null,null,null],location:where};p.activities.push(target);}}if(target.amounts[f]!==null)issues.push({level:'error',location,message:'แผนโครงการ/กิจกรรมประเภทเงินซ้ำ'});target.amounts[f]=n('จัดสรร',true);}
+   else if(type==='คำเตือน')warnings.push({location:where,message:get('ข้อความเตือน')});
+   else if(type==='ตรวจสอบ'){try{audit.push(JSON.parse(get('ข้อมูลตรวจสอบ')));}catch{issues.push({level:'error',location,message:'อ่านข้อมูลตรวจสอบไม่ได้'});}}
+   else issues.push({level:'error',location,message:'ชนิดแถว CSV ไม่รู้จัก: '+type});
+  }
+  for(const p of pending){const u=map.get(p.id+'|'+p.registerId);if(!u)issues.push({level:'error',location:p.entry.location,message:'รายการ CSV อ้างอิงรหัสทะเบียนที่ไม่มีอยู่'});else u.entries.push(p.entry);}
+  warnings.push({location:file.name,message:'CSV ไม่มีสูตร Excel ตรวจได้เฉพาะค่าที่นำเข้าและความสัมพันธ์ของยอดเงิน'});
+  return {units,plans,warnings,issues,audit,mappings:[]};
+ }
+ function encode(payload){const out=[headers],push=o=>out.push(headers.map(h=>o[h]??'')),base={'รุ่นCSV':signature,'ปีการศึกษา':payload.year};
+  for(const p of payload.plans||[])for(const [f,fund] of root.BudgetImportModel.funds.entries()){push({...base,'ชนิดแถว':'โครงการ','รหัสโครงการ':p.id,'ฝ่ายงาน':p.department,'โครงการ':p.name,'ผู้รับผิดชอบ':p.owner,'ประเภทเงิน':fund,'จัดสรร':p.amounts[f],'ที่มา':p.location});for(const a of p.activities)push({...base,'ชนิดแถว':'กิจกรรม','รหัสโครงการ':p.id,'ฝ่ายงาน':p.department,'โครงการ':p.name,'ผู้รับผิดชอบ':a.owner,'กิจกรรม':a.name,'ประเภทเงิน':fund,'จัดสรร':a.amounts[f],'ที่มา':a.location});}
+  payload.units.forEach((u,i)=>{const common={...base,'รหัสโครงการ':u.projectId,'ฝ่ายงาน':u.department,'โครงการ':u.projectName,'ผู้รับผิดชอบ':u.owner,'กิจกรรม':u.activity,'ประเภทเงิน':u.fund,'รหัสทะเบียน':u.registerId||'P'+u.projectId+'-R'+(i+1)};push({...common,'ชนิดแถว':'ทะเบียน','จัดสรร':u.allocated,'รายรับ':u.received,'คงเหลือ':u.declaredRemaining,'ที่มา':u.location});for(const e of u.entries)push({...common,'ชนิดแถว':'รายการ','รายรับ':e.received||0,'คงเหลือ':e.declaredRemaining,'วันที่':e.date,'เลขเอกสาร':e.number,'รายการ':e.description,'ใช้เงิน':e.spent,'หมายเหตุ':e.note,'ที่มา':e.location,'รายการเดิม':e.legacy?'1':'0'});});
+  for(const w of payload.sourceWarnings||[])push({...base,'ชนิดแถว':'คำเตือน','ที่มา':w.location,'ข้อความเตือน':w.message});for(const a of payload.sourceAudit||[])push({...base,'ชนิดแถว':'ตรวจสอบ','ที่มา':a.location,'ข้อมูลตรวจสอบ':JSON.stringify(a)});
+  return '\uFEFF'+out.map((r,i)=>r.map((v,c)=>{let s=String(v??'');if(i&&textKeys.has(headers[c])&&/^[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');
+ }
+ const api={headers,decode,parseFile,encode};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.BudgetCSV=api;
+})(typeof window==='undefined'?globalThis:window);

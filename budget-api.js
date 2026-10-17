@@ -19,8 +19,9 @@ if(!Object.getOwnPropertyDescriptor(window,'budgetRpcReady')){
 
 // Read the active annual version; only its public summary is returned to this loader.
 window.fetchBudgetYearData=async function(year){
- year=Number(year)===2570?2570:2569;
+ year=Number(year);if(!Number.isInteger(year)||year<2500||year>2700)throw Error('ปีการศึกษาไม่ถูกต้อง');
  const rpc=await window.budgetRpcReady,snapshot=await rpc('getBudgetYearSnapshot',year);
  if(snapshot){window.budgetIsAllocationPlan=false;const h=document.querySelector('#overview header h1');if(h)h.textContent=h.textContent.replace(' (คาดการณ์งบประมาณปี 2570)','');const f=document.querySelector('main footer');if(f)f.textContent='ข้อมูลนำเข้าจาก Excel ทั้งปี • เวอร์ชัน '+snapshot.importRevision.slice(0,8);return snapshot;}
+ if(![2569,2570].includes(year))return {year,status:'empty',projects:[],departments:[],snapshotDate:''};
  const r=await fetch(window.budgetYear===year&&window.budgetYearDataUrl|| (year===2570?'budget-data-2570.json':'budget-data.json'),{cache:'no-cache'});if(!r.ok)throw Error('โหลดข้อมูลปีงบประมาณไม่สำเร็จ');return r.json();
 };

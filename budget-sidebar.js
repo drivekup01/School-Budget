@@ -2,7 +2,7 @@
 (() => {
  document.getElementById('budgetSidebar')?.remove();
  const sidebar=document.createElement('aside');sidebar.id='budgetSidebar';
- const pageLink=page=>page==='history.html'?(window.schoolAppPageLinks?.[page]||'https://drivekup01.github.io/School-Procurement/history.html?v=20261015-guest2'):'https://drivekup01.github.io/School-Budget/'+page+'?v=20261015-guestforms1&year='+(window.budgetYear|| (new URL(location.href).searchParams.get('year')==='2570'?2570:2569));
+ const pageLink=page=>page==='history.html'?(window.schoolAppPageLinks?.[page]||'https://drivekup01.github.io/School-Procurement/history.html?v=20261015-guest2'):'https://drivekup01.github.io/School-Budget/'+page+'?v=20261015-guestforms1&year='+(window.budgetYear|| (Number(new URL(location.href).searchParams.get('year'))||2569));
  const brand=document.createElement('a');brand.className='budget-sidebar-brand';brand.href='https://drivekup01.github.io/School-Portal/';brand.target='_top';
  brand.innerHTML='<img src="https://drivekup01.github.io/School-Budget/school-logo.svg" alt="ตราโรงเรียน"><span>โรงเรียนค่ายบางระจันวิทยาคม<small>ระบบงานงบประมาณ</small></span>';sidebar.append(brand);
  const accountNames={'drivekup1':'ผู้ดูแลระบบ','teanpak.su':'ฝ่ายงบประมาณ','editor1':'ฝ่ายจัดซื้อ / จัดจ้าง'};
