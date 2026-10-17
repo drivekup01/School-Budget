@@ -8,7 +8,7 @@
  const accountNames={'drivekup1':'ผู้ดูแลระบบ','teanpak.su':'ฝ่ายงบประมาณ','editor1':'ฝ่ายจัดซื้อ / จัดจ้าง'};
  const nav=document.createElement('nav');nav.setAttribute('aria-label','เมนูระบบงบประมาณ');
  const view=document.body.dataset.documentView||document.body.dataset.budgetPage||'budget';const current=view==='editor'?'history':view;
- for(const [name,page,key] of [['◈ ภาพรวมงบประมาณ','budget-dashboard.html','budget'],['▤ โครงการและกิจกรรม','budget-projects.html','projects'],['▧ เอกสารงบ 1 และ งบ 2','budget-documents.html','budget-documents'],['▣ เอกสารเบิกจ่าย','disbursement.html','disbursement'],['≡ เอกสารจัดซื้อ / จัดจ้าง','history.html#history','history'],['← หน้าหลักโรงเรียน','https://drivekup01.github.io/School-Portal/','home']]){
+ for(const [name,page,key] of [['◈ ภาพรวมงบประมาณ','budget-dashboard.html','budget'],['▤ โครงการและกิจกรรม','budget-projects.html','projects'],['▥ รายงานงบประมาณ','budget-reports.html','reports'],['▧ เอกสารงบ 1 และ งบ 2','budget-documents.html','budget-documents'],['▣ เอกสารเบิกจ่าย','disbursement.html','disbursement'],['≡ เอกสารจัดซื้อ / จัดจ้าง','history.html#history','history'],['← หน้าหลักโรงเรียน','https://drivekup01.github.io/School-Portal/','home']]){
   const link=document.createElement('a');link.textContent=name;const [file,hash]=page.split('#');link.href=page.startsWith('https:')?page:pageLink(file)+(hash?'#'+hash:'');link.target='_top';link.dataset.view=key;if(key==='disbursement')link.hidden=true;if(key===current){link.className='active';link.setAttribute('aria-current','page')}nav.append(link);
  }sidebar.append(nav);
  document.body.prepend(sidebar);document.body.classList.add('has-budget-sidebar');
