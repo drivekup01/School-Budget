@@ -1,6 +1,8 @@
-if(!window.budgetRpcReady){
-/* Use a narrowly scoped Apps Script iframe bridge from the GitHub-hosted form. */
-window.budgetRpcReady=(async()=>{
+/* Connect to Apps Script only when a caller actually needs it. */
+if(!Object.getOwnPropertyDescriptor(window,'budgetRpcReady')){
+ let ready;
+ Object.defineProperty(window,'budgetRpcReady',{configurable:true,get(){
+  if(!ready){ready=(async()=>{
  if(window.google?.script?.run)return(method,...args)=>new Promise((resolve,reject)=>google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](...args));
  const response=await fetch('https://drivekup01.github.io/School-Budget/budget-workbooks.json',{cache:'default'});if(!response.ok)throw Error('โหลดตัวเชื่อมข้อมูลไม่สำเร็จ');const config=await response.json();
  return new Promise((resolve,reject)=>{
@@ -10,7 +12,7 @@ window.budgetRpcReady=(async()=>{
    if(e.source!==peer||e.origin!==origin)return;const item=pending.get(e.data.requestId);if(!item)return;clearTimeout(item.timeout);pending.delete(e.data.requestId);if(e.data.error)item.no(Error(e.data.error));else item.ok(e.data.result);
   });frame.src=config.entryUrl+'?bridge=1';if(document.body)document.body.append(frame);else document.addEventListener('DOMContentLoaded',()=>document.body.append(frame),{once:true});
  });
-})();
-window.budgetRpcReady.catch(()=>{});
-
+  })();ready.catch(()=>{});}
+  return ready;
+ }});
 }

@@ -1,17 +1,41 @@
-/* Imported base + one committed borrowing journal, shared by all page views. */
+/* Public summaries render immediately; financial actions still request fresh data. */
 (() => {
- let pending;
+ let basePending,pending,previewPending;
+ const cacheKey='school-budget-preview-v2:'+(window.budgetYearDataUrl||'budget-data.json');
  const add=(base,delta)=>base==null?null:Math.round((base+delta)*100)/100;
- window.loadBudgetData=()=>pending||(pending=(async()=>{
-  const response=await fetch(window.budgetYearDataUrl||'budget-data.json',{cache:'default'});if(!response.ok)throw Error('โหลดข้อมูลงบประมาณไม่สำเร็จ');const data=await response.json();
-  if(data.status==='allocation-plan')return data;
-  const rpc=await window.budgetRpcReady;const summary=await rpc('getBudgetAdjustmentSummary',data.year);if(summary.year!==data.year)throw Error('ปีของข้อมูลการยืมไม่ตรงกัน');
+ function base(){return basePending||(basePending=fetch(window.budgetYearDataUrl||'budget-data.json',{cache:'default'}).then(r=>{if(!r.ok)throw Error('โหลดข้อมูลงบประมาณไม่สำเร็จ');return r.json()}).catch(e=>{basePending=null;throw e}));}
+ function status(message,busy=false){
+  if(typeof document==='undefined'||!document.querySelector('#overview,#projects'))return;
+  let host=document.getElementById('budgetDataStatus');
+  if(!host){host=document.createElement('div');host.id='budgetDataStatus';host.style.cssText='display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0 20px;font-size:13px;color:#65467d';const text=document.createElement('span');text.setAttribute('role','status');text.setAttribute('aria-live','polite');const button=document.createElement('button');button.type='button';button.textContent='อ่านยอดล่าสุด';button.style.cssText='font:inherit;border:1px solid #d8c4e8;border-radius:8px;padding:7px 12px;background:white;color:#65467d;cursor:pointer';button.onclick=()=>latest(true).catch(()=>{});host.append(text,button);document.querySelector('main header').after(host);}
+  host.firstChild.textContent=message;host.lastChild.disabled=busy;
+ }
+ function notify(data){if(typeof CustomEvent!=='undefined')window.dispatchEvent(new CustomEvent('budget-data-updated',{detail:data}));}
+ function latest(force=false){
+  if(force)pending=null;
+  return pending||(pending=(async()=>{
+   const original=await base();if(original.status==='allocation-plan')return original;
+   status('แสดงข้อมูลนำเข้า ณ '+(original.snapshotDate||'ไม่ระบุ')+' · กำลังอ่านยอดล่าสุดจาก Sheet…',true);
+   const data=JSON.parse(JSON.stringify(original));const rpc=await window.budgetRpcReady;const summary=await rpc('getBudgetAdjustmentSummary',data.year);if(summary.year!==data.year)throw Error('ปีของข้อมูลการยืมไม่ตรงกัน');
   const names=['เงินอุดหนุนรายหัว','เงินกิจกรรมพัฒนาผู้เรียน','เงินรายได้สถานศึกษา','อื่น ๆ'];
   for(const department of data.departments){department.adjustedIncome=department.income.slice();}
   for(const project of data.projects){const adjustment=summary.projects[project.id];project.adjustedIncome=project.income.slice();if(!adjustment)continue;const department=data.departments.find(d=>d.name===project.department);
    adjustment.delta.forEach((delta,i)=>{const previous=project.remaining[i];if(delta)project.adjustedIncome[i]=add(project.adjustedIncome[i]??adjustment.receipts?.[i]??(project.amounts[i]||0),delta);project.remaining[i]=adjustment.current?.[i]??add(previous,delta);if(department){if(delta)department.adjustedIncome[i]=add(department.adjustedIncome[i]??0,delta);const change=previous!=null&&project.remaining[i]!=null?project.remaining[i]-previous:delta;department.remaining[i]=add(department.remaining[i],change);}});
    for(const block of Object.values(adjustment.blocks)){if(!block.activity||!block.delta)continue;const i=names.indexOf(block.budgetType),activity=project.activities.find(a=>a.name===block.activity||a.name.endsWith(block.activity));if(i<0||!activity)continue;activity.adjustedAmounts=activity.adjustedAmounts||activity.amounts.slice();activity.adjustedAmounts[i]=add(activity.adjustedAmounts[i],block.delta);activity.adjustedIncome=activity.adjustedIncome||(activity.income&&activity.income.some(v=>v!==null)?activity.income.slice():activity.amounts.slice());activity.adjustedIncome[i]=add(activity.adjustedIncome[i],block.delta);if(activity.remaining)activity.remaining[i]=add(activity.remaining[i],block.delta);}
   }
-  return data;
- })());
+
+   const savedAt=Date.now();try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt,data}));}catch{}
+   status('อ่านยอดล่าสุดแล้ว '+new Date(savedAt).toLocaleTimeString('th-TH',{timeZone:'Asia/Bangkok'}));notify(data);return data;
+  })().catch(e=>{pending=null;status('อ่านยอดล่าสุดไม่สำเร็จ · กำลังแสดงข้อมูลเดิม กรุณากดอ่านยอดล่าสุดเพื่อลองใหม่');throw e}));
+ }
+ window.loadBudgetData=(options={})=>{
+  if(options.baseOnly)return base();
+  if(!options.preview)return latest();
+  return previewPending||(previewPending=(async()=>{
+   const original=await base();if(original.status==='allocation-plan'){status('แผนงบประมาณปี '+original.year);return original;}
+   try{const cached=JSON.parse(sessionStorage.getItem(cacheKey)||'null');const age=Date.now()-cached?.savedAt;if(cached?.data?.year===original.year&&cached.data.snapshotDate===original.snapshotDate&&age>=0&&age<60000){status('ข้อมูลที่อ่านล่าสุด '+new Date(cached.savedAt).toLocaleTimeString('th-TH',{timeZone:'Asia/Bangkok'})+' · เก็บไว้ไม่เกิน 1 นาที');return cached.data;}}catch{}
+   status('ข้อมูลนำเข้า ณ '+(original.snapshotDate||'ไม่ระบุ')+' · กำลังอ่านยอดล่าสุด…',true);
+   latest().catch(()=>{});return original;
+  })().catch(e=>{previewPending=null;throw e}));
+ };
 })();
