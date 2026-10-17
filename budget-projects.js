@@ -3,7 +3,7 @@
  const money=n=>n.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
  const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const sum=arr=>arr.reduce((a,b)=>a+b,0);let projects=[],departments=[];
- function render(){if((!window.schoolUser||window.schoolUser.role==='guest'))$('rows').closest('table').querySelector('th:nth-child(2)').textContent='โครงการ / จำนวนกิจกรรม';
+ function render(){const expanded=[...$('rows').querySelectorAll('button[aria-expanded="true"]')].map(b=>b.dataset.id);const focused=document.activeElement?.closest('#rows button[data-id]')?.dataset.id;$('rows').closest('table').querySelector('th:nth-child(2)').textContent=(!window.schoolUser||window.schoolUser.role==='guest')?'โครงการ / จำนวนกิจกรรม':'โครงการ / ผู้รับผิดชอบ';
   const q=$('search').value.trim().toLowerCase();const filtered=projects.filter(p=>(!$('department').value||p.department===$('department').value)&&(!$('project').value||p.id===Number($('project').value))&&(!q||[p.name,p.owner,...p.activities.map(a=>a.name+' '+a.owner)].join(' ').toLowerCase().includes(q)));
   $('count').textContent=`${filtered.length} โครงการ · ${sum(filtered.map(p=>p.activities.length))} กิจกรรม`;
   const selected=departments.find(d=>d.name===$('department').value);if(selected&&!selected.complete)$('count').textContent='มีเฉพาะยอดคงเหลือรวม · ไม่มีข้อมูลโครงการและกิจกรรมในไฟล์นี้';
