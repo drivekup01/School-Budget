@@ -1,27 +1,32 @@
-/* Preview only: no uploaded workbook is transmitted or persisted. */
 (async()=>{
- const byId=id=>document.getElementById(id), access=byId('accessStatus');
- let user;try{user=await window.schoolAuthReady;}catch{access.textContent='กรุณาเข้าสู่ระบบใหม่';return;}
- if(user.id!=='teanpak.su'||user.role!=='admin'){access.textContent='หน้านี้เปิดให้เฉพาะบัญชี teanpak.su ที่มีสิทธิ์ผู้ดูแลระบบ';return;}
- access.textContent='ผู้ดูแลข้อมูล: teanpak.su';byId('importContent').hidden=false;
- const fileInput=byId('importFile'),sheet=byId('importSheet'),status=byId('fileStatus'),panel=byId('previewPanel');let workbook=null,generation=0;
- function preview(){
-  const ws=workbook?.Sheets[sheet.value];if(!ws)return;
-  const range=XLSX.utils.decode_range(ws['!ref']||'A1');
-  const sample={s:range.s,e:{r:Math.min(range.e.r,range.s.r+24),c:Math.min(range.e.c,range.s.c+23)}};
-  const rows=XLSX.utils.sheet_to_json(ws,{header:1,range:sample,defval:'',raw:false,blankrows:true});
-  const table=byId('importPreview');table.replaceChildren();
-  for(let i=0;i<rows.length;i++){const tr=document.createElement('tr'),th=document.createElement('th');th.scope='row';th.textContent=String(range.s.r+i+1);tr.append(th);for(const value of rows[i]){const td=document.createElement('td');td.textContent=String(value);tr.append(td);}table.append(tr);}
-  byId('sheetStatus').textContent='ตัวอย่างสูงสุด 25 แถว × 24 คอลัมน์ • ยังไม่ใช่ผลการนำเข้า';
- }
- sheet.addEventListener('change',preview);
- fileInput.addEventListener('change',async()=>{
-  const request=++generation;workbook=null;panel.hidden=true;sheet.replaceChildren();byId('importPreview').replaceChildren();status.textContent='';const file=fileInput.files[0];if(!file)return;
-  if(!/\.(xlsx|xls)$/i.test(file.name)){status.textContent='กรุณาเลือกไฟล์ .xlsx หรือ .xls';return;}
-  if(file.size>10*1024*1024){status.textContent='ไฟล์มีขนาดเกิน 10 MB';return;}
-  if(!window.XLSX){status.textContent='โหลดตัวอ่าน Excel ไม่สำเร็จ กรุณาโหลดหน้าใหม่';return;}
-  status.textContent='กำลังอ่านไฟล์…';
-  try{const bytes=await file.arrayBuffer();if(request!==generation)return;const parsed=XLSX.read(bytes,{type:'array',sheetRows:25});if(!parsed.SheetNames.length)throw Error('ไม่พบชีต');workbook=parsed;for(const name of workbook.SheetNames){const option=document.createElement('option');option.value=name;option.textContent=name;sheet.append(option);}status.textContent=file.name+' • '+workbook.SheetNames.length+' ชีต • อ่านตัวอย่างสำเร็จ';panel.hidden=false;preview();}
-  catch{if(request===generation){workbook=null;status.textContent='อ่านไฟล์ไม่ได้ กรุณาตรวจว่าเป็นไฟล์ Excel ที่ไม่เสียหายและไม่มีรหัสผ่าน';}}
- });
+ const $=id=>document.getElementById(id),money=n=>Number(n).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
+ let user;try{user=await window.schoolAuthReady;}catch{$('accessStatus').textContent='กรุณาเข้าสู่ระบบใหม่';return;}
+ if(user.id!=='teanpak.su'||user.role!=='admin'){$('accessStatus').textContent='หน้านี้เปิดเฉพาะ teanpak.su ที่มีสิทธิ์ admin';return;}
+ $('accessStatus').textContent='ผู้ดูแลข้อมูล: teanpak.su';$('importContent').hidden=false;
+ const year=()=>Number($('importYear').value),rpc=(method,...args)=>window.schoolRpc(method,...args);let current=null,revision=null,busy=false,generation=0,requestId=crypto.randomUUID(),resolveConfirm=null;
+ function invalidate(){generation++;current=null;revision=null;requestId=crypto.randomUUID();$('previewPanel').hidden=true;$('publish').disabled=true;}
+ function controls(on){busy=on;for(const id of ['importYear','importFile','validate','refreshHistory','template'])$(id).disabled=on;renderPublish();}
+ function renderPublish(){$('publish').disabled=busy||!current?.report.valid||revision===null;}
+ function cell(row,text,tag='td'){const e=document.createElement(tag);e.textContent=String(text??'');row.append(e);return e;}
+ async function history(){const serial=generation;$('historyStatus').textContent='กำลังโหลดประวัติ…';try{const h=await rpc('getBudgetImportHistory',year());if(serial!==generation)return;revision=h.revision;const table=document.createElement('table'),head=document.createElement('tr');for(const h of ['เวลาไทย','ผู้บันทึก','รายการ','โครงการ','ไฟล์ / ที่มา','ใช้งาน'])cell(head,h,'th');table.append(head);
+  const rows=[...h.versions,{id:'legacy',action:'ข้อมูลก่อนเริ่มนำเข้า',files:[],user:'ระบบเดิม',createdAt:'',projects:''}];for(const v of rows){const tr=document.createElement('tr');cell(tr,v.createdAt?new Date(v.createdAt).toLocaleString('th-TH',{timeZone:'Asia/Bangkok'}):'—');cell(tr,v.user);cell(tr,({import:'นำเข้า',restore:'ย้อนกลับ',entry:'บันทึกใช้เงิน',borrow:'ยืมเงิน','cancel-borrow':'ยกเลิกยืม'})[v.action]||v.action);cell(tr,v.projects);cell(tr,v.files.join(', ')||v.source||'');const td=cell(tr,'');const target=v.action==='restore'&&v.source==='legacy'?'legacy':v.id;const b=document.createElement('button');b.type='button';b.textContent=target===h.revision?'กำลังใช้งาน':'ย้อนกลับ';b.disabled=target===h.revision;b.onclick=()=>restore(target,v);td.append(b);table.append(tr);}$('history').replaceChildren(table);$('historyStatus').textContent='ประวัติปี '+h.year+' • '+h.versions.length+' รายการ';}
+ catch(e){if(serial===generation){revision=null;$('historyStatus').textContent='ยังเชื่อมต่อประวัติไม่ได้: '+e.message;}}renderPublish();}
+ function closeConfirm(value){$('confirmDialog').close();const r=resolveConfirm;resolveConfirm=null;r?.(value);}
+ function checkConfirm(){$('acceptConfirm').disabled=$('confirmYear').value!==String(year())||!$('ackWarnings').checked;}
+ $('confirmYear').oninput=checkConfirm;$('ackWarnings').onchange=checkConfirm;$('cancelConfirm').onclick=()=>closeConfirm(false);$('confirmDialog').addEventListener('cancel',e=>{e.preventDefault();closeConfirm(false)});$('acceptConfirm').onclick=()=>closeConfirm(true);
+ function confirm(title,details,warnings){$('confirmTitle').textContent=title;$('confirmDetails').textContent=details;$('confirmWarnings').textContent=warnings;$('confirmYear').value='';$('ackWarnings').checked=false;checkConfirm();$('confirmDialog').showModal();$('cancelConfirm').focus();return new Promise(r=>resolveConfirm=r);}
+ $('template').onclick=()=>{const x=BudgetExcelImport,b=XLSX.utils.book_new();const units=[x.unitHeaders,[year(),1,BudgetImportModel.depts[0],'โครงการตัวอย่าง','ผู้รับผิดชอบ','กิจกรรมตัวอย่าง',BudgetImportModel.funds[0],10000,10000,9000]];const entries=[x.entryHeaders,[year(),1,'กิจกรรมตัวอย่าง',BudgetImportModel.funds[0],'2026-10-01','ทดสอบ-001','รายการตัวอย่าง (ลบหรือแก้ก่อนนำเข้า)',1000,9000,'']];XLSX.utils.book_append_sheet(b,XLSX.utils.aoa_to_sheet(units),'ทะเบียน');XLSX.utils.book_append_sheet(b,XLSX.utils.aoa_to_sheet(entries),'รายการใช้เงิน');XLSX.writeFile(b,'แม่แบบงบประมาณ-'+year()+'.xlsx');};
+ $('importFile').onchange=()=>{invalidate();$('validate').disabled=!$('importFile').files.length;$('fileStatus').textContent='เลือก '+$('importFile').files.length+' ไฟล์ • ยังไม่ส่งข้อมูล';history();};
+ $('importYear').onchange=()=>{invalidate();$('fileStatus').textContent='กรุณาตรวจไฟล์อีกครั้งสำหรับปี '+year();history();};
+ $('validate').onclick=async()=>{if(busy)return;const files=[...$('importFile').files];invalidate();const serial=generation;
+  if(!files.length||files.length>20||files.reduce((s,f)=>s+f.size,0)>10*1024*1024||files.some(f=>! /\.(xlsx|xls)$/i.test(f.name))){$('fileStatus').textContent='เลือก Excel ไม่เกิน 20 ไฟล์ รวมขนาดไม่เกิน 10 MB';return;}
+  controls(true);$('fileStatus').textContent='กำลังอ่านและตรวจไฟล์ในเครื่อง…';try{if(!window.XLSX)throw Error('โหลดตัวอ่าน Excel ไม่สำเร็จ');const loaded=[];for(const file of files){const bytes=await file.arrayBuffer();if(serial!==generation)return;loaded.push({name:file.name,book:XLSX.read(bytes,{type:'array',cellFormula:true,cellDates:false})});}
+   const parsed=BudgetExcelImport.parse(loaded,year(),XLSX);if(serial!==generation)return;current=parsed;const r=parsed.report;$('importSummary').textContent='ปี '+year()+' • '+r.projects+' โครงการ • '+r.units+' ทะเบียน • '+r.entries+' รายการ • จัดสรร '+money(r.allocated)+' บาท • รายรับ '+money(r.received)+' บาท';
+   const list=document.createElement('ul');for(const issue of r.issues){const li=document.createElement('li');li.className='issue-'+issue.level;li.textContent=(issue.level==='error'?'ข้อผิดพลาด':'คำเตือน')+' — '+issue.location+': '+issue.message;list.append(li);}$('issues').replaceChildren(list);$('previewTitle').textContent='ตัวอย่างทะเบียน 20 แถวแรก (ยอดคงเหลือใช้รายรับลบรายจ่าย)';const table=$('importPreview');table.replaceChildren();const head=document.createElement('tr');for(const h of ['โครงการ','กิจกรรม','ประเภทเงิน','รายรับ','คงเหลือคำนวณ'])cell(head,h,'th');table.append(head);for(const u of parsed.payload.units.slice(0,20)){const tr=document.createElement('tr');cell(tr,u.projectId+' '+u.projectName);cell(tr,u.activity);cell(tr,u.fund);cell(tr,money(u.received));cell(tr,money(u.received-u.entries.reduce((s,e)=>s+e.spent,0)));table.append(tr);}
+   $('previewPanel').hidden=false;$('fileStatus').textContent=r.valid?'ตรวจไฟล์แล้ว กรุณาทบทวนคำเตือนก่อนยืนยัน':'พบข้อผิดพลาด ต้องแก้ไขไฟล์และตรวจใหม่';await history();
+  }catch(e){$('fileStatus').textContent='ตรวจไฟล์ไม่ได้: '+e.message;}finally{controls(false);}};
+ $('publish').onclick=async()=>{if(busy||!current?.report.valid||revision===null)return;const r=current.report,warnings=r.issues.filter(i=>i.level==='warning');if(!await confirm('ยืนยันอัปเดตปีงบประมาณ '+year(),current.payload.files.join('\n')+'\n'+r.projects+' โครงการ / '+r.units+' ทะเบียน / '+r.entries+' รายการ\nรายรับ '+money(r.received)+' บาท\nข้อมูลทั้งปีที่เลือกจะถูกแทนที่ โดยเก็บเวอร์ชันเดิมไว้',warnings.length+' คำเตือน • หากยอดไม่ตรง ระบบใช้ยอดคำนวณที่แสดงในตัวอย่าง'))return;
+  controls(true);$('publishStatus').textContent='กำลังบันทึกข้อมูลกลาง…';try{await rpc('publishBudgetYearImport',{year:year(),payload:current.payload,expectedRevision:revision,requestId,acknowledgeWarnings:true,confirmYear:String(year())});$('publishStatus').textContent='อัปเดตสำเร็จ ผู้ใช้งานเปิดหน้าหรืออ่านยอดล่าสุดเพื่อดูชุดใหม่';invalidate();$('fileStatus').textContent='อัปเดตแล้ว • เก็บประวัติเรียบร้อย';await history();}catch(e){$('publishStatus').textContent='ยังยืนยันผลไม่ได้: '+e.message+' กรุณาโหลดประวัติก่อนลองอีกครั้ง';await history();}finally{controls(false);}};
+ async function restore(id,v){if(busy||revision===null)return;if(!await confirm('ยืนยันย้อนกลับปีงบประมาณ '+year(),'ใช้ข้อมูลจาก '+(v.createdAt?new Date(v.createdAt).toLocaleString('th-TH',{timeZone:'Asia/Bangkok'}):'ระบบเดิมก่อนนำเข้า')+'\nการเปลี่ยนแปลงหลังเวอร์ชันนี้จะไม่อยู่ในชุดที่ใช้งาน แต่ประวัติยังเก็บไว้','การย้อนกลับครอบคลุมรายการใช้เงินและการยืมในชุดข้อมูลด้วย'))return;controls(true);try{await rpc('restoreBudgetYearImport',{year:year(),id,expectedRevision:revision,confirmYear:String(year())});invalidate();$('fileStatus').textContent='ย้อนกลับแล้ว และเพิ่มประวัติการย้อนกลับ';await history();}catch(e){$('historyStatus').textContent=e.message;}finally{controls(false);}}
+ $('refreshHistory').onclick=history;await history();
 })();

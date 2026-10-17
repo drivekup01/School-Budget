@@ -37,3 +37,14 @@ Web app: https://script.google.com/macros/s/AKfycbwrzdF3tfWbHDy32IeknlDDvEiIAGA-
 admin1 และ admin2 ใช้สิทธิ์ admin; editor1 ใช้สิทธิ์ editor อ่านทะเบียนงบได้แต่ saveBudgetEntry ปฏิเสธ ฝั่งเอกสารทุกบัญชีเข้าใช้ได้หลังตรวจเซสชันจากตัวเชื่อมงบประมาณ การลงชื่อออกยกเลิกเซสชันฝั่งเซิร์ฟเวอร์ มีการจำกัดการเข้าสู่ระบบผิด 5 ครั้งต่อบัญชีใน 5 นาที
 
 Guest ใช้หน้า overview และ projects ได้โดยไม่เข้าสู่ระบบ แสดงเฉพาะยอดสรุป/โครงการ/กิจกรรม ไม่มีลิงก์เข้า ledger หรือ Sheet แก้ไข หน้า ledger และเอกสารยังตรวจบัญชี ระบบเซิร์ฟเวอร์ยังปฏิเสธ guest และ editor ที่พยายามบันทึกงบ
+## Annual Excel import (2026-10-17)
+
+The import page is restricted to the server-validated `teanpak.su` admin account. Upload publishing and restoration repeat that exact check on the server. Existing accounts retain their current roles.
+
+The initial adapter accepts explicit Thai headers in the downloadable two-sheet template. Column order can change; unknown sheets/headers stop import with locations. It does not guess the existing heterogeneous legacy workbook layout. Original Excel samples are still needed to add reliable legacy adapters. Excel formulas are not recalculated: cached results, errors and balance relationships are checked, with an explicit acknowledgement of that limitation.
+
+Imports replace the selected year's normalized projects, activities, fund registers and expense entries. All versions are private in the existing account spreadsheet, with a script-property active pointer updated only after payload and manifest writes complete. Financial entries and borrowing on imported data create versions too. Restoring an imported version creates a new version. The legacy option returns to untouched legacy worksheets, rather than copying or deleting those worksheets. It is labelled as the original system; those live legacy worksheets can subsequently change through normal legacy entry actions.
+
+Supported years remain 2569 and 2570, matching existing application year selection. Per batch: at most 20 Excel files / 10 MB, normalized payload at most 4 MB, 2,000 registers and 30,000 expense entries. Public summary RPC returns totals and project/activity metadata only, never ledger rows, notes or upload identities. Private history and rollback require the importer account. No public sharing or Drive permission changes are required.
+
+Tests: `node --test tests/yearly-import.cjs`. UI selection, validation and confirmation gate tested with a local mock and a generated workbook; no production annual data was replaced during verification.
