@@ -2,13 +2,19 @@
 (function(root){
  const unitHeaders=['ปีงบประมาณ','รหัสโครงการ','ฝ่ายงาน','โครงการ','ผู้รับผิดชอบ','กิจกรรม','ประเภทเงิน','จัดสรร','รายรับ','คงเหลือ'];
  const entryHeaders=['ปีงบประมาณ','รหัสโครงการ','กิจกรรม','ประเภทเงิน','วันที่','เลขเอกสาร','รายการ','ใช้เงิน','คงเหลือ','หมายเหตุ'];
- function parse(files,year,XLSX){
-  const payload={schema:1,year:Number(year),files:files.map(f=>f.name),units:[],sourceWarnings:[],borrowing:[]},issues=[],pending=[];
+ function parse(files,year,XLSX,options={}){
+  const payload={schema:1,year:Number(year),files:files.map(f=>f.name),units:[],sourceWarnings:[],sourceAudit:[],plans:[],borrowing:[]},issues=[],pending=[],mappings=[];
   const add=(level,location,message)=>issues.push({level,location,message});
   const normalize=v=>String(v??'').trim(),key=(id,fund,activity)=>id+'|'+fund+'|'+activity;
   function number(value,location,optional=false){if((value==null||value==='')&&optional)return null;const n=typeof value==='number'?value:typeof value==='string'&&/^-?\d+(?:,\d{3})*(?:\.\d{1,2})?$/.test(value.trim())?Number(value.replace(/,/g,'')):NaN;if(!Number.isFinite(n))add('error',location,'จำนวนเงินหายไปหรือไม่ใช่ตัวเลข');return n;}
   function date(value,location){if(typeof value==='number'){const d=XLSX.SSF.parse_date_code(value);if(d)return d.y+'-'+String(d.m).padStart(2,'0')+'-'+String(d.d).padStart(2,'0');}return normalize(value);}
   for(const file of files){let recognized=0;
+   if(file.encoding&&file.encoding!=='UTF-8')payload.sourceWarnings.push({location:file.name,message:'อ่าน CSV ด้วย '+file.encoding+' โปรดตรวจอักษรภาษาไทย'});
+   const adapted=(file.kind==='csv'?root.BudgetCSV?.parseFile(file,year,XLSX):null)||root.BudgetLegacyImport?.parseFile(file,year,XLSX,options);
+   if(adapted){payload.units.push(...adapted.units);payload.plans.push(...adapted.plans);payload.sourceWarnings.push(...adapted.warnings);payload.sourceAudit.push(...adapted.audit);issues.push(...adapted.issues);mappings.push(...adapted.mappings);
+    for(const name of file.book.SheetNames)for(const [address,cell] of Object.entries(file.book.Sheets[name])){if(address[0]==='!')continue;const loc=file.name+'/'+name+'!'+address;if(cell.t==='e'||cell.f?.includes('#REF!'))add('error',loc,'สูตรหรือเซลล์มีข้อผิดพลาด');if(cell.f&&cell.v==null)add('error',loc,'สูตรไม่มีผลคำนวณ กรุณาคำนวณและบันทึก Excel ก่อน');if(cell.f)for(const ref of cell.f.matchAll(/'((?:[^']|'')+)'!/g)){const title=ref[1].replace(/''/g,"'");if(!file.book.Sheets[title])add('error',loc,'สูตรอ้างถึงชีตที่ไม่มีอยู่: '+title);}}
+    continue;
+   }
    for(const name of file.book.SheetNames){
     const ws=file.book.Sheets[name];if(!ws['!ref'])continue;const range=XLSX.utils.decode_range(ws['!ref']);if(range.e.r>50000||range.e.c>127){add('error',file.name+'/'+name,'ชีตมีขนาดเกิน 50,000 แถวหรือ 128 คอลัมน์');continue;}
     for(const address of Object.keys(ws).filter(k=>k[0]!=='!')){const cell=ws[address],loc=file.name+'/'+name+'!'+address;
@@ -27,8 +33,8 @@
    }if(!recognized)add('error',file.name,'ไม่พบข้อมูลที่นำเข้าได้');
   }
   const index=new Map(payload.units.map(u=>[key(u.projectId,u.fund,u.activity),u]));for(const e of pending){const unit=index.get(key(e.projectId,e.fund,e.activity));if(!unit)add('error',e.location,'ไม่พบทะเบียนของโครงการ/กิจกรรม/ประเภทเงินนี้');else unit.entries.push(e);}
-  payload.sourceWarnings.push({location:'สูตร Excel',message:'ระบบตรวจข้อผิดพลาดและความสัมพันธ์ของยอดเงิน แต่ไม่ได้คำนวณสูตร Excel ทุกชนิดใหม่ กรุณาบันทึกผลคำนวณล่าสุดก่อนอัปโหลด'});
-  const report=root.BudgetImportModel.check(payload,year);report.issues.unshift(...issues);report.valid=!report.issues.some(i=>i.level==='error');return {payload,report};
+  if(files.some(f=>f.kind!=='csv'))payload.sourceWarnings.push({location:'สูตร Excel',message:'ระบบตรวจข้อผิดพลาดและความสัมพันธ์ของยอดเงิน แต่ไม่ได้คำนวณสูตร Excel ทุกชนิดใหม่ กรุณาบันทึกผลคำนวณล่าสุดก่อนอัปโหลด'});
+  const report=root.BudgetImportModel.check(payload,year);report.issues.unshift(...issues);report.valid=!report.issues.some(i=>i.level==='error');return {payload,report,mappings};
  }
  const api={unitHeaders,entryHeaders,parse};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.BudgetExcelImport=api;
 })(typeof window==='undefined'?globalThis:window);
