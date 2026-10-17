@@ -20,8 +20,7 @@
  const brand=document.querySelector('#budgetSidebar .budget-sidebar-brand');if(!brand||document.getElementById('budgetClock'))return;
  const bar=document.createElement('div');bar.className='budget-clock-bar';
  const clock=document.createElement('div');clock.id='budgetClock';clock.className='budget-clock';clock.setAttribute('role','group');clock.setAttribute('aria-label','วันที่และเวลาปัจจุบัน ประเทศไทย');
- const icon=document.createElement('span');icon.className='budget-clock-icon';icon.setAttribute('aria-hidden','true');icon.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>';
- const content=document.createElement('div'),date=document.createElement('span'),time=document.createElement('time');date.className='budget-clock-date';time.className='budget-clock-time';content.append(date,time);clock.append(icon,content);bar.append(clock);brand.after(bar);
+ const content=document.createElement('div'),date=document.createElement('span'),time=document.createElement('time');date.className='budget-clock-date';time.className='budget-clock-time';content.append(date,time);clock.append(content);bar.append(clock);brand.after(bar);
  const dayFormat=new Intl.DateTimeFormat('th-TH-u-ca-buddhist-nu-latn',{timeZone:'Asia/Bangkok',weekday:'long',day:'numeric',month:'long',year:'numeric'});
  const timeFormat=new Intl.DateTimeFormat('th-TH-u-nu-latn',{timeZone:'Asia/Bangkok',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
  function tick(){const now=new Date(),parts=Object.fromEntries(dayFormat.formatToParts(now).map(p=>[p.type,p.value]));const label=parts.weekday+'ที่ '+parts.day+' '+parts.month+' พ.ศ. '+parts.year;if(date.textContent!==label)date.textContent=label;time.dateTime=now.toISOString();time.textContent='เวลา '+timeFormat.format(now)+' น. · เวลาไทย';}
