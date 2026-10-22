@@ -3,7 +3,7 @@
  if(!['admin','guest'].includes(user.role)){document.querySelector('.forms-heading>a').hidden=true;throw Error('ส่วนเอกสารงบประมาณสำหรับผู้ดูแลระบบและฝ่ายงบประมาณ')}
  const status=document.getElementById('formsStatus'),list=document.getElementById('formsHistory'),year=document.getElementById('historyYear'),search=document.getElementById('historySearch'),canDelete=user.role==='admin',selected=new Set();
  let visible=[],removeButton,restoreButton,allCheck;
- function label(d){return [d.fields?.number1,d.fields?.number2,d.projectName].filter(Boolean).join(' · ')||'เอกสารไม่มีชื่อ'}
+ function label(d){return [d.documentKind==='one'?'งบ 1 · ประมาณการ':d.documentKind==='two'?'งบ 2 · เบิกจ่ายจริง':'งบ 1–2 (เดิม)',d.documentKind==='two'?d.fields?.number2:d.documentKind==='one'?d.fields?.number1:[d.fields?.number1,d.fields?.number2].filter(Boolean).join(' / '),d.projectName].filter(Boolean).join(' · ')||'เอกสารไม่มีชื่อ'}
  function updateSelection(){if(!canDelete)return;removeButton.textContent='ลบที่เลือก'+(selected.size?' ('+selected.size+')':'');removeButton.disabled=!selected.size;if(allCheck){allCheck.checked=!!visible.length&&selected.size===visible.length;allCheck.indeterminate=selected.size>0&&selected.size<visible.length}restoreButton.hidden=!budgetDocumentStore.canRestore()}
  const dialog=document.createElement('dialog');dialog.className='forms-delete-dialog';dialog.setAttribute('aria-labelledby','deleteFormsTitle');
  if(canDelete){
