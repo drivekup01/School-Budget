@@ -1,5 +1,5 @@
 {
-  "liveVersion": 14,
+  "liveVersion": 15,
   "verifiedOn": "2026-10-22",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
@@ -12,5 +12,6 @@
   "primary2570": true,
   "summaryCacheSeconds": 60,
   "staticFirstPreview": true,
-  "saveReturnsRegister": true
+  "saveReturnsRegister": true,
+  "entryEditCancelRestore": true
 }
