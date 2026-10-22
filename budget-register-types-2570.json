@@ -1,332 +1,804 @@
 {
-  "description": "ประเภทงบของสำเนาปี 2570 ตรวจโครงสร้างหัวทะเบียนทั้ง 39 แท็บเทียบกับแม่แบบเดิม",
+  "description": "ทะเบียนปี 2570 แยกกิจกรรมและประเภทเงิน ใช้ยอดตั้งต้นจากแผนที่ผู้ใช้ยืนยัน รวมโครงการจากทะเบียนย่อยโดยไม่ซ้ำ",
   "projects": {
     "1": [
       {
-        "budgetType": "อื่น ๆ",
-        "activity": null,
-        "sourceHeaderRow": 14
-      },
-      {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": null,
-        "sourceHeaderRow": 22
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": "กิจกรรมเข้าค่ายพักแรมลูกเสือ - เนตรนารีและกิจกรรมนักเรียน",
+        "registerId": "P1-F2-R1",
+        "sourceHeaderRow": 13
       },
       {
         "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
-        "activity": null,
-        "sourceHeaderRow": 32
+        "activity": "กิจกรรมส่งเสริมและพัฒนาเทคโนโลยีสำหรับนักเรียน",
+        "registerId": "P1-F2-R2",
+        "sourceHeaderRow": 18
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": "กิจกรรมสร้างเสริมสถาบัน วันสำคัญ คุณธรรม จริยธรรม อัตลักษณ์ของผู้เรียน",
+        "registerId": "P1-F2-R3",
+        "sourceHeaderRow": 23
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": "กิจกรรมส่งเสริมความสามารถด้านกีฬา(กีฬาสี ภายในโรงเรียน",
+        "registerId": "P1-F2-R4",
+        "sourceHeaderRow": 28
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": "กิจกรรมส่งเสริมวิชาการสู่ความเป็นเลิศของผู้เรียนในทุกมิติ (เฉพาะงานกิจกรรม TEAM)",
+        "registerId": "P1-F2-R5",
+        "sourceHeaderRow": 33
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมเข้าค่ายพักแรมลูกเสือ - เนตรนารีและกิจกรรมนักเรียน",
+        "registerId": "P1-F3-R6",
+        "sourceHeaderRow": 38
+      },
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมสร้างเสริมสถาบัน วันสำคัญ คุณธรรม จริยธรรม อัตลักษณ์ของผู้เรียน",
+        "registerId": "P1-F4-R7",
+        "sourceHeaderRow": 43
       }
     ],
     "2": [
       {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": "วงโยธวาทิต",
-        "sourceHeaderRow": 11
-      },
-      {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": "กิจกรรมส่งเสริมความเป็นเลิศของสถานศึกษา",
-        "sourceHeaderRow": 31
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศด้านดนตรีและวงโยธวาทิต",
+        "registerId": "P2-F1-R1",
+        "sourceHeaderRow": 10
       },
       {
         "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
-        "activity": null,
-        "sourceHeaderRow": 36
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศทางวิชาการของผู้เรียน",
+        "registerId": "P2-F2-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศด้านกีฬาของผู้เรียน",
+        "registerId": "P2-F2-R3",
+        "sourceHeaderRow": 20
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศทางวิชาการของผู้เรียน",
+        "registerId": "P2-F3-R4",
+        "sourceHeaderRow": 25
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศด้านกีฬาของผู้เรียน",
+        "registerId": "P2-F3-R5",
+        "sourceHeaderRow": 30
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมส่งเสริมความเป็นเลิศด้านดนตรีและวงโยธวาทิต",
+        "registerId": "P2-F3-R6",
+        "sourceHeaderRow": 35
       }
     ],
     "3": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 8
+        "activity": "กิจกรรมสถานศึกษารางวัลพระราชทาน",
+        "registerId": "P3-F1-R1",
+        "sourceHeaderRow": 9
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนามาตรฐานของสถานศึกษา",
+        "registerId": "P3-F1-R2",
+        "sourceHeaderRow": 14
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมสถานศึกษารางวัลพระราชทาน",
+        "registerId": "P3-F3-R3",
+        "sourceHeaderRow": 19
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมพัฒนามาตรฐานของสถานศึกษา",
+        "registerId": "P3-F3-R4",
+        "sourceHeaderRow": 24
       }
     ],
     "4": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 7
+        "activity": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรสถานศึกษา",
+        "registerId": "P4-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรพัฒนาคุณภาพการศึกษาสู่ ความเป็นเลิศในทุกมิติ สร้างจิตสำนึกรักษ์สิ่งแวดล้อม",
+        "registerId": "P4-F1-R2",
+        "sourceHeaderRow": 15
       }
     ],
     "5": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "activity": "กิจกรรมจัดซื้อสื่อ เทคโนโลยี สารสนเทศ (จอ LED )",
+        "registerId": "P5-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมจัดซื้อสื่อ วัสดุอุปกรณ์ เพื่อส่งเสริมการจัดการเรียนการสอน",
+        "registerId": "P5-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมจัดซื้อสื่อ เทคโนโลยี สารสนเทศ (จอ LED )",
+        "registerId": "P5-F3-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "6": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "activity": "กิจกรรมอบรมเพิ่มศักยภาพครูด้านการวิจัยในชั้นเรียน",
+        "registerId": "P6-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมการเผยแพร่งานวิจัยในชั้นเรียน",
+        "registerId": "P6-F1-R2",
+        "sourceHeaderRow": 15
       }
     ],
     "7": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "activity": "กิจกรรมส่งเสริมพัฒนางานทะเบียน",
+        "registerId": "P7-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการวัดและประเมินผล",
+        "registerId": "P7-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมการวัดและประเมินผลผู้เรียนด้วยเทคโนโลยี",
+        "registerId": "P7-F1-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "8": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 10
+        "registerId": "P8-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "9": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 13
+        "activity": "กิจกรรมรักการอ่าน",
+        "registerId": "P9-F1-R1",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมตอบคำถามสารานุกรม",
+        "registerId": "P9-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมนิทรรศการวันสำคัญ",
+        "registerId": "P9-F1-R3",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมยุวบรรณารักษ์",
+        "registerId": "P9-F1-R4",
+        "sourceHeaderRow": 26
       }
     ],
     "10": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 8
+        "activity": "กิจกรรมการดำเนินงานกองทุนกู้ยืมเงินเพื่อการศึกษา (กยศ)",
+        "registerId": "P10-F1-R1",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมระบบงานแนะแนวและจัดวางตัวบุคคล",
+        "registerId": "P10-F1-R2",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมศึกษาดูงานแหล่งเรียนรู้เพื่อเป็นแนวทางการศึกษาต่อ",
+        "registerId": "P10-F1-R3",
+        "sourceHeaderRow": 26
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+        "registerId": "P10-F1-R4",
+        "sourceHeaderRow": 31
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการบริการวิชาการและบริการชุมชน",
+        "registerId": "P10-F1-R5",
+        "sourceHeaderRow": 36
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมปัจฉิมนิเทศ/วันแห่งความภาคภูมิใจ",
+        "registerId": "P10-F1-R6",
+        "sourceHeaderRow": 41
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมเตรียมความพร้อมนักเรียนใหม่",
+        "registerId": "P10-F1-R7",
+        "sourceHeaderRow": 46
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมทุนการศึกษา",
+        "registerId": "P10-F1-R8",
+        "sourceHeaderRow": 51
+      },
+      {
+        "budgetType": "อื่น ๆ",
+        "activity": "กิจกรรมการดำเนินงานกองทุนกู้ยืมเงินเพื่อการศึกษา (กยศ)",
+        "registerId": "P10-F4-R9",
+        "sourceHeaderRow": 56
       }
     ],
     "11": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 11
+        "activity": "กิจกรรมการจัดทำข้อมูลสารสนเทศ",
+        "registerId": "P11-F1-R1",
+        "sourceHeaderRow": 9
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการประเมินคุณภาพภายในสถานศึกษา",
+        "registerId": "P11-F1-R2",
+        "sourceHeaderRow": 14
       }
     ],
     "12": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "activity": "กิจกรรมลดเวลาเรียนเพิ่มเวลารู้ พัฒนาศักยภาพผู้เรียนสู่ TEAM",
+        "registerId": "P12-F1-R1",
+        "sourceHeaderRow": 12
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการพัฒนาสถานศึกษาตามนโยบายสำนักงานเขตพื้นที่การศึกษา",
+        "registerId": "P12-F1-R2",
+        "sourceHeaderRow": 17
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการขับเคลื่อนสถานศึกษาตามนโยบาย 1 อำเภอ 1 โรงเรียนคุณภาพ",
+        "registerId": "P12-F1-R3",
+        "sourceHeaderRow": 22
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมหลักปรัชญาของเศรษฐกิจพอเพียงสู่การดำรงชีวิต",
+        "registerId": "P12-F1-R4",
+        "sourceHeaderRow": 27
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมส่งเสริมหลักปรัชญาของเศรษฐกิจพอเพียงสู่การดำรงชีวิต",
+        "registerId": "P12-F3-R5",
+        "sourceHeaderRow": 32
       }
     ],
     "13": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 8
-      }
-    ],
-    "14": [
+        "activity": "ค่าอุปกรณ์การเรียน",
+        "registerId": "P13-F1-R1",
+        "sourceHeaderRow": 10
+      },
       {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": null,
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "ค่าเครื่องแบบนักเรียน",
+        "registerId": "P13-F1-R2",
         "sourceHeaderRow": 15
       },
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 19
+        "activity": "ค่าหนังสือ",
+        "registerId": "P13-F1-R3",
+        "sourceHeaderRow": 20
+      }
+    ],
+    "14": [
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา",
+        "registerId": "P14-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ",
+        "registerId": "P14-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กลุ่มสาระการเรียนรู้คณิตศาสตร์",
+        "registerId": "P14-F1-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "15": [
       {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมฐานการเรียนรู้เพื่อฝึกประสบการณ์ทักษะผู้ประกอบการในศตวรรษที่ 21",
+        "registerId": "P15-F1-R1",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมฝึกอบรมทักษะผู้ประกอบการในศตวรรษที่ 21",
+        "registerId": "P15-F1-R2",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมกิจกรรมตลาดส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+        "registerId": "P15-F1-R3",
+        "sourceHeaderRow": 26
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนาและส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+        "registerId": "P15-F1-R4",
+        "sourceHeaderRow": 31
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพวงหรีดรักษ์โลก",
+        "registerId": "P15-F1-R5",
+        "sourceHeaderRow": 36
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมคาร์แคร์",
+        "registerId": "P15-F1-R6",
+        "sourceHeaderRow": 41
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมฐานการเรียนรู้ปุ๋ยหมักสูตรพระราชทาน",
+        "registerId": "P15-F1-R7",
+        "sourceHeaderRow": 46
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนาทักษะงานคหกรรมของนักเรียน",
+        "registerId": "P15-F1-R8",
+        "sourceHeaderRow": 51
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนาทักษะงานอุตสาหกรรมของนักเรียน",
+        "registerId": "P15-F1-R9",
+        "sourceHeaderRow": 56
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมพวงหรีดรักษ์โลก",
+        "registerId": "P15-F3-R10",
+        "sourceHeaderRow": 61
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมคาร์แคร์",
+        "registerId": "P15-F3-R11",
+        "sourceHeaderRow": 66
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": "กิจกรรมฐานการเรียนรู้ปุ๋ยหมักสูตรพระราชทาน",
+        "registerId": "P15-F3-R12",
+        "sourceHeaderRow": 71
+      }
+    ],
+    "16": [
+      {
         "budgetType": "อื่น ๆ",
         "activity": "กิจกรรมค.บ.เกมส์",
+        "registerId": "P16-F4-R1",
         "sourceHeaderRow": 12
       },
       {
         "budgetType": "อื่น ๆ",
         "activity": "กิจกรรมพัฒนาศักยภาพทางดนตรี (วิทยากรดนตรี)",
-        "sourceHeaderRow": 19
+        "registerId": "P16-F4-R2",
+        "sourceHeaderRow": 17
       },
       {
         "budgetType": "อื่น ๆ",
         "activity": "กิจกรรมค่ายคุณธรรม จริยธรรม",
-        "sourceHeaderRow": 29
+        "registerId": "P16-F4-R3",
+        "sourceHeaderRow": 22
       },
       {
         "budgetType": "อื่น ๆ",
         "activity": "กิจกรรมส่งเสริมสุขภาพนักเรียน",
-        "sourceHeaderRow": 39
-      }
-    ],
-    "16": [
-      {
-        "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P16-F4-R4",
+        "sourceHeaderRow": 27
       }
     ],
     "17": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
+        "registerId": "P17-F1-R1",
         "sourceHeaderRow": 7
       }
     ],
     "18": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "activity": "กิจกรรมพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
+        "registerId": "P18-F1-R1",
+        "sourceHeaderRow": 8
       }
     ],
     "19": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "activity": "กิจกรรมการจัดทำแผนปฏิบัติการประจำปี",
+        "registerId": "P19-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมติดตามการใช้งบประมาณตามแผนปฏิบัติการประจำปี",
+        "registerId": "P19-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมวางแผนและควบคุมการใช้พัสดุ",
+        "registerId": "P19-F1-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "20": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P20-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "21": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 10
+        "registerId": "P21-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "22": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 7
+        "activity": "กิจกรรมส่งเสริมศักยภาพครุูด้านเทคโนโลยีและนวัตกรรม เพื่อส่งเสริมการเรียนรู้สู่ความเป็นเลิศของผู้เรียน",
+        "registerId": "P22-F1-R1",
+        "sourceHeaderRow": 12
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมส่งเสริมศักยภาพครูด้านการบูรณาการในการอนุรักษ์พลังงาน และสิ่งแวดล้อมสู่การจัดการเรียนรู้ในชั้นเรียน",
+        "registerId": "P22-F1-R2",
+        "sourceHeaderRow": 17
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมศึกษาดูงานเพื่อพัฒนาศักยภาพของครู",
+        "registerId": "P22-F1-R3",
+        "sourceHeaderRow": 22
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมอบรมพัฒนาศักยภาพของครูและบุคลากร ทางการศึกษาตามความสนใจและความถนัด",
+        "registerId": "P22-F1-R4",
+        "sourceHeaderRow": 27
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมอบรมผู้บังคับบัญชาลูกเสือ",
+        "registerId": "P22-F1-R5",
+        "sourceHeaderRow": 32
       }
     ],
     "23": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 12
+        "activity": "กิจกรรมอบรมเพิ่มความรู้สู่การขอมีและขอเลื่อนวิทยฐานะ",
+        "registerId": "P23-F1-R1",
+        "sourceHeaderRow": 8
       }
     ],
     "24": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 10
+        "activity": "กิจกรรมปรับปรุงและพัฒนาห้องเรียน อาคารเรียน ห้องประชุมและแหล่งเรียนรู้",
+        "registerId": "P24-F1-R1",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมปรับปรุงและพัฒนาวัสดุและอุปกรณ์ในห้องเรียน",
+        "registerId": "P24-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมดูแลความสะอาดห้องเรียนและพื้นที่รับผิดชอบ",
+        "registerId": "P24-F1-R3",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมอนุรักษ์พลังงานและพัฒนาสิ่งแวดล้อม",
+        "registerId": "P24-F1-R4",
+        "sourceHeaderRow": 26
       }
     ],
     "25": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "activity": "กิจกรรมการส่งเสริมสุขภาพจิต",
+        "registerId": "P25-F1-R1",
+        "sourceHeaderRow": 10
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมโรงอาหารและโภชนาการ",
+        "registerId": "P25-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมงานห้องพยาบาล",
+        "registerId": "P25-F1-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "26": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 8
+        "activity": "กิจกรรมดูแลช่วยเหลือนักเรียน",
+        "registerId": "P26-F1-R1",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมเยี่ยมบ้าน",
+        "registerId": "P26-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมประชุมผู้ปกครอง",
+        "registerId": "P26-F1-R3",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมบ้านหลังเรียน",
+        "registerId": "P26-F1-R4",
+        "sourceHeaderRow": 26
       }
     ],
     "27": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 8
+        "activity": "กิจกรรมห้องเรียนและสถานศึกษาสีขาว",
+        "registerId": "P27-F1-R1",
+        "sourceHeaderRow": 9
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมโรงเรียนปลอดบุหรี่",
+        "registerId": "P27-F1-R2",
+        "sourceHeaderRow": 14
       }
     ],
     "28": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "activity": "กิจกรรมป้องกันอุบัติภัยและอัคคีภัยในสถานศึกษา (school safety)",
+        "registerId": "P28-F1-R1",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมระบบส่งเสริมความปลอดภัยในสถานศึกษา (กล้องวงจรปิด)",
+        "registerId": "P28-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมการป้องกันอุบัติภัยท้องถนน",
+        "registerId": "P28-F1-R3",
+        "sourceHeaderRow": 21
       }
     ],
     "29": [
       {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมเลือกตั้งกรรมการนักเรียน",
+        "registerId": "P29-F1-R1",
+        "sourceHeaderRow": 11
       },
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 14
+        "activity": "กิจกรรมส่งเสริมสภานักเรียน",
+        "registerId": "P29-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมศึกษาแหล่งเรียนรู้ประชาธิปไตย",
+        "registerId": "P29-F1-R3",
+        "sourceHeaderRow": 21
       }
     ],
     "30": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 9
+        "activity": "กิจกรรมซ่อมแซมเครื่องยนต์และอุปกรณ์ยานยนต์ต่างๆ",
+        "registerId": "P30-F1-R1",
+        "sourceHeaderRow": 10
       },
       {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": null,
-        "sourceHeaderRow": 16
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมจัดซื้อน้ำมันเชื้อเพลิง",
+        "registerId": "P30-F1-R2",
+        "sourceHeaderRow": 15
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมชำระภาษีรถยนต์",
+        "registerId": "P30-F1-R3",
+        "sourceHeaderRow": 20
       }
     ],
     "31": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "activity": "กิจกรรมสานสัมพันธ์และระดมทรัพยากร เพื่อสนับสนุนการศึกษา",
+        "registerId": "P31-F1-R1",
+        "sourceHeaderRow": 9
       },
       {
-        "budgetType": "เงินรายได้สถานศึกษา",
-        "activity": null,
-        "sourceHeaderRow": 32
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมงานคณะกรรมการสถานศึกษา",
+        "registerId": "P31-F1-R2",
+        "sourceHeaderRow": 14
       }
     ],
     "32": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P32-F1-R1",
+        "sourceHeaderRow": 7
+      },
+      {
+        "budgetType": "เงินรายได้สถานศึกษา",
+        "activity": null,
+        "registerId": "P32-F3-R2",
+        "sourceHeaderRow": 12
       }
     ],
     "33": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P33-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "34": [
       {
-        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
-        "activity": null,
-        "sourceHeaderRow": 6
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมรองรับค่าใช้จ่ายด้านพลังงานไฟฟ้าเพื่อความต่อเนื่องของสถานศึกษา",
+        "registerId": "P34-F1-R1",
+        "sourceHeaderRow": 11
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมพัฒนาระบบโทรศัพท์และการสื่อสารภายในสถานศึกษา",
+        "registerId": "P34-F1-R2",
+        "sourceHeaderRow": 16
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมบำรุงรักษาระบบเครื่องกรองน้ำดื่มสะอาด",
+        "registerId": "P34-F1-R3",
+        "sourceHeaderRow": 21
+      },
+      {
+        "budgetType": "เงินอุดหนุนรายหัว",
+        "activity": "กิจกรรมบำรุุงรักษาและพัฒนาระบบเครื่องปรับอากาศ",
+        "registerId": "P34-F1-R4",
+        "sourceHeaderRow": 26
       }
     ],
     "35": [
       {
-        "budgetType": "เงินอุดหนุนรายหัว",
+        "budgetType": "เงินรายได้สถานศึกษา",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P35-F3-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "36": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P36-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "37": [
       {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P37-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "38": [
       {
-        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P38-F1-R1",
+        "sourceHeaderRow": 7
       }
     ],
     "39": [
       {
+        "budgetType": "เงินกิจกรรมพัฒนาผู้เรียน",
+        "activity": null,
+        "registerId": "P39-F2-R1",
+        "sourceHeaderRow": 7
+      }
+    ],
+    "40": [
+      {
         "budgetType": "เงินอุดหนุนรายหัว",
         "activity": null,
-        "sourceHeaderRow": 6
+        "registerId": "P40-F1-R1",
+        "sourceHeaderRow": 7
       }
     ]
   }

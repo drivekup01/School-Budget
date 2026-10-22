@@ -1,1280 +1,262 @@
 {
   "year": 2570,
-  "status": "test-copy-connected",
-  "source": "สำเนาสำหรับทดสอบปีงบประมาณ 2570",
-  "snapshotDate": "2026-10-15",
-  "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk",
-  "scope": "4 ฝ่าย",
-  "sheetCount": 45,
-  "transactionRows": 328,
+  "status": "sheet-registers",
+  "source": "ทะเบียนปี 2570 จากไฟล์ที่ผู้ใช้ยืนยัน",
+  "snapshotDate": "2026-10-22",
   "projects": [
     {
-      "id": 1,
-      "name": "โครงการส่งเสริมและพัฒนากิจกรรมพัฒนาผู้เรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
+      "id": 20,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการอบรมขับเคลื่อนกระบวนการ PLC เพื่อพัฒนาบุคลากรทางการศึกษา",
+      "owner": "นายศรัณย์ โชคลาภ",
       "amounts": [
-        0,
-        206000.0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมเข้าค่ายพักแรมลูกเสือ - เนตรนารีต้านยาเสพติด",
-          "owner": "นายศรัณย์ โชคลาภ",
-          "amounts": [
-            0,
-            60000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            9803.25,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมและพัฒนาเทคโนโลยีสำหรับนักเรียน",
-          "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
-          "amounts": [
-            0,
-            5000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมสร้างเสริมคุณธรรม จริยธรรม ค่านิยม ที่พึงประสงค์สำนึกในความเป็นไทย",
-          "owner": "นางวิไล สำราญดี",
-          "amounts": [
-            0,
-            5000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมวันสำคัญ",
-          "owner": "นางวิไล สำราญดี",
-          "amounts": [
-            0,
-            80000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            64358.25,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมหลักปรัชญของเศรษฐกิจพอเพียง",
-          "owner": "นางวิไล สำราญดี",
-          "amounts": [
-            0,
-            3000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมกีฬาภายในเพื่อสุขภาพ",
-          "owner": "นายมนัสชัย สีสด",
-          "amounts": [
-            0,
-            40000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            14464.5,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมบ้านหลังเรียน",
-          "owner": "นายมนัสชัย สีสด",
-          "amounts": [
-            0,
-            13000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
+        500,
         null,
-        206000.0,
         null,
         null
       ],
-      "remaining": [
-        null,
-        114626.0,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1282738186",
-      "sourceRow": 5,
-      "balanceSourceRow": 5
-    },
-    {
-      "id": 2,
-      "name": "โครงการส่งเสริมความเป็นเลิศทางการศึกษา",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
-      "amounts": [
-        0,
-        62000.0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมส่งเสริมความเป็นเลิศทางวิชาการ",
-          "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
-          "amounts": [
-            0,
-            62000.0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            21650.0,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมความเป็นเลิศของสถานศึกษา",
-          "owner": "นางสาวสมมนัส ยวนเขียว",
-          "amounts": [
-            0,
-            0,
-            26500.0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            21500.0,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมความเป็นเลิศด้านดนตรีและวงโยธวาทิต",
-          "owner": "นายปิยะพนธ์ เทียบชัย",
-          "amounts": [
-            0,
-            0,
-            60311.0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
       "income": [
-        null,
-        62000.0,
-        26500.0,
-        60311.0
-      ],
-      "remaining": [
-        null,
-        21650.0,
-        21500.0,
-        49511.0
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1702478609",
-      "sourceRow": 13,
-      "balanceSourceRow": 7
-    },
-    {
-      "id": 3,
-      "name": "โครงการพัฒนาปรับปรุงหลักสูตรสถานศึกษา",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวเบญจมาภรณ์ ร่มโพธิ์",
-      "amounts": [
-        2000.0,
+        500,
         0,
         0,
         0
       ],
-      "activities": [
-        {
-          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรสถานศึกษา",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        2000.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        2000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=294120950",
-      "sourceRow": 17,
-      "balanceSourceRow": 9
-    },
-    {
-      "id": 4,
-      "name": "โครงการจัดซื้อสื่อและวัสดุอุปกรณ์การเรียนการสอน เพื่อยกระดับผลสัมฤทธิ์ทางการเรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวสุนิสา อิ่มรัง",
-      "amounts": [
-        108395.0,
+        500,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        108395.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        16967.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=233929697",
-      "sourceRow": 20,
-      "balanceSourceRow": 11
+      "activities": []
     },
     {
-      "id": 5,
-      "name": "โครงการพัฒนาและส่งเสริมการวิจัยในชั้นเรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวปภาวิไล ชลอวงษ์",
+      "id": 21,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการสร้างขวัญและกำลังใจครู",
+      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
       "amounts": [
-        4000.0,
+        500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        500,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        4000.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        4000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1340082762",
-      "sourceRow": 21,
-      "balanceSourceRow": 13
-    },
-    {
-      "id": 6,
-      "name": "โครงการ ส่งเสริมพัฒนา งานทะเบียน งานวัดและประเมินผล",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวปภาวิไล ชลอวงษ์",
-      "amounts": [
-        68000.0,
+        500,
         0,
         0,
         0
       ],
-      "activities": [
-        {
-          "name": "กิจกรรมส่งเสริมพัฒนางานทะเบียน",
-          "owner": "",
-          "amounts": [
-            3500.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมการวัดและประเมินผล",
-          "owner": "",
-          "amounts": [
-            64000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมการวัดและประเมินผลทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            500.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        68000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        5999.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=92517762",
-      "sourceRow": 22,
-      "balanceSourceRow": 15
+      "activities": []
     },
     {
-      "id": 7,
-      "name": "โครงการพัฒนาระบบนิเทศการเรียนการสอนและ PLC",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางปิรัญทนา ชาชำนาญ",
-      "amounts": [
-        1000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [],
-      "income": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1341196757",
-      "sourceRow": 26,
-      "balanceSourceRow": 17
-    },
-    {
-      "id": 8,
-      "name": "โครงการส่งเสริมการอ่านเพื่อพัฒนาทักษะของนักเรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
+      "id": 22,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการพัฒนาศักยภาพของครูและบุคลากรทางการศึกษา",
       "owner": "นางจรรยา ทองดี",
       "amounts": [
-        5000.0,
+        27500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        27500,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        27500,
         0,
         0,
         0
       ],
       "activities": [
         {
-          "name": "กิจกรรมรักการอ่าน",
-          "owner": "",
+          "name": "กิจกรรมส่งเสริมศักยภาพครุูด้านเทคโนโลยีและนวัตกรรม เพื่อส่งเสริมการเรียนรู้สู่ความเป็นเลิศของผู้เรียน",
+          "owner": "นางจรรยา ทองดี",
           "amounts": [
-            3000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            750.0,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         },
         {
-          "name": "กิจกรรมตอบปัญหาน่ารู้",
-          "owner": "",
+          "name": "กิจกรรมส่งเสริมศักยภาพครูด้านการบูรณาการในการอนุรักษ์พลังงาน และสิ่งแวดล้อมสู่การจัดการเรียนรู้ในชั้นเรียน",
+          "owner": "นางจรรยา ทองดี",
           "amounts": [
-            2000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            445.0,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         },
         {
-          "name": "กิจกรรมนิทรรศการสัปดาห์ห้องสมุด",
-          "owner": "",
+          "name": "กิจกรรมศึกษาดูงานเพื่อพัฒนาศักยภาพของครู",
+          "owner": "นางจรรยา ทองดี",
           "amounts": [
-            1000.0,
+            10000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            10000,
             0,
             0,
             0
           ],
           "remaining": [
-            505.0,
-            null,
-            null,
-            null
+            10000,
+            0,
+            0,
+            0
           ]
         },
         {
-          "name": "กิจกรรมยุวบรรณารักษ์",
-          "owner": "",
+          "name": "กิจกรรมอบรมพัฒนาศักยภาพของครูและบุคลากร ทางการศึกษาตามความสนใจและความถนัด",
+          "owner": "นางจรรยา ทองดี",
           "amounts": [
-            1000.0,
+            10500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            10500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
+            10500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมอบรมผู้บังคับบัญชาลูกเสือ",
+          "owner": "นางจรรยา ทองดี",
+          "amounts": [
+            6000,
             null,
             null,
             null
+          ],
+          "income": [
+            6000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            6000,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        700.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1736585170",
-      "sourceRow": 27,
-      "balanceSourceRow": 19
+      ]
     },
     {
-      "id": 9,
-      "name": "โครงการส่งเสริมงานแนะแนวเพื่อสร้างโอกาสทางการเรียนรู้",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวณัฏฐ์นรี สิงห์ตุ้ย",
+      "id": 23,
+      "department": "ฝ่ายบริหารงานบุคคล",
+      "name": "โครงการส่งเสริมการขอมีขอเลื่อนวิทยฐานะของข้าราชการครู",
+      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
       "amounts": [
-        7300.0,
+        1500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1500,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1500,
         0,
         0,
         0
       ],
       "activities": [
         {
-          "name": "กิจกรรมการดำเนินงานกองทุนกู้ยืมเงินเพื่อการศึกษา (กยศ.) (บริการจัดวางตัวบุคคล)",
-          "owner": "",
+          "name": "กิจกรรมอบรมเพิ่มความรู้สู่การขอมีและขอเลื่อนวิทยฐานะ",
+          "owner": "นางสาวรัตนาภรณ์ บัวทอง",
           "amounts": [
-            500.0,
+            1500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมศึกษาดูงานแหล่งเรียนรู้เพื่อเป็นแนวทางการศึกษาต่อ",
-          "owner": "",
-          "amounts": [
-            1500.0,
+            1500,
             0,
             0,
             0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมอาชีพ",
-          "owner": "",
-          "amounts": [
-            500.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมแนะแนวสัญจร",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมปัจฉิมนิเทศ/วันแห่งความภาคภูมิใจ",
-          "owner": "",
-          "amounts": [
-            3000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมเตรียมความพร้อมนักเรียนใหม่",
-          "owner": "",
-          "amounts": [
-            300.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมทุนการศึกษา",
-          "owner": "",
-          "amounts": [
-            500.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
           ]
         }
-      ],
-      "income": [
-        7300.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        5434.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1135525391",
-      "sourceRow": 32,
-      "balanceSourceRow": 21
+      ]
     },
     {
-      "id": 10,
-      "name": "โครงการพัฒนาระบบการประกันคุณภาพการศึกษา",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาววิลาวัลย์ ช่วยบุญ",
-      "amounts": [
-        1000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมการจัดทำข้อมูลสารสนเทศ",
-          "owner": "",
-          "amounts": [
-            200.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "การประชุมเชิงปฏิบัติการประเมินคุณภาพภายในสถานศึกษา",
-          "owner": "",
-          "amounts": [
-            800.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        840.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=797656815",
-      "sourceRow": 40,
-      "balanceSourceRow": 23
-    },
-    {
-      "id": 11,
-      "name": "โครงการขับเคลื่อนนโยบายสพฐ. สพม.สิงห์บุรี อ่างทอง",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวปิรัญทนา ชาชำนาญ",
-      "amounts": [
-        4000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมลดเวลาเรียนเพิ่มเวลารู้ พัฒนาศักยภาพผู้เรียนสู่ TEAM",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            -2130.25,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมการพัฒนาสถานศึกษาตามนโยบายสำนักงานเขตพื้นที่การศึกษา",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรม 1 ห้องเรียน 1 นวัตกรรม",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมการขับเคลื่อนสถานศึกษาตามนโยบาย 1 อำเภอ 1 โรงเรียนคุณภาพ",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        4000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        4000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=851625685",
-      "sourceRow": 43,
-      "balanceSourceRow": 25
-    },
-    {
-      "id": 12,
-      "name": "โครงการเรียนฟรี 15 ปี",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางนุสรา เฉยแสง",
-      "amounts": [
-        690654.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "ค่าอุปกรณ์การเรียน",
-          "owner": "",
-          "amounts": [
-            170560.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "ค่าเครื่องแบบนักเรียน",
-          "owner": "",
-          "amounts": [
-            170850.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "ค่าหนังสือ",
-          "owner": "",
-          "amounts": [
-            349244.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        690654.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        0.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=2095471031",
-      "sourceRow": 48,
-      "balanceSourceRow": 27
-    },
-    {
-      "id": 13,
-      "name": "โครงการจ้างครูผู้สอนและบุคลากรทางการศึกษา\n เพื่อส่งเสริมผลสัมฤทธิ์ทางการเรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวสมมนัส ยวนเขียว",
-      "amounts": [
-        277725.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา",
-          "owner": "",
-          "amounts": [
-            138000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ",
-          "owner": "",
-          "amounts": [
-            138000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        277725.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        -220.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=237799612",
-      "sourceRow": 52,
-      "balanceSourceRow": 29
-    },
-    {
-      "id": 14,
-      "name": "โครงการส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21 ของนักเรียน",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางปิรัญทนา ชาชำนาญ",
-      "amounts": [
-        20000.0,
-        0,
-        4000.0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมฐานการเรียนรู้เพื่อฝึกประสบการณ์ทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมฝึกอบรมทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมกิจกรรมตลาดส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมพัฒนาและส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมพวงหรีดรักษ์โลก",
-          "owner": "",
-          "amounts": [
-            0,
-            0,
-            2000.0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมคาร์แคร์",
-          "owner": "",
-          "amounts": [
-            0,
-            0,
-            1000.0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมฐานการเรียนรู้ปุ๋ยหมักสูตรพระราชทาน",
-          "owner": "",
-          "amounts": [
-            0,
-            0,
-            1000.0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            -1185.0,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมพัฒนาทักษะงานคหกรรมของนักเรียน",
-          "owner": "",
-          "amounts": [
-            8000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมพัฒนาทักษะงานอุตสาหกรรมของนักเรียน",
-          "owner": "",
-          "amounts": [
-            8000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        20000.0,
-        null,
-        4000.0,
-        null
-      ],
-      "remaining": [
-        17815.0,
-        null,
-        3700.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1938258423",
-      "sourceRow": 55,
-      "balanceSourceRow": 31
-    },
-    {
-      "id": 15,
-      "name": "โครงการส่งเสริมและพัฒนาการเรียนรู้สู่ผู้เรียนโดยเครือข่ายร่วมพัฒนา",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นายมนัสชัย สีสด",
-      "amounts": [
-        0,
-        0,
-        0,
-        155000.0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมค.บ.เกมส์",
-          "owner": "นายมนัสชัย สีสด",
-          "amounts": [
-            0,
-            0,
-            0,
-            30000.0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            0.0
-          ]
-        },
-        {
-          "name": "กิจกรรมพัฒนาศักยภาพทางดนตรี (วิทยากรดนตรี)",
-          "owner": "นายปิยพนธ์ เทียบชัย",
-          "amounts": [
-            0,
-            0,
-            0,
-            60000.0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            9800.0
-          ]
-        },
-        {
-          "name": "กิจกรรมค่ายคุณธรรม จริยธรรม",
-          "owner": "นางวิไล สำราญดี",
-          "amounts": [
-            0,
-            0,
-            0,
-            30000.0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            836.0
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมสุขภาพนักเรียน",
-          "owner": "นางสาวปภาวิไล ชลอวงษ์",
-          "amounts": [
-            0,
-            0,
-            0,
-            35000.0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            7886.0
-          ]
-        }
-      ],
-      "income": [
-        null,
-        null,
-        null,
-        155000.0
-      ],
-      "remaining": [
-        null,
-        null,
-        null,
-        18522.0
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=577647796",
-      "sourceRow": 65,
-      "balanceSourceRow": 33
-    },
-    {
-      "id": 16,
-      "name": "โครงการสานสัมพันธ์ชุมชนและเครือข่ายส่งเสริมด้านการจัดการศึกษา",
-      "department": "ฝ่ายบริหารงานวิชาการ",
-      "owner": "นางสาวณัฏฐ์นรี สิงห์ตุ้ย",
-      "amounts": [
-        1000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [],
-      "income": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk#gid=1938815792",
-      "sourceRow": 70,
-      "balanceSourceRow": 42
-    },
-    {
-      "id": 17,
-      "name": "โครงการพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
+      "id": 18,
       "department": "ฝ่ายบริหารงานงบประมาณ",
+      "name": "โครงการพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
       "owner": "นางนุสรา เฉยแสง",
       "amounts": [
-        2000.0,
+        3000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        3000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        3000,
         0,
         0,
         0
@@ -1282,43 +264,47 @@
       "activities": [
         {
           "name": "กิจกรรมพัฒนาการบริหารจัดการฝ่ายบริหารงบประมาณ",
-          "owner": "",
+          "owner": "นางนุสรา เฉยแสง",
           "amounts": [
-            0,
+            3000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            3000,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            3000,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        2000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        -393.25,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1tCDiUiP5lF_vSyJIkCAPB-y0PWJGUjvOsp-2qhVf30M/edit?usp=drivesdk#gid=1022944792",
-      "sourceRow": 5
+      ]
     },
     {
-      "id": 18,
-      "name": "โครงการจัดทำแผนปฏิบัติการประจำปี",
+      "id": 19,
       "department": "ฝ่ายบริหารงานงบประมาณ",
+      "name": "โครงการจัดทำแผนปฏิบัติการประจำปี",
       "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
       "amounts": [
-        5000.0,
+        5000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        5000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        5000,
         0,
         0,
         0
@@ -1328,372 +314,203 @@
           "name": "กิจกรรมการจัดทำแผนปฏิบัติการประจำปี",
           "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
           "amounts": [
-            2000.0,
+            2000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2000,
             0,
             0,
             0
           ],
           "remaining": [
-            -550.0,
-            null,
-            null,
-            null
+            2000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมติดตามการใช้งบประมาณตามแผนปฏิบัติการประจำปี",
           "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
           "amounts": [
-            500.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมวางแผนและควบคุมการใช้พัสดุ",
           "owner": "นางสาวสุนิสา อิ่มรัง",
           "amounts": [
-            2500.0,
+            2500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2500,
             0,
             0,
             0
           ],
           "remaining": [
-            40.0,
-            null,
-            null,
-            null
+            2500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        -10,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1tCDiUiP5lF_vSyJIkCAPB-y0PWJGUjvOsp-2qhVf30M/edit?usp=drivesdk#gid=525709511",
-      "sourceRow": 7
+      ]
     },
     {
-      "id": 19,
-      "name": "โครงการอบรมขับเคลื่อนกระบวนการ PLC เพื่อพัฒนาบุคลากรทางการศึกษา",
-      "department": "ฝ่ายบริหารงานบุคคล",
-      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
-      "amounts": [
-        1000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [],
-      "income": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        596.75,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk#gid=1559487877",
-      "sourceRow": 5
-    },
-    {
-      "id": 20,
-      "name": "โครงการสร้างขวัญและกำลังใจครู",
-      "department": "ฝ่ายบริหารงานบุคคล",
-      "owner": "นางสาวณัฐมน กลิ่นผล",
-      "amounts": [
-        1000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [],
-      "income": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        1000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk#gid=1495575959",
-      "sourceRow": 6
-    },
-    {
-      "id": 21,
-      "name": "โครงการพัฒนาศักยภาพของครูและบุคลากรทางการศึกษา",
-      "department": "ฝ่ายบริหารงานบุคคล",
-      "owner": "นางจรรยา ทองดี",
-      "amounts": [
-        60275.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมศึกษาดูงานเพื่อพัฒนาศักยภาพของครู",
-          "owner": "",
-          "amounts": [
-            33275.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมอบรมพัฒนาศักยภาพของครูและบุคลากรทางการศึกษาตามความสนใจและความถนัด",
-          "owner": "",
-          "amounts": [
-            20000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            3810.95,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมอบรมเพื่อพัฒนาและส่งเสริมทักษะการเป็นผู้ประกอบการ\n ในศตวรรษที่ 21 สู่ผู้เรียน",
-          "owner": "",
-          "amounts": [
-            1000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมอบรมผู้บังคับบัญชาลูกเสือ",
-          "owner": "",
-          "amounts": [
-            6000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            1500.0,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        60275.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        39585.95,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk#gid=1646560250",
-      "sourceRow": 7
-    },
-    {
-      "id": 22,
-      "name": "โครงการส่งเสริมการขอมีขอเลื่อนวิทยฐานะของข้าราชการครู",
-      "department": "ฝ่ายบริหารงานบุคคล",
-      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
-      "amounts": [
-        5000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [
-        {
-          "name": "กิจกรรมอบรมเพิ่มความรู้สู่การขอมีและขอเลื่อนวิทยฐานะ",
-          "owner": "",
-          "amounts": [
-            5000.0,
-            0,
-            0,
-            0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        }
-      ],
-      "income": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk#gid=145960809",
-      "sourceRow": 12
-    },
-    {
-      "id": 23,
-      "name": "โครงการพัฒนาแหล่งเรียนรู้ อาคารสถานที่และห้องเรียนคุณภาพ",
+      "id": 24,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นายธนัญท์กุล ชูชื่น",
+      "name": "โครงการพัฒนาแหล่งเรียนรู้ อาคารสถานที่และห้องเรียนคุณภาพ",
+      "owner": "นายมาโนช เงินอยู่",
       "amounts": [
-        173000.0,
+        74262,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        74262,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        74262,
         0,
         0,
         0
       ],
       "activities": [
         {
-          "name": "กิจกรรมปรับปรุงและพัฒนาห้องเรียน อาคารเรียน ห้องประชุม และแหล่งเรียนรู้",
+          "name": "กิจกรรมปรับปรุงและพัฒนาห้องเรียน อาคารเรียน ห้องประชุมและแหล่งเรียนรู้",
           "owner": "นายมาโนช เงินอยู่",
           "amounts": [
-            135000.0,
-            0,
-            17000.0,
-            0
-          ],
-          "remaining": [
-            null,
+            35762,
             null,
             null,
             null
-          ]
-        },
-        {
-          "name": "กิจกรรมปรับปรุงและพัฒนาอุปกรณ์การส่งเสริมการเรียนรู้ในห้องเรียน",
-          "owner": "นายปิยพนธ์ เทียบชัย",
-          "amounts": [
-            16000.0,
+          ],
+          "income": [
+            35762,
             0,
             0,
             0
           ],
           "remaining": [
-            13698.5,
-            null,
-            null,
-            null
+            35762,
+            0,
+            0,
+            0
           ]
         },
         {
-          "name": "กิจกรรมพัฒนาคุณภาพการศึกษาด้วยเทคโนโลยีด้านสารสนเทศ",
-          "owner": "นางสาวรัตนาภรณ์ บัวทอง (อบจ.)",
+          "name": "กิจกรรมปรับปรุงและพัฒนาวัสดุและอุปกรณ์ในห้องเรียน",
+          "owner": "นายธนัญท์กุล ชูชื่น",
           "amounts": [
-            5000.0,
-            0,
-            0,
-            300000.0
-          ],
-          "remaining": [
-            null,
+            18000,
             null,
             null,
             null
+          ],
+          "income": [
+            18000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            18000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมดูแลความสะอาดห้องเรียนและพื้นที่รับผิดชอบ",
           "owner": "นายธนัญท์กุล ชูชื่น",
           "amounts": [
-            10000.0,
-            0,
-            3000.0,
-            0
-          ],
-          "remaining": [
-            null,
+            19500,
             null,
             null,
             null
+          ],
+          "income": [
+            19500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            19500,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมอนุรักษ์พลังงานและพัฒนาสิ่งแวดล้อม",
           "owner": "นางสาวสุนิสา อิ่มรัง",
           "amounts": [
-            7000.0,
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            1000,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        173000.0,
-        null,
-        13873.0,
-        null
-      ],
-      "remaining": [
-        -137725.46,
-        null,
-        4243.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=664171263",
-      "sourceRow": 5,
-      "balanceSourceRow": 5
+      ]
     },
     {
-      "id": 24,
-      "name": "โครงการพัฒนาและส่งเสริมการดูแลสุขภาพ",
+      "id": 25,
       "department": "ฝ่ายบริหารงานทั่วไป",
+      "name": "โครงการพัฒนาและส่งเสริมการดูแลสุขภาพ",
       "owner": "นายมนัสชัย สีสด",
       "amounts": [
-        8000.0,
+        2000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        2000,
         0,
         0,
         0
@@ -1701,92 +518,91 @@
       "activities": [
         {
           "name": "กิจกรรมการส่งเสริมสุขภาพจิต",
-          "owner": "",
+          "owner": "นายมนัสชัย สีสด",
           "amounts": [
-            1000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
-          ]
-        },
-        {
-          "name": "กิจกรรมส่งเสริมสุขภาพ",
-          "owner": "",
-          "amounts": [
-            3000.0,
+            500,
             0,
             0,
             0
-          ],
-          "remaining": [
-            null,
-            null,
-            null,
-            null
           ]
         },
         {
           "name": "กิจกรรมโรงอาหารและโภชนาการ",
-          "owner": "",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
           "amounts": [
-            1000.0,
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            1000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมงานห้องพยาบาล",
-          "owner": "",
+          "owner": "นางสาวศริญญา ฉับจันทึก",
           "amounts": [
-            3000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            551.0,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        8000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        5551.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1226010276",
-      "sourceRow": 12,
-      "balanceSourceRow": 7
+      ]
     },
     {
-      "id": 25,
-      "name": "โครงการพัฒนาระบบดูแลช่วยเหลือนักเรียน",
+      "id": 26,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวอรลักษณ์ ธูปบูชากรณ์",
+      "name": "โครงการพัฒนาระบบดูแลช่วยเหลือนักเรียน",
+      "owner": "นายมนัสชัย สีสด",
       "amounts": [
-        8000.0,
+        10000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        10000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        10000,
         0,
         0,
         0
@@ -1794,76 +610,113 @@
       "activities": [
         {
           "name": "กิจกรรมดูแลช่วยเหลือนักเรียน",
-          "owner": "",
+          "owner": "นายมนัสชัย สีสด",
           "amounts": [
-            4000.0,
+            3000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            3000,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            3000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมเยี่ยมบ้าน",
-          "owner": "",
+          "owner": "นายมนัสชัย สีสด",
           "amounts": [
-            1000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมประชุมผู้ปกครอง",
-          "owner": "",
+          "owner": "นายมนัสชัย สีสด",
           "amounts": [
-            3000.0,
+            5000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            5000,
             0,
             0,
             0
           ],
           "remaining": [
-            -6120.0,
+            5000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมบ้านหลังเรียน",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            1500,
             null,
             null,
             null
+          ],
+          "income": [
+            1500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        8000.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        -1120.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1018510615",
-      "sourceRow": 17,
-      "balanceSourceRow": 9
+      ]
     },
     {
-      "id": 26,
-      "name": "โครงการขับเคลื่อนการดำเนินงานสถานศึกษาสีขาวปลอดยาเสพติดและอบายมุข",
+      "id": 27,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นายมนัสชัย สีสด",
+      "name": "โครงการขับเคลื่อนการดำเนินงานสถานศึกษาสีขาวปลอดยาเสพติดและอบายมุข",
+      "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
       "amounts": [
-        7500.0,
+        1500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1500,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1500,
         0,
         0,
         0
@@ -1871,149 +724,253 @@
       "activities": [
         {
           "name": "กิจกรรมห้องเรียนและสถานศึกษาสีขาว",
-          "owner": "",
+          "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
           "amounts": [
-            6000.0,
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            1000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมโรงเรียนปลอดบุหรี่",
-          "owner": "",
+          "owner": "นายมาโนช เงินอยู่",
           "amounts": [
-            1500.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        7500.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        7500.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=2042643815",
-      "sourceRow": 21,
-      "balanceSourceRow": 11
+      ]
     },
     {
-      "id": 27,
-      "name": "โครงการขับเคลื่อนสถานศึกษาปลอดภัย",
+      "id": 28,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นายปิยพนธ์ เทียบชัย",
+      "name": "โครงการขับเคลื่อนสถานศึกษาปลอดภัย",
+      "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
       "amounts": [
-        9500.0,
+        34500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        34500,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        34500,
         0,
         0,
         0
       ],
       "activities": [
         {
-          "name": "กิจกรรมความปลอดภัยในสถานศึกษา (school safety)",
-          "owner": "",
+          "name": "กิจกรรมป้องกันอุบัติภัยและอัคคีภัยในสถานศึกษา (school safety)",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
           "amounts": [
-            9000.0,
+            9000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            9000,
             0,
             0,
             0
           ],
           "remaining": [
-            -500.0,
+            9000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมระบบส่งเสริมความปลอดภัยในสถานศึกษา (กล้องวงจรปิด)",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+          "amounts": [
+            25000,
             null,
             null,
             null
+          ],
+          "income": [
+            25000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            25000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมการป้องกันอุบัติภัยท้องถนน",
-          "owner": "",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
           "amounts": [
-            500.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        9500.0,
-        null,
-        null,
-        null
-      ],
-      "remaining": [
-        0.0,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1380417459",
-      "sourceRow": 24,
-      "balanceSourceRow": 13
+      ]
     },
     {
-      "id": 28,
-      "name": "โครงการส่งเสริมประชาธิปไตยในโรงเรียน",
+      "id": 29,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวพรทิพย์ ปานพลอย",
+      "name": "โครงการส่งเสริมประชาธิปไตยในโรงเรียน",
+      "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
       "amounts": [
-        14500.0,
+        1500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1500,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        14500.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        4300.0,
-        null,
-        null,
-        null
+        1500,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=657240491",
-      "sourceRow": 27,
-      "balanceSourceRow": 15
+      "activities": [
+        {
+          "name": "กิจกรรมเลือกตั้งกรรมการนักเรียน",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมสภานักเรียน",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมศึกษาแหล่งเรียนรู้ประชาธิปไตย",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
     },
     {
-      "id": 29,
-      "name": "โครงการยานยนต์เพื่อสนับสนุนการศึกษา",
+      "id": 30,
       "department": "ฝ่ายบริหารงานทั่วไป",
+      "name": "โครงการยานยนต์เพื่อสนับสนุนการศึกษา",
       "owner": "นายมาโนช เงินอยู่",
       "amounts": [
-        52000.0,
+        42000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        42000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        42000,
         0,
         0,
         0
@@ -2021,76 +978,91 @@
       "activities": [
         {
           "name": "กิจกรรมซ่อมแซมเครื่องยนต์และอุปกรณ์ยานยนต์ต่างๆ",
-          "owner": "",
+          "owner": "นายมาโนช เงินอยู่",
           "amounts": [
-            33000.0,
-            0,
-            52000.0,
-            0
-          ],
-          "remaining": [
-            null,
+            30000,
             null,
             null,
             null
+          ],
+          "income": [
+            30000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            30000,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมจัดซื้อน้ำมันเชื้อเพลิง",
-          "owner": "",
+          "owner": "นายมาโนช เงินอยู่",
           "amounts": [
-            12000.0,
+            7500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            7500,
             0,
             0,
             0
           ],
           "remaining": [
-            720.0,
-            null,
-            null,
-            null
+            7500,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมชำระภาษีรถยนต์",
-          "owner": "",
+          "owner": "นายมาโนช เงินอยู่",
           "amounts": [
-            7000.0,
+            4500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            4500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            4500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        52000.0,
-        null,
-        52000.0,
-        null
-      ],
-      "remaining": [
-        12367.0,
-        null,
-        6253.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=65937244",
-      "sourceRow": 28,
-      "balanceSourceRow": 17
+      ]
     },
     {
-      "id": 30,
-      "name": "โครงการสานสัมพันธ์และระดมทรัพยากร เพื่อสนับสนุนการศึกษา",
+      "id": 31,
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางวิไล สำราญดี",
+      "name": "โครงการสานสัมพันธ์และระดมทรัพยากร เพื่อสนับสนุนการศึกษา",
+      "owner": "นางสาวสมมนัส ยวนเขียว",
       "amounts": [
-        1000.0,
+        1000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1000,
         0,
         0,
         0
@@ -2098,304 +1070,2035 @@
       "activities": [
         {
           "name": "กิจกรรมสานสัมพันธ์และระดมทรัพยากร เพื่อสนับสนุนการศึกษา",
-          "owner": "",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
           "amounts": [
-            1000.0,
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
             0,
             0,
             0
           ],
           "remaining": [
-            null,
-            null,
-            null,
-            null
+            500,
+            0,
+            0,
+            0
           ]
         },
         {
           "name": "กิจกรรมงานคณะกรรมการสถานศึกษา",
-          "owner": "",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
           "amounts": [
-            0,
-            0,
-            2500.0,
-            0
-          ],
-          "remaining": [
-            null,
+            500,
             null,
             null,
             null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
           ]
         }
-      ],
-      "income": [
-        1000.0,
-        null,
-        2500.0,
-        null
-      ],
-      "remaining": [
-        528.0,
-        null,
-        5.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=132381284",
-      "sourceRow": 32,
-      "balanceSourceRow": 19
-    },
-    {
-      "id": 31,
-      "name": "โครงการจัดจ้างลูกจ้างชั่วคราวเพื่อการบริหารจัดการของสถานศึกษา",
-      "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวสุนิสา อิ่มรัง",
-      "amounts": [
-        214000.0,
-        0,
-        0,
-        0
-      ],
-      "activities": [],
-      "income": [
-        214000.0,
-        null,
-        320106.0,
-        null
-      ],
-      "remaining": [
-        38800.0,
-        null,
-        -2494.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=50290021",
-      "sourceRow": 35,
-      "balanceSourceRow": 21
+      ]
     },
     {
       "id": 32,
-      "name": "โครงการพัฒนาระบบงานธุรการเพื่อการบริหารจัดการของสถานศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวสมมนัส ยวนเขียว",
+      "name": "โครงการจัดจ้างลูกจ้างชั่วคราวเพื่อการบริหารจัดการของสถานศึกษา",
+      "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
       "amounts": [
-        5000.0,
+        173000,
+        null,
+        109500,
+        null
+      ],
+      "income": [
+        173000,
         0,
-        0,
+        109500,
         0
       ],
-      "activities": [],
-      "income": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        -410.0,
-        null,
-        null,
-        null
+        173000,
+        0,
+        109500,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=12883422",
-      "sourceRow": 36,
-      "balanceSourceRow": 23
+      "activities": []
     },
     {
       "id": 33,
-      "name": "โครงการพัฒนาระบบสาธารณูปโภคเพื่อการพัฒนาสถานศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางนุสรา เฉยแสง",
+      "name": "โครงการพัฒนาระบบงานธุรการเพื่อการบริหารจัดการของสถานศึกษา",
+      "owner": "นางสาวเฑียรภักดิ์ สุทธิยะรักษ์",
       "amounts": [
-        352620.0,
+        5000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        5000,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        352620.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        -5339.48,
-        null,
-        null,
-        null
+        5000,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1894761997",
-      "sourceRow": 37,
-      "balanceSourceRow": 25
+      "activities": []
     },
     {
       "id": 34,
-      "name": "โครงการรถรับ-ส่ง นักเรียนเพื่อส่งเสริมโอกาสทางศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นายมาโนช เงินอยู่",
+      "name": "โครงการพัฒนาระบบสาธารณูปโภคเพื่อการพัฒนาสถานศึกษา",
+      "owner": "นางสาวสมมนัส ยวนเขียว",
       "amounts": [
-        0,
-        0,
-        23000.0,
-        76000.0
-      ],
-      "activities": [],
-      "income": [
+        322600,
         null,
         null,
-        241540.0,
         null
+      ],
+      "income": [
+        322600,
+        0,
+        0,
+        0
       ],
       "remaining": [
-        null,
-        null,
-        167550.0,
-        null
+        322600,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=470512186",
-      "sourceRow": 38,
-      "balanceSourceRow": 27
+      "activities": [
+        {
+          "name": "กิจกรรมรองรับค่าใช้จ่ายด้านพลังงานไฟฟ้าเพื่อความต่อเนื่องของสถานศึกษา",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
+          "amounts": [
+            300000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            300000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            300000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาระบบโทรศัพท์และการสื่อสารภายในสถานศึกษา",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
+          "amounts": [
+            2000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            2000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมบำรุงรักษาระบบเครื่องกรองน้ำดื่มสะอาด",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
+          "amounts": [
+            10000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            10000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            10000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมบำรุุงรักษาและพัฒนาระบบเครื่องปรับอากาศ",
+          "owner": "นางสาวสมมนัส ยวนเขียว",
+          "amounts": [
+            10600,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            10600,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            10600,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
     },
     {
       "id": 35,
-      "name": "โครงการประชาสัมพันธ์ สื่อสร้างสรรค์ เพื่อพัฒนาสถานศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+      "name": "โครงการรถรับ-ส่ง นักเรียนเพื่อส่งเสริมโอกาสทางศึกษา",
+      "owner": "นายธนัญท์กุล ชูชื่น",
       "amounts": [
-        12000.0,
+        null,
+        null,
+        182209.97,
+        null
+      ],
+      "income": [
         0,
         0,
+        182209.97,
         0
       ],
-      "activities": [],
-      "income": [
-        12000.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        3450.52,
-        null,
-        null,
-        null
+        0,
+        0,
+        182209.97,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=2056628850",
-      "sourceRow": 39,
-      "balanceSourceRow": 29
+      "activities": []
     },
     {
       "id": 36,
-      "name": "โครงการส่งเสริมระบบงานธรรมาภิบาลในสถานศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางสาวณัฐมน กลิ่นผล",
+      "name": "โครงการประชาสัมพันธ์ สื่อสร้างสรรค์ เพื่อพัฒนาสถานศึกษา",
+      "owner": "ครูใหม่",
       "amounts": [
-        500.0,
+        6500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        6500,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        500.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        500.0,
-        null,
-        null,
-        null
+        6500,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1871760294",
-      "sourceRow": 40,
-      "balanceSourceRow": 31
+      "activities": []
     },
     {
       "id": 37,
-      "name": "โครงการพัฒนาระบบงานรับนักเรียน",
       "department": "ฝ่ายบริหารงานทั่วไป",
-      "owner": "นางเนตรนารี สุจริตจันทร์",
+      "name": "โครงการส่งเสริมระบบงานธรรมาภิบาลในสถานศึกษา",
+      "owner": "นางสาวพรทิพย์ ปานพลอย",
       "amounts": [
-        5000.0,
+        500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        500,
         0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        5000.0,
-        null,
-        null,
-        null
-      ],
       "remaining": [
-        120.0,
-        null,
-        null,
-        null
+        500,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=707652671",
-      "sourceRow": 41,
-      "balanceSourceRow": 33
+      "activities": []
     },
     {
       "id": 38,
-      "name": "โครงการทัศนศึกษาเพื่อส่งเสริมการเรียนรู้ของนักเรียน",
       "department": "ฝ่ายบริหารงานทั่วไป",
+      "name": "โครงการพัฒนาระบบงานรับนักเรียน",
       "owner": "นางเนตรนารี สุจริตจันทร์",
       "amounts": [
+        5000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        5000,
         0,
-        130000.0,
         0,
         0
       ],
-      "activities": [],
-      "income": [
-        null,
-        130000.0,
-        null,
-        null
-      ],
       "remaining": [
-        null,
-        2594.0,
-        null,
-        null
+        5000,
+        0,
+        0,
+        0
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=292560499",
-      "sourceRow": 42,
-      "balanceSourceRow": 35
+      "activities": []
     },
     {
       "id": 39,
-      "name": "โครงการพัฒนาระบบงานควบคุมภายในของสถานศึกษา",
       "department": "ฝ่ายบริหารงานทั่วไป",
+      "name": "โครงการทัศนศึกษาเพื่อส่งเสริมการเรียนรู้ของนักเรียน",
+      "owner": "นางเนตรนารี สุจริตจันทร์",
+      "amounts": [
+        null,
+        130000,
+        null,
+        null
+      ],
+      "income": [
+        0,
+        130000,
+        0,
+        0
+      ],
+      "remaining": [
+        0,
+        130000,
+        0,
+        0
+      ],
+      "activities": []
+    },
+    {
+      "id": 40,
+      "department": "ฝ่ายบริหารงานทั่วไป",
+      "name": "โครงการพัฒนาระบบงานควบคุมภายในของสถานศึกษา",
       "owner": "นางสาววิลาวัลย์ ช่วยบุญ",
       "amounts": [
-        1000.0,
+        500,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        500,
         0,
         0,
         0
       ],
-      "activities": [],
+      "remaining": [
+        500,
+        0,
+        0,
+        0
+      ],
+      "activities": []
+    },
+    {
+      "id": 1,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมและพัฒนากิจกรรมพัฒนาผู้เรียน",
+      "owner": "นายศรัณย์ โชคลาภ",
+      "amounts": [
+        null,
+        232802.25,
+        4500,
+        38994
+      ],
       "income": [
-        1000.0,
-        null,
-        null,
-        null
+        0,
+        232802.25,
+        4500,
+        38994
       ],
       "remaining": [
-        1000.0,
+        0,
+        232802.25,
+        4500,
+        38994
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมเข้าค่ายพักแรมลูกเสือ - เนตรนารีและกิจกรรมนักเรียน",
+          "owner": "นายศรัณย์ โชคลาภ",
+          "amounts": [
+            null,
+            92802.25,
+            4500,
+            null
+          ],
+          "income": [
+            0,
+            92802.25,
+            4500,
+            0
+          ],
+          "remaining": [
+            0,
+            92802.25,
+            4500,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมและพัฒนาเทคโนโลยีสำหรับนักเรียน",
+          "owner": "นางสาวกิ่งกาญจน์ ทองประเสริฐ",
+          "amounts": [
+            null,
+            1000,
+            null,
+            null
+          ],
+          "income": [
+            0,
+            1000,
+            0,
+            0
+          ],
+          "remaining": [
+            0,
+            1000,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมสร้างเสริมสถาบัน วันสำคัญ คุณธรรม จริยธรรม อัตลักษณ์ของผู้เรียน",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            null,
+            50000,
+            null,
+            38994
+          ],
+          "income": [
+            0,
+            50000,
+            0,
+            38994
+          ],
+          "remaining": [
+            0,
+            50000,
+            0,
+            38994
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมความสามารถด้านกีฬา(กีฬาสี ภายในโรงเรียน",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            null,
+            30000,
+            null,
+            null
+          ],
+          "income": [
+            0,
+            30000,
+            0,
+            0
+          ],
+          "remaining": [
+            0,
+            30000,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมวิชาการสู่ความเป็นเลิศของผู้เรียนในทุกมิติ (เฉพาะงานกิจกรรม TEAM)",
+          "owner": "นางสาวพรทิพย์ ปานพลอย",
+          "amounts": [
+            null,
+            59000,
+            null,
+            null
+          ],
+          "income": [
+            0,
+            59000,
+            0,
+            0
+          ],
+          "remaining": [
+            0,
+            59000,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมและต่อยอดคุณภาพผู้เรียนสู่ความเป็นเลิศ",
+      "owner": "นางสาวปิรัญทณา ชาชำนาญ",
+      "amounts": [
+        500,
+        90000,
+        84793,
+        null
+      ],
+      "income": [
+        500,
+        90000,
+        84793,
+        0
+      ],
+      "remaining": [
+        500,
+        90000,
+        84793,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศด้านดนตรีและวงโยธวาทิต",
+          "owner": "นางสาวปิรัญทณา ชาชำนาญ",
+          "amounts": [
+            500,
+            null,
+            58461,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            58461,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            58461,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศทางวิชาการของผู้เรียน",
+          "owner": "นางสาวปภาวิไล ชลอวงษ์",
+          "amounts": [
+            null,
+            70000,
+            20332,
+            null
+          ],
+          "income": [
+            0,
+            70000,
+            20332,
+            0
+          ],
+          "remaining": [
+            0,
+            70000,
+            20332,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมความเป็นเลิศด้านกีฬาของผู้เรียน",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            null,
+            20000,
+            6000,
+            null
+          ],
+          "income": [
+            0,
+            20000,
+            6000,
+            0
+          ],
+          "remaining": [
+            0,
+            20000,
+            6000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนามาตรฐานและส่งเสริมความเป็นเลิศของสถานศึกษา",
+      "owner": "นางสาวปภาวิไล ชลอวงษ์",
+      "amounts": [
+        1000,
+        null,
+        40000,
+        null
+      ],
+      "income": [
+        1000,
+        0,
+        40000,
+        0
+      ],
+      "remaining": [
+        1000,
+        0,
+        40000,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมสถานศึกษารางวัลพระราชทาน",
+          "owner": "นางสาวปภาวิไล ชลอวงษ์",
+          "amounts": [
+            500,
+            null,
+            30000,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            30000,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            30000,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนามาตรฐานของสถานศึกษา",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            500,
+            null,
+            10000,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            10000,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            10000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาปรับปรุงหลักสูตรสถานศึกษา",
+      "owner": "นางสาวพรทิพย์ ปานพลอย",
+      "amounts": [
+        1500,
         null,
         null,
         null
       ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk#gid=1047722818",
-      "sourceRow": 43,
-      "balanceSourceRow": 37
+      "income": [
+        1500,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1500,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรสถานศึกษา",
+          "owner": "นางสาวพรทิพย์ ปานพลอย",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาและปรับปรุงหลักสูตรพัฒนาคุณภาพการศึกษาสู่ ความเป็นเลิศในทุกมิติ สร้างจิตสำนึกรักษ์สิ่งแวดล้อม",
+          "owner": "นางสาวพรทิพย์ ปานพลอย",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการจัดซื้อสื่อและวัสดุอุปกรณ์การเรียนการสอน เพื่อส่งเสริมศักยภาพของผู้เรียนและยกระดับผลสัมฤทธิ์ทางการเรียน",
+      "owner": "นางสาวรัตนาภรณ์ บัวทอง",
+      "amounts": [
+        226623.34,
+        null,
+        92000,
+        null
+      ],
+      "income": [
+        226623.34,
+        0,
+        92000,
+        0
+      ],
+      "remaining": [
+        226623.34,
+        0,
+        92000,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมจัดซื้อสื่อ เทคโนโลยี สารสนเทศ (จอ LED )",
+          "owner": "นางสาวรัตนาภรณ์ บัวทอง",
+          "amounts": [
+            158000,
+            null,
+            92000,
+            null
+          ],
+          "income": [
+            158000,
+            0,
+            92000,
+            0
+          ],
+          "remaining": [
+            158000,
+            0,
+            92000,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมจัดซื้อสื่อ วัสดุอุปกรณ์ เพื่อส่งเสริมการจัดการเรียนการสอน",
+          "owner": "นางสาวสุนิสา อิ่มรัง",
+          "amounts": [
+            68623.34,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            68623.34,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            68623.34,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาและส่งเสริมการวิจัยในชั้นเรียน",
+      "owner": "นางสาวณัฐมน กลิ่นผล",
+      "amounts": [
+        2000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมอบรมเพิ่มศักยภาพครูด้านการวิจัยในชั้นเรียน",
+          "owner": "นางสาวณัฐมน กลิ่นผล",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมการเผยแพร่งานวิจัยในชั้นเรียน",
+          "owner": "ครูใหม่",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการวัดและประเมินผล",
+      "owner": "นางเนตรนารี สุจริตจันทร์",
+      "amounts": [
+        62000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        62000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        62000,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมส่งเสริมพัฒนางานทะเบียน",
+          "owner": "นางเนตรนารี สุจริตจันทร์",
+          "amounts": [
+            15000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            15000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            15000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการวัดและประเมินผล",
+          "owner": "นางสาวปภาวิไล ชลอวงษ์",
+          "amounts": [
+            45000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            45000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            45000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมการวัดและประเมินผลผู้เรียนด้วยเทคโนโลยี",
+          "owner": "นางสาวปภาวิไล ชลอวงษ์",
+          "amounts": [
+            2000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            2000,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาระบบนิเทศการเรียนการสอนและ PLC",
+      "owner": "นายศรัณย์ โชคลาภ",
+      "amounts": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "activities": []
+    },
+    {
+      "id": 9,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมการอ่านและพัฒนาทักษะการค้นคว้าของนักเรียน",
+      "owner": "นางจรรยา ทองดี",
+      "amounts": [
+        7000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        7000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        7000,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมรักการอ่าน",
+          "owner": "นางจรรยา ทองดี",
+          "amounts": [
+            3000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            3000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            3000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมตอบคำถามสารานุกรม",
+          "owner": "นางจรรยา ทองดี",
+          "amounts": [
+            2000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            2000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมนิทรรศการวันสำคัญ",
+          "owner": "นางจรรยา ทองดี",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมยุวบรรณารักษ์",
+          "owner": "นางจรรยา ทองดี",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมงานแนะแนวเพื่อสร้างโอกาสทางการเรียนรู้",
+      "owner": "นางวิไล สำราญดี",
+      "amounts": [
+        9500,
+        null,
+        null,
+        65588.82
+      ],
+      "income": [
+        9500,
+        0,
+        0,
+        65588.82
+      ],
+      "remaining": [
+        9500,
+        0,
+        0,
+        65588.82
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมการดำเนินงานกองทุนกู้ยืมเงินเพื่อการศึกษา (กยศ)",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            500,
+            null,
+            null,
+            65588.82
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            65588.82
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            65588.82
+          ]
+        },
+        {
+          "name": "กิจกรรมระบบงานแนะแนวและจัดวางตัวบุคคล",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            1500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมศึกษาดูงานแหล่งเรียนรู้เพื่อเป็นแนวทางการศึกษาต่อ",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการบริการวิชาการและบริการชุมชน",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            2000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            2000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมปัจฉิมนิเทศ/วันแห่งความภาคภูมิใจ",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            2500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            2500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            2500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมเตรียมความพร้อมนักเรียนใหม่",
+          "owner": "นางสาวณัฏฐ์นรี พรประสิทธิ์",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมทุนการศึกษา",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการพัฒนาระบบการประกันคุณภาพการศึกษา",
+      "owner": "นางสาวพรทิพย์ ปานพลอย",
+      "amounts": [
+        2000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        2000,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมการจัดทำข้อมูลสารสนเทศ",
+          "owner": "นางสาวพรทิพย์ ปานพลอย",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการประเมินคุณภาพภายในสถานศึกษา",
+          "owner": "นางสาววิลาวัลย์ ช่วยบุญ",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการขับเคลื่อนนโยบายสพฐ. สพม.สิงห์บุรี อ่างทอง",
+      "owner": "นางสาวณัฐมน กลิ่นผล",
+      "amounts": [
+        3500,
+        null,
+        4948,
+        null
+      ],
+      "income": [
+        3500,
+        0,
+        4948,
+        0
+      ],
+      "remaining": [
+        3500,
+        0,
+        4948,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมลดเวลาเรียนเพิ่มเวลารู้ พัฒนาศักยภาพผู้เรียนสู่ TEAM",
+          "owner": "นางสาวณัฐมน กลิ่นผล",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการพัฒนาสถานศึกษาตามนโยบายสำนักงานเขตพื้นที่การศึกษา",
+          "owner": "นางสาวณัฐมน กลิ่นผล",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมการขับเคลื่อนสถานศึกษาตามนโยบาย 1 อำเภอ 1 โรงเรียนคุณภาพ",
+          "owner": "นางสาวณัฐมน กลิ่นผล",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมหลักปรัชญาของเศรษฐกิจพอเพียงสู่การดำรงชีวิต",
+          "owner": "นางสาวณัฐมน กลิ่นผล",
+          "amounts": [
+            500,
+            null,
+            4948,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            4948,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            4948,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการเรียนฟรี 15 ปี",
+      "owner": "นางนุสรา เฉยแสง",
+      "amounts": [
+        524585,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        524585,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        524585,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "ค่าอุปกรณ์การเรียน",
+          "owner": "นางนุสรา เฉยแสง",
+          "amounts": [
+            85020,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            85020,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            85020,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ค่าเครื่องแบบนักเรียน",
+          "owner": "นางนุสรา เฉยแสง",
+          "amounts": [
+            85350,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            85350,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            85350,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ค่าหนังสือ",
+          "owner": "นางนุสรา เฉยแสง",
+          "amounts": [
+            354215,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            354215,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            354215,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการจ้างครูผู้สอนและบุคลากรทางการศึกษาเพื่อส่งเสริมผลสัมฤทธิ์ทางการเรียน",
+      "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
+      "amounts": [
+        432000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        432000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        432000,
+        0,
+        0,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กลุ่มสาระการเรียนรู้สุขศึกษาและพลศึกษา",
+          "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
+          "amounts": [
+            144000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            144000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            144000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ",
+          "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
+          "amounts": [
+            144000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            144000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            144000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กลุ่มสาระการเรียนรู้คณิตศาสตร์",
+          "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
+          "amounts": [
+            144000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            144000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            144000,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21 ของนักเรียน",
+      "owner": "นางปิรัญทนา ชาชำนาญ",
+      "amounts": [
+        18500,
+        null,
+        5765,
+        null
+      ],
+      "income": [
+        18500,
+        0,
+        5765,
+        0
+      ],
+      "remaining": [
+        18500,
+        0,
+        5765,
+        0
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมฐานการเรียนรู้เพื่อฝึกประสบการณ์ทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมฝึกอบรมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมกิจกรรมตลาดส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาและส่งเสริมทักษะผู้ประกอบการในศตวรรษที่ 21",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            1000,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            1000,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            1000,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพวงหรีดรักษ์โลก",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            500,
+            null,
+            3565,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            3565,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            3565,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมคาร์แคร์",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            500,
+            null,
+            1000,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            1000,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            1000,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมฐานการเรียนรู้ปุ๋ยหมักสูตรพระราชทาน",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            500,
+            null,
+            1200,
+            null
+          ],
+          "income": [
+            500,
+            0,
+            1200,
+            0
+          ],
+          "remaining": [
+            500,
+            0,
+            1200,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาทักษะงานคหกรรมของนักเรียน",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            6500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            6500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            6500,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาทักษะงานอุตสาหกรรมของนักเรียน",
+          "owner": "นางปิรัญทนา ชาชำนาญ",
+          "amounts": [
+            6500,
+            null,
+            null,
+            null
+          ],
+          "income": [
+            6500,
+            0,
+            0,
+            0
+          ],
+          "remaining": [
+            6500,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการส่งเสริมและพัฒนาการเรียนรู้สู่ผู้เรียนโดยเครือข่ายร่วมพัฒนา",
+      "owner": "นายมนัสชัย สีสด",
+      "amounts": [
+        null,
+        null,
+        null,
+        155000
+      ],
+      "income": [
+        0,
+        0,
+        0,
+        155000
+      ],
+      "remaining": [
+        0,
+        0,
+        0,
+        155000
+      ],
+      "activities": [
+        {
+          "name": "กิจกรรมค.บ.เกมส์",
+          "owner": "นายมนัสชัย สีสด",
+          "amounts": [
+            null,
+            null,
+            null,
+            30000
+          ],
+          "income": [
+            0,
+            0,
+            0,
+            30000
+          ],
+          "remaining": [
+            0,
+            0,
+            0,
+            30000
+          ]
+        },
+        {
+          "name": "กิจกรรมพัฒนาศักยภาพทางดนตรี (วิทยากรดนตรี)",
+          "owner": "นางสาวปฐมาภรณ์ ร่มโพธิ์",
+          "amounts": [
+            null,
+            null,
+            null,
+            60000
+          ],
+          "income": [
+            0,
+            0,
+            0,
+            60000
+          ],
+          "remaining": [
+            0,
+            0,
+            0,
+            60000
+          ]
+        },
+        {
+          "name": "กิจกรรมค่ายคุณธรรม จริยธรรม",
+          "owner": "นางวิไล สำราญดี",
+          "amounts": [
+            null,
+            null,
+            null,
+            30000
+          ],
+          "income": [
+            0,
+            0,
+            0,
+            30000
+          ],
+          "remaining": [
+            0,
+            0,
+            0,
+            30000
+          ]
+        },
+        {
+          "name": "กิจกรรมส่งเสริมสุขภาพนักเรียน",
+          "owner": "นางสาวศริญญา ฉับจันทึก",
+          "amounts": [
+            null,
+            null,
+            null,
+            35000
+          ],
+          "income": [
+            0,
+            0,
+            0,
+            35000
+          ],
+          "remaining": [
+            0,
+            0,
+            0,
+            35000
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "department": "ฝ่ายบริหารงานวิชาการ",
+      "name": "โครงการสานสัมพันธ์ชุมชนและเครือข่ายส่งเสริมด้านการจัดการศึกษา",
+      "owner": "นางปิรัญทนา ชาชำนาญ",
+      "amounts": [
+        1000,
+        null,
+        null,
+        null
+      ],
+      "income": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "remaining": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "activities": []
     }
   ],
   "departments": [
@@ -2403,106 +3106,65 @@
       "name": "ฝ่ายบริหารงานวิชาการ",
       "complete": true,
       "income": [
-        1190074.0,
-        268000.0,
-        30500.0,
-        215311.0
+        1292708.34,
+        322802.25,
+        232006,
+        259582.82
       ],
       "remaining": [
-        59535.0,
-        136276.0,
-        3700.0,
-        68033.0
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk",
-      "note": "ข้อมูลจากสำเนาปี 2570 มีรายการเดิมในทะเบียน คงค่าตามไฟล์โดยไม่ล้างยอด"
+        1292708.34,
+        322802.25,
+        232006,
+        259582.82
+      ]
     },
     {
       "name": "ฝ่ายบริหารงานงบประมาณ",
       "complete": true,
       "income": [
-        7000.0,
-        null,
-        null,
-        null
+        8000,
+        0,
+        0,
+        0
       ],
       "remaining": [
-        -403.25,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1tCDiUiP5lF_vSyJIkCAPB-y0PWJGUjvOsp-2qhVf30M/edit?usp=drivesdk",
-      "note": "ข้อมูลจากสำเนาปี 2570 มีรายการเดิมในทะเบียน คงค่าตามไฟล์โดยไม่ล้างยอด · ไม่มีแท็บยอดคงเหลือในไฟล์ฝ่ายนี้ ใช้ยอดล่าสุดของทะเบียนรายโครงการ"
+        8000,
+        0,
+        0,
+        0
+      ]
     },
     {
       "name": "ฝ่ายบริหารงานบุคคล",
       "complete": true,
       "income": [
-        67275.0,
-        null,
-        null,
-        null
+        30000,
+        0,
+        0,
+        0
       ],
       "remaining": [
-        46182.7,
-        null,
-        null,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk",
-      "note": "ข้อมูลจากสำเนาปี 2570 มีรายการเดิมในทะเบียน คงค่าตามไฟล์โดยไม่ล้างยอด · ไม่มีแท็บยอดคงเหลือในไฟล์ฝ่ายนี้ ใช้ยอดล่าสุดของทะเบียนรายโครงการ"
+        30000,
+        0,
+        0,
+        0
+      ]
     },
     {
       "name": "ฝ่ายบริหารงานทั่วไป",
       "complete": true,
       "income": [
-        863620.0,
-        130000.0,
-        630019.0,
-        null
+        679862,
+        130000,
+        291709.97,
+        0
       ],
       "remaining": [
-        0.0,
-        2594.0,
-        173808.0,
-        null
-      ],
-      "sourceUrl": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk",
-      "note": "ข้อมูลจากสำเนาปี 2570 มีรายการเดิมในทะเบียน คงค่าตามไฟล์โดยไม่ล้างยอด"
+        679862,
+        130000,
+        291709.97,
+        0
+      ]
     }
-  ],
-  "sources": [
-    {
-      "title": "บริหารทั่วไป — สำเนาปี 2570",
-      "url": "https://docs.google.com/spreadsheets/d/1aO9LqK9G8wD2T-5Oz7UO8RZ0UfPa41UVGBJpeSyIeLU/edit?usp=drivesdk"
-    },
-    {
-      "title": "งบประมาณ — สำเนาปี 2570",
-      "url": "https://docs.google.com/spreadsheets/d/1tCDiUiP5lF_vSyJIkCAPB-y0PWJGUjvOsp-2qhVf30M/edit?usp=drivesdk"
-    },
-    {
-      "title": "บุคคล — สำเนาปี 2570",
-      "url": "https://docs.google.com/spreadsheets/d/14RDH54b7BD2QFsoKSP2vH8cBWzderCO9fNy0IkYb9xw/edit?usp=drivesdk"
-    },
-    {
-      "title": "วิชาการ — สำเนาปี 2570",
-      "url": "https://docs.google.com/spreadsheets/d/11jqvfm7_iEaQDsiXJIfQ5yZysWYSc9RBvB9WZZeStVU/edit?usp=drivesdk"
-    }
-  ],
-  "incomeTotals": [
-    2127969.0,
-    398000.0,
-    660519.0,
-    215311.0
-  ],
-  "balanceSummary": {
-    "remaining": [
-      105314.45,
-      138870.0,
-      177508.0,
-      68033.0
-    ]
-  },
-  "originalsMayBeModified": false
+  ]
 }

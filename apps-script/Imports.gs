@@ -36,7 +36,7 @@ function restoreBudgetYearImport(input,token){const user=requireBudgetImporter_(
  return importSave_(payload,user,'restore',input.expectedRevision,input.id);
  }finally{lock.releaseLock();}}
 // Public projection excludes ledger entries, loan details and upload account IDs.
-function getBudgetYearSnapshot(year){year=budgetYear_(year);const id=importRevision_(year),payload=importLoad_(id);return payload?BudgetImportModel.summary(payload,id):[2569,2570].includes(year)?null:{year,status:'empty',projects:[],departments:[],source:'ยังไม่มีข้อมูลปีนี้',snapshotDate:''};}
+function getBudgetYearSnapshot(year){year=budgetYear_(year);if(year===2570&&importRevision_(year)==='legacy')return primary2570Snapshot_();const id=importRevision_(year),payload=importLoad_(id);return payload?BudgetImportModel.summary(payload,id):[2569,2570].includes(year)?null:{year,status:'empty',projects:[],departments:[],source:'ยังไม่มีข้อมูลปีนี้',snapshotDate:''};}
 function readRegister_(id,year){year=budgetYear_(year);const revision=importRevision_(year),payload=importLoad_(revision);return payload?BudgetImportModel.state(payload,id,revision):readLegacyRegister_(id,year);}
 function getBudgetRegister(id,year,token){if(token===undefined){token=year;year=2569;}getBudgetUser(token);return readRegister_(id,year);}
 function importEndpoint_(state,index){const b=state.blocks[Number(index)];if(!b)throw Error('ไม่พบทะเบียน');return {projectId:state.projectId,blockIndex:b.blockIndex,activity:b.activity,budgetType:b.budgetType,name:state.sheetName,headerRow:b.headerRow};}
