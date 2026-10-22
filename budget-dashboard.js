@@ -9,5 +9,5 @@
   const values=data.departments.map(d=>selected.includes(d)?add(d.adjustedIncome||d.income):null),max=Math.max(...values.map(v=>v||0),1);$('bars').innerHTML=data.departments.map((d,i)=>`<div class="bar-row"><div class="bar-label"><span>${esc(d.name.replace('ฝ่ายบริหารงาน',''))}</span><strong>${money(values[i])}</strong></div><div class="track"><div style="width:${(values[i]||0)/max*100}%"></div></div></div>`).join('');
  }
  window.addEventListener('budget-data-updated',e=>{data=e.detail;render()});
- $('department').addEventListener('change',render);window.loadBudgetData({preview:true}).then(d=>{data=d;$('department').innerHTML='<option value="">ทุกฝ่ายที่มีข้อมูล</option>'+d.departments.map(p=>`<option>${esc(p.name)}</option>`).join('');render()}).catch(()=>{$('error').hidden=false;$('error').textContent='โหลดข้อมูลงบประมาณไม่สำเร็จ กรุณาลองใหม่'});
+ $('department').addEventListener('change',render);window.loadBudgetData({preview:!(window.budgetYear===2570&&document.getElementById('overview'))}).then(d=>{data=d;$('department').innerHTML='<option value="">ทุกฝ่ายที่มีข้อมูล</option>'+d.departments.map(p=>`<option>${esc(p.name)}</option>`).join('');render()}).catch(()=>{$('error').hidden=false;$('error').textContent='โหลดข้อมูลงบประมาณไม่สำเร็จ กรุณาลองใหม่'});
 })();
