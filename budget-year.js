@@ -1,7 +1,6 @@
 (() => {
  const select=document.getElementById('budgetYear');
- const requested=new URL(location.href).searchParams.get('year');let saved;try{saved=sessionStorage.getItem('school-budget-year')}catch{}
- const candidate=Number(requested===null?saved:requested),year=Number.isInteger(candidate)&&candidate>=2500&&candidate<=2700?candidate:2569;
+ const year=window.budgetYear||window.schoolFiscalYear.current();
  try{sessionStorage.setItem('school-budget-year',String(year))}catch{}
  window.budgetYear=year;window.budgetYearDataUrl=year===2570?'budget-data-2570.json?v=20261022-registers1':year===2569?'budget-data.json':null;window.budgetIsAllocationPlan=false;
  const empty=document.getElementById('yearEmpty');if(empty)empty.hidden=true;
@@ -11,7 +10,7 @@
  const menu=document.createElement('details');menu.className='year-menu';
  menu.innerHTML=`<summary aria-label="เลือกปีงบประมาณ ปัจจุบัน ${year}"><span class="year-calendar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 11h18M7 15h3M14 15h3M7 18h3"/></svg></span><span class="year-button-label"><small>ปีงบประมาณ</small><strong>${year}</strong></span><span class="year-chevron" aria-hidden="true">⌄</span></summary><div class="year-options" aria-label="ปีงบประมาณที่เลือกได้">${[...new Set([2569,2570,year])].sort((a,b)=>b-a).map(y=>`<button type="button" class="year-option" data-year="${y}" aria-pressed="${y===year}"><span><small>ปีงบประมาณ</small><strong>${y}</strong></span><i class="year-check" aria-hidden="true">${y===year?'✓':''}</i></button>`).join('')}</div>`;
  select.hidden=true;select.parentElement.append(menu);
- document.addEventListener('DOMContentLoaded',async()=>{try{const rpc=await window.budgetRpcReady,years=await rpc('getBudgetYears');for(const y of years){if(![...select.options].some(o=>Number(o.value)===y))select.append(new Option(String(y),String(y)));if(!menu.querySelector('[data-year="'+y+'"]')){const b=document.createElement('button');b.type='button';b.className='year-option';b.dataset.year=String(y);b.textContent='ปีการศึกษา '+y;menu.querySelector('.year-options').append(b);}}}catch{}},{once:true});
+ document.addEventListener('DOMContentLoaded',async()=>{try{const rpc=await window.budgetRpcReady,years=await rpc('getBudgetYears');for(const y of years){if(![...select.options].some(o=>Number(o.value)===y))select.append(new Option(String(y),String(y)));if(!menu.querySelector('[data-year="'+y+'"]')){const b=document.createElement('button');b.type='button';b.className='year-option';b.dataset.year=String(y);b.textContent='ปีงบประมาณ '+y;menu.querySelector('.year-options').append(b);}}}catch{}},{once:true});
  menu.addEventListener('click',e=>{const option=e.target.closest('[data-year]');if(!option)return;select.value=option.dataset.year;select.dispatchEvent(new Event('change'))});
  document.addEventListener('click',e=>{if(!menu.contains(e.target))menu.open=false});
  menu.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.open=false;menu.querySelector('summary').focus();e.preventDefault()}if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();menu.open=true;const buttons=[...menu.querySelectorAll('button')],index=buttons.indexOf(document.activeElement);buttons[(index+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus()}});
