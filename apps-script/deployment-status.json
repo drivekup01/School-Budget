@@ -1,6 +1,6 @@
 {
-  "liveVersion": 10,
-  "verifiedOn": "2026-10-15",
+  "liveVersion": 13,
+  "verifiedOn": "2026-10-22",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
   "testRecordRemoved": "f1f305bb-352d-49aa-a17a-351c3da26d76",
@@ -8,5 +8,6 @@
   "year2570CopyTimeZone": "Asia/Bangkok",
   "latestAffectedRegisterBalancesPublished": true,
   "guestDocumentFinanceTotalsOnly": true,
-  "legacyNotesAndAccumulatedSpendingSeparated": true
+  "legacyNotesAndAccumulatedSpendingSeparated": true,
+  "primary2570": true
 }
