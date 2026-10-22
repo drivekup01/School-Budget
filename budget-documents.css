@@ -40,3 +40,7 @@
 @media(max-width:900px){.compact-document-editor .forms-workspace{grid-template-columns:1fr}.compact-document-editor .forms-inputs{max-height:none}.compact-document-editor .forms-preview{max-height:75vh}}
 }
 @media print{.preview-zoom-tools,#documentLedgerLink{display:none!important}}
+@media screen and (min-width:901px){
+.compact-document-editor .forms-workspace{grid-template-columns:minmax(340px,42%) minmax(0,1fr)}
+.compact-document-editor #budgetDocumentPreview>.sheet-preview-holder{margin-left:auto;margin-right:0}
+}
