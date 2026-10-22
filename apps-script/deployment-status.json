@@ -1,5 +1,5 @@
 {
-  "liveVersion": 13,
+  "liveVersion": 14,
   "verifiedOn": "2026-10-22",
   "borrowingEnabled": true,
   "frontendInlineConfirmationPublished": true,
@@ -9,5 +9,8 @@
   "latestAffectedRegisterBalancesPublished": true,
   "guestDocumentFinanceTotalsOnly": true,
   "legacyNotesAndAccumulatedSpendingSeparated": true,
-  "primary2570": true
+  "primary2570": true,
+  "summaryCacheSeconds": 60,
+  "staticFirstPreview": true,
+  "saveReturnsRegister": true
 }
