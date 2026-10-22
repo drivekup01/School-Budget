@@ -1,6 +1,6 @@
 /* Public summaries render immediately; financial actions still request fresh data. */
 (() => {
- let basePending,pending,previewPending;
+ let basePending,pending,previewPending,inFlight=false;
  const cacheKey='school-budget-summary-'+(window.budgetYear||2569);
  let displayed=null;
  function saved(){try{const v=JSON.parse(localStorage.getItem(cacheKey)||'null');return v?.data?.year===(window.budgetYear||2569)?v:null;}catch{return null;}}
@@ -17,8 +17,9 @@
  }
  function notify(data){displayed=data;if(typeof CustomEvent!=='undefined')window.dispatchEvent(new CustomEvent('budget-data-updated',{detail:data}));}
  function latest(force=false,refresh=false){
+  if(inFlight&&pending)return pending;
   if(force||refresh){pending=null;}
-  return pending||(pending=(async()=>{
+  return pending||(inFlight=true,pending=(async()=>{
    let original=await base();if([2569,2570].includes(original.year)){original=await window.fetchBudgetYearData(original.year,{live:true,force,refresh});}if(original.status==='empty'){status('ยังไม่มีข้อมูลปีการศึกษานี้');notify(original);return original;}if(original.status==='sheet-registers'){keep(original);status('ยอดล่าสุด '+new Date().toLocaleTimeString('th-TH',{timeZone:'Asia/Bangkok'})+' · ตรวจอัตโนมัติทุก 1 นาที');notify(original);return original;}if(original.status==='allocation-plan')return original;if(original.status==='imported'){status('ข้อมูลนำเข้า '+original.snapshotDate+' · เวอร์ชัน '+original.importRevision.slice(0,8));notify(original);return original;}
    status('แสดงข้อมูลนำเข้า ณ '+(original.snapshotDate||'ไม่ระบุ')+' · กำลังอ่านยอดล่าสุดจาก Sheet…',true);
    const data=JSON.parse(JSON.stringify(original));const rpc=await window.budgetRpcReady;const summary=await rpc('getBudgetAdjustmentSummary',data.year);if(summary.year!==data.year)throw Error('ปีของข้อมูลการยืมไม่ตรงกัน');
@@ -31,7 +32,7 @@
 
    const savedAt=Date.now();keep(data);
    status('อ่านยอดล่าสุดแล้ว '+new Date(savedAt).toLocaleTimeString('th-TH',{timeZone:'Asia/Bangkok'}));notify(data);return data;
-  })().catch(e=>{pending=null;status('ตรวจยอดล่าสุดไม่สำเร็จ · ยอดที่แสดงยังเป็นข้อมูลสรุปเดิม กรุณากดอ่านยอดล่าสุด');throw e}));
+  })().catch(e=>{pending=null;status('ตรวจยอดล่าสุดไม่สำเร็จ · ยอดที่แสดงยังเป็นข้อมูลสรุปเดิม กรุณากดอ่านยอดล่าสุด');throw e}).finally(()=>{inFlight=false;}));
  }
  window.loadBudgetData=(options={})=>{
   if(options.baseOnly)return base();
