@@ -1,0 +1,3 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),P=require('../procurement');
+const sample=()=>({format:'school-procurement-document-v1',version:1,name:'ทดสอบ',savedAt:'2026-10-23T00:00:00Z',stores:Object.fromEntries(P.keys.map(k=>[k,{}]))});
+test('procurement snapshots require all four stores and preserve complete input',()=>{const s=sample();s.stores[P.keys[0]].document_date='1/70';s.stores[P.keys[2]].items=[{quantity:2,price:125.25}];assert.equal(P.validate(s),s);assert.equal(P.metadata(s,'test').academicYear,2570);assert.throws(()=>P.validate({...s,stores:{}}));assert.throws(()=>P.validate({...s,name:'ก'.repeat(300000)}));assert.throws(()=>P.id('../escape'));});

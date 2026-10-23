@@ -1,5 +1,5 @@
 (() => {
- const $=id=>document.getElementById(id),id=Number(window.budgetProjectId||new URL(location.href).searchParams.get('project'))||1;const year=Number(window.budgetYear||new URL(location.href).searchParams.get('year'))||2569;const types=fetch(year===2570?'budget-register-types-2570.json':'budget-register-types.json',{cache:'default'}).then(r=>{if(!r.ok)throw Error('โหลดชื่อประเภทงบไม่สำเร็จ');return r.json()});let state,busy=false,requestId=crypto.randomUUID(),change=null;
+ const $=id=>document.getElementById(id),id=Number(window.budgetProjectId||new URL(location.href).searchParams.get('project'))||1;const year=Number(window.budgetYear||new URL(location.href).searchParams.get('year'))||2569;const types=window.schoolAuthReady.then(()=>window.schoolRpc('getBudgetReferenceData',year)).then(r=>r.registers);let state,busy=false,requestId=crypto.randomUUID(),change=null;
  const money=n=>n==null?'ไม่ระบุ':n.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';
  const rpc=async(method,...args)=>{await window.schoolAuthReady;return window.schoolRpc(method,...args)};
  const back=document.querySelector('main>a[href="budget-projects.html"]');if(back)back.href='budget-projects.html?year='+year;

@@ -3,6 +3,7 @@ const {onCall,HttpsError}=require('firebase-functions/v2/https');
 const {initializeApp,getApps}=require('firebase-admin/app');
 const {getFirestore,FieldValue}=require('firebase-admin/firestore');
 const B=require('./borrowing-documents');
+const P=require('./procurement');
 const M=require('./model');if(!getApps().length)initializeApp();const db=getFirestore();
 const callable={region:'asia-southeast1',maxInstances:3,memory:'256MiB',timeoutSeconds:60,cors:['https://drivekup01.github.io','http://localhost:8765','http://127.0.0.1:8765']};
 async function member(request){const a=request.auth;if(!a||a.token.email_verified!==true||a.token.firebase?.sign_in_provider!=='google.com')throw new HttpsError('unauthenticated','กรุณาเข้าสู่ระบบด้วย Google');const snap=await db.doc('budget_users/'+a.uid).get(),p=snap.data();if(!p||p.active!==true||p.email!==a.token.email||!['admin','editor'].includes(p.role))throw new HttpsError('permission-denied','บัญชีนี้ยังไม่ได้รับสิทธิ์ระบบงบประมาณ');return {...p,id:a.uid}}
@@ -37,6 +38,8 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
 exports.budgetApi=onCall(callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');
  if(method==='getBudgetUser')return user;
+ if(['listProcurementDocuments','openProcurementDocument','saveProcurementDocument','setProcurementDocumentDeleted','getProcurementDraft','saveProcurementDraft','clearProcurementDraft'].includes(method)){authorize(user);return await P.handle(method,args,user,db,FieldValue);}
+ if(method==='getBudgetReferenceData'){const snap=await db.doc('budget_reference_data/'+M.year(Number(args[0]))).get();return parse(snap);}
  if(method==='getBudgetProjectCatalog')return parse(await db.doc('budget_catalog/'+M.year(Number(args[0]))).get());
  if(method==='listBorrowingBudgetDocuments'){
   const year=M.year(Number(args[0])),project=Number(args[1]),docs=await db.collection('budget_documents').where('kind','==','forms').get();
