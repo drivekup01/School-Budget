@@ -24,6 +24,7 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
 exports.budgetApi=onCall(callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');
  if(method==='getBudgetUser')return user;
+ if(method==='getBudgetProjectCatalog')return parse(await db.doc('budget_catalog/'+M.year(Number(args[0]))).get());
  if(method==='getBudgetRegister'){const state=parse(await registerRef(args[1],args[0]).get());for(const b of state.blocks)for(const e of b.entries)delete e.deletedOriginal;return state}
  if(method==='getBudgetDocumentFinance'){const state=parse(await registerRef(args[1],args[0]).get());return {year:state.year,projectId:state.projectId,revision:state.revision,blocks:state.blocks.map(b=>({budgetType:b.budgetType,activity:b.activity,received:b.received,used:b.used,current:b.current}))}}
  if(['saveBudgetEntry','mutateBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing'].includes(method)){authorize(user,method==='mutateBudgetEntry'&&['delete','restore'].includes(args[0]?.action));return await ledger(method,args[0]||{},user)}
