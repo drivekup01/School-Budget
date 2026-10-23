@@ -1,9 +1,215 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Keep all budget and personnel data private until role rules are reviewed.
-    match /{document=**} {
-      allow read, write: if false;
+    function signedIn() { return request.auth != null; }
+    function userPath() { return /databases/$(database)/documents/procurement_users/$(request.auth.uid); }
+    function member() { return signedIn() && exists(userPath()); }
+    function profile() { return get(userPath()).data; }
+    function admin() { return member() && profile().role == 'admin'; }
+    function owns(dept) { return member() && (admin() || (profile().role == 'staff' && profile().departmentId == dept)); }
+    function validDept(v) { return v is string && v.size() > 0 && v.size() <= 80; }
+    function amount(v) { return v is number && v >= 0 && v <= 1000000000; }
+    function projectMatches(p,dept) {
+      return exists(/databases/$(database)/documents/procurement_projects/$(p)) &&
+      get(/databases/$(database)/documents/procurement_projects/$(p)).data.departmentId == dept;
     }
+    match /procurement_users/{uid} {
+      allow read: if member() && (admin() || request.auth.uid == uid);
+      // User accounts and role assignments are created by admin in Firebase Console/Admin SDK.
+      allow create, update, delete: if false;
+    }
+    match /procurement_projects/{projectId} {
+      allow read: if member();
+      allow create: if member() && owns(request.resource.data.departmentId) &&
+        request.resource.data.keys().hasOnly(['name','fiscalYear','departmentId','budget','createdBy','createdAt']) &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.name is string && request.resource.data.name.size() > 0 &&
+        request.resource.data.name.size() <= 250 && validDept(request.resource.data.departmentId) &&
+        request.resource.data.fiscalYear is int && request.resource.data.fiscalYear >= 2500 &&
+        request.resource.data.fiscalYear <= 2700 && amount(request.resource.data.budget) &&
+        request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    match /procurement_jobs/{jobId} {
+      allow read: if member();
+      allow create: if member() && owns(request.resource.data.departmentId) &&
+        projectMatches(request.resource.data.projectId,request.resource.data.departmentId) &&
+        request.resource.data.keys().hasOnly(['projectId','departmentId','title','budget','referencePrice','approved','status','createdBy','createdAt']) &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.title is string && request.resource.data.title.size() > 0 &&
+        request.resource.data.title.size() <= 250 &&
+        amount(request.resource.data.budget) && amount(request.resource.data.referencePrice) &&
+        amount(request.resource.data.approved) && request.resource.data.status == 'draft' &&
+        request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    // Immutable user-owned copies, separate from uploaded PDF documents.
+    // Field layout can be changed by Admin only; all members may read it.
+    match /procurement_pdf_mappings/{departmentId} {
+      allow read: if member();
+      allow create, update: if admin() &&
+        request.resource.data.departmentId == departmentId &&
+        request.resource.data.fields is list &&
+        request.resource.data.fields.size() <= 300 &&
+        request.resource.data.templatePath is string &&
+        request.resource.data.updatedBy == request.auth.uid &&
+        request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+    match /procurement_document_copies/{copyId} {
+      allow read: if member();
+      allow create: if member() &&
+        (request.resource.data.departmentId == "general" || owns(request.resource.data.departmentId)) &&
+        request.resource.data.keys().hasOnly(['schemaVersion','templateId','title','departmentId','createdBy','createdAt','values','items','selectedPages','documentCount']) &&
+        request.resource.data.schemaVersion == 1 &&
+        request.resource.data.templateId in ['first-set-v1', 'first-set-word16-v1', 'first-set-pdf11-v1'] &&
+        request.resource.data.documentCount in [10, 11, 16] &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.createdAt == request.time &&
+        validDept(request.resource.data.departmentId) &&
+        request.resource.data.title is string &&
+        request.resource.data.title.size() > 0 &&
+        request.resource.data.title.size() <= 250 &&
+        request.resource.data.values is map &&
+        request.resource.data.values.size() <= 75 &&
+        request.resource.data.values.department == request.resource.data.departmentId &&
+        request.resource.data.items is list &&
+        request.resource.data.items.size() <= 80 &&
+        request.resource.data.selectedPages is list &&
+        request.resource.data.selectedPages.size() <= 16;
+      allow update, delete: if false;
+    }
+    match /procurement_documents/{documentId} {
+      allow read: if member();
+      allow create: if member() && owns(request.resource.data.departmentId) &&
+        projectMatches(request.resource.data.projectId,request.resource.data.departmentId) &&
+        exists(/databases/$(database)/documents/procurement_jobs/$(request.resource.data.jobId)) &&
+        get(/databases/$(database)/documents/procurement_jobs/$(request.resource.data.jobId)).data.projectId == request.resource.data.projectId &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.status == 'uploading' &&
+        request.resource.data.storagePath == 'procurement/projects/' + request.resource.data.projectId + '/files/' + documentId &&
+        request.resource.data.keys().hasOnly(['projectId','jobId','departmentId','title','filename','storagePath','status','createdBy','createdAt']) &&
+        request.resource.data.createdAt == request.time;
+      allow update: if member() && owns(resource.data.departmentId) &&
+        resource.data.createdBy == request.auth.uid &&
+        resource.data.status == 'uploading' && request.resource.data.status == 'ready' &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+      allow delete: if false;
+    }
+    // FY2570 school procurement dashboard: separate from legacy collections.
+    match /procurement_v2_departments/{departmentId} {
+      allow read: if member();
+      allow create: if admin() &&
+        request.resource.data.fiscalYear == '2570' &&
+        request.resource.data.id is string &&
+        request.resource.data.name is string &&
+        request.resource.data.budget is number;
+      allow update: if admin() &&
+        request.resource.data.id == resource.data.id &&
+        request.resource.data.fiscalYear == resource.data.fiscalYear;
+      allow delete: if false;
+    }
+    match /procurement_v2_projects/{projectId} {
+      allow read: if member();
+      allow create: if admin() &&
+        request.resource.data.fiscalYear == '2570' &&
+        request.resource.data.id is int &&
+        request.resource.data.department is string &&
+        request.resource.data.name is string &&
+        request.resource.data.activities is list &&
+        request.resource.data.activities.size() <= 100;
+      allow update: if admin() &&
+        request.resource.data.id == resource.data.id &&
+        request.resource.data.fiscalYear == resource.data.fiscalYear;
+      allow delete: if false;
+    }
+    match /procurement_v2_transactions/{transactionId} {
+      allow read: if member();
+      allow create: if member() && owns(request.resource.data.department) &&
+        request.resource.data.keys().hasOnly(['fiscalYear','type','amount','date','department','projectId','activityId','note','createdBy','createdAt']) &&
+        request.resource.data.fiscalYear == '2570' &&
+        request.resource.data.type in ['income','expense'] &&
+        request.resource.data.amount is number &&
+        request.resource.data.amount > 0 &&
+        request.resource.data.amount <= 100000000 &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    // New request editor. Keep legacy request docs readable/editable in draft stage.
+    function ownsV2(dept) {
+      return member() && (
+        admin() ||
+        (profile().role == 'staff' && (
+          profile().departmentId == dept ||
+          (profile().departmentId == 'budget' && dept == 'finance')
+        ))
+      );
+    }
+    function requestV2Valid(d) {
+      return d.keys().hasOnly([
+        'fiscalYear','department','projectId','activityId','title','requestedAmount',
+        'requestedDate','status','createdBy','createdAt','updatedAt','procurementType',
+        'procurementMethod','purpose','vendor','deliveryDate','deliveryDays',
+        'notes','preparedBy','items','details'
+      ]) &&
+      d.fiscalYear == '2570' &&
+      d.department is string &&
+      d.projectId is int &&
+      d.title is string && d.title.size() > 0 && d.title.size() <= 250 &&
+      d.requestedAmount is number && d.requestedAmount > 0 &&
+      d.requestedAmount <= 100000000 &&
+      d.requestedDate is string && d.requestedDate.size() == 10 &&
+      d.status in ['draft','prepared'] &&
+      d.get('items',[]) is list && d.get('items',[]).size() <= 80 &&
+      d.get('purpose','') is string && d.get('purpose','').size() <= 3000 &&
+      d.get('notes','') is string && d.get('notes','').size() <= 3000 &&
+      d.get('vendor','') is string && d.get('vendor','').size() <= 250 &&
+      d.get('details',{}) is map && d.get('details',{}).size() <= 70;
+    }
+    match /procurement_v2_requests/{requestId} {
+      allow read: if member();
+      allow create: if member() && ownsV2(request.resource.data.department) &&
+        requestV2Valid(request.resource.data) &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.createdAt == request.time &&
+        (!request.resource.data.keys().hasAny(['updatedAt']) ||
+          request.resource.data.updatedAt == request.time);
+      allow update: if member() && ownsV2(resource.data.department) &&
+        (admin() || resource.data.createdBy == request.auth.uid) &&
+        resource.data.status == 'draft' &&
+        request.resource.data.department == resource.data.department &&
+        request.resource.data.createdBy == resource.data.createdBy &&
+        request.resource.data.createdAt == resource.data.createdAt &&
+        requestV2Valid(request.resource.data) &&
+        request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+// Budget public_years {year:int,locked:bool,json:string,migrationId:string}.
+    // budget_users/{uid}: approved private identity, never client writable.
+    // Registers, documents, audit and operations are accessed via budgetApi only.
+    // All writes are server validated and financial changes are atomic.
+    function approvedBudgetUser() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && exists(/databases/$(database)/documents/budget_users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.active == true
+        && get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.email == request.auth.token.email;
+    }
+    match /budget_public_years/{year} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+    match /budget_users/{uid} {
+      allow get: if approvedBudgetUser() && request.auth.uid == uid;
+      allow list, create, update, delete: if false;
+    }
+    match /budget_registers/{id} { allow read, write: if false; }
+    match /budget_loans/{id} { allow read, write: if false; }
+    match /budget_operations/{id} { allow read, write: if false; }
+    match /budget_audit/{id} { allow read, write: if false; }
+    match /budget_documents/{id} { allow read, write: if false; }
+    match /{other=**} { allow read, write: if false; }
   }
 }

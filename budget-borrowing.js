@@ -5,7 +5,7 @@
  let destination,source,projects=[],busy=false,requestId=crypto.randomUUID(),sourceGeneration=0;
  const money=n=>n==null?'ไม่ระบุ':Number(n).toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท';
  const rpc=async(method,...args)=>{await window.schoolAuthReady;return window.schoolRpc(method,...args)};
- const writable=()=>window.schoolUser?.role==='admin'&&new URL(location.href).searchParams.get('mode')!=='view';
+ const writable=()=>window.schoolUser?.canWriteBudget&&year!==2569&&new URL(location.href).searchParams.get('mode')!=='view';
  const targetBlock=()=>destination?.blocks.find(b=>b.headerRow===Number($('register').value));
  const sourceBlock=()=>$('borrowSourceBlock').value===''?null:source?.blocks.find(b=>b.blockIndex===Number($('borrowSourceBlock').value));
  function message(text,error=false){$('borrowStatus').textContent=text;$('borrowStatus').classList.toggle('error',error);$('borrowStatus').hidden=!text;}

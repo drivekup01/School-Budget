@@ -1,6 +1,6 @@
 (async()=>{try{
- const user=await window.schoolAuthReady;
- if(!['admin','guest'].includes(user.role)){document.querySelector('.forms-heading>a').hidden=true;throw Error('ส่วนเอกสารงบประมาณสำหรับผู้ดูแลระบบและฝ่ายงบประมาณ')}
+ const user=await window.schoolAuthReady;await window.budgetStoresReady;
+ if(!['admin','editor'].includes(user.role)){document.querySelector('.forms-heading>a').hidden=true;throw Error('ส่วนเอกสารงบประมาณสำหรับผู้ดูแลระบบและฝ่ายงบประมาณ')}
  const status=document.getElementById('formsStatus'),list=document.getElementById('formsHistory'),year=document.getElementById('historyYear'),search=document.getElementById('historySearch'),canDelete=user.role==='admin',selected=new Set();
  let visible=[],removeButton,restoreButton,allCheck;
  function label(d){return [d.projectName,d.activity,d.one?.fields?.number1?'งบ 1: '+d.one.fields.number1:'',d.two?.fields?.number2?'งบ 2: '+d.two.fields.number2:''].filter(Boolean).join(' · ')||'เอกสารไม่มีชื่อ'}
@@ -10,15 +10,15 @@
  const dialog=document.createElement('dialog');dialog.className='forms-delete-dialog';dialog.setAttribute('aria-labelledby','deleteFormsTitle');
  if(canDelete){
   const toolbar=document.createElement('div');toolbar.className='forms-delete-tools';removeButton=document.createElement('button');removeButton.type='button';removeButton.id='deleteSelectedForms';removeButton.className='forms-danger';restoreButton=document.createElement('button');restoreButton.type='button';restoreButton.id='restoreDeletedForms';restoreButton.textContent='คืนค่ารายการที่ลบล่าสุด';toolbar.append(removeButton,restoreButton);list.before(toolbar);
-  dialog.innerHTML='<h2 id="deleteFormsTitle">ยืนยันลบเอกสารที่เลือก</h2><p>ลบเฉพาะประวัติเอกสารในเบราว์เซอร์นี้ ไม่กระทบทะเบียนงบประมาณหรือข้อมูลในชีท</p><ul id="deleteFormsList"></ul><div class="forms-actions"><button type="button" id="cancelDeleteForms">ยกเลิก</button><button type="button" id="confirmDeleteForms" class="forms-danger">ยืนยันลบ</button></div><p class="forms-note">สามารถคืนค่ารายการที่ลบล่าสุดได้</p>';document.body.append(dialog);
+  dialog.innerHTML='<h2 id="deleteFormsTitle">ยืนยันลบเอกสารที่เลือก</h2><p>ลบเฉพาะประวัติเอกสารในระบบ ไม่กระทบทะเบียนงบประมาณหรือข้อมูลในระบบ</p><ul id="deleteFormsList"></ul><div class="forms-actions"><button type="button" id="cancelDeleteForms">ยกเลิก</button><button type="button" id="confirmDeleteForms" class="forms-danger">ยืนยันลบ</button></div><p class="forms-note">สามารถคืนค่ารายการที่ลบล่าสุดได้</p>';document.body.append(dialog);
   removeButton.onclick=()=>{const items=dialog.querySelector('ul');items.replaceChildren();for(const d of visible.filter(d=>selected.has(d.id))){const item=document.createElement('li');item.textContent=label(d);items.append(item)}if(items.childElementCount)dialog.showModal()};
   dialog.querySelector('#cancelDeleteForms').onclick=()=>dialog.close();
-  dialog.querySelector('#confirmDeleteForms').onclick=()=>{try{const cases=budgetDocumentStore.groups().filter(d=>selected.has(d.id));const count=cases.length;budgetDocumentStore.remove(cases.flatMap(d=>d.documents.map(x=>x.id)));dialog.close();selected.clear();draw();status.textContent='ลบ '+count+' เรื่องแล้ว · สามารถคืนค่ารายการที่ลบล่าสุดได้'}catch(e){dialog.close();status.textContent='ลบไม่สำเร็จ: '+e.message}};
-  restoreButton.onclick=()=>{try{budgetDocumentStore.restore();const count=budgetDocumentStore.groups().length;selected.clear();draw();status.textContent='คืนค่า '+count+' เอกสารแล้ว'}catch(e){status.textContent='คืนค่าไม่สำเร็จ: '+e.message}};
+  dialog.querySelector('#confirmDeleteForms').onclick=async()=>{try{const cases=budgetDocumentStore.groups().filter(d=>selected.has(d.id));const count=cases.length;await budgetDocumentStore.remove(cases.flatMap(d=>d.documents.map(x=>x.id)));dialog.close();selected.clear();draw();status.textContent='ลบ '+count+' เรื่องแล้ว · สามารถคืนค่ารายการที่ลบล่าสุดได้'}catch(e){dialog.close();status.textContent='ลบไม่สำเร็จ: '+e.message}};
+  restoreButton.onclick=async()=>{try{await budgetDocumentStore.restore();const count=budgetDocumentStore.groups().length;selected.clear();draw();status.textContent='คืนค่า '+count+' เอกสารแล้ว'}catch(e){status.textContent='คืนค่าไม่สำเร็จ: '+e.message}};
  }
  function draw(){
   visible=budgetDocumentStore.groups().filter(d=>(!year.value||String(d.year)===year.value)&&JSON.stringify([d.projectName,d.activity,...d.documents.map(x=>[x.fields?.number1,x.fields?.number2])]).toLowerCase().includes(search.value.toLowerCase()));
-  const ids=new Set(visible.map(d=>d.id));for(const id of selected)if(!ids.has(id))selected.delete(id);list.replaceChildren();allCheck=null;status.textContent=visible.length+' เรื่อง · งบ 1 และ งบ 2 รวมในเรื่องเดียวกัน · เก็บในเบราว์เซอร์นี้';
+  const ids=new Set(visible.map(d=>d.id));for(const id of selected)if(!ids.has(id))selected.delete(id);list.replaceChildren();allCheck=null;status.textContent=visible.length+' เรื่อง · งบ 1 และ งบ 2 รวมในเรื่องเดียวกัน · บันทึกใน Firebase';
   if(!visible.length){list.textContent='ยังไม่มีเอกสารที่ตรงกับการค้นหา';updateSelection();return}
   const table=document.createElement('table');table.innerHTML='<thead><tr>'+(canDelete?'<th class="forms-selection"></th>':'')+'<th>ปี</th><th>เลขที่ / โครงการ</th><th>บันทึกล่าสุด</th><th>จัดการ</th></tr></thead>';
   if(canDelete){allCheck=document.createElement('input');allCheck.type='checkbox';allCheck.setAttribute('aria-label','เลือกเอกสารทั้งหมดที่แสดง');allCheck.onchange=()=>{selected.clear();if(allCheck.checked)visible.forEach(d=>selected.add(d.id));list.querySelectorAll('tbody input[type=checkbox]').forEach(c=>c.checked=selected.has(c.value));updateSelection()};table.querySelector('th').append(allCheck)}
