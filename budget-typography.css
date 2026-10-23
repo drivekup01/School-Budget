@@ -1,0 +1,29 @@
+/* Shared screen typography. Printed document previews keep their official fonts. */
+@media screen {
+  body { font-family: Tahoma, system-ui, sans-serif; font-size: 15px; line-height: 1.65; }
+  body :is(p,label,input,select,textarea,button,a,td,th,small,strong,b,span,summary,legend,output,li)
+    :not(.budget-sheet,.budget-sheet *,.pay-sheet-holder,.pay-sheet-holder *) { font-family: inherit; }
+  body :is(p,label,input,select,textarea,button,a,td,th,small,strong,b,span,summary,legend,output,li):not(.budget-sheet,.budget-sheet *,.pay-sheet-holder,.pay-sheet-holder *) {
+    font-family: Tahoma, system-ui, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.65;
+  }
+  body :is(h1,h2,h3,h4,h5,h6):not(.budget-sheet *,.pay-sheet-holder *) {
+    font-family: Tahoma, system-ui, sans-serif;
+    font-weight: 700 !important;
+    line-height: 1.5;
+  }
+  body h1:not(.budget-sheet *,.pay-sheet-holder *) { font-size: 26px !important; }
+  body h2:not(.budget-sheet *,.pay-sheet-holder *) { font-size: 20px !important; }
+  body :is(h3,h4,h5,h6):not(.budget-sheet *,.pay-sheet-holder *) { font-size: 17px !important; }
+  body :is(th,.budget-form-section>summary,.document-funding legend,.stat>span):not(.budget-sheet *,.pay-sheet-holder *) { font-weight: 700 !important; }
+  #budgetSidebar .budget-sidebar-brand>span,
+  #budgetSidebar .school-account-identity strong { font-weight: 700 !important; }
+  #budgetSidebar .budget-sidebar-brand small,
+  #budgetSidebar .school-account-identity small { font-weight: 400 !important; }
+  .forms-missing-two { font-size: 15px !important; font-weight: 400 !important; }
+  @media (max-width:650px) {
+    body h1:not(.budget-sheet *,.pay-sheet-holder *) { font-size: 23px !important; }
+  }
+}
