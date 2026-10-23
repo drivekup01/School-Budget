@@ -1,0 +1,7 @@
+/* Only the lower history panel on the Budget 1 / Budget 2 history page. */
+@media screen {
+  body[data-budget-page="budget-documents"] .forms-panel,
+  body[data-budget-page="budget-documents"] .forms-panel * {
+    font-size: 13px !important;
+  }
+}
