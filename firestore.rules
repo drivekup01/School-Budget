@@ -210,6 +210,139 @@ service cloud.firestore {
     match /budget_operations/{id} { allow read, write: if false; }
     match /budget_audit/{id} { allow read, write: if false; }
     match /budget_documents/{id} { allow read, write: if false; }
+    // BEGIN SCHOOL ATTENDANCE v1
+    // Server-managed (no browser writes):
+    // attendance_teachers/{uid}: {active:bool,email:string,name:string}.
+    // attendance_access/{uid}/classes/{classId}: {active:bool,canRead:bool,
+    //   canMorning:bool,canSubject:bool,canBehavior:bool}.
+    // attendance_classes/{classId}/students/{studentId}: {code:string,name:string,number:int}.
+    // attendance_assignments/{assignmentId}: {teacherUid:string,active:bool,
+    //   kind:'morning'|'subject'|'substitute',classId:string,className:string,
+    //   subject:string,period:int,weekday:int(0=Sunday),from:timestamp,to:timestamp,
+    //   date:timestamp|null,time:string}. from/to/date are Bangkok midnights.
+    // Browser-written marks below assignments/{id}/days/{YYYYMMDD}/marks/{studentId}:
+    // {assignmentId,teacherUid,classId,studentId:string(1..100),day:timestamp,
+    // status:enum,note:string(0..300),revision:int(1..100000),
+    // createdAt:timestamp(immutable),updatedAt:timestamp(server time)}.
+    // Each mark requires an immutable, identical history/{revision} in the same transaction.
+    // attendance_behavior/{eventId}: {teacherUid,classId,studentId:string(1..100),
+    // day:timestamp,delta:int(-100..100 except 0),reason:string(1..300),createdAt:timestamp}.
+    // Behavior events are append-only. No totals or private teacher profiles are public.
+    // Existing budget/procurement rules above this block are intentionally preserved.
+    function attSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true &&
+        request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+    function attOwner(uid) { return attSignedIn() && request.auth.uid == uid; }
+    function attMember() {
+      return attSignedIn() &&
+        get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.active == true &&
+        get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.email == request.auth.token.email;
+    }
+    function attString(s, min, max) { return s is string && s.size() >= min && s.size() <= max; }
+    function attId(s) { return attString(s, 1, 100) && s.matches('^[A-Za-z0-9_-]+$'); }
+    function attAccess(classId) {
+      return get(/databases/$(database)/documents/attendance_access/$(request.auth.uid)/classes/$(classId)).data;
+    }
+    function attReadClass(classId) {
+      return attMember() && attAccess(classId).active == true && attAccess(classId).canRead == true;
+    }
+    function attAssignment(id) {
+      return get(/databases/$(database)/documents/attendance_assignments/$(id)).data;
+    }
+    function attOwnAssignment(id) {
+      return attMember() && attAssignment(id).active == true &&
+        attAssignment(id).teacherUid == request.auth.uid && attReadClass(attAssignment(id).classId);
+    }
+    function attMidnight(day) {
+      let local = day + duration.value(7, 'h');
+      return day is timestamp && day == timestamp.date(local.year(),local.month(),local.day()) - duration.value(7,'h');
+    }
+    function attDayKey(day) {
+      let local = day + duration.value(7,'h');
+      return string(local.year()*10000 + local.month()*100 + local.day());
+    }
+    function attAssignedDay(a, day) {
+      let local = day + duration.value(7,'h');
+      return attMidnight(day) && day <= request.time && day >= a.from && day <= a.to &&
+        (a.kind == 'morning' ||
+         (a.kind == 'subject' && a.weekday == local.dayOfWeek() % 7) ||
+         (a.kind == 'substitute' && a.date == day));
+    }
+    function attCanMark(a, day) {
+      return attAssignedDay(a, day) &&
+        ((a.kind == 'morning' && attAccess(a.classId).canMorning == true) ||
+         (a.kind in ['subject','substitute'] && attAccess(a.classId).canSubject == true));
+    }
+    function attValidMark(d, aid, dayKey, sid) {
+      return d.keys().hasAll(['assignmentId','teacherUid','classId','studentId','day','status','note','revision','createdAt','updatedAt']) &&
+        d.keys().hasOnly(['assignmentId','teacherUid','classId','studentId','day','status','note','revision','createdAt','updatedAt']) &&
+        attId(d.assignmentId) && d.assignmentId == aid && attId(d.teacherUid) && d.teacherUid == request.auth.uid &&
+        attId(d.studentId) && d.studentId == sid && attId(d.classId) && d.classId == attAssignment(aid).classId &&
+        d.day is timestamp && dayKey == attDayKey(d.day) &&
+        d.status in ['present','late','absent','leave'] && attString(d.note,0,300) &&
+        d.revision is int && d.revision >= 1 && d.revision <= 100000 &&
+        d.createdAt is timestamp && d.updatedAt is timestamp && d.updatedAt == request.time &&
+        exists(/databases/$(database)/documents/attendance_classes/$(d.classId)/students/$(sid)) &&
+        attCanMark(attAssignment(aid),d.day);
+    }
+    function attAuditMatches(aid, dayKey, sid, d) {
+      return getAfter(/databases/$(database)/documents/attendance_assignments/$(aid)/days/$(dayKey)/marks/$(sid)/history/$(string(d.revision))).data == d;
+    }
+    function attValidBehavior(d) {
+      return d.keys().hasAll(['teacherUid','classId','studentId','day','delta','reason','createdAt']) &&
+        d.keys().hasOnly(['teacherUid','classId','studentId','day','delta','reason','createdAt']) &&
+        attId(d.teacherUid) && d.teacherUid == request.auth.uid && attId(d.classId) && attId(d.studentId) &&
+        d.day is timestamp && attMidnight(d.day) && d.day <= request.time &&
+        d.delta is int && d.delta >= -100 && d.delta <= 100 && d.delta != 0 &&
+        attString(d.reason,1,300) && d.createdAt is timestamp && d.createdAt == request.time &&
+        attReadClass(d.classId) && attAccess(d.classId).canBehavior == true &&
+        exists(/databases/$(database)/documents/attendance_classes/$(d.classId)/students/$(d.studentId));
+    }
+    match /attendance_teachers/{uid} {
+      allow get: if attOwner(uid) && attMember();
+      allow list, create, update, delete: if false;
+    }
+    match /attendance_access/{uid}/classes/{classId} {
+      allow read: if attOwner(uid) && attMember();
+      allow write: if false;
+    }
+    match /attendance_classes/{classId}/students/{sid} {
+      allow read: if attReadClass(classId);
+      allow write: if false;
+    }
+    match /attendance_assignments/{aid} {
+      // Queries must include teacherUid == current UID and active == true.
+      allow read: if attMember() && resource.data.teacherUid == request.auth.uid && resource.data.active == true;
+      allow write: if false;
+      match /days/{dayKey}/marks/{sid} {
+        allow read: if attOwnAssignment(aid);
+        allow create: if attOwnAssignment(aid) && attValidMark(request.resource.data,aid,dayKey,sid) &&
+          request.resource.data.revision == 1 && request.resource.data.createdAt == request.time &&
+          attAuditMatches(aid,dayKey,sid,request.resource.data);
+        allow update: if attOwnAssignment(aid) && attValidMark(request.resource.data,aid,dayKey,sid) &&
+          request.resource.data.createdAt == resource.data.createdAt &&
+          request.resource.data.day == resource.data.day &&
+          request.resource.data.revision == resource.data.revision + 1 &&
+          attAuditMatches(aid,dayKey,sid,request.resource.data);
+        allow delete: if false;
+        match /history/{version} {
+          allow read: if attOwnAssignment(aid);
+          allow create: if attOwnAssignment(aid) && attValidMark(request.resource.data,aid,dayKey,sid) &&
+            version == string(request.resource.data.revision) &&
+            getAfter(/databases/$(database)/documents/attendance_assignments/$(aid)/days/$(dayKey)/marks/$(sid)).data == request.resource.data;
+          allow update, delete: if false;
+        }
+      }
+    }
+    match /attendance_behavior/{id} {
+      // Teachers read their own entries only; no global score is exposed.
+      allow read: if attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId);
+      allow create: if attMember() && attValidBehavior(request.resource.data);
+      allow update, delete: if false;
+    }
+    // END SCHOOL ATTENDANCE v1
+
     match /{other=**} { allow read, write: if false; }
   }
 }
