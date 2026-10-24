@@ -210,9 +210,9 @@ service cloud.firestore {
     match /budget_operations/{id} { allow read, write: if false; }
     match /budget_audit/{id} { allow read, write: if false; }
     match /budget_documents/{id} { allow read, write: if false; }
-    // BEGIN SCHOOL ATTENDANCE v1
-    // Server-managed (no browser writes):
-    // attendance_teachers/{uid}: {active:bool,email:string,name:string}.
+    // BEGIN SCHOOL ATTENDANCE v2
+    // Profiles remain Console/Admin SDK managed; approved admins manage classes and assignments.
+    // attendance_teachers/{uid}: {active:bool,email:string,name:string,role:admin|teacher}.
     // attendance_access/{uid}/classes/{classId}: {active:bool,canRead:bool,
     //   canMorning:bool,canSubject:bool,canBehavior:bool}.
     // attendance_classes/{classId}/students/{studentId}: {code:string,name:string,number:int}.
@@ -239,13 +239,17 @@ service cloud.firestore {
         get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.active == true &&
         get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.email == request.auth.token.email;
     }
+    // Roles can only be provisioned in Console/Admin SDK, never by this browser.
+    function attAdmin() {
+      return attMember() && get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.get('role','teacher') == 'admin';
+    }
     function attString(s, min, max) { return s is string && s.size() >= min && s.size() <= max; }
     function attId(s) { return attString(s, 1, 100) && s.matches('^[A-Za-z0-9_-]+$'); }
     function attAccess(classId) {
       return get(/databases/$(database)/documents/attendance_access/$(request.auth.uid)/classes/$(classId)).data;
     }
     function attReadClass(classId) {
-      return attMember() && attAccess(classId).active == true && attAccess(classId).canRead == true;
+      return attAdmin() || (attMember() && attAccess(classId).active == true && attAccess(classId).canRead == true);
     }
     function attAssignment(id) {
       return get(/databases/$(database)/documents/attendance_assignments/$(id)).data;
@@ -253,6 +257,40 @@ service cloud.firestore {
     function attOwnAssignment(id) {
       return attMember() && attAssignment(id).active == true &&
         attAssignment(id).teacherUid == request.auth.uid && attReadClass(attAssignment(id).classId);
+    }
+    function attViewAssignment(id) { return attAdmin() || attOwnAssignment(id); }
+    function attValidClass(d) {
+      return d.keys().hasAll(['name','academicYear','term','active','createdAt','updatedAt','updatedBy']) &&
+        d.keys().hasOnly(['name','academicYear','term','active','createdAt','updatedAt','updatedBy']) &&
+        attString(d.name,1,80) && d.academicYear is int && d.academicYear >= 2500 && d.academicYear <= 2700 &&
+        d.term is int && d.term in [1,2] && d.active is bool && d.createdAt is timestamp && d.updatedAt == request.time &&
+        d.updatedBy == request.auth.uid;
+    }
+    function attValidAccess(d) {
+      return d.keys().hasAll(['active','canRead','canMorning','canSubject','canBehavior','updatedAt','updatedBy']) &&
+        d.keys().hasOnly(['active','canRead','canMorning','canSubject','canBehavior','updatedAt','updatedBy']) &&
+        d.active is bool && d.canRead is bool && d.canMorning is bool && d.canSubject is bool && d.canBehavior is bool &&
+        d.updatedAt == request.time && d.updatedBy == request.auth.uid;
+    }
+    function attValidDirectory(d, uid) {
+      return attId(uid) && d.keys().hasAll(['name','active','updatedAt','updatedBy']) &&
+        d.keys().hasOnly(['name','active','updatedAt','updatedBy']) && attString(d.name,1,160) && d.active is bool &&
+        d.name == get(/databases/$(database)/documents/attendance_teachers/$(uid)).data.name &&
+        d.updatedAt == request.time && d.updatedBy == request.auth.uid;
+    }
+    function attValidAssignment(d) {
+      return d.keys().hasAll(['teacherUid','active','kind','classId','className','subject','period','weekday','from','to','date','time','createdAt','updatedAt','updatedBy']) &&
+        d.keys().hasOnly(['teacherUid','active','kind','classId','className','subject','period','weekday','from','to','date','time','createdAt','updatedAt','updatedBy']) &&
+        attId(d.teacherUid) && get(/databases/$(database)/documents/attendance_teachers/$(d.teacherUid)).data.active == true &&
+        d.active is bool && d.kind in ['morning','subject','substitute'] && attId(d.classId) &&
+        d.className == get(/databases/$(database)/documents/attendance_classes/$(d.classId)).data.name &&
+        attString(d.className,1,80) && attString(d.subject,1,160) && attString(d.time,0,40) &&
+        d.period is int && d.period >= 0 && d.period <= 20 && (d.kind != 'morning' || d.period == 0) &&
+        d.weekday is int && d.weekday >= 0 && d.weekday <= 6 &&
+        d.from is timestamp && d.to is timestamp && attMidnight(d.from) && attMidnight(d.to) && d.from <= d.to &&
+        ((d.kind == 'substitute' && d.date is timestamp && attMidnight(d.date) && d.date >= d.from && d.date <= d.to) ||
+         (d.kind != 'substitute' && d.date == null)) &&
+        d.createdAt is timestamp && d.updatedAt == request.time && d.updatedBy == request.auth.uid;
     }
     function attMidnight(day) {
       let local = day + duration.value(7, 'h');
@@ -304,8 +342,24 @@ service cloud.firestore {
       allow list, create, update, delete: if false;
     }
     match /attendance_access/{uid}/classes/{classId} {
-      allow read: if attOwner(uid) && attMember();
-      allow write: if false;
+      allow read: if attAdmin() || (attOwner(uid) && attMember());
+      allow create, update: if attAdmin() && attId(uid) && attId(classId) && attValidAccess(request.resource.data) &&
+        exists(/databases/$(database)/documents/attendance_teachers/$(uid)) &&
+        exists(/databases/$(database)/documents/attendance_classes/$(classId));
+      allow delete: if false;
+    }
+    match /attendance_directory/{uid} {
+      // Separate name-only directory; private teacher emails remain owner-only.
+      allow read: if attAdmin();
+      allow create, update: if attAdmin() && attValidDirectory(request.resource.data,uid);
+      allow delete: if false;
+    }
+    match /attendance_classes/{classId} {
+      allow read: if attAdmin();
+      allow create: if attAdmin() && attId(classId) && attValidClass(request.resource.data) && request.resource.data.createdAt == request.time;
+      allow update: if attAdmin() && attValidClass(request.resource.data) &&
+        request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if false;
     }
     match /attendance_classes/{classId}/students/{sid} {
       allow read: if attReadClass(classId);
@@ -313,10 +367,14 @@ service cloud.firestore {
     }
     match /attendance_assignments/{aid} {
       // Queries must include teacherUid == current UID and active == true.
-      allow read: if attMember() && resource.data.teacherUid == request.auth.uid && resource.data.active == true;
-      allow write: if false;
+      allow read: if attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && resource.data.active == true);
+      allow create: if attAdmin() && attId(aid) && attValidAssignment(request.resource.data) && request.resource.data.createdAt == request.time;
+      allow update: if attAdmin() && attValidAssignment(request.resource.data) &&
+        request.resource.data.teacherUid == resource.data.teacherUid && request.resource.data.classId == resource.data.classId &&
+        request.resource.data.kind == resource.data.kind && request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if false;
       match /days/{dayKey}/marks/{sid} {
-        allow read: if attOwnAssignment(aid);
+        allow read: if attViewAssignment(aid);
         allow create: if attOwnAssignment(aid) && attValidMark(request.resource.data,aid,dayKey,sid) &&
           request.resource.data.revision == 1 && request.resource.data.createdAt == request.time &&
           attAuditMatches(aid,dayKey,sid,request.resource.data);
@@ -327,7 +385,7 @@ service cloud.firestore {
           attAuditMatches(aid,dayKey,sid,request.resource.data);
         allow delete: if false;
         match /history/{version} {
-          allow read: if attOwnAssignment(aid);
+          allow read: if attViewAssignment(aid);
           allow create: if attOwnAssignment(aid) && attValidMark(request.resource.data,aid,dayKey,sid) &&
             version == string(request.resource.data.revision) &&
             getAfter(/databases/$(database)/documents/attendance_assignments/$(aid)/days/$(dayKey)/marks/$(sid)).data == request.resource.data;
@@ -337,11 +395,11 @@ service cloud.firestore {
     }
     match /attendance_behavior/{id} {
       // Teachers read their own entries only; no global score is exposed.
-      allow read: if attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId);
+      allow read: if attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId));
       allow create: if attMember() && attValidBehavior(request.resource.data);
       allow update, delete: if false;
     }
-    // END SCHOOL ATTENDANCE v1
+    // END SCHOOL ATTENDANCE v2
 
     match /{other=**} { allow read, write: if false; }
   }
