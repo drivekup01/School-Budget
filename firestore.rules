@@ -190,12 +190,11 @@ service cloud.firestore {
     // Registers, documents, audit and operations are accessed via budgetApi only.
     // All writes are server validated and financial changes are atomic.
     function approvedBudgetUser() {
-      return request.auth != null
-        && request.auth.token.email_verified == true
-        && request.auth.token.firebase.sign_in_provider == 'google.com'
-        && exists(/databases/$(database)/documents/budget_users/$(request.auth.uid))
-        && get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.active == true
-        && get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.email == request.auth.token.email;
+      return schoolGoogle() && (schoolHasUser() ?
+        (schoolActive() && schoolRole('budgetRole') in ['admin','editor']) :
+        (exists(/databases/$(database)/documents/budget_users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.active == true &&
+         get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.email == request.auth.token.email));
     }
     match /budget_public_years/{year} {
       allow get, list: if true;
@@ -235,13 +234,14 @@ service cloud.firestore {
     }
     function attOwner(uid) { return attSignedIn() && request.auth.uid == uid; }
     function attMember() {
-      return attSignedIn() &&
-        get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.active == true &&
-        get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.email == request.auth.token.email;
+      return attSignedIn() && (schoolHasUser() ?
+        (schoolActive() && schoolRole('attendanceRole') in ['teacher','admin']) :
+        (get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.active == true &&
+         get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.email == request.auth.token.email));
     }
     // Roles can only be provisioned in Console/Admin SDK, never by this browser.
     function attAdmin() {
-      return attMember() && get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.get('role','teacher') == 'admin';
+      return attMember() && (schoolHasUser() ? schoolRole('attendanceRole') == 'admin' : get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.get('role','teacher') == 'admin');
     }
     function attString(s, min, max) { return s is string && s.size() >= min && s.size() <= max; }
     function attId(s) { return attString(s, 1, 100) && s.matches('^[A-Za-z0-9_-]+$'); }
@@ -275,13 +275,13 @@ service cloud.firestore {
     function attValidDirectory(d, uid) {
       return attId(uid) && d.keys().hasAll(['name','active','updatedAt','updatedBy']) &&
         d.keys().hasOnly(['name','active','updatedAt','updatedBy']) && attString(d.name,1,160) && d.active is bool &&
-        d.name == get(/databases/$(database)/documents/attendance_teachers/$(uid)).data.name &&
+        d.name == schoolAttendanceProfile(uid).name &&
         d.updatedAt == request.time && d.updatedBy == request.auth.uid;
     }
     function attValidAssignment(d) {
       return d.keys().hasAll(['teacherUid','active','kind','classId','className','subject','period','weekday','from','to','date','time','createdAt','updatedAt','updatedBy']) &&
         d.keys().hasOnly(['teacherUid','active','kind','classId','className','subject','period','weekday','from','to','date','time','createdAt','updatedAt','updatedBy']) &&
-        attId(d.teacherUid) && get(/databases/$(database)/documents/attendance_teachers/$(d.teacherUid)).data.active == true &&
+        attId(d.teacherUid) && schoolAttendanceTarget(d.teacherUid) &&
         d.active is bool && d.kind in ['morning','subject','substitute'] && attId(d.classId) &&
         d.className == get(/databases/$(database)/documents/attendance_classes/$(d.classId)).data.name &&
         attString(d.className,1,80) && attString(d.subject,1,160) && attString(d.time,0,40) &&
@@ -344,7 +344,7 @@ service cloud.firestore {
     match /attendance_access/{uid}/classes/{classId} {
       allow read: if attAdmin() || (attOwner(uid) && attMember());
       allow create, update: if attAdmin() && attId(uid) && attId(classId) && attValidAccess(request.resource.data) &&
-        exists(/databases/$(database)/documents/attendance_teachers/$(uid)) &&
+        schoolAttendanceTarget(uid) &&
         exists(/databases/$(database)/documents/attendance_classes/$(classId));
       allow delete: if false;
     }
@@ -401,6 +401,70 @@ service cloud.firestore {
     }
     // END SCHOOL ATTENDANCE v2
 
+    // BEGIN SHARED IDENTITY AND TIMETABLE v1
+    // school_users/{uid}: {name:string,teacherId:string,active:bool,
+    // timetableRole:none|viewer|academic,attendanceRole:none|teacher|admin,
+    // budgetRole:none|editor|admin,identityAdmin:bool,createdAt/updatedAt:timestamp}.
+    // Profiles are owner-readable. Role changes go through audited schoolIdentity.
+    // school_invites/{sha256(email)}: approved identity/grants, server-only.
+    // Timetable private versions/parts, leave, operations and audit are server-only.
+    // Public versions are sanitized projections generated only by timetableApi.
+    function schoolGoogle() {
+      return request.auth != null && request.auth.token.email_verified == true &&
+        request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+    function schoolHasUser() {
+      return schoolGoogle() && exists(/databases/$(database)/documents/school_users/$(request.auth.uid));
+    }
+    function schoolActive() {
+      return schoolHasUser() && get(/databases/$(database)/documents/school_users/$(request.auth.uid)).data.active == true;
+    }
+    function schoolRole(field) {
+      return get(/databases/$(database)/documents/school_users/$(request.auth.uid)).data.get(field,'none');
+    }
+    function schoolAttendanceProfile(uid) {
+      return exists(/databases/$(database)/documents/school_users/$(uid)) ?
+        get(/databases/$(database)/documents/school_users/$(uid)).data :
+        get(/databases/$(database)/documents/attendance_teachers/$(uid)).data;
+    }
+    function schoolAttendanceTarget(uid) {
+      return schoolAttendanceProfile(uid).active == true &&
+        (exists(/databases/$(database)/documents/school_users/$(uid)) ?
+          schoolAttendanceProfile(uid).get('attendanceRole','none') in ['teacher','admin'] :
+          schoolAttendanceProfile(uid).get('role','teacher') in ['teacher','admin']);
+    }
+    function timetableCurrentPublic(version) {
+      return get(/databases/$(database)/documents/timetable_public/current).data.version == version;
+    }
+    match /school_users/{uid} {
+      allow get: if schoolGoogle() && request.auth.uid == uid;
+      allow list, create, update, delete: if false;
+    }
+    match /school_invites/{id} { allow read, write: if false; }
+    match /school_identity_audit/{id} { allow read, write: if false; }
+    match /timetable_state/{id} { allow read, write: if false; }
+    match /timetable_versions/{all=**} { allow read, write: if false; }
+    match /timetable_leave/{all=**} { allow read, write: if false; }
+    match /timetable_leave_versions/{all=**} { allow read, write: if false; }
+    match /timetable_operations/{id} { allow read, write: if false; }
+    match /timetable_audit/{id} { allow read, write: if false; }
+    match /timetable_migration/{id} { allow read, write: if false; }
+    match /timetable_public/{id} {
+      // Explicit school requirement: anyone may view teacher/class timetables.
+      allow get: if id == 'current';
+      allow list, write: if false;
+    }
+    match /timetable_public_versions/{version} {
+      allow get: if timetableCurrentPublic(version);
+      allow list, write: if false;
+      match /parts/{part} {
+        allow read: if timetableCurrentPublic(version);
+        allow write: if false;
+      }
+    }
+    // END SHARED IDENTITY AND TIMETABLE v1
+
     match /{other=**} { allow read, write: if false; }
   }
 }
+

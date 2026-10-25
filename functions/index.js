@@ -6,7 +6,7 @@ const B=require('./borrowing-documents');
 const P=require('./procurement');
 const M=require('./model');if(!getApps().length)initializeApp();const db=getFirestore();
 const callable={region:'asia-southeast1',maxInstances:3,memory:'256MiB',timeoutSeconds:60,cors:['https://drivekup01.github.io','http://localhost:8765','http://127.0.0.1:8765']};
-async function member(request){const a=request.auth;if(!a||a.token.email_verified!==true||a.token.firebase?.sign_in_provider!=='google.com')throw new HttpsError('unauthenticated','กรุณาเข้าสู่ระบบด้วย Google');const snap=await db.doc('budget_users/'+a.uid).get(),p=snap.data();if(!p||p.active!==true||p.email!==a.token.email||!['admin','editor'].includes(p.role))throw new HttpsError('permission-denied','บัญชีนี้ยังไม่ได้รับสิทธิ์ระบบงบประมาณ');return {...p,id:a.uid}}
+async function member(request){try{return await require('./shared-membership').member(db,request.auth);}catch(e){throw new HttpsError(e.code||'internal',e.message)}}
 function authorize(user,admin=false){if(admin?user.role!=='admin':!['admin','editor'].includes(user.role))throw new HttpsError('permission-denied','ไม่มีสิทธิ์ดำเนินการนี้')}
 function parse(s){if(!s.exists)throw new HttpsError('not-found','ไม่พบข้อมูล');return JSON.parse(s.data().json)}
 const registerRef=(year,id)=>db.doc('budget_registers/'+M.year(Number(year))+'-'+Number(id));

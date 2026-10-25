@@ -1,6 +1,6 @@
 /* Authentication grants no permissions until a matching approved budget_users profile exists. */
 document.documentElement.classList.add('school-auth-loading');
-window.budgetFirebaseReady||=import('./js/budget-firebase-client.js?v=20261023-firebase1');
+window.budgetFirebaseReady||=import('./js/budget-firebase-client.js?v=20261025-firebase2');
 window.schoolLogin=()=>{const url=new URL('https://drivekup01.github.io/School-Budget/budget-login.html');url.searchParams.set('return',location.href);location.assign(url)};
 window.schoolLogout=async()=>{await(await window.budgetFirebaseReady).logout();location.assign('budget-dashboard.html')};
 window.schoolAuthReady=(async()=>{

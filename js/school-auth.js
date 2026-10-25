@@ -1,0 +1,12 @@
+// Canonical shared identity client. Copies in each school app use the same
+// Firebase project, named app, Google session and school_users profile.
+import {firebaseConfig} from './firebase-config.js';
+let cached;
+export async function firebase(){if(!cached)cached=(async()=>{const [P,A,F,H]=await Promise.all(['app','auth','firestore','functions'].map(n=>import(`https://www.gstatic.com/firebasejs/12.4.0/firebase-${n}.js`)));const app=P.getApps().find(a=>a.name==='school-budget')||P.initializeApp(firebaseConfig,'school-budget'),auth=A.getAuth(app),db=F.getFirestore(app),functions=H.getFunctions(app,'asia-southeast1');await auth.authStateReady();return {app,auth,db,functions,A,F,H};})().catch(e=>{cached=null;throw e;});return cached;}
+export async function login(){const c=await firebase(),provider=new c.A.GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});try{return await c.A.signInWithPopup(c.auth,provider);}catch(e){if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment'].includes(e.code))return loginRedirect();throw e;}}
+export async function loginRedirect(){const c=await firebase(),provider=new c.A.GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});return c.A.signInWithRedirect(c.auth,provider);}
+export async function logout(){const c=await firebase();return c.A.signOut(c.auth);}
+export async function call(name,data){const c=await firebase();try{return (await c.H.httpsCallable(c.functions,name,{timeout:120000})(data)).data;}catch(e){throw Object.assign(new Error(String(e.message||'ดำเนินการไม่สำเร็จ').replace(/^Firebase:\s*/,'')),{code:e.code});}}
+export async function profile(){const c=await firebase(),u=c.auth.currentUser;if(!u)return null;const snap=await c.F.getDocFromServer(c.F.doc(c.db,'school_users',u.uid));if(snap.exists()){const p=snap.data();if(!p.active)throw Error('บัญชีนี้ถูกระงับ');return {...p,uid:u.uid,email:u.email,registered:true};}return call('schoolIdentity',{method:'resolveProfile'});}
+export const moduleRole=(p,module)=>p?.active===true?p[module+'Role']||'none':'none';
+export async function observeProfile(receive){const c=await firebase();let offDoc;const offAuth=c.A.onAuthStateChanged(c.auth,u=>{offDoc?.();if(!u){receive(null);return;}offDoc=c.F.onSnapshot(c.F.doc(c.db,'school_users',u.uid),snap=>{if(snap.exists())receive({...snap.data(),uid:u.uid,email:u.email,registered:true});},error=>receive(null,error));});return ()=>{offAuth();offDoc?.();};}
