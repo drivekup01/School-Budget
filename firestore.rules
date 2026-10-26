@@ -327,16 +327,6 @@ service cloud.firestore {
     function attAuditMatches(aid, dayKey, sid, d) {
       return getAfter(/databases/$(database)/documents/attendance_assignments/$(aid)/days/$(dayKey)/marks/$(sid)/history/$(string(d.revision))).data == d;
     }
-    function attValidBehavior(d) {
-      return d.keys().hasAll(['teacherUid','classId','studentId','day','delta','reason','createdAt']) &&
-        d.keys().hasOnly(['teacherUid','classId','studentId','day','delta','reason','createdAt']) &&
-        attId(d.teacherUid) && d.teacherUid == request.auth.uid && attId(d.classId) && attId(d.studentId) &&
-        d.day is timestamp && attMidnight(d.day) && d.day <= request.time &&
-        d.delta is int && d.delta >= -100 && d.delta <= 100 && d.delta != 0 &&
-        attString(d.reason,1,300) && d.createdAt is timestamp && d.createdAt == request.time &&
-        attReadClass(d.classId) && attAccess(d.classId).canBehavior == true &&
-        exists(/databases/$(database)/documents/attendance_classes/$(d.classId)/students/$(d.studentId));
-    }
     match /attendance_teachers/{uid} {
       allow get: if attOwner(uid) && attMember();
       allow list, create, update, delete: if false;
@@ -396,7 +386,8 @@ service cloud.firestore {
     match /attendance_behavior/{id} {
       // Teachers read their own entries only; no global score is exposed.
       allow read: if attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId));
-      allow create: if attMember() && attValidBehavior(request.resource.data);
+      // Score changes require the callable backend; positive scores require approval.
+      allow create: if false;
       allow update, delete: if false;
     }
     // END SCHOOL ATTENDANCE v2
