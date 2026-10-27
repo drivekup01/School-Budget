@@ -3,10 +3,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function userPath() { return /databases/$(database)/documents/procurement_users/$(request.auth.uid); }
-    function member() { return signedIn() && exists(userPath()); }
+    function member() { return schoolHasUser() ? schoolUnifiedActive() : signedIn() && exists(userPath()); }
     function profile() { return get(userPath()).data; }
-    function admin() { return member() && profile().role == 'admin'; }
-    function owns(dept) { return member() && (admin() || (profile().role == 'staff' && profile().departmentId == dept)); }
+    function admin() { return member() && (schoolHasUser() ? schoolBudgetWrite() : profile().role == 'admin'); }
+    function owns(dept) { return member() && (schoolHasUser() ? schoolBudgetWrite() : (admin() || (profile().role == 'staff' && profile().departmentId == dept))); }
+    function ownsDocuments(dept) { return schoolHasUser() ? schoolDocumentWrite() : owns(dept); }
     function validDept(v) { return v is string && v.size() > 0 && v.size() <= 80; }
     function amount(v) { return v is number && v >= 0 && v <= 1000000000; }
     function projectMatches(p,dept) {
@@ -59,7 +60,7 @@ service cloud.firestore {
     match /procurement_document_copies/{copyId} {
       allow read: if member();
       allow create: if member() &&
-        (request.resource.data.departmentId == "general" || owns(request.resource.data.departmentId)) &&
+        (schoolHasUser() ? schoolDocumentWrite() : (request.resource.data.departmentId == "general" || owns(request.resource.data.departmentId))) &&
         request.resource.data.keys().hasOnly(['schemaVersion','templateId','title','departmentId','createdBy','createdAt','values','items','selectedPages','documentCount']) &&
         request.resource.data.schemaVersion == 1 &&
         request.resource.data.templateId in ['first-set-v1', 'first-set-word16-v1', 'first-set-pdf11-v1'] &&
@@ -81,7 +82,7 @@ service cloud.firestore {
     }
     match /procurement_documents/{documentId} {
       allow read: if member();
-      allow create: if member() && owns(request.resource.data.departmentId) &&
+      allow create: if member() && ownsDocuments(request.resource.data.departmentId) &&
         projectMatches(request.resource.data.projectId,request.resource.data.departmentId) &&
         exists(/databases/$(database)/documents/procurement_jobs/$(request.resource.data.jobId)) &&
         get(/databases/$(database)/documents/procurement_jobs/$(request.resource.data.jobId)).data.projectId == request.resource.data.projectId &&
@@ -90,7 +91,7 @@ service cloud.firestore {
         request.resource.data.storagePath == 'procurement/projects/' + request.resource.data.projectId + '/files/' + documentId &&
         request.resource.data.keys().hasOnly(['projectId','jobId','departmentId','title','filename','storagePath','status','createdBy','createdAt']) &&
         request.resource.data.createdAt == request.time;
-      allow update: if member() && owns(resource.data.departmentId) &&
+      allow update: if member() && ownsDocuments(resource.data.departmentId) &&
         resource.data.createdBy == request.auth.uid &&
         resource.data.status == 'uploading' && request.resource.data.status == 'ready' &&
         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
@@ -138,13 +139,13 @@ service cloud.firestore {
     }
     // New request editor. Keep legacy request docs readable/editable in draft stage.
     function ownsV2(dept) {
-      return member() && (
+      return member() && (schoolHasUser() ? schoolDocumentWrite() : (
         admin() ||
         (profile().role == 'staff' && (
           profile().departmentId == dept ||
           (profile().departmentId == 'budget' && dept == 'finance')
         ))
-      );
+      ));
     }
     function requestV2Valid(d) {
       return d.keys().hasOnly([
@@ -191,7 +192,7 @@ service cloud.firestore {
     // All writes are server validated and financial changes are atomic.
     function approvedBudgetUser() {
       return schoolGoogle() && (schoolHasUser() ?
-        (schoolActive() && schoolRole('budgetRole') in ['admin','editor']) :
+        (schoolActive() && schoolRole('budgetRole') in ['admin','editor','viewer','procurement']) :
         (exists(/databases/$(database)/documents/budget_users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.active == true &&
          get(/databases/$(database)/documents/budget_users/$(request.auth.uid)).data.email == request.auth.token.email));
@@ -235,13 +236,13 @@ service cloud.firestore {
     function attOwner(uid) { return attSignedIn() && request.auth.uid == uid; }
     function attMember() {
       return attSignedIn() && (schoolHasUser() ?
-        (schoolActive() && schoolRole('attendanceRole') in ['teacher','admin']) :
+        (schoolUnified() ? schoolUnifiedActive() : schoolActive() && schoolRole('attendanceRole') in ['teacher','admin','viewer']) :
         (get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.active == true &&
          get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.email == request.auth.token.email));
     }
     // Roles can only be provisioned in Console/Admin SDK, never by this browser.
     function attAdmin() {
-      return attMember() && (schoolHasUser() ? schoolRole('attendanceRole') == 'admin' : get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.get('role','teacher') == 'admin');
+      return attMember() && (schoolHasUser() ? (schoolUnified() ? schoolRole('schoolRole') == 'admin' : schoolRole('attendanceRole') == 'admin') : get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data.get('role','teacher') == 'admin');
     }
     function attString(s, min, max) { return s is string && s.size() >= min && s.size() <= max; }
     function attId(s) { return attString(s, 1, 100) && s.matches('^[A-Za-z0-9_-]+$'); }
@@ -249,16 +250,16 @@ service cloud.firestore {
       return get(/databases/$(database)/documents/attendance_access/$(request.auth.uid)/classes/$(classId)).data;
     }
     function attReadClass(classId) {
-      return attAdmin() || (attMember() && attAccess(classId).active == true && attAccess(classId).canRead == true);
+      return schoolUnifiedActive() || attAdmin() || (attMember() && attAccess(classId).active == true && attAccess(classId).canRead == true);
     }
     function attAssignment(id) {
       return get(/databases/$(database)/documents/attendance_assignments/$(id)).data;
     }
     function attOwnAssignment(id) {
-      return attMember() && attAssignment(id).active == true &&
+      return attMember() && (!schoolUnified() || schoolTeaches()) && attAssignment(id).active == true &&
         attAssignment(id).teacherUid == request.auth.uid && attReadClass(attAssignment(id).classId);
     }
-    function attViewAssignment(id) { return attAdmin() || attOwnAssignment(id); }
+    function attViewAssignment(id) { return schoolUnifiedActive() || attAdmin() || attOwnAssignment(id); }
     function attValidClass(d) {
       return d.keys().hasAll(['name','academicYear','term','active','createdAt','updatedAt','updatedBy']) &&
         d.keys().hasOnly(['name','academicYear','term','active','createdAt','updatedAt','updatedBy']) &&
@@ -345,7 +346,7 @@ service cloud.firestore {
       allow delete: if false;
     }
     match /attendance_classes/{classId} {
-      allow read: if attAdmin();
+      allow read: if schoolUnifiedActive() || attAdmin();
       allow create: if attAdmin() && attId(classId) && attValidClass(request.resource.data) && request.resource.data.createdAt == request.time;
       allow update: if attAdmin() && attValidClass(request.resource.data) &&
         request.resource.data.createdAt == resource.data.createdAt;
@@ -357,7 +358,7 @@ service cloud.firestore {
     }
     match /attendance_assignments/{aid} {
       // Queries must include teacherUid == current UID and active == true.
-      allow read: if attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && resource.data.active == true);
+      allow read: if schoolUnifiedActive() || attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && resource.data.active == true);
       allow create: if attAdmin() && attId(aid) && attValidAssignment(request.resource.data) && request.resource.data.createdAt == request.time;
       allow update: if attAdmin() && attValidAssignment(request.resource.data) &&
         request.resource.data.teacherUid == resource.data.teacherUid && request.resource.data.classId == resource.data.classId &&
@@ -385,7 +386,7 @@ service cloud.firestore {
     }
     match /attendance_behavior/{id} {
       // Teachers read their own entries only; no global score is exposed.
-      allow read: if attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId));
+      allow read: if schoolUnifiedActive() || attAdmin() || (attMember() && resource.data.teacherUid == request.auth.uid && attReadClass(resource.data.classId));
       // Score changes require the callable backend; positive scores require approval.
       allow create: if false;
       allow update, delete: if false;
@@ -407,6 +408,12 @@ service cloud.firestore {
     function schoolHasUser() {
       return schoolGoogle() && exists(/databases/$(database)/documents/school_users/$(request.auth.uid));
     }
+    // Unified role grants are server-managed. Teachers read school data, not private account profiles.
+    function schoolUnified() { return schoolHasUser() && schoolRole('schoolRole') != 'none'; }
+    function schoolUnifiedActive() { return schoolUnified() && schoolActive() && schoolRole('schoolRole') in ['admin','director','deputy','teacher','timetable','budget','procurement','student_support']; }
+    function schoolTeaches() { return schoolUnifiedActive() && !(schoolRole('schoolRole') in ['director','deputy']); }
+    function schoolBudgetWrite() { return schoolUnifiedActive() && schoolRole('schoolRole') in ['admin','deputy','budget']; }
+    function schoolDocumentWrite() { return schoolUnifiedActive() && schoolRole('schoolRole') in ['admin','deputy','budget','procurement']; }
     function schoolActive() {
       return schoolHasUser() && get(/databases/$(database)/documents/school_users/$(request.auth.uid)).data.active == true;
     }
@@ -458,4 +465,5 @@ service cloud.firestore {
     match /{other=**} { allow read, write: if false; }
   }
 }
+
 

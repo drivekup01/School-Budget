@@ -1,6 +1,6 @@
 (async()=>{try{
  const user=await window.schoolAuthReady;await window.budgetStoresReady;
- if(!['admin','editor'].includes(user.role)){document.querySelector('.forms-heading>a').hidden=true;throw Error('ส่วนเอกสารงบประมาณสำหรับผู้ดูแลระบบและฝ่ายงบประมาณ')}
+ if(user.role==='guest')throw Error('กรุณาเข้าสู่ระบบ');if(!user.canWriteBudget)document.querySelector('.forms-heading>a').hidden=true;
  const status=document.getElementById('formsStatus'),list=document.getElementById('formsHistory'),year=document.getElementById('historyYear'),search=document.getElementById('historySearch'),canDelete=user.role==='admin',selected=new Set();
  let visible=[],removeButton,restoreButton,allCheck;
  function label(d){return [d.projectName,d.activity,d.one?.fields?.number1?'งบ 1: '+d.one.fields.number1:'',d.two?.fields?.number2?'งบ 2: '+d.two.fields.number2:''].filter(Boolean).join(' · ')||'เอกสารไม่มีชื่อ'}

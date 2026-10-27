@@ -1,4 +1,4 @@
-import * as client from './js/budget-firebase-client.js?v=20261023-firebase1';
+import * as client from './js/budget-firebase-client.js?v=20261027-roles1';
 const button=document.getElementById('googleLogin'),status=document.getElementById('loginStatus');
 function destination(){const raw=new URL(location.href).searchParams.get('return');let url;try{url=new URL(raw||'budget-dashboard.html',location.href)}catch{url=new URL('budget-dashboard.html',location.href)}if(url.origin!==location.origin||!['/School-Budget/','/School-Procurement/'].some(prefix=>url.pathname.startsWith(prefix))||url.pathname.endsWith('budget-login.html'))url=new URL('budget-dashboard.html',location.href);return url.href}
 async function check(){const p=await client.profile();if(p.role==='guest')return false;location.replace(destination());return true}
