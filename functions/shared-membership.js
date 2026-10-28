@@ -7,9 +7,11 @@ async function member(db,a){
  const snap=await db.doc('budget_users/'+a.uid).get(),p=snap.data();if(!p||!p.active||p.email!==a.token.email||!['admin','editor'].includes(p.role))deny('บัญชีนี้ยังไม่ได้รับสิทธิ์ระบบงบประมาณ');return {...p,id:a.uid,canWriteBudget:true,canWriteDocuments:true};
 }
 function authorizeMethod(user,method,args=[]){
- const reads=['getBudgetUser','getBudgetReferenceData','getBudgetProjectCatalog','listBorrowingBudgetDocuments','getBudgetRegister','getBudgetDocumentFinance','listBudgetDocuments','listProcurementDocuments','openProcurementDocument','getProcurementDraft'];
+ const reads=['getBudgetUser','getBudgetReferenceData','getBudgetProjectCatalog','listBorrowingBudgetDocuments','listBudgetDocumentReferences','getBudgetRegister','getBudgetDocumentFinance','listBudgetDocuments','listProcurementDocuments','openProcurementDocument','getProcurementDraft'];
  if(reads.includes(method))return;
- if(['setBudgetDocumentsDeleted','setProcurementDocumentDeleted'].includes(method)||method==='mutateBudgetEntry'&&['delete','restore','purge'].includes(args[0]?.action)){if(user.role!=='admin')deny('เฉพาะผู้ดูแลระบบ');return;}
+ if(['setBudgetDocumentsDeleted','purgeBudgetDocuments'].includes(method)){if(!require('./budget-forms').manager(user))deny('เฉพาะฝ่ายงบประมาณหรือผู้ดูแลระบบ');return;}
+ if(method==='saveBudgetDocument'&&args[0]==='forms'||method==='saveBudgetPlanningComment')return;
+ if(['setProcurementDocumentDeleted'].includes(method)||method==='mutateBudgetEntry'&&['delete','restore','purge'].includes(args[0]?.action)){if(user.role!=='admin')deny('เฉพาะผู้ดูแลระบบ');return;}
  if(['saveProcurementDocument','saveProcurementDraft','clearProcurementDraft'].includes(method)||method==='saveBudgetDocument'&&args[0]==='disbursements'){if(!user.canWriteDocuments)deny('บัญชีนี้ดูเอกสารได้อย่างเดียว');return;}
  if(['saveBudgetPlanningComment','saveBudgetEntry','mutateBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing','saveBudgetDocument'].includes(method)){if(!user.canWriteBudget)deny('ไม่มีสิทธิ์แก้ไขงบประมาณ');return;}
  deny('ไม่รองรับคำสั่งนี้','invalid-argument');

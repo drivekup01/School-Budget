@@ -8,7 +8,7 @@ function money(v){if(typeof v!=='number'||!Number.isFinite(v)||v<=0||v>1e9||Math
 function year(v){if(!Number.isInteger(v)||v<2500||v>2700)fail('ปีงบประมาณไม่ถูกต้อง');return v}
 function date(v){if(typeof v!=='string'||!/^\d{4}-\d\d-\d\d$/.test(v)||!Number.isFinite(+new Date(v+'T12:00:00Z'))||new Date(v+'T12:00:00Z').toISOString().slice(0,10)!==v)fail('วันที่ไม่ถูกต้อง');return v}
 function requestId(v){if(typeof v!=='string'||!/^[a-f0-9-]{36}$/i.test(v))fail('รหัสคำขอไม่ถูกต้อง');return v}
-function entryInput(input){const note=text(input.note||'',500,false);if(/^ยกเลิกรายการ \[/.test(note))fail('หมายเหตุมีรหัสระบบ');return {number:text(input.number,80),date:date(input.date),dateIso:date(input.date),description:text(input.description,500),spent:money(input.spent),note}}
+function entryInput(input){const note=text(input.note||'',500,false);if(/^ยกเลิกรายการ \[/.test(note))fail('หมายเหตุมีรหัสระบบ');return {number:text(input.number,80),date:date(input.date),dateIso:date(input.date),description:text(input.description,500),spent:money(input.spent),note,...(Object.hasOwn(input,'documentReferences')?{documentReferences:input.documentReferences}:{})}}
 function revision(state,v){if(state.revision!==v)fail('ข้อมูลเปลี่ยนแล้ว กรุณาโหลดล่าสุดก่อนบันทึก')}
 function selectBlock(state,header){const b=state.blocks.find(b=>b.headerRow===Number(header));if(!b||!Number.isFinite(b.current))fail('ไม่พบทะเบียนหรือยอดคงเหลือ');return b}
 function recalculate(b){let spent=0;for(const e of b.entries){spent=round(spent+(e.spent||0));e.used=spent;e.remaining=round(b.openingBalance+Number(e.cumulativeReceipts||0)-spent)}b.used=spent;b.ledgerCurrent=round(b.openingBalance+Number(b.additionalReceipts||0)-spent);b.current=round(b.ledgerCurrent+(b.incoming||0)-(b.outgoing||0))}
