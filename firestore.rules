@@ -255,9 +255,25 @@ service cloud.firestore {
     function attAssignment(id) {
       return get(/databases/$(database)/documents/attendance_assignments/$(id)).data;
     }
+    function attCentralOwnerClass(classId) {
+      let p = get(/databases/$(database)/documents/school_users/$(request.auth.uid)).data;
+      let unified = p.get('schoolRole','none') != 'none';
+      return p.active == true && (unified ?
+        p.schoolRole in ['admin','teacher','timetable','budget','procurement','student_support'] :
+        p.get('attendanceRole','none') in ['teacher','admin','viewer'] &&
+        (p.attendanceRole == 'admin' || (attAccess(classId).active == true && attAccess(classId).canRead == true)));
+    }
+    function attLegacyOwnerClass(classId) {
+      let p = get(/databases/$(database)/documents/attendance_teachers/$(request.auth.uid)).data;
+      return p.active == true && p.email == request.auth.token.email &&
+        (p.get('role','teacher') == 'admin' || (attAccess(classId).active == true && attAccess(classId).canRead == true));
+    }
     function attOwnAssignment(id) {
-      return attMember() && (!schoolUnified() || schoolTeaches()) && attAssignment(id).active == true &&
-        attAssignment(id).teacherUid == request.auth.uid && attReadClass(attAssignment(id).classId);
+      let a = attAssignment(id);
+      // Resolve the same existing policy once instead of nesting membership checks.
+      return attSignedIn() && a.active == true && a.teacherUid == request.auth.uid &&
+        (exists(/databases/$(database)/documents/school_users/$(request.auth.uid)) ?
+         attCentralOwnerClass(a.classId) : attLegacyOwnerClass(a.classId));
     }
     function attViewAssignment(id) { return schoolUnifiedActive() || attAdmin() || attOwnAssignment(id); }
     function attValidClass(d) {
@@ -301,9 +317,17 @@ service cloud.firestore {
       let local = day + duration.value(7,'h');
       return string(local.year()*10000 + local.month()*100 + local.day());
     }
+    // Server-owned blocks prevent stale clients marking a moved lesson.
+    function attExchangeAllowed(a, day) {
+      let key = a.classId + '_' + attDayKey(day) + '_' + string(a.period);
+      let path = /databases/$(database)/documents/attendance_exchange_blocks/$(key);
+      return a.kind == 'morning' || (a.get('source','') == 'timetable-exchange' ?
+        exists(path) && get(path).data.active == true && get(path).data.exchangeId == a.exchangeId :
+        !(exists(path) && get(path).data.active == true));
+    }
     function attAssignedDay(a, day) {
       let local = day + duration.value(7,'h');
-      return attMidnight(day) && day <= request.time && day >= a.from && day <= a.to &&
+      return attMidnight(day) && day <= request.time && day >= a.from && day <= a.to && attExchangeAllowed(a, day) &&
         (a.kind == 'morning' ||
          (a.kind == 'subject' && a.weekday == local.dayOfWeek() % 7) ||
          (a.kind == 'substitute' && a.date == day));
