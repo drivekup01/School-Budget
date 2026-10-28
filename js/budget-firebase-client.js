@@ -6,7 +6,7 @@ import {firebaseConfig} from './firebase-config.js';
 const app=initializeApp(firebaseConfig,'school-budget'),auth=getAuth(app),db=getFirestore(app),call=httpsCallable(getFunctions(app,'asia-southeast1'),'budgetApi',{timeout:60000});
 const guest={id:'guest',role:'guest',name:'Guest',canWriteBudget:false};
 export const ready=new Promise((resolve,reject)=>{const off=onAuthStateChanged(auth,user=>{off();resolve(user)},reject)});
-export async function profile(){await ready;if(!auth.currentUser)return guest;const p=await (await import('./school-auth.js?v=20261027-roles1')).profile();if(!p?.active||!['admin','editor','viewer','procurement'].includes(p.budgetRole))throw Error('บัญชีนี้ยังไม่ได้รับสิทธิ์ระบบงบประมาณ กรุณาติดต่อผู้ดูแลบัญชีกลาง');return {...p,id:p.uid,role:p.budgetRole,canWriteBudget:['admin','editor'].includes(p.budgetRole),canWriteDocuments:['admin','editor','procurement'].includes(p.budgetRole)}}
+export async function profile(){await ready;if(!auth.currentUser)return guest;const p=await rpc('getBudgetUser');if(!p?.id)throw Error('ไม่พบสิทธิ์บัญชี กรุณาติดต่อผู้ดูแลบัญชีกลาง');return {...p,uid:p.id,canCreateBudgetForms:p.canCreateBudgetForms===true};}
 export async function login(){const provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});return signInWithPopup(auth,provider)}
 export const logout=()=>signOut(auth);
 export async function rpc(method,...args){try{return (await call({method,args})).data}catch(e){throw Error(String(e.message||'ดำเนินการไม่สำเร็จ').replace(/^Firebase:\s*/,''))}}
