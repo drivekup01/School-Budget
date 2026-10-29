@@ -1,12 +1,27 @@
-/* Show the static shell while authorization is checked; data loaders still await schoolAuthReady. */
+/* Structural layout and official print templates. Visual UI: budget-ui.css. */
 html.school-auth-loading body{visibility:visible}
-.school-auth-indicator{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px 32px;border:1px solid #dfd2eb;border-radius:18px;background:#fffffff5;color:#684482;font:15px Tahoma,sans-serif;box-shadow:0 8px 32px #30233f24;pointer-events:none}
-.school-loading-spinner{width:36px;height:36px;border:4px solid #eadff3;border-top-color:#7844a3;border-radius:50%;animation:school-loading-spin .8s linear infinite}
+.school-auth-indicator{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px 32px;pointer-events:none}
+.school-loading-spinner{width:36px;height:36px}
 @keyframes school-loading-spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.school-loading-spinner{animation-duration:2s}}
 html.school-auth-loading a[href^="https://docs.google.com/spreadsheets/"],html.school-auth-loading .workbook-menu,html.school-auth-loading main>footer{visibility:hidden}
 @media print{.school-auth-indicator{display:none!important}}
-.login-page{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;box-sizing:border-box;background:radial-gradient(ellipse at 50% 0,#eee1fa,transparent 70%),#faf8fd;color:#38244d;font:15px Tahoma,system-ui,sans-serif}.login-card{box-sizing:border-box;width:100%;max-width:470px;padding:36px;background:#ffffffec;border:1px solid #eadff3;border-radius:30px;box-shadow:0 20px 70px #5b338015;text-align:center}.login-card>img{width:92px;height:92px}.login-school{font-weight:600;color:#7951a5;line-height:1.7}.login-card h1{font-size:24px;margin:16px 0}.login-description{font-size:12px;color:#9a85ad;line-height:1.8}.login-card form{display:grid;gap:18px;margin-top:26px}.login-card label{display:grid;gap:8px;text-align:left;font-size:13px}.login-card input{box-sizing:border-box;width:100%;font:inherit;padding:14px;border:1px solid #e0cfed;border-radius:12px;color:#38244d}.login-card button{font:inherit;background:linear-gradient(120deg,#6b3799,#8954b4);color:white;border:0;border-radius:13px;padding:15px;cursor:pointer}.login-card button:disabled{opacity:.6}.login-card input:focus-visible,.login-card button:focus-visible{outline:3px solid #c6a4e1;outline-offset:2px}.login-card a{color:#8050a8;text-decoration:none;font-size:12px}#loginStatus{color:#a35270;font-size:13px;margin:0;line-height:1.6}.school-account{margin-top:22px;padding:14px;border-top:1px solid #ffffff25;color:#e5d7f1;font-size:12px}.school-account button{display:block;margin-top:10px;padding:8px 12px;border:1px solid #ffffff30;border-radius:10px;background:#ffffff10;color:white;font:inherit;cursor:pointer}
-body[data-school-role="editor"] a[href^="https://docs.google.com/spreadsheets/"]{display:none!important}body[data-school-role="editor"] #overview>footer,body[data-school-role="editor"] main>footer{display:none}
-body[data-school-role="guest"] a[href^="https://docs.google.com/spreadsheets/"],body[data-school-role="guest"] #overview>footer,body[data-school-role="guest"] main>footer,body[data-school-role="guest"] #balanceSummary .table-help[href],body[data-school-role="guest"] .workbook-menu{display:none!important}body[data-school-role="guest"] #projects .table-help{display:none}
+.login-page{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;box-sizing:border-box}
+.login-card{box-sizing:border-box;width:100%;max-width:470px;padding:36px;text-align:center}
+.login-card>img{width:92px;height:92px}
+.login-school{line-height:1.7}
+.login-card h1{margin:16px 0}
+.login-description{line-height:1.8}
+.login-card form{display:grid;gap:18px;margin-top:26px}
+.login-card label{display:grid;gap:8px;text-align:left}
+.login-card input{box-sizing:border-box;width:100%;padding:14px}
+.login-card button{padding:15px;cursor:pointer}
+.login-card button:disabled{opacity:.6}
+.login-card input:focus-visible,.login-card button:focus-visible{outline:3px solid #c6a4e1;outline-offset:2px}
+#loginStatus{margin:0;line-height:1.6}
+.school-account{margin-top:22px;padding:14px}
+.school-account button{display:block;margin-top:10px;padding:8px 12px;cursor:pointer}
+body[data-school-role="editor"] a[href^="https://docs.google.com/spreadsheets/"]{display:none!important}
+body[data-school-role="editor"] #overview>footer,body[data-school-role="editor"] main>footer{display:none}
+body[data-school-role="guest"] a[href^="https://docs.google.com/spreadsheets/"],body[data-school-role="guest"] #overview>footer,body[data-school-role="guest"] main>footer,body[data-school-role="guest"] #balanceSummary .table-help[href],body[data-school-role="guest"] .workbook-menu{display:none!important}
+body[data-school-role="guest"] #projects .table-help{display:none}
 body[data-school-role="guest"] #projects~#balanceSummary{display:none}

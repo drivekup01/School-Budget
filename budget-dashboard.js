@@ -1,5 +1,5 @@
 (() => {
- const $=id=>document.getElementById(id),colors=['#7951b3','#288b81','#cd8e30','#4278bc'],labels=['เงินอุดหนุนรายหัว','กิจกรรมพัฒนาผู้เรียน','รายได้สถานศึกษา','อื่น ๆ'];let data;
+ const $=id=>document.getElementById(id),colors=['#8236b5','#af74cf','#513064','#b5a7be'],labels=['เงินอุดหนุนรายหัว','กิจกรรมพัฒนาผู้เรียน','รายได้สถานศึกษา','อื่น ๆ'];let data;
  const money=n=>n==null?'ไม่ระบุ':n.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2});
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const add=a=>a.some(v=>v!=null)?a.reduce((n,v)=>n+(v||0),0):null;
