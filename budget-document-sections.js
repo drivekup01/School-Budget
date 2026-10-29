@@ -11,6 +11,7 @@ window.setupBudgetDocumentSections=function(onSelect){
  const head1=section('หัวกระดาษ · งบ 1','header-one',true),head2=section('หัวกระดาษ · งบ 2','header-two',true),body1=section('ข้อมูลตรงกลาง · งบ 1','body-one',true),body2=section('ข้อมูลตรงกลาง · งบ 2','body-two',true),sign=section('ผู้รับผิดชอบและผู้ลงนาม','signatures',false);
  const page1=document.createElement('div'),page2=document.createElement('div');page1.dataset.budgetEditorPage='one';page2.dataset.budgetEditorPage='two';page1.append(head1.box,body1.box);page2.append(head2.box,body2.box);root.append(page1,page2,sign.box);
  function move(keys,parent){for(const key of keys){const label=document.getElementById('doc-'+key)?.closest('label');if(label)parent.append(label)}}
+ const optionalNote=document.createElement('p');optionalNote.className='forms-note';optionalNote.textContent='ข้อมูลส่วนนี้กรอกเฉพาะที่เกี่ยวข้อง เว้นว่างได้ โดยยังบันทึกและพิมพ์เอกสารได้';body2.body.append(optionalNote);
  move(['number1','date1'],head1.body);move(['number2','date2'],head2.body);move(['kind','purpose','expense','orderNumber','inspectionDate','advancePayer'],body2.body);
  body2.body.append(document.getElementById('budgetDocumentFunding'));
  const note=document.createElement('p');note.className='forms-note';note.textContent='ฝ่าย โครงการ กิจกรรม ยอดเงิน และยอดเบิกครั้งนี้ ใช้ข้อมูลจากส่วนที่ใช้ร่วมกันด้านบน';body1.body.append(note);itemNodes.forEach(n=>body1.body.append(n));
