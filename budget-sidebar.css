@@ -1,38 +1,64 @@
-/* One sidebar stylesheet shared by dashboard, editor, and document history. */
-#budgetSidebar{box-sizing:border-box;width:240px;position:fixed;inset:0 auto 0 0;z-index:20;display:flex;flex-direction:column;padding:28px 18px;background:linear-gradient(160deg,#291743,#472468);color:white;font:14px Tahoma,system-ui,sans-serif;overflow:auto}
-#budgetSidebar a{text-decoration:none;color:inherit}
-#budgetSidebar .budget-sidebar-brand{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;font-size:15px;font-weight:bold;line-height:1.6}
+/* Structural layout and official print templates. Visual UI: budget-ui.css. */
+#budgetSidebar{box-sizing:border-box;width:240px;position:fixed;inset:0 auto 0 0;z-index:20;display:flex;flex-direction:column;padding:28px 18px;overflow:auto}
+#budgetSidebar .budget-sidebar-brand{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;line-height:1.6}
 #budgetSidebar .budget-sidebar-brand img{width:100px;height:100px;object-fit:contain}
-#budgetSidebar small{display:block;font-size:11px;font-weight:normal;color:#c8b9df;margin-top:8px}
-#budgetSidebar nav{display:grid;gap:10px;margin:46px 0 0;padding:0;background:none;border:0}
-#budgetSidebar nav a{padding:15px 12px;border-radius:12px;font-size:13px;color:#ded3ed;line-height:1.5}
-#budgetSidebar nav a:hover,#budgetSidebar nav a.active{background:#ffffff1b;color:white}
+#budgetSidebar small{display:block;margin-top:8px}
+#budgetSidebar nav{display:grid;gap:10px;margin:46px 0 0;padding:0}
+#budgetSidebar nav a{padding:15px 12px;line-height:1.5}
 #budgetSidebar a:focus-visible{outline:3px solid #b88be1;outline-offset:3px}
-#budgetSidebar .budget-sidebar-note{margin-top:auto;padding:16px;border:1px solid #ffffff20;border-radius:12px;line-height:1.9}
+#budgetSidebar .budget-sidebar-note{margin-top:auto;padding:16px;line-height:1.9}
 body.has-budget-sidebar:not([data-document-view])>main{margin-left:240px}
 body.has-budget-sidebar[data-document-view]{padding-left:240px}
 body.has-budget-sidebar[data-document-view] #systemNav{display:none!important}
 body.has-budget-sidebar[data-document-view] #documentManager{margin:26px 32px 40px!important;max-width:none}
 body.has-budget-sidebar[data-document-view] header.school-top{max-width:none}
-@media(max-width:1100px) and (min-width:651px){#budgetSidebar{width:200px}body.has-budget-sidebar:not([data-document-view])>main{margin-left:200px}body.has-budget-sidebar[data-document-view]{padding-left:200px}body.has-budget-sidebar[data-document-view] main{grid-template-columns:1fr}body.has-budget-sidebar[data-document-view] .fields{max-height:none}}
-@media(max-width:650px){#budgetSidebar{position:static;width:auto;padding:16px;overflow:visible}#budgetSidebar .budget-sidebar-brand img{width:76px;height:76px}#budgetSidebar nav{display:flex;margin-top:18px;gap:5px;overflow:auto}#budgetSidebar nav a{white-space:nowrap;padding:10px;font-size:11px}#budgetSidebar .budget-sidebar-note{display:none}body.has-budget-sidebar:not([data-document-view])>main{margin-left:0}body.has-budget-sidebar[data-document-view]{padding-left:0}body.has-budget-sidebar[data-document-view] #documentManager{margin:22px 18px 32px!important}}
-#budgetSidebar .school-account{margin-top:auto;padding:20px 12px 4px;border-top:1px solid #ffffff24;color:#eadff3}#budgetSidebar .school-account-heading{margin:0 0 12px;color:#ba9ed1;font-size:11px}#budgetSidebar .school-account-identity{display:flex;align-items:center;gap:11px;font-size:14px}#budgetSidebar .school-account-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#ffffff15;color:#eadff3}#budgetSidebar .school-account-icon svg{width:20px;height:20px}#budgetSidebar .school-account button{display:block;margin:10px 0 0 45px;padding:7px 11px;border:1px solid #ffffff28;border-radius:9px;color:#e9daf4;background:#ffffff0c;font:11px Tahoma,system-ui,sans-serif;cursor:pointer}#budgetSidebar .school-account button:hover{background:#ffffff20}@media(max-width:650px){#budgetSidebar .school-account{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:16px;padding:14px 0 0}#budgetSidebar .school-account-heading{display:none}#budgetSidebar .school-account button{margin:0;font-size:11px}}
-#budgetSidebar .school-account{padding:24px 12px 8px}#budgetSidebar .school-account-identity{gap:13px;font-size:16px}#budgetSidebar .school-account-icon{width:46px;height:46px;border-radius:14px}#budgetSidebar .school-account-icon svg{width:27px;height:27px}#budgetSidebar .school-account button{margin-left:59px;padding:9px 14px;font-size:12px}@media(max-width:650px){#budgetSidebar .school-account{padding:16px 0 0}#budgetSidebar .school-account-identity{font-size:16px}#budgetSidebar .school-account-icon{width:40px;height:40px}#budgetSidebar .school-account-icon svg{width:24px;height:24px}#budgetSidebar .school-account button{margin:0;font-size:12px}}
-
-/* Coin spin: four seconds of deceleration, then three seconds at rest. */
-#budgetSidebar .budget-sidebar-brand img{animation:budget-logo-coin 7s infinite;transform-origin:center}
+@media(max-width:1100px) and (min-width:651px){#budgetSidebar{width:200px}
+body.has-budget-sidebar:not([data-document-view])>main{margin-left:200px}
+body.has-budget-sidebar[data-document-view]{padding-left:200px}
+body.has-budget-sidebar[data-document-view] main{grid-template-columns:1fr}
+body.has-budget-sidebar[data-document-view] .fields{max-height:none}}
+@media(max-width:650px){#budgetSidebar{position:static;width:auto;padding:16px;overflow:visible}
+#budgetSidebar .budget-sidebar-brand img{width:76px;height:76px}
+#budgetSidebar nav{display:flex;margin-top:18px;gap:5px;overflow:auto}
+#budgetSidebar nav a{white-space:nowrap;padding:10px}
+#budgetSidebar .budget-sidebar-note{display:none}
+body.has-budget-sidebar:not([data-document-view])>main{margin-left:0}
+body.has-budget-sidebar[data-document-view]{padding-left:0}
+body.has-budget-sidebar[data-document-view] #documentManager{margin:22px 18px 32px!important}}
+#budgetSidebar .school-account{margin-top:auto;padding:20px 12px 4px}
+#budgetSidebar .school-account-heading{margin:0 0 12px}
+#budgetSidebar .school-account-identity{display:flex;align-items:center;gap:11px}
+#budgetSidebar .school-account-icon{display:grid;place-items:center;width:34px;height:34px}
+#budgetSidebar .school-account-icon svg{width:20px;height:20px}
+#budgetSidebar .school-account button{display:block;margin:10px 0 0 45px;padding:7px 11px;cursor:pointer}
+@media(max-width:650px){#budgetSidebar .school-account{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:16px;padding:14px 0 0}
+#budgetSidebar .school-account-heading{display:none}
+#budgetSidebar .school-account button{margin:0}}
+#budgetSidebar .school-account{padding:24px 12px 8px}
+#budgetSidebar .school-account-identity{gap:13px}
+#budgetSidebar .school-account-icon{width:46px;height:46px}
+#budgetSidebar .school-account-icon svg{width:27px;height:27px}
+#budgetSidebar .school-account button{margin-left:59px;padding:9px 14px}
+@media(max-width:650px){#budgetSidebar .school-account{padding:16px 0 0}
+#budgetSidebar .school-account-icon{width:40px;height:40px}
+#budgetSidebar .school-account-icon svg{width:24px;height:24px}
+#budgetSidebar .school-account button{margin:0}}
+#budgetSidebar .budget-sidebar-brand img{transform-origin:center}
 @keyframes budget-logo-coin{
  0%{transform:perspective(650px) rotateY(0deg);animation-timing-function:cubic-bezier(.15,.65,.2,1)}
  57.142857%{transform:perspective(650px) rotateY(1080deg);animation-timing-function:linear}
  100%{transform:perspective(650px) rotateY(1080deg)}
 }
-@media(prefers-reduced-motion:reduce){#budgetSidebar .budget-sidebar-brand img{animation:none;transform:none}}
+@media(prefers-reduced-motion:reduce){#budgetSidebar .budget-sidebar-brand img{transform:none}}
 @media print{#budgetSidebar .budget-sidebar-brand img{animation:none;transform:none}}
-
 .budget-clock-bar{margin:20px 0 0;flex-shrink:0}
-#budgetSidebar .budget-clock{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:8px;padding:13px 8px;border:1px solid #ffffff24;border-radius:14px;background:#ffffff09;color:#f1e9fa;font:12px Tahoma,system-ui,sans-serif;text-align:center;line-height:1.8}
-#budgetSidebar .budget-clock-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#ffffff12;color:#d6b6f1}#budgetSidebar .budget-clock-icon svg{width:18px;height:18px}
-#budgetSidebar .budget-clock-date{display:block;font-weight:500}#budgetSidebar .budget-clock-time{display:block;color:#cbb7dd;font-size:11px;font-variant-numeric:tabular-nums}
+#budgetSidebar .budget-clock{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:8px;padding:13px 8px;text-align:center;line-height:1.8}
+#budgetSidebar .budget-clock-icon{display:grid;place-items:center;width:28px;height:28px}
+#budgetSidebar .budget-clock-icon svg{width:18px;height:18px}
+#budgetSidebar .budget-clock-date{display:block}
+#budgetSidebar .budget-clock-time{display:block}
 #budgetSidebar .budget-clock-bar+nav{margin-top:22px}
-@media(max-width:650px){.budget-clock-bar{align-self:center;margin:16px 0 0}#budgetSidebar .budget-clock{flex-direction:row;justify-content:center;padding:9px 14px;gap:10px}#budgetSidebar .budget-clock-bar+nav{margin-top:16px}}
+@media(max-width:650px){.budget-clock-bar{align-self:center;margin:16px 0 0}
+#budgetSidebar .budget-clock{flex-direction:row;justify-content:center;padding:9px 14px;gap:10px}
+#budgetSidebar .budget-clock-bar+nav{margin-top:16px}}
 @media print{.budget-clock-bar{display:none!important}}
