@@ -39,5 +39,5 @@ window.budgetDocumentTemplates=(()=>{
  let count=table.tBodies[0].rows.length-1;while(count<29){const blank=document.createElement('tr');for(let j=0;j<5;j++)blank.append(document.createElement('td'));table.tBodies[0].insertBefore(blank,total);if(!fits(c)){blank.remove();break}count++}
  const order=[...sheets.filter(p=>p.dataset.kind==='1'),...attachments,...sheets.filter(p=>p.dataset.kind==='2')];measure.remove();for(const p of order){const wrap=document.createElement('div');wrap.className='sheet-preview-holder';wrap.dataset.kind=p.dataset.kind;wrap.append(p);host.append(wrap)}return order.length;
  }
- return {render,money,date,baht,fundingOptions,fundingValues};
+ return {render,blocks,money,date,baht,fundingOptions,fundingValues};
 })();
