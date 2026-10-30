@@ -28,7 +28,7 @@ async function resolveReferences(tx,db,input,state){
  for(const ref of list){M.requestId(ref.id);if(!['one','two'].includes(ref.kind)||seen.has(ref.kind))throw Error('ประเภทเอกสารอ้างอิงไม่ถูกต้อง');seen.add(ref.kind);
   const snap=await tx.get(db.doc('budget_documents/forms-'+ref.id));if(!snap.exists||snap.data().deleted){const original=input.action==='edit'&&block?.entries.find(e=>e.row===Number(input.row))?.documentReferences?.find(r=>r.id===ref.id&&r.kind===ref.kind);if(original){out.push(structuredClone(original));continue;}throw Error('เอกสารอ้างอิงถูกลบแล้ว กรุณาเลือกใหม่');}
   const d=JSON.parse(snap.data().json),r=references(d).find(r=>r.kind===ref.kind);
-  if(!r||r.year!==state.year||r.projectId!==state.projectId||r.activity&&block?.activity&&r.activity.replace(/\s/g,'')!==block.activity.replace(/\s/g,''))throw Error('เลือกเอกสารที่บันทึกเสร็จแล้วในปี โครงการ และกิจกรรมเดียวกัน');
+  if(!r||r.year!==state.year||r.projectId!==state.projectId||!M.projectLevel(state)&&r.activity&&block?.activity&&r.activity.replace(/\s/g,'')!==block.activity.replace(/\s/g,''))throw Error('เลือกเอกสารที่บันทึกเสร็จแล้วในปี โครงการ และกิจกรรมเดียวกัน');
   out.push({id:r.id,kind:r.kind,number:r.number});
  }
  input.documentReferences=out;

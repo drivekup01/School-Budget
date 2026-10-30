@@ -10,6 +10,7 @@ export async function profile(){await ready;if(!auth.currentUser)return guest;co
 export async function login(){const provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});return signInWithPopup(auth,provider)}
 export const logout=()=>signOut(auth);
 export async function rpc(method,...args){try{return (await call({method,args})).data}catch(e){throw Error(String(e.message||'ดำเนินการไม่สำเร็จ').replace(/^Firebase:\s*/,''))}}
-export async function readYear(year,force=false){const ref=doc(db,'budget_public_years',String(year)),snap=await(force?getDocFromServer(ref):getDoc(ref));if(!snap.exists())return {year,status:'empty',projects:[],departments:[]};return JSON.parse(snap.data().json)}
-export function watchYear(year,receive,error){return onSnapshot(doc(db,'budget_public_years',String(year)),{includeMetadataChanges:true},snap=>{if(snap.exists())receive(JSON.parse(snap.data().json),snap.metadata.fromCache)},error)}
+function projectSummary(data){if(Number(data.year)===2570)for(const p of data.projects||[])if(Number(p.id)===14){p.activities=[];p.activityMode='project'}return data}
+export async function readYear(year,force=false){const ref=doc(db,'budget_public_years',String(year)),snap=await(force?getDocFromServer(ref):getDoc(ref));if(!snap.exists())return {year,status:'empty',projects:[],departments:[]};return projectSummary(JSON.parse(snap.data().json))}
+export function watchYear(year,receive,error){return onSnapshot(doc(db,'budget_public_years',String(year)),{includeMetadataChanges:true},snap=>{if(snap.exists())receive(projectSummary(JSON.parse(snap.data().json)),snap.metadata.fromCache)},error)}
 export async function years(){return (await getDocs(collection(db,'budget_public_years'))).docs.map(d=>Number(d.id)).sort((a,b)=>b-a)}
