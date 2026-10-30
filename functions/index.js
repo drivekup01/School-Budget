@@ -5,6 +5,7 @@ const {getFirestore,FieldValue}=require('firebase-admin/firestore');
 const B=require('./borrowing-documents');
 const F=require('./budget-forms');
 const P=require('./procurement');
+const Allocation=require('./allocation-import');
 const M=require('./model');if(!getApps().length)initializeApp();const db=getFirestore();
 const callable={region:'asia-southeast1',maxInstances:3,memory:'256MiB',timeoutSeconds:60,cors:['https://drivekup01.github.io','http://localhost:8765','http://127.0.0.1:8765']};
 async function member(request){try{return await require('./shared-membership').member(db,request.auth);}catch(e){throw new HttpsError(e.code||'internal',e.message)}}
@@ -38,7 +39,10 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
 }
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
 exports.budgetApi=onCall(callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');require('./shared-membership').authorizeMethod(user,method,args);
- if(method==='getBudgetUser')return user;
+ if(method==='getBudgetUser')return {...user,canImportBudgetAllocation:Allocation.allowed(user)};
+ if(method==='previewBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).preview(user,args[0]);
+ if(method==='publishBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).publish(user,args[0]);
+ if(method==='getBudgetAllocationImportHistory')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).history(user,Number(args[0]));
  if(['listProcurementDocuments','openProcurementDocument','saveProcurementDocument','setProcurementDocumentDeleted','getProcurementDraft','saveProcurementDraft','clearProcurementDraft'].includes(method)){if(!['listProcurementDocuments','openProcurementDocument','getProcurementDraft'].includes(method))authorize(user,false,true);return await P.handle(method,args,user,db,FieldValue);}
  if(method==='getBudgetReferenceData'){const snap=await db.doc('budget_reference_data/'+M.year(Number(args[0]))).get();return parse(snap);}
  if(method==='getBudgetProjectCatalog')return parse(await db.doc('budget_catalog/'+M.year(Number(args[0]))).get());
@@ -49,7 +53,7 @@ exports.budgetApi=onCall(callable,async request=>{try{const user=await member(re
  if(method==='saveBudgetPlanningComment'){const input=args[0]||{},ref=db.doc('budget_documents/forms-'+M.requestId(input.id)),text=M.text(input.text,10000,false),expected=M.text(input.expectedText,10000,false);
   return db.runTransaction(async tx=>{const snap=await tx.get(ref),d=parse(snap);if(!F.editable(user,d,snap.data()))throw new HttpsError('permission-denied','แก้ไขได้เฉพาะเอกสารของตนเอง หรือฝ่ายงบประมาณ');if(snap.data().deleted||(d.documentKind||'one')!=='one')throw Error('ไม่พบเอกสาร งบ 1 ที่แก้ไขได้');if((d.fields?.planningReason||'').trim()!==expected)throw Error('ความเห็นเปลี่ยนแล้ว กรุณาเปิดเอกสารล่าสุด');d.fields||={};d.fields.planningReason=text;d.borrowingRevision=require('node:crypto').randomUUID();d.savedAt=new Date().toISOString();tx.update(ref,{json:JSON.stringify(d),updatedBy:user.id,updatedAt:FieldValue.serverTimestamp()});return d});
  }
- if(method==='getBudgetRegister'){const state=parse(await registerRef(args[1],args[0]).get());for(const b of state.blocks)for(const e of b.entries)delete e.deletedOriginal;return state}
+ if(method==='getBudgetRegister'){const state=parse(await registerRef(args[1],args[0]).get());for(const b of state.blocks){if(b.allocationRebased)b.entries=Allocation.projectEntries(b);for(const e of b.entries)delete e.deletedOriginal;}return state}
  if(method==='getBudgetDocumentFinance'){const state=parse(await registerRef(args[1],args[0]).get());return {year:state.year,projectId:state.projectId,revision:state.revision,blocks:state.blocks.map(b=>({budgetType:b.budgetType,activity:b.activity,received:b.received,used:b.used,current:b.current}))}}
  if(['saveBudgetEntry','mutateBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing'].includes(method)){authorize(user,method==='mutateBudgetEntry'&&['delete','restore','purge'].includes(args[0]?.action));return await ledger(method,args[0]||{},user)}
  if(method==='listBudgetDocuments'){const kind=args[0];if(!['forms','disbursements'].includes(kind))throw Error('ประเภทเอกสารไม่ถูกต้อง');const docs=await db.collection('budget_documents').where('kind','==',kind).get();return docs.docs.map(d=>({...parse(d),...(kind==='forms'?{createdBy:F.owner(parse(d),d.data())}:{}),_deleted:d.data().deleted===true}));}
