@@ -7,6 +7,7 @@ async function member(db,a){
  const snap=await db.doc('budget_users/'+a.uid).get(),p=snap.data();if(!p||!p.active||p.email!==a.token.email||!['admin','editor'].includes(p.role))deny('บัญชีนี้ยังไม่ได้รับสิทธิ์ระบบงบประมาณ');return {...p,id:a.uid,canCreateBudgetForms:true,canWriteBudget:true,canWriteDocuments:true};
 }
 function authorizeMethod(user,method,args=[]){
+ if(['previewBudgetAllocationImport','publishBudgetAllocationImport','getBudgetAllocationImportHistory'].includes(method)){require('./allocation-import').guard(user);return;}
  if(user.budgetFormsOnly){const allowed=['getBudgetUser','getBudgetReferenceData','getBudgetProjectCatalog','getBudgetDocumentFinance','listBudgetDocumentReferences','saveBudgetPlanningComment'].includes(method)||['listBudgetDocuments','saveBudgetDocument'].includes(method)&&args[0]==='forms';if(!allowed)deny('บัญชีครูนี้ใช้งานเอกสาร งบ 1 / งบ 2 ได้ แต่ไม่มีสิทธิ์แก้ไขงบจริง');}
  const reads=['getBudgetUser','getBudgetReferenceData','getBudgetProjectCatalog','listBorrowingBudgetDocuments','listBudgetDocumentReferences','getBudgetRegister','getBudgetDocumentFinance','listBudgetDocuments','listProcurementDocuments','openProcurementDocument','getProcurementDraft'];
  if(reads.includes(method))return;
