@@ -1,8 +1,9 @@
 'use strict';
+const M=require('./model');
 const {randomUUID}=require('node:crypto');
 const norm=v=>String(v||'').replace(/\s+/g,'');
 function validTarget(d,state,block){
- if((d.documentKind||'one')!=='one'||Number(d.year)!==state.year||Number(d.projectId)!==state.projectId||d.fund!==block.budgetType||(d.activity&&block.activity&&norm(d.activity)!==norm(block.activity)))throw Error('งบ 1 ต้องเป็นปี โครงการ กิจกรรม และประเภทเงินเดียวกับปลายทาง');
+ if((d.documentKind||'one')!=='one'||Number(d.year)!==state.year||Number(d.projectId)!==state.projectId||d.fund!==block.budgetType||(!M.projectLevel(state)&&d.activity&&block.activity&&norm(d.activity)!==norm(block.activity)))throw Error('งบ 1 ต้องเป็นปี โครงการ กิจกรรม และประเภทเงินเดียวกับปลายทาง');
  if(!String(d.fields?.number1||'').trim())throw Error('งบ 1 ยังไม่มีเลขที่เอกสาร');
 }
 function suggestedComment(record){return 'ยืมงบจาก'+record.source.name+(record.source.activity?' กิจกรรม '+record.source.activity:'')+' ประเภท'+record.budgetType+' จำนวน '+record.amount.toLocaleString('th-TH',{minimumFractionDigits:2,maximumFractionDigits:2})+' บาท เพื่อ'+record.reason+' (รายการยืมเลขที่ '+record.number+')'}
