@@ -31,7 +31,7 @@ th,td{padding:12px;text-align:left}
 .sheet-block{flex:none;overflow-wrap:anywhere}
 .memo-heading{height:22mm;position:relative;text-align:center;padding-top:11mm;font-size:22pt;font-weight:bold}
 .memo-heading img{width:15mm;position:absolute;top:0;left:0}
-.memo-heading small{position:absolute;right:0;top:0;font:14pt BudgetDocumentSarabun;border:1px solid;padding:2mm 4mm}
+.memo-heading small{position:absolute;right:0;top:0;font:14pt BudgetDocument'IBM Plex Sans Thai',Tahoma,sans-serif;border:1px solid;padding:2mm 4mm}
 .memo-meta{border-bottom:1px solid;padding-bottom:3mm;margin-bottom:4mm}
 .memo-meta p,.memo-body p{margin:1.5mm 0}
 .memo-body p.indent{text-indent:12.7mm}

@@ -1,0 +1,12 @@
+{
+  "version": "20261030-unified1",
+  "shared": "https://drivekup01.github.io/School-Portal/shared/school-ui.css?v=20261030-unified1",
+  "bundles": {
+    "styles/budget-base.css": [
+      "budget-sidebar.css",
+      "budget-year.css",
+      "school-auth.css",
+      "budget-ui.css"
+    ]
+  }
+}
