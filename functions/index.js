@@ -6,6 +6,7 @@ const B=require('./borrowing-documents');
 const F=require('./budget-forms');
 const P=require('./procurement');
 const Allocation=require('./allocation-import');
+const Inventory=require('./inventory');
 const M=require('./model');if(!getApps().length)initializeApp();const db=getFirestore();
 const callable={region:'asia-southeast1',maxInstances:3,memory:'256MiB',timeoutSeconds:60,cors:['https://drivekup01.github.io','http://localhost:8765','http://127.0.0.1:8765']};
 async function member(request){try{return await require('./shared-membership').member(db,request.auth);}catch(e){throw new HttpsError(e.code||'internal',e.message)}}
@@ -39,7 +40,8 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
 }
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
 exports.budgetApi=onCall(callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');require('./shared-membership').authorizeMethod(user,method,args);
- if(method==='getBudgetUser')return {...user,canImportBudgetAllocation:Allocation.allowed(user)};
+ if(method==='getBudgetUser')return {...user,canImportBudgetAllocation:Allocation.allowed(user),canManageInventory:Inventory.canWrite(user)};
+ if(Inventory.methods.includes(method))return await Inventory.service(db,()=>FieldValue.serverTimestamp()).handle(method,args,user);
  if(method==='previewBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).preview(user,args[0]);
  if(method==='publishBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).publish(user,args[0]);
  if(method==='getBudgetAllocationImportHistory')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).history(user,Number(args[0]));
