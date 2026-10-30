@@ -36,3 +36,30 @@ footer{margin-top:24px;text-align:center;padding:16px 0}
 @media screen{.dept-fund-card{background:#fff;border:1px solid var(--line);border-radius:16px}.dept-fund-card h4{font-size:16px;color:var(--purple)}.dept-chart-legend,.dept-chart-label{font-size:13px;color:var(--muted)}.dept-chart-legend i{border-radius:3px}.dept-chart-track{background:var(--soft);border-radius:6px}.dept-chart-bar{border-radius:4px}.dept-chart-zero{background:#b5a7be}.dept-chart-axis,.dept-chart-scale{font-size:12px;color:var(--muted)}.dept-chart-label strong{color:var(--ink)}.balance-detail>h3{background:var(--soft);border-radius:10px;font-size:16px;color:#513064}.balance-detail+.balance-detail{border-top:1px solid var(--line)}.stat-remaining{font-size:13px}.stat-remaining .stat-value{font-size:inherit}}
 @media screen{.series-0{background:#8236b5}.series-1{background:#af74cf}.series-2{background:#513064}}
 @media screen{#budgetSidebar .school-account button{margin:0}#budgetSidebar{overflow-x:hidden}}
+
+/* Mobile layout: use full grid tracks instead of legacy flex widths. */
+@media screen and (max-width:760px){
+  main>header>div,.forms-heading>div,.pay-heading>div{min-width:0;max-width:100%}
+  .overview-controls{grid-template-columns:minmax(0,1fr);gap:10px;align-items:stretch}
+  .overview-controls .department-picker,.overview-controls .year-picker{width:100%;min-width:0;flex:auto}
+  .overview-controls .year-menu>summary{width:100%;height:auto;min-height:64px;padding:10px 12px;gap:10px}
+  .overview-controls .year-button-label{flex:1;min-width:0}
+  .overview-controls .year-button-label small{white-space:normal;line-height:1.5}
+  .overview-controls .department-menu .year-button-label strong{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.5}
+  .overview-controls .year-options,.overview-controls .department-menu .year-options{left:0;right:0;width:100%;min-width:0;max-width:100%;max-height:50svh;overflow-y:auto}
+  .filters{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+  .filters label{margin:0;min-width:0}
+  .panel-title,.panel-heading,.borrowing-heading{flex-wrap:wrap}
+  .table-wrap,.pay-table-wrap,.scroll,.history-table-wrap{min-width:0;overscroll-behavior-x:contain}
+  body[data-budget-page="projects"] #projects>.table-wrap>table{min-width:720px;table-layout:fixed}
+  body[data-budget-page="projects"] #projects>.table-wrap>table th:nth-child(1){width:56px}
+  body[data-budget-page="projects"] #projects>.table-wrap>table th:nth-child(2){width:280px}
+  body[data-budget-page="projects"] #projects>.table-wrap>table th:nth-child(3){width:140px}
+  body[data-budget-page="projects"] button.project-name{white-space:normal;overflow-wrap:anywhere;max-width:100%;line-height:1.6}
+  .project-actions,.history-actions,.document-tools{flex-wrap:wrap}
+  .activity{flex-wrap:wrap;gap:8px}
+  .forms-actions,.pay-actions,.dialog-actions{gap:8px}
+  .forms-actions button,.pay-actions button,.dialog-actions button{flex:1 1 140px;white-space:normal}
+  dialog{max-height:85svh;padding:18px}
+  body.has-budget-sidebar[data-document-view] #documentManager{margin:16px;min-width:0}
+}
