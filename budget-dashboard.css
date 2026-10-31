@@ -157,3 +157,30 @@ button:disabled{opacity:.5;cursor:wait}
 .year-options{min-width:165px}}
 #overview>header{flex-wrap:wrap}
 @media(max-width:650px){.department-picker{flex-basis:160px}}
+
+/* Data colors are independent of the Portal navigation theme. */
+@media screen{
+#overview #stats>.stat{background:var(--fund-soft);border:1px solid var(--fund-border);border-top:4px solid var(--accent);color:var(--fund-ink);box-shadow:0 3px 12px #24324b04}
+#overview #stats .stat :is(small,.stat-remaining,.stat-unit){color:var(--fund-ink);opacity:1}
+#overview #stats .stat span{opacity:1}
+#overview #stats .stat-income{color:var(--fund-ink)}
+#overview .fund-label{display:flex;align-items:center;gap:8px;font-weight:600}
+#overview .fund-label::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+#overview #legend .dot{width:11px;height:11px}
+#overview #bars .track{background:var(--dept-soft);height:12px}
+#overview #bars .track>div{background:var(--dept-color)}
+#overview #bars .bar-label>span{display:flex;align-items:center;gap:8px}
+#overview #bars .bar-label>span::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--dept-color);flex:none}
+#overview .series-0:not(.negative-bar){background:#2563eb}
+#overview .series-1:not(.negative-bar){background:#059669}
+#overview .series-2:not(.negative-bar){background:#ea580c}
+#overview .dept-chart-track{background:#f1f5f9}
+#overview .dept-chart-zero{background:#94a3b8}
+#overview .dept-fund-card:nth-child(1){--fund-head:#1e3a8a;--fund-line:#bfdbfe}
+#overview .dept-fund-card:nth-child(2){--fund-head:#115e59;--fund-line:#99f6e4}
+#overview .dept-fund-card:nth-child(3){--fund-head:#9a3412;--fund-line:#fed7aa}
+#overview .dept-fund-card:nth-child(4){--fund-head:#9d174d;--fund-line:#fbcfe8}
+#overview .dept-fund-card{border-top:3px solid var(--fund-line)}
+#overview .dept-fund-card h4{color:var(--fund-head)}
+}
+@media screen{#overview .negative-bar{background:#dc2626}}
