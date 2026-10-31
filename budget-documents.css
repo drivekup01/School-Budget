@@ -127,6 +127,6 @@ th,td{padding:12px;text-align:left}
 @media print{.preview-zoom-tools,#documentLedgerLink{display:none!important}}
 @media screen and (min-width:901px){.compact-document-editor .forms-workspace{grid-template-columns:minmax(340px,42%) minmax(0,1fr)}
 .compact-document-editor #budgetDocumentPreview>.sheet-preview-holder{margin-left:auto;margin-right:0}}
-.forms-missing-two{display:inline-block;padding:4px 10px;margin:0 6px 6px 0}
+.forms-missing-two{display:inline-flex;align-items:center;padding:4px 9px;margin:0 10px 0 0;border:1px solid #e5484d;border-radius:6px;background:#fff1f2;color:#a81825;font-size:13px;font-weight:700;line-height:1.45;white-space:nowrap;vertical-align:middle}
 .forms-missing-two[hidden]{display:none}
 #formsStatus:empty{display:none}
