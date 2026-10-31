@@ -106,3 +106,22 @@ button:disabled{opacity:.5;cursor:wait}
 .workbook-files{position:absolute;right:0;top:calc(100% + 8px);z-index:5;min-width:220px;padding:8px}
 .workbook-files a{display:block;padding:12px}
 .report-link{display:inline-block;margin:5px 8px;padding:5px 10px;white-space:nowrap}
+
+/* Compact project list: title/owner left, actions beside them. */
+@media screen{
+html[data-school-ui] body[data-budget-page="projects"] #projects{padding:20px}
+html[data-school-ui] body[data-budget-page="projects"] #projects .panel-title{margin-bottom:10px}
+html[data-school-ui] body[data-budget-page="projects"] #projects .table-help{margin:8px 0 12px}
+html[data-school-ui] body[data-budget-page="projects"] #projects table :is(th,td){padding:8px 12px;line-height:1.45}
+html[data-school-ui] body[data-budget-page="projects"] .project-cell{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+html[data-school-ui] body[data-budget-page="projects"] .project-description{flex:1;min-width:0}
+html[data-school-ui] body[data-budget-page="projects"] button.project-name{display:block;min-height:28px;padding:0;border:0;border-radius:4px;background:transparent;box-shadow:none;font-size:14px;line-height:1.45;white-space:normal;overflow-wrap:anywhere;text-align:left}
+html[data-school-ui] body[data-budget-page="projects"] .project-description small{margin-top:3px;font-size:13px;line-height:1.4}
+html[data-school-ui] body[data-budget-page="projects"] .project-tools{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;flex-shrink:0;max-width:235px}
+html[data-school-ui] body[data-budget-page="projects"] .project-actions{display:inline-flex;margin:0;gap:6px}
+html[data-school-ui] body[data-budget-page="projects"] :is(.report-link,.working-entry-link){display:inline-flex;align-items:center;justify-content:center;margin:0;padding:5px 9px;min-height:30px;font-size:13px;line-height:1.4;border-radius:7px;white-space:nowrap}
+html[data-school-ui] body[data-budget-page="projects"] .activity-summary td{padding:7px 12px}
+html[data-school-ui] body[data-budget-page="projects"] #rows>tr>td:first-child{width:44px}
+@media(max-width:1000px){html[data-school-ui] body[data-budget-page="projects"] .project-cell{align-items:flex-start;flex-direction:column;gap:6px}html[data-school-ui] body[data-budget-page="projects"] .project-tools{justify-content:flex-start;max-width:none}}
+@media(max-width:760px){html[data-school-ui] body[data-budget-page="projects"] #projects{padding:16px}html[data-school-ui] body[data-budget-page="projects"] :is(.report-link,.working-entry-link,button.project-name){min-height:40px}}
+}

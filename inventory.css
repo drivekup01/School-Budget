@@ -5,3 +5,22 @@ body.inventory-app{margin:0;background:#f7f5fa;color:#241b2d;font:400 16px/1.6 '
 .inventory-app[data-inventory-view="stock"] #metrics,.inventory-app[data-inventory-view="assets"] #metrics,.inventory-app[data-inventory-view="history"] #metrics{display:none}
 
 .inventory-app[data-inventory-view="trash"] #metrics{display:none}.inventory-table td button{margin-top:6px}.inventory-table td div a{display:inline-block}
+
+/* Compact receiving workspace; mobile controls keep their touch size. */
+@media screen{
+html[data-school-ui] body.inventory-app #workspace .panel{padding:16px}
+html[data-school-ui] body.inventory-app #workspace .panel-title{margin-bottom:12px;gap:12px;align-items:center}
+html[data-school-ui] body.inventory-app #workspace .panel-title h2{margin:0}
+html[data-school-ui] body.inventory-app #workspace .form-grid{gap:10px 14px;margin-bottom:12px}
+html[data-school-ui] body.inventory-app #workspace .inventory-source-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+html[data-school-ui] body.inventory-app #workspace :is(input:not([type=checkbox]):not([type=radio]),select,textarea){min-height:36px;padding:6px 10px;margin-top:4px;font-size:14px;line-height:1.4}
+html[data-school-ui] body.inventory-app #workspace textarea{min-height:64px}
+html[data-school-ui] body.inventory-app #workspace .inventory-metrics{gap:10px;margin-bottom:12px}
+html[data-school-ui] body.inventory-app #workspace .inventory-metrics article{padding:12px}
+html[data-school-ui] body.inventory-app #workspace .inventory-metrics strong{font-size:24px;margin-top:4px}
+html[data-school-ui] body.inventory-app #workspace :is(th,td){padding:8px 10px}
+html[data-school-ui] body.inventory-app #workspace .item-fields{gap:10px;margin-top:8px}
+html[data-school-ui] body.inventory-app #sourceInfo{margin:6px 0 10px;font-size:13px;line-height:1.5}
+@media(max-width:1100px){html[data-school-ui] body.inventory-app #workspace .inventory-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){html[data-school-ui] body.inventory-app #workspace .inventory-source-grid{grid-template-columns:1fr}html[data-school-ui] body.inventory-app #workspace :is(input:not([type=checkbox]):not([type=radio]),select,textarea){min-height:44px;font-size:16px;padding:9px 10px}html[data-school-ui] body.inventory-app #workspace :is(th,td){padding:10px}}
+}
