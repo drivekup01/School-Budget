@@ -1,0 +1,33 @@
+/* Compact the input layout only. Keep the document and its preview at full size. */
+@media screen {
+ .compact-document-editor .forms-inputs{padding:12px}
+ .compact-document-editor .forms-inputs label{font-size:16px;line-height:1.4;gap:4px;margin:0;min-width:0}
+ .compact-document-editor .forms-inputs :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){font-size:16px;min-height:44px;padding:8px 10px;margin-top:0;width:100%;box-sizing:border-box}
+ .compact-document-editor .forms-inputs textarea{min-height:72px}
+ .compact-document-editor .forms-inputs button{min-height:44px}
+ .compact-document-editor .budget-form-section{margin:8px 0}
+ .compact-document-editor .budget-form-section>summary{padding:10px 12px}
+ .compact-document-editor .budget-form-section-body{padding:0 12px 12px;display:grid;gap:10px}
+ .compact-document-editor .form-pair{gap:10px}
+ .compact-document-editor .forms-inputs .forms-note{margin:4px 0;line-height:1.45}
+ .compact-document-editor .finance-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:4px 0}
+ .compact-document-editor .finance-cards article{padding:8px}
+ .compact-document-editor .finance-cards strong{font-size:16px;line-height:1.4;margin-top:4px;overflow-wrap:anywhere}
+ .compact-document-editor .finance-cards span{font-size:13px;line-height:1.3}
+ .compact-document-editor .balance-after{margin:4px 0;padding:8px;line-height:1.4}
+ .compact-document-editor .item-editor{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;margin:8px 0}
+ .compact-document-editor .item-editor>strong,.compact-document-editor .item-editor>label:has(textarea),.compact-document-editor .item-editor>button{grid-column:1/-1}
+ .compact-document-editor #budgetDocumentPreview>.sheet-preview-holder{margin-left:auto;margin-right:auto}
+}
+@media screen and (min-width:1101px){
+ .compact-document-editor .budget-form-section:is([data-section="header-one"],[data-section="header-two"],[data-section="signatures"],[data-section="common"])>.budget-form-section-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .compact-document-editor [data-section="common"]>.budget-form-section-body>:not(label),.compact-document-editor [data-section="common"]>.budget-form-section-body>label:has(#formProject,#formActivity),.compact-document-editor [data-section="signatures"]>.budget-form-section-body>.budget-form-section{grid-column:1/-1}
+}
+@media screen and (max-width:600px){
+ .compact-document-editor .finance-cards{grid-template-columns:1fr}
+ .compact-document-editor .finance-cards article{display:flex;justify-content:space-between;gap:8px;align-items:center}
+ .compact-document-editor .finance-cards strong{margin:0}
+}
+
+
+@media screen{.compact-document-editor .document-save-footer{padding:16px 0 4px;margin-top:12px;border-top:1px solid var(--line,#e5daef)}.compact-document-editor .document-save-footer #saveDocument{width:100%;min-height:48px;font-size:16px}}

@@ -17,6 +17,7 @@ window.setupBudgetDocumentSections=function(onSelect){
  const note=document.createElement('p');note.className='forms-note';note.textContent='ฝ่าย โครงการ กิจกรรม ยอดเงิน และยอดเบิกครั้งนี้ ใช้ข้อมูลจากส่วนที่ใช้ร่วมกันด้านบน';body1.body.append(note);itemNodes.forEach(n=>body1.body.append(n));
  move(['activityOwner','projectOwner','departmentHead','deputy','planning','procurement','budget','director'],sign.body);
  const opinions=section('ความเห็นของผู้ลงนาม (เว้นว่างเพื่อลงนามบนกระดาษได้)','opinions',false);Array.from(fields.querySelectorAll(':scope > label')).forEach(n=>opinions.body.append(n));sign.body.append(opinions.box);
+ const save=document.getElementById('saveDocument');if(save){let footer=document.getElementById('budgetDocumentSaveFooter');if(!footer){footer=document.createElement('div');footer.id='budgetDocumentSaveFooter';footer.className='document-save-footer';}footer.append(save);form.after(footer);}
  form.replaceChildren(root);
  let current='one';try{if(sessionStorage.getItem('budget-forms-active-page')==='two')current='two'}catch{}
  function select(page){current=page==='two'?'two':'one';page1.hidden=current!=='one';page2.hidden=current!=='two';document.querySelectorAll('[data-editor-page],[data-preview]').forEach(b=>{const active=(b.dataset.editorPage||b.dataset.preview)===current;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});try{sessionStorage.setItem('budget-forms-active-page',current)}catch{}onSelect(current)}
