@@ -9,7 +9,7 @@ function harness(){
  const api=async(uid,role,method,...args)=>{data.set('school_users/'+uid,{active:true,name:uid,...grants(role)});return exports.budgetApi({auth:{uid,token:{email:uid+'@example.invalid',email_verified:true,firebase:{sign_in_provider:'google.com'}}},data:{method,args}})};
  return {data,api,get writes(){return writes}};
 }
-const id='11111111-1111-4111-8111-111111111111',form=()=>({id,year:2570,projectId:1,documentKind:'one',requestAmount:'25',fields:{number1:'1/70',date1:'2026-10-28'}});
+const id='11111111-1111-4111-8111-111111111111',form=()=>({id,year:2570,projectId:1,documentKind:'two',requestAmount:'25',fields:{number2:'1/70',date2:'2026-10-28'}});
 test('actual API permits teacher create, enforces immutable ownership and stale edits, budget purge, and no ledger writes',async()=>{
  const h=harness(),d=await h.api('a','teacher','saveBudgetDocument','forms',{...form(),createdBy:'b'});assert.equal(d.createdBy,'a');
  await assert.rejects(h.api('b','teacher','saveBudgetDocument','forms',d));
@@ -20,4 +20,22 @@ test('actual API permits teacher create, enforces immutable ownership and stale 
  await assert.rejects(h.api('a','teacher','purgeBudgetDocuments',[id]));
  await h.api('budget','budget','purgeBudgetDocuments',[id]);assert.equal(h.data.has('budget_documents/forms-'+id),false);
  assert.ok(h.writes.every(([,p])=>p.startsWith('budget_documents/')));
+});
+
+function seed(h){const state={year:2570,projectId:1,sheetName:'โครงการทดสอบ',revision:'r',borrowing:[],blocks:[{headerRow:2,blockIndex:0,activity:'กิจกรรมทดสอบ',budgetType:'เงินอุดหนุนรายหัว',received:100,openingBalance:100,current:100,used:0,entries:[]}]};const summary={projects:[{id:1,department:'ฝ่ายทดสอบ',activities:[{name:'กิจกรรมทดสอบ'}]}],departments:[{name:'ฝ่ายทดสอบ'}]};h.data.set('budget_registers/2570-1',{json:JSON.stringify(state)});h.data.set('budget_public_years/2570',{json:JSON.stringify(summary)});return state;}
+const one=()=>({...form(),documentKind:'one',activity:'กิจกรรมทดสอบ',fund:'เงินอุดหนุนรายหัว',fields:{number1:'1/70',date1:'2026-11-03'}});
+const register=h=>JSON.parse(h.data.get('budget_registers/2570-1').json);
+test('saving form one atomically posts once, updates same expense on edit, form two never posts',async()=>{
+ const h=harness();seed(h);let d=await h.api('a','teacher','saveBudgetDocument','forms',one());assert.equal(register(h).blocks[0].current,75);assert.equal(d.ledgerPosted.amount,25);
+ d=await h.api('a','teacher','saveBudgetDocument','forms',d);assert.equal(register(h).blocks[0].entries.length,1);assert.equal(register(h).blocks[0].current,75);
+ d=await h.api('a','teacher','saveBudgetDocument','forms',{...d,requestAmount:'40'});assert.equal(register(h).blocks[0].current,60);assert.equal(register(h).blocks[0].entries.length,1);
+ await h.api('a','teacher','saveBudgetDocument','forms',{...form(),id:'22222222-2222-4222-8222-222222222222'});assert.equal(register(h).blocks[0].current,60);
+ await assert.rejects(h.api('a','teacher','saveBudgetDocument','forms',{...d,requestAmount:'101'}),/เพียงพอ/);assert.equal(register(h).blocks[0].current,60);assert.equal(JSON.parse(h.data.get('budget_documents/forms-'+id).json).requestAmount,'40');
+ assert.equal(JSON.parse(h.data.get('budget_public_years/2570').json).projects[0].remaining[0],60);
+});
+test('old document-only history is untouched until explicitly saved; matching manual expense is adopted without double posting',async()=>{
+ const h=harness(),state=seed(h),old={...one(),createdBy:'a',savedBy:'a',savedAt:'2026-10-28'};h.data.set('budget_documents/forms-'+id,{kind:'forms',json:JSON.stringify(old)});
+ await h.api('a','teacher','listBudgetDocuments','forms');assert.equal(register(h).blocks[0].current,100);
+ const M=require('../model');M.saveEntry(state,{headerRow:2,revision:state.revision,number:'1/70',date:'2026-11-03',description:'วัสดุ',spent:25,note:''});h.data.set('budget_registers/2570-1',{json:JSON.stringify(state)});
+ const d=await h.api('a','teacher','saveBudgetDocument','forms',old);assert.ok(d.ledgerPosted);assert.equal(register(h).blocks[0].current,75);assert.equal(register(h).blocks[0].entries.length,1);
 });

@@ -68,6 +68,7 @@ exports.budgetApi=onCall(callable,async request=>{try{const user=await member(re
   const ref=db.doc('budget_documents/'+kind+'-'+value.id);return await db.runTransaction(async tx=>{const old=await tx.get(ref);if(options.importOnly&&old.exists)return parse(old);if(old.exists&&old.data().deleted)throw Error('เอกสารนี้ถูกลบแล้ว');
    if(old.exists&&value.savedAt!==parse(old).savedAt)throw Error('เอกสารเปลี่ยนแล้ว กรุณาเปิดข้อมูลล่าสุดก่อนแก้ไข');
    const saved=kind==='forms'?F.saved(value,old.exists?parse(old):null,user,old.data()):{...value,savedAt:new Date().toISOString(),savedBy:user.id};
+   if(kind==='forms'&&!options.importOnly)await require('./form-posting').stage(tx,db,saved,old.exists?parse(old):null,user);
    tx.set(ref,{kind,json:JSON.stringify(saved),deleted:false,createdBy:saved.createdBy||user.id,updatedBy:user.id,updatedAt:FieldValue.serverTimestamp()});return saved;
   });
  }
