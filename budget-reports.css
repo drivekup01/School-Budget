@@ -20,7 +20,7 @@ select{max-width:100%}
 @media print{.report-edit{display:none!important}}
 
 .report-detail-print{display:none}
-.report-detail-scroll{max-height:70vh;overflow:auto;width:100%}
+.report-detail-scroll{max-height:none;overflow:auto;width:100%}
 #report .report-detail-compact{width:100%;min-width:850px;table-layout:fixed;font-size:14px;line-height:1.45}
 #report .report-detail-compact th{position:sticky;top:0;z-index:1;background:#f2ecf8}
 #report .report-detail-compact td,#report .report-detail-compact th{padding:9px 12px!important;min-width:0;vertical-align:top}
