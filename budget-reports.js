@@ -14,12 +14,12 @@
   reportSizeObserver?.disconnect();
   $('tables').innerHTML=visibleSheets().map(s=>table(...s)).join('');
   const scroller=$('tables').querySelector('.report-detail-scroll');if(!scroller)return;
-  const table=scroller.querySelector('table');
-  const fit=()=>{const rows=[...table.querySelectorAll('tbody>tr')];const height=table.querySelector('thead').getBoundingClientRect().height+rows.slice(0,20).reduce((n,row)=>n+row.getBoundingClientRect().height,0)+4;
+  const detailTable=scroller.querySelector('table');
+  const fit=()=>{const rows=[...detailTable.querySelectorAll('tbody>tr')];const height=detailTable.querySelector('thead').getBoundingClientRect().height+rows.slice(0,20).reduce((n,row)=>n+row.getBoundingClientRect().height,0)+4;
    scroller.style.setProperty('height','auto','important');
    scroller.style.setProperty('max-height',rows.length<=20?'none':height+'px','important');
   };
-  fit();reportSizeObserver=new ResizeObserver(fit);reportSizeObserver.observe(table);
+  fit();reportSizeObserver=new ResizeObserver(fit);reportSizeObserver.observe(detailTable);
  }
 
  function editCell(target){if(!target?.editable||!window.schoolUser?.canWriteBudget||data.year===2569)return '<td class="report-edit">—</td>';const query=new URLSearchParams({year:String(data.year),project:String(target.projectId),header:String(target.headerRow),editRow:String(target.row)});return `<td class="report-edit"><a class="report-link" target="_top" href="budget-entry.html?${esc(query.toString())}">แก้ไข</a></td>`;}
