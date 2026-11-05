@@ -2,7 +2,7 @@
  const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const params=new URL(location.href).searchParams;let data,states={},sheets=[],busy=false;
  const sum=BudgetReports.sum;
- const headers=['ฝ่าย','โครงการ','กิจกรรม','งบตั้งต้น (นำเข้า)','รับจัดสรรตามทะเบียน','รับยืมงบ','ให้ยืมงบ','ใช้ไปตามทะเบียน','คงเหลือตามทะเบียน'];
+ const headers=['ฝ่าย','โครงการ','กิจกรรม','ประเภทเงิน','งบตั้งต้น (นำเข้า)','รับจัดสรรตามทะเบียน','รับยืมงบ','ให้ยืมงบ','ใช้ไปตามทะเบียน','คงเหลือตามทะเบียน'];
  function options(id,items,placeholder){$(id).replaceChildren(new Option(placeholder,''),...items.map(([value,text])=>new Option(text,value)));}
  function invalidate(){sheets=[];$('report').hidden=true;$('pdf').disabled=$('excel').disabled=true;}
  function projects(){return data.projects.filter(p=>!$('department').value||p.department===$('department').value);}
@@ -15,10 +15,11 @@
    await window.schoolAuthReady;const selected=projects().filter(p=>!$('project').value||String(p.id)===$('project').value);states={};$('reportTitle').textContent='กำลังอ่านทะเบียนล่าสุด '+selected.length+' โครงการ';$('tables').textContent='กำลังรวบรวมข้อมูล · สามารถดูความคืบหน้าด้านบนได้';$('report').hidden=false;
    if(!window.budgetIsAllocationPlan){let next=0,done=0;const results=await Promise.allSettled(Array.from({length:Math.min(3,selected.length)},async()=>{while(next<selected.length){const p=selected[next++];const state=await window.schoolRpc('getBudgetRegister',p.id,data.year);if(state.year!==data.year||state.projectId!==p.id)throw Error('ทะเบียนไม่ตรงกับปีหรือโครงการ');states[p.id]=state;$('status').textContent=`อ่านทะเบียน ${++done} / ${selected.length} โครงการ`;}}));const failed=results.find(r=>r.status==='rejected');if(failed)throw failed.reason;}
    const filter={department:$('department').value,project:$('project').value,activity:$('activity').value,budgetType:$('fund').value===''?'':$('fund').selectedOptions[0].textContent};
-   const model=BudgetReports.build(data,states,filter);
-   const deptRows=[...new Set(model.summaries.map(r=>r[0]))].map(name=>{const rs=model.summaries.filter(r=>r[0]===name);return [name,...headers.slice(3).map((_,i)=>sum(rs.map(r=>r[i+3])))];});
-   const activityRows=[];for(const p of selected)for(const a of p.activities){if(filter.activity&&a.name!==filter.activity)continue;const m=BudgetReports.build(data,states,{project:String(p.id),activity:a.name,budgetType:filter.budgetType});activityRows.push(...m.summaries);}
-   sheets=[['สรุปรายฝ่าย',['ฝ่าย',...headers.slice(3)],deptRows],['สรุปโครงการ',headers,model.summaries],['สรุปกิจกรรม',headers,activityRows],['รายละเอียดรายการ',['เลขที่','วันที่','ฝ่าย','โครงการ','กิจกรรม','ประเภทเงิน','รายการ','รับเพิ่ม','ใช้ไป','คงเหลือ','หมายเหตุ'],model.details],['ทะเบียนยืมงบ',['เลขที่','วันที่','โครงการต้นทาง','กิจกรรมต้นทาง','โครงการปลายทาง','กิจกรรมปลายทาง','ประเภทเงิน','จำนวนเงิน','เหตุผล','สถานะ'],model.loans]];
+   const model=BudgetReports.build(data,states,{...filter,splitFunds:true});
+   const summaryRows=rows=>rows.map(r=>[...r.slice(0,3),r[9],...r.slice(3,9)]);
+   const deptRows=[...new Set(model.summaries.map(r=>JSON.stringify([r[0],r[9]])))].map(key=>{const [name,fund]=JSON.parse(key),rs=model.summaries.filter(r=>r[0]===name&&r[9]===fund);return [name,fund,...headers.slice(4).map((_,i)=>sum(rs.map(r=>r[i+3])))];});
+   const activityRows=[];for(const p of selected)for(const a of p.activities){if(filter.activity&&a.name!==filter.activity)continue;const m=BudgetReports.build(data,states,{project:String(p.id),activity:a.name,budgetType:filter.budgetType,splitFunds:true});activityRows.push(...m.summaries);}
+   sheets=[['สรุปรายฝ่าย',['ฝ่าย','ประเภทเงิน',...headers.slice(4)],deptRows],['สรุปโครงการ',headers,summaryRows(model.summaries)],['สรุปกิจกรรม',headers,summaryRows(activityRows)],['รายละเอียดรายการ',['เลขที่','วันที่','ฝ่าย','โครงการ','กิจกรรม','ประเภทเงิน','รายการ','รับเพิ่ม','ใช้ไป','คงเหลือ','หมายเหตุ'],model.details],['ทะเบียนยืมงบ',['เลขที่','วันที่','โครงการต้นทาง','กิจกรรมต้นทาง','โครงการปลายทาง','กิจกรรมปลายทาง','ประเภทเงิน','จำนวนเงิน','เหตุผล','สถานะ'],model.loans]];
    const reportHeading=`สรุปงบประมาณ ${filter.budgetType||'ทุกประเภทเงิน'} · ${(filter.department||'ทุกฝ่าย').replace('ฝ่ายบริหารงานทั่วไป','ฝ่ายบริหารทั่วไป')} โรงเรียนค่ายบางระจันวิทยาคม ปีงบประมาณ ${data.year}`;
    $('reportTitle').textContent=reportHeading;document.title=reportHeading;$('reportFooter').textContent=reportHeading;
    let printStyle=document.getElementById('reportPrintStyle');if(!printStyle){printStyle=document.createElement('style');printStyle.id='reportPrintStyle';document.head.append(printStyle);}printStyle.textContent='@page{@bottom-center{content:'+JSON.stringify(reportHeading)+';font:9pt ReportThai,sans-serif;color:#333;}}';

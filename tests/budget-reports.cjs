@@ -10,3 +10,15 @@ report=build(data,states,{project:'1',activity:'กิจกรรม ข'});ass
 states[1].borrowing.push({...borrow,id:'cancel',kind:'cancel',referenceId:'b1'});states[2].borrowing=states[1].borrowing;assert.equal(build(data,states).loans[0][9],'ยกเลิกแล้ว');
 assert.equal(build(data,{},{}).summaries[0][7],null);
 console.log('Report calculations: missing values, no double deduction, activity scope, unique borrowing, cancellation passed');
+
+// Each fund keeps its own total and source entries, including activity scope.
+const mixed={projects:[{id:9,department:'ฝ่าย ก',name:'โครงการทดสอบ',income:[100,200,0,0],activities:[{name:'กิจกรรมทดสอบ',income:[100,200,0,0]}]}]};
+const mixedStates={9:{blocks:[{activity:'กิจกรรมทดสอบ',budgetType:'เงินอุดหนุนรายหัว',received:100,incoming:0,outgoing:0,used:25,current:75,entries:[{number:'ก1',spent:25}]},{activity:'กิจกรรมทดสอบ',budgetType:'เงินกิจกรรมพัฒนาผู้เรียน',received:200,incoming:0,outgoing:0,used:90,current:110,entries:[{number:'ก2',spent:90}]}]}};
+const split=build(mixed,mixedStates,{splitFunds:true});
+assert.equal(split.summaries.length,4);
+assert.deepEqual(split.summaries.slice(0,2).map(r=>[r[9],r[7],r[8]]),[['เงินอุดหนุนรายหัว',25,75],['เงินกิจกรรมพัฒนาผู้เรียน',90,110]]);
+assert.equal(split.details.length,2);
+assert.equal(split.details.reduce((n,r)=>n+r[8],0),115);
+const scoped=build(mixed,mixedStates,{splitFunds:true,activity:'กิจกรรมทดสอบ',budgetType:'เงินอุดหนุนรายหัว'});
+assert.equal(scoped.summaries.length,1);assert.equal(scoped.details[0][0],'ก1');assert.equal(scoped.summaries[0][7],25);
+console.log('Fund-separated totals and source entries passed');

@@ -4,6 +4,11 @@
  const types=['เงินอุดหนุนรายหัว','เงินกิจกรรมพัฒนาผู้เรียน','เงินรายได้สถานศึกษา','อื่น ๆ'];
  const match=(name,activity)=>!!name&&(name===activity||'กิจกรรม'+name===activity||name==='กิจกรรม'+activity);
  function build(data,states,filter={}){
+  if(filter.splitFunds){
+   const funds=filter.budgetType?[filter.budgetType]:types;
+   const parts=funds.map(budgetType=>({budgetType,model:build(data,states,{...filter,budgetType,splitFunds:false})}));
+   return {summaries:parts.flatMap(({budgetType,model})=>model.summaries.map(r=>[...r,budgetType])),details:parts.flatMap(p=>p.model.details),loans:parts.flatMap(p=>p.model.loans)};
+  }
   const projects=data.projects.filter(p=>(!filter.department||p.department===filter.department)&&(!filter.project||String(p.id)===String(filter.project)));
   const summaries=[],details=[],loans=new Map();
   for(const p of projects){
