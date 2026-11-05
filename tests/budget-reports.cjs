@@ -22,3 +22,10 @@ assert.equal(split.details.reduce((n,r)=>n+r[8],0),115);
 const scoped=build(mixed,mixedStates,{splitFunds:true,activity:'กิจกรรมทดสอบ',budgetType:'เงินอุดหนุนรายหัว'});
 assert.equal(scoped.summaries.length,1);assert.equal(scoped.details[0][0],'ก1');assert.equal(scoped.summaries[0][7],25);
 console.log('Fund-separated totals and source entries passed');
+
+mixedStates[9].blocks[0].headerRow=12;mixedStates[9].blocks[0].entries[0].row=18;
+const target=build(mixed,mixedStates,{splitFunds:true,budgetType:'เงินอุดหนุนรายหัว'}).detailTargets[0];
+assert.deepEqual(target,{projectId:9,headerRow:12,row:18,editable:true});
+mixedStates[9].blocks[0].entries[0].deleted=true;
+assert.equal(build(mixed,mixedStates,{splitFunds:true,budgetType:'เงินอุดหนุนรายหัว'}).detailTargets[0].editable,false);
+console.log('Exact edit targets and cancelled entry guard passed');

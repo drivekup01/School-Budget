@@ -16,3 +16,5 @@ select{max-width:100%}
 @media print{@page{size:A4 landscape;margin:12mm}body,body.has-budget-sidebar{background:white!important;padding:0!important;margin:0!important;font:10pt ReportThai,sans-serif!important}#budgetSidebar,main>header,.filters,.report-actions,#status{display:none!important}main{margin:0!important;padding:0!important;max-width:none!important}#report{border:0;padding:0;margin:0;border-radius:0}#report h2{font-size:18pt}.table-wrap{overflow:visible!important}table{width:100%;font-size:9pt;table-layout:fixed}thead{display:table-header-group}tr{break-inside:avoid}th,td{min-width:0!important;overflow-wrap:anywhere;padding:5px!important}.report-note{font-size:9pt}h3{break-after:avoid}.signatures{break-inside:avoid}}
 .report-footer{display:none}
 @media print{@page{margin-bottom:22mm}}
+
+@media print{.report-edit{display:none!important}}
