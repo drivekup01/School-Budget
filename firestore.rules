@@ -436,8 +436,8 @@ service cloud.firestore {
     function schoolUnified() { return schoolHasUser() && schoolRole('schoolRole') != 'none'; }
     function schoolUnifiedActive() { return schoolUnified() && schoolActive() && schoolRole('schoolRole') in ['admin','director','deputy','teacher','timetable','budget','procurement','student_support']; }
     function schoolTeaches() { return schoolUnifiedActive() && !(schoolRole('schoolRole') in ['director','deputy']); }
-    function schoolBudgetWrite() { return schoolUnifiedActive() && schoolRole('schoolRole') in ['admin','deputy','budget']; }
-    function schoolDocumentWrite() { return schoolUnifiedActive() && schoolRole('schoolRole') in ['admin','deputy','budget','procurement']; }
+    function schoolBudgetWrite() { return schoolUnifiedActive() && schoolRole('schoolRole') in ['admin','budget']; }
+    function schoolDocumentWrite() { return schoolUnifiedActive(); }
     function schoolActive() {
       return schoolHasUser() && get(/databases/$(database)/documents/school_users/$(request.auth.uid)).data.active == true;
     }

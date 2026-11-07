@@ -57,8 +57,8 @@ exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=aw
  }
  if(method==='getBudgetRegister'){const state=parse(await registerRef(args[1],args[0]).get());for(const b of state.blocks){if(b.allocationRebased)b.entries=Allocation.projectEntries(b);for(const e of b.entries)delete e.deletedOriginal;}return state}
  if(method==='getBudgetDocumentFinance'){const state=parse(await registerRef(args[1],args[0]).get());return {year:state.year,projectId:state.projectId,revision:state.revision,blocks:state.blocks.map(b=>({budgetType:b.budgetType,activity:b.activity,received:b.received,used:b.used,current:b.current}))}}
- if(['saveBudgetEntry','mutateBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing'].includes(method)){authorize(user,method==='mutateBudgetEntry'&&['delete','restore','purge'].includes(args[0]?.action));return await ledger(method,args[0]||{},user)}
- if(method==='listBudgetDocuments'){const kind=args[0];if(!['forms','disbursements'].includes(kind))throw Error('ประเภทเอกสารไม่ถูกต้อง');const docs=await db.collection('budget_documents').where('kind','==',kind).get();return docs.docs.map(d=>({...parse(d),...(kind==='forms'?{createdBy:F.owner(parse(d),d.data())}:{}),_deleted:d.data().deleted===true}));}
+ if(['saveBudgetEntry','mutateBudgetEntry','saveBudgetBorrowing','cancelBudgetBorrowing'].includes(method)){authorize(user);if(method==='mutateBudgetEntry'&&['delete','restore','purge'].includes(args[0]?.action)&&!F.manager(user))throw new HttpsError('permission-denied','เฉพาะฝ่ายงบประมาณหรือผู้ดูแลระบบ');return await ledger(method,args[0]||{},user)}
+ if(method==='listBudgetDocuments'){const kind=args[0];if(!['forms','disbursements'].includes(kind))throw Error('ประเภทเอกสารไม่ถูกต้อง');const docs=await db.collection('budget_documents').where('kind','==',kind).get();return docs.docs.map(d=>({...parse(d),createdBy:F.owner(parse(d),d.data()),_deleted:d.data().deleted===true}));}
  if(method==='listBudgetDocumentReferences'){
   const year=M.year(Number(args[0])),project=Number(args[1]),docs=await db.collection('budget_documents').where('kind','==','forms').get();
   return docs.docs.filter(s=>!s.data().deleted).flatMap(s=>F.references(parse(s))).filter(d=>d.year===year&&d.projectId===project);
@@ -67,15 +67,16 @@ exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=aw
   const [kind,value,options={}]=args;if(kind==='disbursements')authorize(user,false,true);if(!['forms','disbursements'].includes(kind))throw Error('ประเภทเอกสารไม่ถูกต้อง');validateDocument(value);
   const ref=db.doc('budget_documents/'+kind+'-'+value.id);return await db.runTransaction(async tx=>{const old=await tx.get(ref);if(options.importOnly&&old.exists)return parse(old);if(old.exists&&old.data().deleted)throw Error('เอกสารนี้ถูกลบแล้ว');
    if(old.exists&&value.savedAt!==parse(old).savedAt)throw Error('เอกสารเปลี่ยนแล้ว กรุณาเปิดข้อมูลล่าสุดก่อนแก้ไข');
-   const saved=kind==='forms'?F.saved(value,old.exists?parse(old):null,user,old.data()):{...value,savedAt:new Date().toISOString(),savedBy:user.id};
+   if(old.exists&&!F.editable(user,parse(old),old.data()))throw new HttpsError('permission-denied','แก้ไขได้เฉพาะเอกสารของตนเอง หรือฝ่ายงบประมาณ');
+   const saved=kind==='forms'?F.saved(value,old.exists?parse(old):null,user,old.data()):{...value,createdBy:old.exists?F.owner(parse(old),old.data()):user.id,savedAt:new Date().toISOString(),savedBy:user.id};
    if(kind==='forms'&&!options.importOnly)await require('./form-posting').stage(tx,db,saved,old.exists?parse(old):null,user);
    tx.set(ref,{kind,json:JSON.stringify(saved),deleted:false,createdBy:saved.createdBy||user.id,updatedBy:user.id,updatedAt:FieldValue.serverTimestamp()});return saved;
   });
  }
- if(method==='setBudgetDocumentsDeleted'||method==='purgeBudgetDocuments'){
+ if(method==='setBudgetDocumentsDeleted'||method==='purgeBudgetDocuments'||method==='setDisbursementDocumentsDeleted'){
   if(!F.manager(user))throw new HttpsError('permission-denied','เฉพาะฝ่ายงบประมาณหรือผู้ดูแลระบบ');
-  const [ids,deleted]=args;if(!Array.isArray(ids)||!ids.length||ids.length>100||new Set(ids).size!==ids.length||method==='setBudgetDocumentsDeleted'&&typeof deleted!=='boolean')throw Error('รายการไม่ถูกต้อง');
-  const refs=ids.map(id=>db.doc('budget_documents/forms-'+M.requestId(id)));
+  const [ids,deleted]=args;if(!Array.isArray(ids)||!ids.length||ids.length>100||new Set(ids).size!==ids.length||method!=='purgeBudgetDocuments'&&typeof deleted!=='boolean')throw Error('รายการไม่ถูกต้อง');
+  const kind=method==='setDisbursementDocumentsDeleted'?'disbursements':'forms',refs=ids.map(id=>db.doc('budget_documents/'+kind+'-'+M.requestId(id)));
   await db.runTransaction(async tx=>{const docs=await Promise.all(refs.map(r=>tx.get(r)));for(const d of docs)if(!d.exists)throw Error('ไม่พบเอกสาร');for(const ref of refs)if(method==='purgeBudgetDocuments')tx.delete(ref);else tx.update(ref,{deleted,updatedBy:user.id,updatedAt:FieldValue.serverTimestamp()});});return true;
  }
  throw new HttpsError('unimplemented','ฟังก์ชันนี้ยังไม่เปิดใช้งานบน Firebase');
