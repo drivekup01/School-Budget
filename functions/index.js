@@ -39,7 +39,7 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
  });
 }
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
-exports.budgetApi=onCall(callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');require('./shared-membership').authorizeMethod(user,method,args);
+exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');require('./shared-membership').authorizeMethod(user,method,args);
  if(method==='getBudgetUser')return {...user,canImportBudgetAllocation:Allocation.allowed(user),canManageInventory:Inventory.canWrite(user)};
  if(Inventory.methods.includes(method))return await Inventory.service(db,()=>FieldValue.serverTimestamp()).handle(method,args,user);
  if(method==='previewBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).preview(user,args[0]);
@@ -80,3 +80,5 @@ exports.budgetApi=onCall(callable,async request=>{try{const user=await member(re
  }
  throw new HttpsError('unimplemented','ฟังก์ชันนี้ยังไม่เปิดใช้งานบน Firebase');
  }catch(error){if(error instanceof HttpsError)throw error;throw new HttpsError('failed-precondition',error.message||'ดำเนินการไม่สำเร็จ')}});
+
+function audited(name,options,handler){const db=require('firebase-admin/firestore').getFirestore(),stamp=()=>require('firebase-admin/firestore').FieldValue.serverTimestamp();const audit=require('./usage-audit').service(db,stamp);return onCall(options,request=>audit.track(name,request,()=>handler(request)));}
