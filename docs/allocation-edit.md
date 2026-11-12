@@ -1,0 +1,5 @@
+# Editing project allocations
+
+Budget department and administrators can use **โครงการและกิจกรรม → แก้ไขงบประมาณ**. Edit four fund amounts for each activity directly. Project allocations are the sum of activities. A project without activities has four editable fund amounts itself. Project and activity total inputs can distribute an amount proportionally; zero allocations place the amount in the first fund and remain editable before saving.
+
+Saving requires a reason. The server checks current canonical roles, fiscal-year locks, register revision, valid cents and sufficient remaining balances. Existing expense records, borrowing records, block IDs and financial document references remain intact. Additional receipts and loan balances remain separate from the opening allocation. Public project/activity/department totals and register revision update in one transaction. `budget_operations/allocation-{requestId}` retains actor, reason, original and resulting register/project data, and deduplicates retries. No real financial records are changed by automated tests.

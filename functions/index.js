@@ -40,6 +40,7 @@ async function ledger(method,input,user){const year=M.year(Number(input.year)),r
 }
 function validateDocument(value){if(!value||typeof value!=='object'||Array.isArray(value))throw Error('ข้อมูลเอกสารไม่ถูกต้อง');if(Buffer.byteLength(JSON.stringify(value),'utf8')>400000)throw Error('เอกสารมีขนาดใหญ่เกินกำหนด');M.requestId(value.id);return value}
 exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=await member(request),{method,args=[]}=request.data||{};if(!Array.isArray(args)||args.length>5)throw Error('คำขอไม่ถูกต้อง');require('./shared-membership').authorizeMethod(user,method,args);
+ if(method==='saveBudgetAllocation')return await require('./allocation-edit').service(db,()=>FieldValue.serverTimestamp())(user,args[0]||{});
  if(method==='getBudgetUser')return {...user,canImportBudgetAllocation:Allocation.allowed(user),canManageInventory:Inventory.canWrite(user)};
  if(Inventory.methods.includes(method))return await Inventory.service(db,()=>FieldValue.serverTimestamp()).handle(method,args,user);
  if(method==='previewBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).preview(user,args[0]);
