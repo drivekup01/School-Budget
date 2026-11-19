@@ -31,3 +31,20 @@
 
 
 @media screen{.compact-document-editor .document-save-footer{padding:16px 0 4px;margin-top:12px;border-top:1px solid var(--line,#e5daef)}.compact-document-editor .document-save-footer #saveDocument{width:100%;min-height:48px;font-size:16px}}
+
+@media screen {
+ .compact-document-editor [data-section="common"] .posting-change-notice {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #a9d4b9;
+  border-radius: 8px;
+  background: #eff9f2;
+  color: #215c38;
+ }
+ .compact-document-editor [data-section="common"] .posting-change-notice[data-pending="true"] {
+  border-color: #e9c675;
+  background: #fff5dc;
+  color: #633d06;
+ }
+}

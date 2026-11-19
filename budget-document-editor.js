@@ -29,20 +29,25 @@
  function isPostedForm(doc){
   return !!doc?.ledgerPosted&&(doc.documentKind||'one')==='one';
  }
- function postingChanged(){
-  const saved=data.id?budgetDocumentStore.get(data.id):null;
-  return isPostedForm(saved)&&['year','department','projectId','activity','fund','requestAmount'].some(key=>String(saved[key]??'')!==String(data[key]??''));
- }
  function showPostingNotice(){
-  const footer=$('budgetDocumentSaveFooter');
-  if(!footer)return;
+  const saved=data.id?budgetDocumentStore.get(data.id):null;
+  const section=document.querySelector('[data-section="common"]>.budget-form-section-body');
+  if(!section||!isPostedForm(saved))return;
   let notice=$('postingChangeNotice');
   if(!notice){
-   notice=document.createElement('p');notice.id='postingChangeNotice';
-   notice.className='forms-note';notice.setAttribute('role','status');notice.hidden=true;footer.prepend(notice);
+   notice=document.createElement('p');
+   notice.id='postingChangeNotice';
+   notice.className='posting-change-notice';
+   notice.setAttribute('role','status');
+   section.prepend(notice);
   }
-  notice.hidden=!postingChanged();
-  if(!notice.hidden)notice.textContent='ยังไม่ได้บันทึกการเปลี่ยนแปลง · ยอดในทะเบียนจะเปลี่ยนเมื่อบันทึกสำเร็จ';
+  const changed=['year','department','projectId','activity','fund'].some(key=>String(saved[key]??'')!==String(data[key]??''))
+   ||Number(saved.requestAmount)!==Number(data.requestAmount);
+  const message=changed
+   ?'ยังไม่ได้บันทึก · ค่าที่เลือกใช้ดูตัวอย่าง ยอดในทะเบียนยังไม่เปลี่ยน หากรีเฟรชจะกลับไปใช้ค่าที่บันทึกแล้ว'
+   :'บันทึกแล้ว · ข้อมูลโครงการและยอดเบิกตรงกับที่บันทึกล่าสุด';
+  notice.dataset.pending=String(changed);
+  if(notice.textContent!==message)notice.textContent=message;
  }
  function status(s,error=false){$('formsStatus').textContent=s;$('formsStatus').classList.toggle('error',error)}
  let bindControls;const originalFormMarkup=$('budgetDocumentForm').innerHTML,documentTabs=new Map(),financeReads=new Map(),metadataReads=new Map();
@@ -72,7 +77,7 @@
 
  function lockPosted(){$('budgetDocumentForm').inert=busy&&!loadingYear;$('formYear').disabled=loadingYear;if(data.ledgerPosted&&documentKind==='one'&&!canMovePosting)for(const key of ['formYear','formDepartment','formProject','formActivity','formFund'])$(key).disabled=true;$('documentLedgerLink')?.remove();$('saveDocument').textContent=documentKind==='one'?'บันทึก งบ 1 และตัดยอด':'บันทึกเอกสาร งบ 2';}
  function draw(){updateWordButtons();const draftButton=$('saveBudgetDraft');if(draftButton){draftButton.hidden=true;draftButton.disabled=busy;}updateCaseStatus();lockPosted();showPostingNotice();const f=data.finance,request=Number(data.requestAmount)||0;$('financeCards').replaceChildren();for(const [label,v] of [['งบประมาณที่ได้รับ (ก่อนปรับยืม)',f?.received],['ยอดใช้ไปสะสมของโครงการ',f?.used],['ยอดคงเหลือปัจจุบัน (รวมผลการยืม)',f?.current]]){const c=document.createElement('article'),s=document.createElement('span'),vEl=document.createElement('strong');s.textContent=label;vEl.textContent=T.money(v)+' บาท';c.append(s,vEl);$('financeCards').append(c)}$('financeTime').textContent=f?(documentKind==='one'?'บันทึก งบ 1 แล้วตัดยอดตามกิจกรรม · ':'งบ 2 ไม่ตัดยอดเพิ่ม · ')+'ประเภทงบ: '+data.fund+' · ยอดรวมทุกกิจกรรมและประเภทเงินของโครงการ · อ่านเมื่อ '+new Date(f.checkedAt).toLocaleString('th-TH'): 'เลือกโครงการและประเภทงบเพื่ออ่านยอดจริง';const after=f?.current==null?null:Math.round((f.current-request)*100)/100;$('balanceAfter').textContent='ยอดคงเหลือตามเอกสาร (คำนวณประกอบ) '+T.money(after)+' บาท';$('balanceAfter').classList.toggle('negative',after!==null&&after<0);const total=data.items.reduce((sum,x)=>sum+Math.round((Number(x.quantity)||0)*(Number(x.unitPrice)||0)*100),0)/100;$('itemsTotal').textContent='รวมตารางแนบ '+T.money(total)+' บาท'+(total&&Math.round(total*100)!==Math.round(request*100)?' · ยอดตารางยังไม่ตรงกับยอดเบิกครั้งนี้':'');let valid=request>0&&Number.isFinite(request)&&!!data.projectId&&!!data.fund&&!busy&&previewFontReady;for(const name of ['printOne','printTwo','printAll'])$(name).disabled=!valid;$('saveDocument').disabled=busy;try{if(previewFontReady){T.render(data,$('budgetDocumentPreview'));scale()}else if(!$('budgetDocumentPreview').childElementCount){$('budgetDocumentPreview').textContent='กำลังเตรียมตัวอย่างเอกสาร · กรอกข้อมูลด้านซ้ายได้เลย';}}catch(e){status(e.message,true);for(const name of ['printOne','printTwo','printAll'])$(name).disabled=true}}
- function schedule(){try{if(!isPostedForm(data))localStorage.setItem(draftKey,JSON.stringify(data))}catch{status('พื้นที่เก็บฉบับร่างไม่เพียงพอ กรุณาบันทึกเอกสาร',true)}clearTimeout(timer);timer=setTimeout(draw,160)}
+ function schedule(){showPostingNotice();try{if(!isPostedForm(data))localStorage.setItem(draftKey,JSON.stringify(data))}catch{status('พื้นที่เก็บฉบับร่างไม่เพียงพอ กรุณาบันทึกเอกสาร',true)}clearTimeout(timer);timer=setTimeout(draw,160)}
  function applyFund(){data.fund=$('formFund').value;syncFunding();if(!register){status('กรอกข้อมูลได้เลย · กำลังอ่านยอดล่าสุดจากระบบ');schedule();draw();return}data.finance=null;const blocks=register?.blocks||[];if(blocks.length&&blocks.every(b=>Number.isFinite(b.current)&&Number.isFinite(b.used))){const sum=k=>Math.round(blocks.reduce((s,b)=>s+b[k],0)*100)/100;const original=data.id?budgetDocumentStore.get(data.id):null;const posted=documentKind==='one'&&Number(data.ledgerPosted?.year)===Number(data.year)&&Number(data.ledgerPosted?.projectId)===Number(data.projectId)?Number(data.ledgerPosted.amount)||0:0;data.finance={current:Math.round((sum('current')+posted)*100)/100,used:Math.round((sum('used')-posted)*100)/100,received:blocks.every(b=>Number.isFinite(b.received))?sum('received'):null,activityCurrent: (()=>{try{return window.budgetDocumentLedger.block(register,data).current+(original?.fund===data.fund&&original?.activity===data.activity?posted:0)}catch{return null}})(),checkedAt:new Date(verifiedAt).toISOString(),revision:register.revision};status(documentKind==='one'?'บันทึก งบ 1 เพื่อตัดยอดกิจกรรม · หากย้าย ระบบจะคืนยอดเดิมและตัดยอดปลายทาง':'งบ 2 เป็นเอกสารประกอบ ไม่ตัดยอดเพิ่ม')}else if(data.fund)status('ไม่พบยอดที่ตรวจสอบได้สำหรับประเภทงบนี้ กรุณาตรวจทะเบียน',true);schedule();draw()}
  function planFunds(){const relevant=registerMetadata.filter(b=>!data.activity||!b.activity||b.activity.replace(/\s+/g,'')===data.activity.replace(/\s+/g,''));const funds=[...new Set(relevant.map(b=>b.budgetType).filter(Boolean))];if(!funds.length&&data.fund)funds.push(data.fund);const previous=data.fund;$('formFund').replaceChildren(new Option('เลือกประเภทเงิน',''),...funds.map(f=>new Option(f,f)));$('formFund').value=funds.includes(previous)?previous:funds.length===1?funds[0]:'';data.fund=$('formFund').value;$('formFund').disabled=!funds.length;}
  async function finance(force=false){const token=++serial;data.finance=null;register=null;verifiedAt=0;financeLoading=true;planFunds();$('reloadFinance').disabled=true;draw();status('กรอกข้อมูลได้เลย · กำลังอ่านยอดล่าสุดจากระบบ…');try{const result=await readFinance(data.projectId,data.year,force);if(registerMetadata.length===result.blocks.length)result.blocks.forEach((b,i)=>{b.activity=registerMetadata[i].activity;});if(token!==serial)return;register=result;verifiedAt=result._checkedAt||Date.now();const funds=[...new Set(result.blocks.map(b=>b.budgetType).filter(Boolean))];const previous=data.fund;$('formFund').replaceChildren(new Option('เลือกประเภทงบ',''),...funds.map(f=>new Option(f,f)));$('formFund').value=funds.includes(previous)?previous:funds.length===1?funds[0]:'';$('formFund').disabled=!funds.length;applyFund();if(!funds.length)status('ทะเบียนนี้ยังไม่ระบุประเภทงบที่ตรวจสอบได้',true);else if(!$('formFund').value)status('กรุณาเลือกประเภทงบที่ต้องการเบิก')}catch(e){if(token===serial)status('อ่านยอดไม่สำเร็จ: '+e.message,true)}finally{if(token===serial){financeLoading=false;$('reloadFinance').disabled=!data.projectId;draw()}}}
