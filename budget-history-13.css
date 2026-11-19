@@ -5,3 +5,54 @@
     font-size: 13px !important;
   }
 }
+
+.forms-history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media screen and (max-width: 650px) {
+  #formsHistory table {
+    table-layout: fixed;
+  }
+
+  #formsHistory th,
+  #formsHistory td {
+    overflow-wrap: anywhere;
+    padding: 6px;
+    vertical-align: top;
+  }
+
+  #formsHistory .forms-selection {
+    width: 34px;
+  }
+
+  #formsHistory th:not(.forms-selection):first-child,
+  #formsHistory th.forms-selection + th {
+    width: 42px;
+  }
+
+  #formsHistory th:last-child {
+    width: 72px;
+  }
+
+  .forms-history-actions {
+    flex-direction: column;
+  }
+
+  .forms-history-actions > a,
+  .forms-history-actions > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 4px;
+    white-space: nowrap;
+  }
+
+  .forms-history-actions > a {
+    border: 1px solid currentColor;
+    border-radius: 6px;
+  }
+}
