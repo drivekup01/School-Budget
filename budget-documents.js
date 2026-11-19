@@ -4,7 +4,7 @@
  const status=document.getElementById('formsStatus'),list=document.getElementById('formsHistory'),year=document.getElementById('historyYear'),search=document.getElementById('historySearch'),canDelete=budgetDocumentStore.canManage(),selected=new Set();
  let visible=[],removeButton,restoreButton,allCheck;
  function label(d){return [d.projectName,d.activity,d.one?.fields?.number1?'งบ 1: '+d.one.fields.number1:'',d.two?.fields?.number2?'งบ 2: '+d.two.fields.number2:''].filter(Boolean).join(' · ')||'เอกสารไม่มีชื่อ'}
- function pageLink(d,kind){const doc=d[kind];const source=doc||d.one||d.two;return doc?'budget-document-editor.html?id='+encodeURIComponent(doc.id):'budget-document-editor.html?kind='+kind+'&group='+encodeURIComponent(d.id)+'&reference='+encodeURIComponent(source.id);}
+ function pageLink(d,kind){const doc=d[kind];const source=doc||d.one||d.two;return doc?'budget-document-editor.html?v=20261119-save-status3&id='+encodeURIComponent(doc.id):'budget-document-editor.html?v=20261119-save-status3&kind='+kind+'&group='+encodeURIComponent(d.id)+'&reference='+encodeURIComponent(source.id);}
 
  function updateSelection(){if(!canDelete)return;removeButton.textContent='ลบถาวรที่เลือก'+(selected.size?' ('+selected.size+')':'');removeButton.disabled=!selected.size;if(allCheck){allCheck.checked=!!visible.length&&selected.size===visible.length;allCheck.indeterminate=selected.size>0&&selected.size<visible.length}restoreButton.hidden=!budgetDocumentStore.canRestore()}
  const dialog=document.createElement('dialog');dialog.className='forms-delete-dialog';dialog.setAttribute('aria-labelledby','deleteFormsTitle');
