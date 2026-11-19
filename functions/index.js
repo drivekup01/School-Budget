@@ -48,7 +48,7 @@ exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=aw
  if(method==='publishBudgetAllocationImport')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).publish(user,args[0]);
  if(method==='getBudgetAllocationImportHistory')return await Allocation.service(db,()=>FieldValue.serverTimestamp()).history(user,Number(args[0]));
  if(['listProcurementDocuments','openProcurementDocument','saveProcurementDocument','setProcurementDocumentDeleted','getProcurementDraft','saveProcurementDraft','clearProcurementDraft'].includes(method)){if(!['listProcurementDocuments','openProcurementDocument','getProcurementDraft'].includes(method))authorize(user,false,true);return await P.handle(method,args,user,db,FieldValue);}
- if(method==='getBudgetReferenceData'){const snap=await db.doc('budget_reference_data/'+M.year(Number(args[0]))).get();return parse(snap);}
+ if(method==='getBudgetReferenceData'){const snap=await db.doc('budget_reference_data/'+M.year(Number(args[0]))).get();return {...parse(snap),canMoveFormPosting:F.manager(user)};}
  if(method==='getBudgetProjectCatalog')return parse(await db.doc('budget_catalog/'+M.year(Number(args[0]))).get());
  if(method==='listBorrowingBudgetDocuments'){
   const year=M.year(Number(args[0])),project=Number(args[1]),docs=await db.collection('budget_documents').where('kind','==','forms').get();
@@ -71,6 +71,8 @@ exports.budgetApi=audited('budgetApi',callable,async request=>{try{const user=aw
    if(old.exists&&value.savedAt!==parse(old).savedAt)throw Error('เอกสารเปลี่ยนแล้ว กรุณาเปิดข้อมูลล่าสุดก่อนแก้ไข');
    if(old.exists&&!F.editable(user,parse(old),old.data()))throw new HttpsError('permission-denied','แก้ไขได้เฉพาะเอกสารของตนเอง หรือฝ่ายงบประมาณ');
    const saved=kind==='forms'?F.saved(value,old.exists?parse(old):null,user,old.data()):{...value,createdBy:old.exists?F.owner(parse(old),old.data()):user.id,savedAt:new Date().toISOString(),savedBy:user.id};
+   if(kind==='forms'&&old.exists&&(saved.documentKind||'one')!==(parse(old).documentKind||'one'))throw Error('เปลี่ยนประเภทเอกสารที่บันทึกแล้วไม่ได้');
+   if(kind==='forms'&&saved.draftOnly&&old.exists&&parse(old).ledgerPosted)throw Error('เอกสารที่ตัดยอดแล้วไม่สามารถเปลี่ยนเป็นฉบับร่าง');
    if(kind==='forms'&&!options.importOnly)await require('./form-posting').stage(tx,db,saved,old.exists?parse(old):null,user);
    tx.set(ref,{kind,json:JSON.stringify(saved),deleted:false,createdBy:saved.createdBy||user.id,updatedBy:user.id,updatedAt:FieldValue.serverTimestamp()});return saved;
   });
