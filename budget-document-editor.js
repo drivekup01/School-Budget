@@ -32,7 +32,7 @@
  function showPostingNotice(){
   const saved=data.id?budgetDocumentStore.get(data.id):null;
   const section=document.querySelector('[data-section="common"]>.budget-form-section-body');
-  if(!section||!isPostedForm(saved))return;
+  if(!section)return;
   let notice=$('postingChangeNotice');
   if(!notice){
    notice=document.createElement('p');
@@ -41,11 +41,13 @@
    notice.setAttribute('role','status');
    section.prepend(notice);
   }
-  const changed=['year','department','projectId','activity','fund'].some(key=>String(saved[key]??'')!==String(data[key]??''))
+  const changed=!saved||['year','department','projectId','activity','fund'].some(key=>String(saved[key]??'')!==String(data[key]??''))
    ||Number(saved.requestAmount)!==Number(data.requestAmount);
-  const message=changed
-   ?'ยังไม่ได้บันทึก · ค่าที่เลือกใช้ดูตัวอย่าง ยอดในทะเบียนยังไม่เปลี่ยน หากรีเฟรชจะกลับไปใช้ค่าที่บันทึกแล้ว'
-   :'บันทึกแล้ว · ข้อมูลโครงการและยอดเบิกตรงกับที่บันทึกล่าสุด';
+  let message='บันทึกแล้ว · ข้อมูลโครงการและยอดเบิกตรงกับที่บันทึกล่าสุด';
+  if(!saved)message='ยังไม่ได้บันทึก · เอกสารนี้ยังเป็นฉบับร่าง';
+  else if(changed)message=isPostedForm(saved)
+   ?'ยังไม่ได้บันทึก · ยอดในทะเบียนยังไม่เปลี่ยน หากรีเฟรชจะกลับไปใช้ค่าที่บันทึกแล้ว'
+   :'ยังไม่ได้บันทึก · ค่าที่เลือกอาจแสดงเป็นฉบับร่างบนเครื่องนี้ กดบันทึกเพื่ออัปเดตเอกสารในระบบ';
   notice.dataset.pending=String(changed);
   if(notice.textContent!==message)notice.textContent=message;
  }
