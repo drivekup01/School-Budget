@@ -6,7 +6,7 @@
  function options(id,items,placeholder){$(id).replaceChildren(new Option(placeholder,''),...items.map(([value,text])=>new Option(text,value)));}
  function invalidate(){sheets=[];$('report').hidden=true;$('pdf').disabled=$('excel').disabled=true;}
  function projects(){return data.projects.filter(p=>!$('department').value||p.department===$('department').value);}
- function activities(){const p=data.projects.find(p=>String(p.id)===$('project').value);options('activity',(p?.activities||[]).map(a=>[a.name,a.name]),'ทุกกิจกรรม');$('activity').disabled=!p;invalidate();}
+ function activities(){const p=data.projects.find(p=>String(p.id)===$('project').value);options('activity',(p?.activities||[]).map(a=>[a.name,a.displayName||a.name]),'ทุกกิจกรรม');$('activity').disabled=!p;invalidate();}
  function departments(){options('project',projects().map(p=>[p.id,p.name]),'ทุกโครงการ');activities();}
  function visibleSheets(){const mode=$('reportKind').value;return sheets.filter((_,i)=>mode==='projects'?i<3:mode==='details'?i===3:i===4);}
  let reportSizeObserver;

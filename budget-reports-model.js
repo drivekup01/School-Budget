@@ -15,9 +15,9 @@
    const state=states[p.id],blocks=(state?.blocks||[]).filter(b=>(!filter.activity||match(b.activity,filter.activity))&&(!filter.budgetType||b.budgetType===filter.budgetType));
    const units=filter.activity?p.activities.filter(a=>a.name===filter.activity):[p];
    for(const unit of units){const bs=blocks;const amounts=unit.income?.some(Number.isFinite)?unit.income:(unit.amounts||[]);const initial=filter.budgetType?[amounts[types.indexOf(filter.budgetType)]]:amounts;
-    summaries.push([p.department,p.name,filter.activity||'ทุกกิจกรรม',sum(initial),sum(bs.map(b=>b.received)),sum(bs.map(b=>b.incoming)),sum(bs.map(b=>b.outgoing)),sum(bs.map(b=>b.used)),sum(bs.map(b=>b.current))]);
+    summaries.push([p.department,p.name,filter.activity?(unit.displayName||filter.activity):'ทุกกิจกรรม',sum(initial),sum(bs.map(b=>b.received)),sum(bs.map(b=>b.incoming)),sum(bs.map(b=>b.outgoing)),sum(bs.map(b=>b.used)),sum(bs.map(b=>b.current))]);
    }
-   for(const b of blocks)for(const e of b.entries||[]){detailTargets.push({projectId:p.id,headerRow:b.headerRow,row:e.row,editable:!e.deleted&&e.spent>0});details.push([e.number,e.date,p.department,p.name,b.activity||'ยังไม่ระบุกิจกรรม',b.budgetType||'ไม่ระบุ',e.description,e.received||0,e.spent,e.remaining,e.note]);}
+   for(const b of blocks)for(const e of b.entries||[]){detailTargets.push({projectId:p.id,headerRow:b.headerRow,row:e.row,editable:!e.deleted&&e.spent>0});details.push([e.number,e.date,p.department,p.name,p.activities.find(a=>a.name===b.activity)?.displayName||b.activity||'ยังไม่ระบุกิจกรรม',b.budgetType||'ไม่ระบุ',e.description,e.received||0,e.spent,e.remaining,e.note]);}
    const cancelled=new Set((state?.borrowing||[]).filter(r=>r.kind==='cancel').map(r=>r.referenceId));
    for(const r of state?.borrowing||[]){if(r.kind!=='borrow'||(filter.budgetType&&r.budgetType!==filter.budgetType))continue;if(filter.activity&&!['source','destination'].some(side=>r[side].projectId===p.id&&match(r[side].activity,filter.activity)))continue;
     loans.set(r.id,[r.number,r.date,r.source.name,r.source.activity||'',r.destination.name,r.destination.activity||'',r.budgetType,r.amount,r.reason,cancelled.has(r.id)?'ยกเลิกแล้ว':'บันทึกแล้ว']);}
