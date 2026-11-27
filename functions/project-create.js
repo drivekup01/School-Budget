@@ -2,6 +2,7 @@
 const crypto=require('node:crypto'),M=require('./model'),A=require('./allocation-import'),D=require('./allocation-model');
 const clone=v=>JSON.parse(JSON.stringify(v));
 function add(summary,state,input){
+ const mode=input.fundingMode||'additional';if(!['additional','transfer'].includes(mode)||input.kind==='project'&&mode!=='additional')throw Error('รูปแบบการจัดสรรงบไม่ถูกต้อง');
  const kind=input.kind;if(!['project','activity'].includes(kind))throw Error('ประเภทคำขอไม่ถูกต้อง');
  const name=D.clean(M.text(input.name,240)),owner=D.clean(M.text(input.owner,200)),fund=M.TYPES.indexOf(input.budgetType);
  if(fund<0)throw Error('เลือกประเภทงบประมาณ');
@@ -17,10 +18,21 @@ function add(summary,state,input){
  }else{
   p=summary.projects.find(p=>p.id===input.projectId);if(!p||!state||state.projectId!==p.id)throw Error('ไม่พบโครงการ');
   if(state.revision!==input.revision)throw Error('ข้อมูลเปลี่ยนแล้ว กรุณาโหลดล่าสุดก่อนบันทึก');
-  if(p.activities.some(a=>D.clean(a.name)===name))throw Error('มีชื่อกิจกรรมนี้แล้ว');
+  if(p.activities.some(a=>D.clean(a.name)===name||D.clean(a.displayName)===name))throw Error('มีชื่อกิจกรรมนี้แล้ว');
   if(p.activities.length>=200)throw Error('จำนวนกิจกรรมเต็มแล้ว');
+  if(mode==='transfer'){
+   if(!(amount>0))throw Error('ยอดแบ่งงบต้องมากกว่า 0 บาท');
+   const source=Number.isInteger(input.sourceBlockIndex)?state.blocks.find(b=>b.blockIndex===input.sourceBlockIndex):null;
+   if(!source||source.budgetType!==input.budgetType)throw Error('เลือกแหล่งงบเดิมให้ตรงกับประเภทเงิน');
+   const available=M.round(Math.min(source.current,source.openingBalance));
+   if(amount>available)throw Error('ยอดแบ่งเกินงบเดิมที่จัดสรรได้');
+   const sourceActivity=source.activity?p.activities.find(a=>a.name===source.activity):null;
+   if(source.activity&&(!sourceActivity||Number(sourceActivity.amounts?.[fund]||0)<amount))throw Error('ไม่พบยอดจัดสรรของกิจกรรมต้นทาง');
+   A.balance(source,M.round(source.openingBalance-amount));
+   if(sourceActivity){sourceActivity.amounts[fund]=M.round(sourceActivity.amounts[fund]-amount);delete sourceActivity.adjustedAmounts;delete sourceActivity.adjustedIncome;}
+  }else p.amounts=p.amounts.map((v,i)=>M.round((v||0)+amounts[i]));
   p.activities.push({name,owner,amounts:amounts.slice(),income:[0,0,0,0],remaining:[0,0,0,0]});
-  p.amounts=p.amounts.map((v,i)=>M.round((v||0)+amounts[i]));
+  delete p.adjustedAmounts;delete p.adjustedIncome;
  }
  const header=Math.max(0,...state.blocks.map(b=>b.headerRow),...state.blocks.flatMap(b=>(b.entries||[]).map(e=>e.row)))+10;
  state.blocks.push(A.balance({blockIndex:Math.max(-1,...state.blocks.map(b=>b.blockIndex))+1,headerRow:header,sourceHeaderRow:header,registerId:'P'+p.id+'-CUSTOM-'+crypto.randomUUID(),budgetType:M.TYPES[fund],activity:kind==='activity'?name:null,lastRow:header,lastEntryRow:header,noteColumn:7,usedColumn:8,entries:[],incoming:0,outgoing:0,additionalReceipts:0},amount));
@@ -35,7 +47,7 @@ function service(db,stamp){return async(user,input)=>{
  const summary=JSON.parse(sy.data().json),catalog=JSON.parse(ca.data().json),refs=JSON.parse(rf.data().json);if(summary.year!==input.year||!Array.isArray(catalog))throw Error('โครงสร้างข้อมูลปีไม่ถูกต้อง');
  const id=input.kind==='project'?Math.max(0,...summary.projects.map(p=>p.id))+1:input.projectId,rr=db.doc('budget_registers/'+input.year+'-'+id),re=await tx.get(rr);if(input.kind==='project'&&re.exists)throw Error('เลขโครงการถูกใช้แล้ว');if(input.kind==='activity'&&!re.exists)throw Error('ไม่พบทะเบียนโครงการ');
  const state=re.exists?JSON.parse(re.data().json):null,before=clone(state),beforeProject=clone(summary.projects.find(p=>p.id===id)||null),result=add(summary,state,input),p=summary.projects.find(p=>p.id===id);
- if(before)A.assertPreserved([before],[result.state]);const item={id,owner:p.owner,activities:p.activities.map(a=>({name:a.name,owner:a.owner}))},ci=catalog.findIndex(p=>p.id===id);if(ci<0)catalog.push(item);else catalog[ci]=item;
+ if(before)A.assertPreserved([before],[result.state]);const ci=catalog.findIndex(p=>p.id===id),previous=ci<0?null:catalog[ci],item={...previous,id,owner:previous?.owner??p.owner,activities:p.activities.map(a=>previous?.activities?.find(old=>old.name===a.name)||({name:a.name,owner:a.owner}))};if(ci<0)catalog.push(item);else catalog[ci]=item;
  refs.registers||={};refs.registers.projects||={};refs.registers.projects[id]=result.state.blocks.map(b=>({budgetType:b.budgetType,activity:b.activity,registerId:b.registerId,sourceHeaderRow:b.headerRow}));
  const saved={saved:true,projectId:id};for(const [ref,snap,json] of [[sr,sy,summary],[cr,ca,catalog],[fr,rf,refs],[rr,re,result.state]])tx.set(ref,{...(snap.exists?snap.data():{}),json:JSON.stringify(json),updatedAt:stamp(),updatedBy:user.id});
  tx.create(op,{hash,userId:user.id,year:input.year,projectId:id,kind:input.kind,before:JSON.stringify(before),after:JSON.stringify(result.state),beforeProject:JSON.stringify(beforeProject),afterProject:JSON.stringify(p),result:saved,createdAt:stamp()});return saved;
