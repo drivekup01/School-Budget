@@ -9,10 +9,10 @@ function allowed(user){return user.schoolRole?['admin','budget'].includes(user.s
 function guard(user){if(!allowed(user))throw Object.assign(Error('เฉพาะผู้ดูแลระบบและฝ่ายงบประมาณเท่านั้น'),{code:'permission-denied'})}
 function expenses(states){return states.flatMap(s=>s.blocks.flatMap(b=>(b.entries||[]).map(e=>({projectId:s.projectId,entry:e})))).map(stable).sort()}
 function assertPreserved(before,after){if(stable(expenses(before))!==stable(expenses(after)))throw Error('หยุดอัปเดต: รายการใช้จ่ายเดิมไม่ครบหรือมีข้อมูลเปลี่ยน');for(const old of before){const current=after.find(s=>s.projectId===old.projectId);if(!current||stable(old.borrowing||[])!==stable(current.borrowing||[]))throw Error('หยุดอัปเดต: ประวัติยืมเงินเดิมเปลี่ยน');}}
-function balance(block,opening){
+function balance(block,opening,options={}){
  const additional=A.cents(Number(block.additionalReceipts||0)),spent=(block.entries||[]).reduce((s,e)=>s+A.cents(Number(e.spent||0)),0);
  block.openingBalance=opening;block.received=A.money(A.cents(opening)+additional);block.additionalReceipts=A.money(additional);block.used=A.money(spent);block.ledgerCurrent=A.money(A.cents(block.received)-spent);block.current=A.money(A.cents(block.ledgerCurrent)+A.cents(block.incoming||0)-A.cents(block.outgoing||0));block.allocationRebased=true;
- if(block.current<0)throw Error('รายรับใหม่ไม่เพียงพอกับยอดใช้จ่ายเดิมของโครงการ/กิจกรรมนี้');
+ if(block.current<0&&!options.allowNegative)throw Error('รายรับใหม่ไม่เพียงพอกับยอดใช้จ่ายเดิมของโครงการ/กิจกรรมนี้');
  // entries intentionally remain byte-for-byte equivalent; running balances are a read projection.
  return block;
 }

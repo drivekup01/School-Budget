@@ -102,3 +102,11 @@ test('moves across projects in the same year and updates both projects in the sh
  assert.deepEqual(summary.projects.map(p=>p.remaining[0]),[100,75]);
  assert.equal(summary.departments[0].remaining[0],175);
 });
+test('full opening split leaves pending source expense then moving the existing form clears review without double spending',async()=>{
+ const h=harness(),s=seed(h),sy=JSON.parse(h.data.get('budget_public_years/2570').json);s.blocks[0].activity=null;sy.year=2570;sy.projects[0].name='Project';sy.projects[0].activities=[];sy.projects[0].amounts=[100,0,0,0];h.data.set('budget_registers/2570-1',{json:JSON.stringify(s)});h.data.set('budget_public_years/2570',{json:JSON.stringify(sy)});
+ const d=await h.api('budget','budget','saveBudgetDocument','forms',{...one(),activity:'',fields:{...one().fields,activityOwner:'Teacher'}});
+ const current=register(h),summary=JSON.parse(h.data.get('budget_public_years/2570').json);require('../project-create').add(summary,current,{kind:'activity',projectId:1,name:'New activity',owner:'Teacher',budgetType:'เงินอุดหนุนรายหัว',amount:100,fundingMode:'transfer',sourceBlockIndex:0,revision:current.revision});h.data.set('budget_registers/2570-1',{json:JSON.stringify(current)});h.data.set('budget_public_years/2570',{json:JSON.stringify(summary)});
+ assert.deepEqual(current.blocks.map(b=>b.current),[-25,100]);const pending=await h.api('budget','budget','getBudgetProjectReview',{year:2570,projectId:1});assert(pending.pending>0);
+ await h.api('budget','budget','saveBudgetDocument','forms',{...d,activity:'New activity'});assert.deepEqual(register(h).blocks.map(b=>b.current),[0,75]);assert.equal(register(h).blocks.flatMap(b=>b.entries).reduce((n,e)=>n+e.spent,0),25);
+ assert.equal((await h.api('budget','budget','getBudgetProjectReview',{year:2570,projectId:1})).pending,0);
+});

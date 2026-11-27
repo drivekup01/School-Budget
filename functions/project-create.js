@@ -24,11 +24,12 @@ function add(summary,state,input){
    if(!(amount>0))throw Error('ยอดแบ่งงบต้องมากกว่า 0 บาท');
    const source=Number.isInteger(input.sourceBlockIndex)?state.blocks.find(b=>b.blockIndex===input.sourceBlockIndex):null;
    if(!source||source.budgetType!==input.budgetType)throw Error('เลือกแหล่งงบเดิมให้ตรงกับประเภทเงิน');
-   const available=M.round(Math.min(source.current,source.openingBalance));
+   const available=M.round(source.openingBalance);
    if(amount>available)throw Error('ยอดแบ่งเกินงบเดิมที่จัดสรรได้');
    const sourceActivity=source.activity?p.activities.find(a=>a.name===source.activity):null;
    if(source.activity&&(!sourceActivity||Number(sourceActivity.amounts?.[fund]||0)<amount))throw Error('ไม่พบยอดจัดสรรของกิจกรรมต้นทาง');
-   A.balance(source,M.round(source.openingBalance-amount));
+   A.balance(source,M.round(source.openingBalance-amount),{allowNegative:true});
+   state.allocationReviewRequired=true;
    if(sourceActivity){sourceActivity.amounts[fund]=M.round(sourceActivity.amounts[fund]-amount);delete sourceActivity.adjustedAmounts;delete sourceActivity.adjustedIncome;}
   }else p.amounts=p.amounts.map((v,i)=>M.round((v||0)+amounts[i]));
   p.activities.push({name,owner,amounts:amounts.slice(),income:[0,0,0,0],remaining:[0,0,0,0]});
